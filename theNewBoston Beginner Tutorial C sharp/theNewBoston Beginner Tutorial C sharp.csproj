@@ -76,8 +76,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Lesson 01 setup Visual Studio\" />
+    <Content Include="Lesson 01 setup Visual Studio\Images\click button the click form and drag to size.png" />
+    <Content Include="Lesson 01 setup Visual Studio\tutorial 01 and highlights from the comments area.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

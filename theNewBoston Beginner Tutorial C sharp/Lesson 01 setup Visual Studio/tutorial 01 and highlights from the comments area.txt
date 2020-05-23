@@ -1,0 +1,93 @@
+﻿This Repository is to learn and document the lessons and comments taken from the YouTube tutorial located,
+starting here:
+https://www.youtube.com/watch?v=x_9lfHjYtVg&list=PL0EE421AE8BCEBA4A
+The lesson is taught by Adam, for 'Bucky Roberts', theNewBoston.
+
+First we will download the 2017 Visual Basic Editor:
+https://visualstudio.microsoft.com/vs/older-downloads/
+You will need to enter you Microsoft email, to download the Visual basic editor, so enter your @outlook.com
+email, or create one, for free.
+
+Next launch the Visual Studio installer' you just downloaded, and follow what is says, to install Visual 
+Studio.  It will take a while to install.  After you have your main VB and C# files installed click File, New, 
+Project, to get to the start page.  Click the link 'open visual studio installer' then add a checkmark to 
+download, 'the 'windows form app(.NET Framework) from the list and wait for it to download and install.
+
+Next time, when you open Visual Studio click 'create project' then choose visual c# then select windows form 
+app(.NetFramework) and give your app a name then click ok.  A windows form should pop up in the Visual studio
+main area, with other files, in the solotions explorer, in the right side window.
+
+If you select the form, you just created, you can click on the toolbox on the left side of the main window, to
+see all the tools you can use.  You can collapse all the sub categories of tools and then
+expand the top row, to see all windows forms, tools in one list.  You can also click and hold
+the toolbox, box, and drag it, halfway down the left window, and dock the tool box there, so
+it will remain visible, all the time.
+
+In the right window you can see everything open, in your project as a collasable list, in the
+Solution Explorer box.  To see the properties of your form, right click your form and choose 
+properties.  A properties box will popup under you solution explorer box. Properties, will
+tell you, everything about what your form consists of, and can be tweeked there.
+
+
+
+
+***************************** highlights from the comments area **********************************
+
+
+c# is better at Object Oriented Programming (ie games for example)
+and c++ is better at programs with heavy tasks. 
+now i could be completely wrong, so if anyone know better. please correct me,.
+
+
+
+
+C# is C++ and Java put together. C# is easier because there's less you have to do for the same task.
+
+
+
+
+
+C# is a higher level programming language than C++. This means that there are many objects and interfaces that have already been built for you that you can implement. What is better? This depends on what you are trying to make. I have heard that if you are going to write drivers C and C++ are the way to go. If you are trying to make an application that you can write an essay on, send instant messages or even do simple arithmetic C# is the better language. I would suggest you learn both.
+
+
+
+
+
+
+Use Mono, it's a cross-platform framework for many .NET languages including C# :D
+
+
+
+
+
+C# can only run on Windows? That's totally false. C# can run on Linux or on Mac.
+
+The .NET framework is only for Windows, yes, but C# is not "built on" the .NET framework. It's just that most of the useful classes in the built-in libraries COME from the .NET framework, so without .NET the language is left pretty powerless. However, there are libraries for cross-platform C# development on Mac and Linux. Mono comes to mind.
+
+
+
+
+
+Is it better to use MonoDevelop or visual studio ?
+
+ MonoDevelop is created using visual studio. Visual studio is the best
+
+The First Coding tool ever exist and the best
+is Visual Studio. Without Visual Studio No
+Program Can Be Created And We Will All
+Die Because Of "Program Starvation". I
+Know This Because I just Know it. Windows
+10 Is Created in Visual Studio in C#. Visual
+Studio Is The The First And Always be The
+Best Program To Code A Program Ever.
+
+Yeah, very funny :\. Just stop insulting me
+
+If your computer is slow like mine, maybe you should check out SharpDevelop. Visual Studio is a shameless CPU hog.
+
+
+
+
+
+
+
