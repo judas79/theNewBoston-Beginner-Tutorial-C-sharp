@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Csharp_Beginner_Tutorial.Tutorial_03
+{
+    public partial class L3 : Form
+    {
+        public L3()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("L3 Statement", "MyTitle");
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            MessageBox.Show("hover statement L3:  Click button to see message");
+        }
+    }
+}

@@ -1,0 +1,57 @@
+﻿For this tutorial add a button to a windows form.  Double click the button and you should have this:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Csharp_Beginner_Tutorial.Tutorial_03
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+What ever we do between the brackets, will pertain to the button:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+			/* This is where you type your code for the button
+        }
+
+We will type some code in between these brackets to launch a message box:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+			/* This is where you type your code for the button
+        }
+
+Write the code to call the message box then a dot then Show to show the message then within parenthesis and each word in double 
+quoates, not single quoates'you will get an error', type the text you want to appear, then separated by a coma, the title of the 
+message box, that will appear at the top of the message  box:
+
+		{
+            MessageBox.Show("Statement", "MyTitle");
+        }
+
+You will notice the code is auto completed in a box that pops up when you are typing code.  Its called a IntelliSense suggestions
+box.  It will give you the possibilities of code you can enter next.
+Next we will add a message that pops up when you hover over the button. While the button is in a selected state, right click and
+choose properties, and the properties box will popup on the right side of the screen.  Click the lightening bolt (events) icon.
+Go down the list a click 'mouseHover' and generated code for its class should popup on the screen, for you to enter the code you 
+would like it to execute when you hover over the button.
+
