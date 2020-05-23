@@ -1,0 +1,97 @@
+﻿We will start by right clicking on theNewBoston Csharp Beginner Tutorial, in Solution Explorer, and choosing 
+Add, New Item from the popup box.  Then choose New Folder and name it Tutorial 2, then in the Tutorial 2 right
+click and add another folder and name it Images; to hold our images.  In the Tutorial 2 folder we will add a 
+text file, by right clicking, then add, New Item and choosing Text File and name it, 'lesson 2 notes and 
+highlights from the comments area.txt'.
+
+We can also add a form, in the same manner, add, new item, and Windows form, to practice, resizing the form.
+We resize the form by grabbing it from the small circles on the sides or in between the sides, and draging
+them, to the desired size (see Picture in images folder).  We can also drag buttons and other objects, to the
+size we want using this same method.
+
+Next we will go to our toolbox on the right side of the screen, and drag a button, from the list, on to our
+'form'.  You can also click the button and release it, in the toolbox, then go into the forms' area, click it,
+and drag the button to the size you want.  Click in the center of the button, and drag, to move into place.
+You will see lines between the buttons, to be able to line them up.  When near the forms borders, while aligning
+arrows will popup when equidistant, from the side border is equal to the horrizontal forms distance, to the 
+border.  Hold down alt while dragging to center things without the alignment, popup tools.
+
+To change the color or text we go to the properties panel on the bottom right of the screen, and click and choose
+what we want the color to be or the text to have writen in it.  There are many attributes you can change in the
+properties panel, experiment with them.
+
+We can also debug, which will check you code for errors the run the code to compile it.  To do this click the green
+arrow, in the main menu, or click the f5 key.  Click f5 again to stop debuging.
+
+
+
+
+*********************** highlights from the comments area ***************************
+
+
+
+
+I hope you would have figured out the solution by now but in case you haven't, you cannot use special characters in the 
+project's name.  So using "Eric's First Project" would cause this error because of the apostrophe. 
+
+
+
+
+
+
+What is a form?
+
+
+There's a console application (most used) and there's also windows forms! Basically in windows forms you can add a button, label, 
+text box,... Which you can set properties to! Let's say you put a button inside the form, you can double click it and it will take 
+you to the coding part! You can make it do whatever you want when you click it, drag your mouse over it,...
+
+
+
+
+
+
+
+Great tutorial and very helpful. To all the haters criticizing the use of drag and drop IDEs, please stop it. Programming is about 
+efficiency and elegance. Creating controls and positioning them in code is horribly inefficient. Letting the IDE do the grunt work 
+for you so that you can concentrate on solving the real business problem is not only the smart way to go but it also makes programming
+more enjoyable. With Visual Studio you can create console applications as well as GUI based applications depending on the project 
+requirements. No one is impressed that you waste time manually creating the UI in code when you could be coding business logic and 
+rules into your application and getting useful work done.
+
+I agree that manually coding the entire user interface would be a complete waste of time, and it would be smart to use an IDE's drag
+and drop functions. However I believe that one should know how to actually code user interfaces by hand, that way the individual has 
+the knowledge behind it. Technically this is a C# tutorial, therefore he should be teaching C# not the IDE's drag and drop functions.
+Drag and drop should come at a later stage when the individual knows the programming (syntax, classes, variables, etc) itself.
+
+Pointless...if you're going to waste the time on how to develop a UI from scratch and then stop because you've come to understand how 
+it works and go to using the drag & drop, then there was no point in learning it in the first place...you may as well have been using
+D&D from the start and ignoring how it works, since it's going to work for you either way and you'll get the same use out of it 
+anyway.
+
+If it's not required, don't do it. In the case of VB and the other .net languages, they were made for rapid program development, 
+not sitting around tweaking where buttons are placed, guessing randomly on what coordinate to place them all.
+
+Actually typing code, knowing how to use variables, classes, constructors, objects, and abstraction are all required elements for 
+computer programming jobs. So yes, it is necessary to know these skills. You may not code a user interface by scratch, but you may 
+need to code a physics engine one day. And believe me that is NOT drag and drop. That requires heavy linear algebra and a vast 
+knowledge of trigonometry and computer programming. No drag and drops allowed there. There is no way that you can argue that somebody 
+that wants to learn programming doesn't have to learn the actual language itself. That is nonsense.
+
+
+No one said anything about not learning the actual language. And GUI concepts don't apply to calculations. You're 
+conflating the user interface with the programming logic. You can drag and drop a button on a form and then place the computational 
+code inside its OnClick event. 
+
+
+I understand where you are coming from when many of you are saying that it is a waste of time to learn how to program it by scratch 
+when you can just use the GUI. But that is like saying why learn math when you can just have a website do the calculations for you. 
+That GUI program will not always be there for you. In the event that you don't have a drag and drop programming style, then you will
+need to do it by hand. This requires that you know every aspect of the language, and programming concepts. You will not learn that 
+from using a drag and drop programming concept.
+
+
+
+
+
+
