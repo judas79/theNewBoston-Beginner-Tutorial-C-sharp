@@ -1,0 +1,106 @@
+﻿Change button text by using code.  Double click button, between the brackets type the name, that was givin to the button, the dot '.'
+Text.  Hover over the word 'Text' and it will tell you what kind of syntax you need; in this case it is a "string", using double 
+quoates.  Also don't forge the equal sign after the word Text. It will only change the Text code one time:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Text = "New Name";
+        }
+
+		/* changes button 1 text using button 2, then click button1 to change to another name, then ping pong text, back and forth:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int intName = 0;
+            button1.Text = intName.ToString();
+            intName = (intName++);
+        }
+
+You can change other properties, in the same manner, for instance enable or disable, using bool.  We will disable button1 using button 3
+
+private void button3_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+        }
+
+Use button 4 to change the height of button1:
+
+private void button4_Click(object sender, EventArgs e)
+        {
+            button1.Height = 100;
+        }
+
+You can change other properties of other objects.  Add a textbox using the Toolbox, drag and drop.  Highlight it to see
+its name in the properties panel.  Also add another button to control the textbox.  To display something in the textbox
+using the new button:
+
+ private void button5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "button5 clicked";
+        }
+
+We can change the amount of character typed into the texbox.  We will also use Clear() to delete any text in the textbox.  
+Add another button:
+
+private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox1.MaxLength = 4;
+        }
+
+
+
+
+
+********************************* Highlights from the comments area ********************************
+
+
+
+
+
+
+can i make it so that a button is not enabled but if a text box has ANY text in it, it will become enabled.
+please help
+
+
+private void textBox1_TextChanged(object sender, EventArgs e)
+{
+    if (textBox1.TextLength > 0) {
+        button1.Enabled = true;
+    }else{
+        button1.Enabled = false;
+    }
+}
+
+
+
+
+
+
+
+how could I change the backcolor by using the code ?
+
+
+ButtonName.BackColor = Color.Black;
+
+
+
+
+
+
+how can i do that : first click botton the text change to "yyy" second click the text change to "zzz"?
+
+you can write:
+if (button1.Text == "yyy")
+button1.Text = "zzz";
+else
+button1.Text = "yyy";
+
+
+
+
+
+
+
+
+

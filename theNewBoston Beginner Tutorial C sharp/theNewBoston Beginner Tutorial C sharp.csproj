@@ -94,6 +94,8 @@
     <Content Include="Tutorial 02 Drag forms\lesson 2 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 03 Showing Message boxes\L3cs..txt" />
     <Content Include="Tutorial 03 Showing Message boxes\lesson 3 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 05 coded Properties\L5 Notes Highlights comments area.txt" />
+    <Content Include="Tutorial 05 coded Properties\L5Form.CS.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
