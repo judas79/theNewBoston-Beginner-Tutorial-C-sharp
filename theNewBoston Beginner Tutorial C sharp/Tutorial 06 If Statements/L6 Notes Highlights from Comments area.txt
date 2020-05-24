@@ -1,0 +1,114 @@
+We will add a button and a textbox to w a windows form, to work with an if statement.  An if statement checks if the 
+statement, in parentesis, is true, and if so executes the code, to do something.  If statements are constructed:
+if (in parenthesis, what you want to check is true or not), then in code braces, {what you want to execute}.  Double equal 
+signs '==' means, is 'a' equal to 'b'.  Example:
+Double click button in the windows form, and write the following if statement.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "adam")
+            {
+                MessageBox.Show("names match");
+            }
+        }
+
+To see if the textbox entry box, does not equal adam, you use a exclamation point, followed by an equals sign '!=':
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "adam")
+            {
+                MessageBox.Show("names match");
+            }
+        }
+
+If we want to also check if the input entered in textBox1 is eqaul to bob we can add another if statement to button1, to 
+check if bob was entered.  Using if, in this case is a waste of code, because the second if statement will run even if the 
+first if statement where found to be true.  To stop the if statement, once a truth has been realized by the program, we use
+elseif instead of if.  You can write endless else if statements, after your if statement:
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "adam")
+            {
+                MessageBox.Show("adam matches");
+            }
+            else if (textBox1.Text == "bob")
+            {
+                MessageBox.Show("bob matches");
+            }
+        }
+
+We will now use and else funtion, to handle the case, when all the if and else if functions, are false.  In button1 we will
+set up else, similar to an if or else if, but without the truth statement.  Example:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "adam")
+            {
+                MessageBox.Show("adam matches");
+            }
+            else if (textBox1.Text == "bob")
+            {
+                MessageBox.Show("bob matches");
+            }
+            else
+            {
+                MessageBox.Show("No matches");
+            }
+
+
+
+
+
+
+
+********************** Highlights from the comments area**************************
+
+
+
+
+
+
+
+But the difference is not enough to worry about it. The thing that really must be learned is the logic behind programming. 
+All programs have a start, they have processes, and they have an end result. I personally write out any code I do in 
+psuedocode. (which can easily be program start, this displays on the screen in this way, this is where the user will put 
+information etc.) I do this so I know the "flow" or logic of the program. This way when I start coding I have a good idea 
+of what comes 1st
+
+
+
+
+
+
+I have put the if statements like this:
+            if (textBox1.Text == "Tom") ;
+            {
+                MessageBox.Show("Hello");
+            }
+
+but when I type other things like "ha", it also appeared "hello" in the console.Why?
+(sorry for poor English)
+
+
+It is because you have put ; after if statement, that means that message box is not connected to if, it just shows when you 
+type anything
+
+side note you should not use logical operands for string comparisons. using textBox1.Text.Equals("Tom"), is the correct way
+
+
+
+
+
+You could also use:
+if(textbox1.text == "adam" || textbox1.text == "bob:"){
+CODE
+}
+If you need to use the same outcome for the different conditions. :)
+
+
+
+
+
+

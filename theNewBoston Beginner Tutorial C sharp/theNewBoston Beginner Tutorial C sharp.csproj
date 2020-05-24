@@ -57,6 +57,9 @@
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
       <SubType>Form</SubType>
     </Content>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

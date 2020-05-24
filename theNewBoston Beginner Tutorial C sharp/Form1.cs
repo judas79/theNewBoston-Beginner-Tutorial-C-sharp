@@ -16,5 +16,29 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "adam")
+            {
+                MessageBox.Show("adam matches");
+            }
+            else if (textBox1.Text == "bob")
+            {
+                MessageBox.Show("bob matches");
+            }
+            else
+            {
+                MessageBox.Show("No matches");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "adam")
+            {
+                MessageBox.Show("names don't match");
+            }
+        }
     }
 }
