@@ -83,8 +83,8 @@
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lesson 01 setup Visual Studio\Images\click button the click form and drag to size.png" />
-    <Content Include="Lesson 01 setup Visual Studio\tutorial 01 and highlights from the comments area.txt" />
+    <Content Include="Tutorial 01 setup Visual Studio\Images\click button the click form and drag to size.png" />
+    <Content Include="Tutorial 01 setup Visual Studio\tutorial 01 and highlights from the comments area.txt" />
     <Content Include="Tutorial 02 Drag forms\Images\after clicking the green arrow to debug and compile.png" />
     <Content Include="Tutorial 02 Drag forms\Images\change buttons BackColor to blue in properties.png" />
     <Content Include="Tutorial 02 Drag forms\Images\click button the click form and drag to size.png" />
