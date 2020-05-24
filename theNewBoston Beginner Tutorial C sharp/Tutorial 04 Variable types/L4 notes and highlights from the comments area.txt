@@ -1,0 +1,20 @@
+﻿String variables are constucted: String, string name, equals sign, "text, symbols, numbers here"
+within double quoates, not single quoates.  
+
+An int, as in integer, is constructed: int, int name, equals, a positive or negative decimal number
+without quoates.
+
+A bool, as in, boolean, is constructed: bool, bool name, equals, either true, or false.
+
+An object, which can be a String or int or bool, is constructed:
+object, name, equals, "within double quoates if a string with text, numbers or symbols within them"
+object, name, equals, with a positive or negative decimal number without quoates
+object, name, equals, with either a true or a false, without quoates.
+
+To .Show() the text as a string, int, bool, and object statements need to use
+ToString() syntax.  Example:
+
+			object myString1 = "statement goes here";
+            object mybool1 = false;
+            object mydecimal1 = 1;
+            MessageBox.Show(myString1.ToString(), mybool1.ToString() + " " + mydecimal1.ToString());

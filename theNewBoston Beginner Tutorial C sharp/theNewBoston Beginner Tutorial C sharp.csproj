@@ -54,9 +54,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tutorial 04 Variable types\L4Form.cs">
+    <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
       <SubType>Form</SubType>
-    </Compile>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -94,6 +94,7 @@
     <Content Include="Tutorial 02 Drag forms\lesson 2 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 03 Showing Message boxes\L3cs..txt" />
     <Content Include="Tutorial 03 Showing Message boxes\lesson 3 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 04 Variable types\L4 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 05 coded Properties\L5 Notes Highlights comments area.txt" />
     <Content Include="Tutorial 05 coded Properties\L5Form.CS.txt" />
     <Content Include="Tutorial 06 If Statements\L6 Notes Highlights from Comments area.txt" />
