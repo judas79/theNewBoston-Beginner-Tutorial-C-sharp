@@ -18,3 +18,170 @@ ToString() syntax.  Example:
             object mybool1 = false;
             object mydecimal1 = 1;
             MessageBox.Show(myString1.ToString(), mybool1.ToString() + " " + mydecimal1.ToString());
+
+
+
+
+
+************************* Highlights from the comments area **************************
+
+
+
+
+
+
+An int, bool, etc. are all specialized forms of object. As such you should use the specific versions when possible as they 
+typically allow for more uses. For example: a bool can be used in a if else statement, but an object can not. It also has 
+some VB.NET equivalent that I didn't totally understand.
+
+Note that object is not an "Object" in the sense of an instance of a class like in java, etc.
+
+
+
+
+
+That's not entirely true. You can overload operators to do an operation based on the classes or structs you use. For 
+example: two object respectively contains two integers. 
+By overloading you may declare to construct a new object which contains the two sums as integers:
+objec1.integer1 + object2.integer1 = newobject.integer1 and same with the appropiate second integer. using 
+newObject = objectOne + objectTwo will work. You can overload the =-operator as well if necessary.
+
+
+
+
+
+
+"object" is used a lot more once you get to classes and objects. Also, a lot of people do use var (a keyword like object), 
+but it is often considered bad practice because it makes your code less readable.
+
+
+
+
+
+
+Because 'object' cannot do mathematical equations, for example,
+you cannot make a variable of  'object' type hold a score because it cannot have a number subtracted or added to it but if 
+the variable was a type of 'Int' for example it would work.
+
+
+
+
+
+
+objects use a significant amount more memory than an int or string. This may not be a big deal when writing a small program 
+but when coding out a large program memory starts to matter.
+
+
+
+
+
+.ToString itself wouldn't work as .ToString() itself is a function. To use the function or so to say, invoke the method, 
+you would have to use the brackets () as a empty parameter list as the function .ToString() doesnt have any parameter in 
+one of its overloads
+
+
+
+
+
+whats the point of using integers and strings if you can just use object?
+
+Objects chew up quite a bit more memory and you can't do math to strings.
+
+
+
+
+
+Variables are like containers, they contain what you assign them to contain.
+
+
+
+
+
+
+If you guys didn't know this (I'm new to C# but I know alot of C++ Java Visual Basic, Lua, Rblx Lua (ROBLOX Lua)) if you 
+put a "+" sign like this: "button1.Text = "Is your name "+name+"?"" it'll say: "Is your name Jake?" or what ever you set 
+name as.
+
+
+
+
+
+
+ I know I am a bit late also but its simple you cannot manipulate object variables as u can the rest for example if u use 
+ this code.
+
+            int one;
+            int two;
+            int three;
+
+            one = 5;
+            two = 1;
+            three = one + two;
+            MessageBox.Show(three.ToString());
+
+then it will give out a result of 6. now if u change the variables to string you will get an answer of 51 because what it 
+does is connect the 2 strings together. now with an object it will not allow you to do that since it cannot decide what to 
+do i hope this was helpfull
+
+
+
+
+
+
+I didnt really get the obj variable . 
+
+
+Declaring a variable as an object simply gives you the option of "loose type" programming. C# is generally "strong typed," 
+meaning that different variable types are allotted different sized memory slots in order to save memory in applications and 
+allowing programs to execute more efficiently. An object variable gives you flexibility since yo can store any type of 
+value in it, but it takes up more space. Some programs are loosely typed, like in PHP all variables are declared simply 
+with a dollar sign and can contain whatever you want.
+
+
+
+
+
+
+public = available to all classes, private = available to only the class it is declared in.
+
+
+
+
+
+
+I'm a novice myself so I could be off, but objects would be useful for variables that change. For example, If you had 
+something that if "true" used enumerators, you could track all of that with one variable. Also, Adam didnt touch on this, 
+but you can change a variable at anytime. IE:
+if (new string name = "adam")
+{
+name = "Jimmy";
+MessageBox.Show("Haha, I changed your name!");
+}
+
+
+
+
+
+
+Thanks for the tutos. quick question: I am on VSE 2013 Desktop edition. When I debug, the message box shows up before the 
+application with button1, when I remove the message box, the application with the button appears BUT clicking on the button 
+yields nothing. I noticed I do not have a private void buttn1_click ... statement but a private void form1_Load . How can I 
+solve this problem please? Thanks
+
+
+You need to double click on button1 to get private void button1_click, to activate the event handler of clicking button1
+private void from1_load is from double clicking form1
+
+
+
+
+
+
+You can also use
+MessageBox.Show("" + /*any variable here*/); 
+Instead of ToString().
+
+
+
+
+
