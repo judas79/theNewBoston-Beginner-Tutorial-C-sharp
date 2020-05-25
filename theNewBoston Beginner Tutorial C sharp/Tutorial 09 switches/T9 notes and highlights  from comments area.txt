@@ -1,0 +1,72 @@
+﻿Switch statements are an alternative to if and else statements.  We will need a button1, textBox1, in a windows form, for 
+this first example.  You create a switch by typing, switch, then in parenthersis (the conditions name and type of data 
+to be passed), followed by code braces, case, "the data that the condition is compared to", a colon, then the statement to 
+be executed, followed by break semicolon. We can have multiple case statements and use default, as else statement,
+for when no names are entered or if none of the entered names match the compare arguement:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            switch (textBox1.Text)
+            {
+                case "adam":
+                    MessageBox.Show("adam is a match");
+                    break;
+
+                case "bob":
+                    MessageBox.Show("bob is a match");
+                    break;
+
+                default:
+                    MessageBox.Show("name entered not a match");
+                    break;
+            }
+        }
+
+We can use the case method, with all the data types.  Create button2 and a textBox2, and we will use ane int variable for our
+next example.  Since we are using a set variable that cannot be changed, the way it is constructed in this example, this is
+pretty much useless, and is for demostrative purposes only:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            switch (i)
+            {
+                case 4:
+                    MessageBox.Show("i is equal to 4");
+                    break;
+
+                case 0:
+                    MessageBox.Show("i is equal to 0");
+                    break;
+
+                default:
+                    MessageBox.Show("number is not a match");
+                    break;
+            }
+            
+        }
+
+
+
+
+
+************************ Highlights from the comments area *************************
+
+
+
+
+
+
+I never thought the default statement needs a break, It's the end of the switch statement after all. No more cases after it.
+
+Makes sense, but for some reason the program doesn't allow me to debug if I don't have that "debug" after default. I keep 
+getting an error message, so I have to put it there.
+
+it actually does else the case would expand indefinitely, without a fixed limit 
+
+
+
+
+
+
+
