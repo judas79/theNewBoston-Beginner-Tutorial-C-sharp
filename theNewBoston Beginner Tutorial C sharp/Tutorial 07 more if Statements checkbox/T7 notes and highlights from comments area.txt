@@ -1,0 +1,131 @@
+﻿For this if statement add a button and a checkbox.  To check if the if statement is true, for weather a checkbox is checked,
+we use a bool 'true or false.  A statement pertaining to a checkbox is, checkBox name, dot Checked, ==, true or false, in
+parenthesis, then between coding braces, the code you want to execute if the statement is true.  Example for button1 click:
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                MessageBox.Show("check box checked");
+            }
+        }
+
+We will add another checkbox below button2 and use it for this. Alternative way of writing this bool checkbox example:
+
+	private void button2_Click(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                MessageBox.Show("checkbox2 is checked");
+            }
+        }
+
+On button2 and checkbox2, we can also write this if statement, for when the checkbox is not checked, by adding 
+and exclamation point at the begining of the if statment.  We will use and else if, for this example:
+
+else if (!checkBox2.Checked)
+            {
+                MessageBox.Show("checkbox2 is Unchecked");
+            }
+
+We will use button3 for an example of how to use a bool variable to accomplish the same thing, with a checkbox.
+First make a bool variable equal to true.  We will also use button4 to show how to construct the statement if the bool is false.
+Examples:
+
+private void button3_Click(object sender, EventArgs e)
+        {
+            bool myBool = true;
+
+            if (myBool)
+            {
+                MessageBox.Show("myBool is true");
+            }
+
+private void button4_Click(object sender, EventArgs e)
+        {
+            bool myBool = false;
+
+            if (!myBool)
+            {
+                MessageBox.Show("myBool is False");
+            }
+        }
+
+Next we will make an example using button5 to use some assignment operators, using int variables:
+
+ private void button5_Click(object sender, EventArgs e)
+        {
+            int a = 2;
+            int b = 3;
+            int c = 0;
+
+            if (b>a)
+            {
+                MessageBox.Show("b is greater than a");
+            }
+
+We can also mix in integers with the varialbles to do the operation:
+
+ private void button5_Click(object sender, EventArgs e)
+        {
+            int a = 2;
+            int b = 3;
+            int c = 0;
+
+            if (b>1)
+            {
+                MessageBox.Show("b is greater than 1");
+            }
+
+
+We can also use less than <, equals to ==, not equals to !=, greater or equals to, or less or equals to, by 
+changing the operator. button6 and 7 examples:
+
+private void button6_Click(object sender, EventArgs e)
+        {
+            int a = 2;
+            int b = 3;
+            int c = 0;
+
+            if (b != 4)
+            {
+                MessageBox.Show("b is not equal to 4");
+            }
+        }
+
+ private void button7_Click(object sender, EventArgs e)
+        {
+            int a = 2;
+            int b = 3;
+            int c = 0;
+
+            if (5 >= c)
+            {
+                MessageBox.Show("5 is greater than or equal to " + c);
+            }
+        }
+
+
+
+
+
+
+******************** Highlights from the comments area **********************
+
+
+
+
+
+
+
+That's because you put it under the checkBox1 control. You should put it under the button1_Click control because you want 
+this to happen after button1 is clicked. :)
+
+
+They're not controls -.- Controls are the GUI stuff itself, gosh.
+Those you're talking about are called Methods aka Blocks of code.
+
+
+
+
+
