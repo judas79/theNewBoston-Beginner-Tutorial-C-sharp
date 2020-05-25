@@ -1,0 +1,118 @@
+﻿We will work on nested if statements.  A nested if statement is an if statement within a statement.  Add a button1, textBox1, 
+and checkBox1 to your form.cs.  Double click the button and construct the following to first build an if statement for matching
+entered text, with what you have in your statement and then another if statement for your checkBox Checked, followed by the
+code you want to execute; a messagebox, in this example.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "adam")
+            {
+                if (checkBox1.Checked)
+                {
+                    MessageBox.Show("adam entered, and check box checked");
+                }
+                
+            }
+        }
+
+If we wanted to check for another match we would add another if statement to the nest.  We will see if an int equals what we 
+have stored in our code:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            if (textBox1.Text == "adam")
+            {
+                if (checkBox1.Checked)
+                {
+                    if (i == 0)
+                    {
+                        MessageBox.Show("adam entered, i equals 0, and check box checked");
+                    }
+                
+                }
+                
+            }
+        }
+
+
+Doing next if statements isn't ver efficiant.  We can use and &&, to do this with one if statement.  We will create, button2,
+textBox2, and checkBox2 for this example:
+
+ private void button2_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            if (textBox2.Text == "adam" && checkBox2.Checked && i == 0)
+            {
+                MessageBox.Show("textBox2 equals adam, checkBox2 is checked, and i equals 0");
+            }
+ 
+        }
+
+Next we will do something similar for an or || condition, using button3, textBox3, and messageBox3; so add them to your 
+form.  If we included, || i == 0, and if int i = 0;  the if statement would always be true, and usless, so we will not include
+it:
+
+private void button3_Click(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked || textBox3.Text == "adam")
+            {
+                MessageBox.Show("checkBox3 Checked or the text entered is adam");
+            }
+        }
+
+
+
+
+
+********************** highlights from the comments area **************************
+
+
+
+
+
+
+
+If you want to do or check the checkBox1 or click the button do:
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Adam")
+            {              
+                    MessageBox.Show("Hello Adam");            
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Adam")
+            {
+                if (checkBox1.Checked)
+                {
+                    MessageBox.Show("Hello Adam");
+                }
+            }
+        }
+
+
+
+
+
+
+
+Okay Im Trying To DO This But Im Getting A Error
+int A = 13;
+if (textbox1.text == A);
+{
+      messagebox.show("A");
+}
+
+
+if (textBox1.Text == A)    /* notice uppercase letters and no semicolon.  I know, 8 years old.   For students that come 
+after me...    messageBox.Show(A);
+
+
+
+
+
+

@@ -56,51 +56,5 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 MessageBox.Show("checkBox3 Checked or the text entered is adam");
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            bool myBool = false;
-
-            if (!myBool)
-            {
-                MessageBox.Show("myBool is False");
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            int a = 2;
-            int b = 3;
-            int c = 0;
-
-            if (b>1)
-            {
-                MessageBox.Show("b is greater than a");
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            int a = 2;
-            int b = 3;
-            int c = 0;
-
-            if (b != 4)
-            {
-                MessageBox.Show("b is not equal to 4");
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            int a = 2;
-            int b = 3;
-            int c = 0;
-
-            if (5 >= c)
-            {
-                MessageBox.Show("5 is greater than or equal to " + c);
-            }
-        }
     }
 }

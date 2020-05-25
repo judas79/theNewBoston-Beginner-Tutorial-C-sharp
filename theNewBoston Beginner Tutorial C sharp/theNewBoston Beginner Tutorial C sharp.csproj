@@ -57,8 +57,10 @@
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="Tutorial 07 more if Statements checkbox\T7 notes and highlights from comments area.txt" />
-    <Content Include="Tutorial 07 more if Statements checkbox\T7FormCS.txt" />
+    <Content Include="Tutorial 07 if Statements checkbox\T7 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 07 if Statements checkbox\T7FormCS.txt" />
+    <Content Include="Tutorial 08 nested if statements\T8 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 08 nested if statements\T8FormCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
