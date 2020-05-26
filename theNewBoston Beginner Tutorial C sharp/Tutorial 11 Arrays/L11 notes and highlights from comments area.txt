@@ -1,0 +1,108 @@
+﻿L11 we will be working on arrays, so make button1 in a form.  Arrays are special variables that will allow you to hold more
+than 1 variable of a certain type.  To create a String array, we use; String[], string name, code braces { "with", "variables"};
+separated by commas between them, and a semi-colon at the end. Sting array example:
+
+String[] myStringArrayName{"First string item 0", "second string item 1", "1 (a number as a string item)", "and so on"};
+
+We will double click button1 and add some code to access, our items in the array, using the name, followed by the position
+number:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            string[] myArray = {"zero", "one", "two"};
+
+            MessageBox.Show(myArray[2], myArray[1] + " " + myArray[0]);
+            MessageBox.Show(myArray[0] + " " + myArray[1], myArray[1] + " " + myArray[2]);
+        }
+
+We can also create an empty string array, with the amount of possible items, set to a certain amount.  Create button2 in the
+form for the Example.  The syntax for the empty are is:
+
+string[] emptyArrayName = new string[10];
+
+To add values to the empty string:
+
+emptyArrayName[0] = "first item";
+
+Here is the button2 example:
+
+ private void button2_Click(object sender, EventArgs e)
+        {
+            string[] emptyArrayName = new string[10];
+
+            emptyArrayName[0] = "first item";
+            emptyArrayName[2] = "third item";
+            emptyArrayName[4] = "fith item";
+            MessageBox.Show(emptyArrayName[0] + emptyArrayName[1] + ", emptyArrayName[1] has no items, " + emptyArrayName[2], emptyArrayName[4]);
+        }
+
+
+Create button3.  You can make variable arrays, for the other types of variables, using the same type of construction. 
+Example for button3:
+
+private void button3_Click(object sender, EventArgs e)
+        {
+            string name = "could not use an array item as a title, but a string var is ok";
+            int[] integerName = { 0, 11, 12, 3 };
+            bool[] booleanName = { true, false, true, false };
+
+            MessageBox.Show((integerName[2] + integerName[1]) + " - notice integerName[2] and integerName[1] where added together, integerName[0] = "
+                + integerName[0], name);
+            MessageBox.Show(booleanName[0] + " " + booleanName[1], "two arrays work as titles here, WTF? " + booleanName[1] + " " + booleanName[2]);
+        }
+
+
+
+
+
+
+******************** highlights from the comments area *********************
+
+
+
+
+
+how can I get user integer  input not string input  and save it to a  variable , could you write the code pleas ???
+
+I know I'm a bit late but just in case you or anyone still wanted help with this, you would do it by:
+
+Convert.ToInt32(Console.ReadLine());
+
+
+
+
+
+
+oke i need some help, i'm making a calculator and i need to convert the string's from the text boxes to integers, but it doesn't want to convert somehow. these are the codes i try using for this:
+
+string input1 = textBox1.Text; 
+string input2 = textBox2.Text;
+
+Convert.ToInt32(input1);
+Convert.ToInt32(input2);
+
+it doesn't give me errors btw
+
+
+
+
+
+
+as Convert.ToInt32(int i); returns an integer, you have to assign a variable to it so it could store the value.
+So it would be
+int firstvalue = Convert.ToInt32(textBox1.Text);
+
+
+
+
+
+
+DialogResult show = MessageBox.Show(Names[5]);
+
+
+
+
+
+
+
+
