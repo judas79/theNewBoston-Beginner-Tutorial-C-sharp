@@ -19,40 +19,40 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (textBox1.Text)
-            {
-                case "adam":
-                    MessageBox.Show("adam is a match");
-                    break;
+            int a = 1;
+            int b = 2;
+            MessageBox.Show(a+" + " + b + " = "+ (a+b).ToString());
+            MessageBox.Show((a + b).ToString());
 
-                case "bob":
-                    MessageBox.Show("bob is a match");
-                    break;
-
-                default:
-                    MessageBox.Show("name entered not a match");
-                    break;
-            }
+            MessageBox.Show(a + " - " + "5" + " = " + (a - 5).ToString());
+            MessageBox.Show(a + " - " + b + " = " + (a - b).ToString());
+            MessageBox.Show(a + " * " + b + " = " + (a * b).ToString());
+            MessageBox.Show(b + " / " + a + " = " + (b / a).ToString());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            switch (i)
-            {
-                case 4:
-                    MessageBox.Show("i is equal to 4");
-                    break;
+            int i = 5;
+            int j = 7;
+            MessageBox.Show("int i = " + i.ToString());
+            i = i + 10;
+            MessageBox.Show("i + 10 = " + i.ToString());
+            MessageBox.Show("if i = " + i.ToString());
+            i += 10;
+            MessageBox.Show("then i += 10 = " + i.ToString());
+            MessageBox.Show("if i = " + i.ToString());
+            i += i;
+            MessageBox.Show("then i += i = " + i.ToString());
+            MessageBox.Show("int i = " + i.ToString());
+            i -= i;
+            MessageBox.Show("then i -= i = " + i.ToString());
 
-                case 0:
-                    MessageBox.Show("i is equal to 0");
-                    break;
-
-                default:
-                    MessageBox.Show("number is not a match");
-                    break;
-            }
-            
+            MessageBox.Show("int j = " + j.ToString());
+            j *= j;
+            MessageBox.Show("then j *=  j = " + j.ToString());
+            MessageBox.Show("if j = " + j.ToString());
+            j /= j;
+            MessageBox.Show("then j /=  j = " + j.ToString());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -62,10 +62,27 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (checkBox3.Checked || textBox3.Text == "adam")
-            {
-                MessageBox.Show("checkBox3 Checked or the text entered is adam");
-            }
+            int k = 4;
+            MessageBox.Show("int k = " + k.ToString());
+            MessageBox.Show("then k-- then k = " + (k--).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then --k then k = " + (--k).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then k++ = " + (k++).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then ++k = " + (++k).ToString());
+            k = 4;
+            MessageBox.Show("the same outcome if the math is done on its own line".ToString());
+            MessageBox.Show("int k = " + k.ToString());
+            --k;
+            MessageBox.Show("if --k then k = " + k.ToString());
+            k = 4;
+            MessageBox.Show("int k = " + k.ToString());
+            k--;
+            MessageBox.Show("if k-- then k = " + k.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)

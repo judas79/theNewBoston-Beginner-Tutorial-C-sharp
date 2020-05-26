@@ -1,0 +1,156 @@
+﻿We will be working on mathamatical operators and math operations.  We will first need a button in a form. doube click the 
+button and add two dec variables.  Then add a messageBox, Show, and add the variables togeter then convert them to a string,
+so theycan display in the messageBox.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            int a = 1;
+            int b = 2;
+            MessageBox.Show(a+" + " + b + " = "+ (a+b).ToString());
+
+            /* or like the tutorial example */ 
+			MessageBox.Show((a+b).ToString());
+        }
+
+We will add regualr numbers(not variables), and equations that feature the other operators to button1 also:
+
+			MessageBox.Show(a + " - " + "5" + " = " + (a - 5).ToString());
+            MessageBox.Show(a + " - " + b + " = " + (a - b).ToString());
+            MessageBox.Show(a + " * " + b + " = " + (a * b).ToString());
+            MessageBox.Show(b + " / " + a + " = " + (b / a).ToString());
+
+Create button2 so we can do some mathamatical calculations, before we display them in the functions statement.  We will create
+some more int variables, for this example.  We will also use the following 10 += 10, to equal 20, instead of 10 + 10 = 20.
+This also works for -=, *=, and /=, and can include variables; i *= 5; for example:
+
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = 5;
+            int j = 7;
+            MessageBox.Show("int i = " + i.ToString());
+            i = i + 10;
+            MessageBox.Show("i + 10 = " + i.ToString());
+            MessageBox.Show("if i = " + i.ToString());
+            i += 10;
+            MessageBox.Show("then i += 10 = " + i.ToString());
+            MessageBox.Show("if i = " + i.ToString());
+            i += i;
+            MessageBox.Show("then i += i = " + i.ToString());
+            MessageBox.Show("int i = " + i.ToString());
+            i -= i;
+            MessageBox.Show("then i -= i = " + i.ToString());
+
+            MessageBox.Show("int j = " + j.ToString());
+            j *= j;
+            MessageBox.Show("then j *=  j = " + j.ToString());
+            MessageBox.Show("if j = " + j.ToString());
+            j /= j;
+            MessageBox.Show("then j /=  j = " + j.ToString());
+        }
+
+Create button3 for the following examples.  To increace a number by one, instead of adding a one to a number 3 + 1 to equal 4,
+we can use ++, 3++ equals 4.  We can also do this with --, to subtract 1.  When doing equations or printing to screen, it is
+important that you put your -- or ++ in the corect orientation.  If you put the -- behind the number 3--, it will do the math
+after it prints out to the screen and give you an undesired amount.  If you put the mathamatical operator first --3, it will
+do the math first then print out the answer.
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int k = 4;
+            MessageBox.Show("int k = " + k.ToString());
+            MessageBox.Show("then k-- then k = " + (k--).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then --k then k = " + (--k).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then k++ = " + (k++).ToString());
+            k = 4;
+            MessageBox.Show("if k = " + k.ToString());
+            MessageBox.Show("then ++k = " + (++k).ToString());
+        }
+
+To avoid the x-- versis --x outcome of the mathamatical operation, you can do the math, on its own line then, Show it through
+the messageBox, and they will be the same.
+       
+			int k = 4;
+
+			MessageBox.Show("the same outcome if the math is done on its own line".ToString());
+            MessageBox.Show("int k = " + k.ToString());
+            --k;
+            MessageBox.Show("if --k then k = " + k.ToString());
+            k = 4;
+            MessageBox.Show("int k = " + k.ToString());
+            k--;
+            MessageBox.Show("if k-- then k = " + k.ToString());
+
+
+
+
+
+******************* highlights from the comments area *********************
+
+
+
+
+
+
+
+listen to Rootsta, ignore Howtodothatshit...
+What Rootstaand I want to say is this:
+1)  Before the program changes anything, a=2.
+2) Then, it reads a = a + 4
+3) The program OVERWRITES the value by declaring the "a" at the left side of the equation the "new" "a", which is equal to 
+the addition of the "old" "a" (aka 2)
+PLUS 4.
+4) Conclusion: The program changed the value of  a which is now equal to =6
+(And yes, mathematically, it's impossible, but this is programming... )
+
+
+No it's not it's saying like a equals itself but then just add 4 but of course a has to be assigned something earlier so if
+a was say a = 2 then you say a = a + 4 your saying 2 = 2 + 4 but basically in programming your assigning that variable to 
+the whole equation to make it easier.
+
+
+
+
+
+
+
+instead of "int" make it a "float" for dividing. With int 5/3 = 1. And with float 5/3 = 1.6666667.
+
+
+
+
+
+++i increments the value, then returns it.
+
+i++ returns the value, and then increments it.
+
+
+
+
+
+Let me guess, you did a program that converted a PRE-MADE amount of km into miles..
+Well, here's a way you can do it with a textbox.
+..
+string a = textBox1.Text;
+double b = Convert.ToDouble(a);
+b *= 1.6;
+textBox1.Text = b.ToString();
+
+
+
+
+
+
+Great tutorial so far, but you missed one very important operator: the surprisingly useful modulo, or %. A modulo basically 
+gives you the remainder, so 5 % 3 == 2, and
+11 % 4 == 3.
+
+
+
+
+
+        }
