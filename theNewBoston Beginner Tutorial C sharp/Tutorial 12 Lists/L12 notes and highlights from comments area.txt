@@ -1,0 +1,140 @@
+﻿Create button1, inside a form, and doublec click it.  We will be creating a list.  Lists are a lot like empty arrays, but you
+do not have to specify, how many items will be in it.  To create this list, list, between <> define what type of variables will
+be held, in the list, list name, equals sign, new, within <> variable type that you defined previously, brackets [].
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // empty string array
+            string[] myArray = { "zero", "one", "two" };
+
+            // empty string list
+            List<string> listName = new List<string>();
+
+            // add a item to string list
+            listName.Add("first item");
+
+            // names are added to list sequntially, so its best to keep track, 
+            // with comments at the lists definintion
+            listName.Add("second item");
+
+            // print to messageBox first item in list
+            MessageBox.Show(listName[1], listName[0] + " - list items can be used in messagebox as a title");
+        }
+
+Next using button2 in a form, we will make a list of integer (int) items.  We will have to use .ToString(), to print these 
+integers using MessageBox, as we did before while using ints:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string[] emptyArrayName = new string[10];
+
+            // List integer (int) example
+            List<int> listIntName = new List<int>(); // 00, 333, 555
+
+            // add integers to int list
+            listIntName.Add(00);
+            listIntName.Add(333);
+            listIntName.Add(555);
+            MessageBox.Show(listIntName[2].ToString() + " - add .ToString() to " +
+                "listIntName[2] to convert it from int to string, for printing to MessageBox"
+                , listIntName[1].ToString() + " - int listIntName[1].ToString() works to print to title field");
+        }
+
+
+
+
+
+
+********************** highlights from the comments area ************************
+
+
+
+
+
+Lists are slower and take up more memory. You will not notice this usually, but when you have a thousand variables in a 
+program you will start to realize the efficiency gains from using a "static" array instead of a dynamic array like a List.
+
+
+
+
+
+
+ Well that's actually not true. Why use arrays instead of lists is same like asking why not use objects instead of strings,
+ bools and integers. Lists can have countless members while array has a limited amount. But on the other hand they take up 
+ more memory than the array because they are unlimited same like objects and if you are a programmer you want your program 
+ to be as fast as it can.
+
+
+
+
+
+
+ Remember you cannot allocate size to a list. It starts off as zero until you add to it. If you wanted to use a list as a 
+ variable database where say you know that a person would be in seat number 34 but there would only be 5 people, you wouldn't
+ be able to use value 33 because you need to fill up the list first. With an array you just allocate the value... Make sense?
+
+
+
+
+
+
+
+ because the list type is not in every programming language. List is exclusive to the .NET framework. I would get in the
+ habit of both. list for .NET and array for any other language.
+
+
+
+
+
+ Arrays are for math purposes, list a created for programs based on arrays. and they all have their own uses, for certain 
+ cases. Don't limit yourself !!!
+
+
+
+
+
+
+one of the differences is an array has a fixed sized that you declare, where a arraylist's size vary with the amount of 
+objects in it. another difference is array's are of the type of array you have, for example an array of int's will have 
+every item be an int, and an array of floats will all be floats. where a arraylist are all objects. these objects tho can 
+be cast(telling the computer they are something regardless of what it is) has variable types or to a string to access them 
+as needed.
+
+
+
+
+
+
+According to my teacher, arrays are allocated a set amount of memory space in your computer when you first decide the array's size.
+Since lists do not have a set size, more memory is allocated for the list. So I guess if you want to make a memory efficient
+program that won't be slow you should use a list only when you need to.
+
+
+
+
+
+
+When using fixed-length data, such as records, it can sometimes be very useful to use an array rather than a list. I think most
+modern programming languages include arrays for the sake of allowing access to them (in case they're preferred) and so people
+can understand what they are. After all, a list is nothing more than a flexible array, so it's pretty much there regardless.
+
+
+
+
+
+
+is there an option to add to list by button from textBox?? 
+
+
+I think you can do :
+listName.add(textBox1.Text);
+
+
+
+
+
+
+
+
+
+
