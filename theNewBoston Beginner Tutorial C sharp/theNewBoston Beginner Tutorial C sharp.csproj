@@ -69,6 +69,8 @@
     <Content Include="Tutorial 11 Arrays\L11FormCS.txt" />
     <Content Include="Tutorial 12 Lists\L12 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 12 Lists\L12FormCS.txt" />
+    <Content Include="Tutorial 13 For and Foreach Loop\L13 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 13 For and Foreach Loop\L13FormCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

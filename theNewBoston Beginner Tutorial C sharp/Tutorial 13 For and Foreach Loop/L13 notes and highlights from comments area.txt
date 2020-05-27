@@ -1,0 +1,104 @@
+﻿For this lesson create button1 in a form.  We will be working on for and for each, statements.  To create a for statement:
+for, then within parenthesis (a first statement that is only executed once, usually creating a variable); if found to be true, 
+the program continues, if false it stops.  After it creates the variable, its no longer true; so it only goes one time 
+through this ptocess.
+If the first condition is true, the for loop will do a second algorythmic operation (while true), using another conditional
+statement.  After the 2nd statement, in the for loop is found to be true, the for statement skips over to the statement,
+between the curly code braces, and executes that.  
+Then comes back to the 3rd statement in the for loopand executes that.  The 3rd statment is usually some way to increase or
+decrease a counter, usually using a simple mathamatical algorythem, to iterate through the data.  The for statement will 
+keep looping through the 2nd part, 4th part, 3rd part, of the for loop, until found to be no longer true.  
+The 4th part of the for statement, within coding braces, is comprised of something to execute while the for statement is true:
+Example:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // for statement, create var i, while true, execute curly braces, do math in 3rd statement, loop back
+            for (int i = 0; i < 5; ++i)
+            {
+                // print to messageBox contents of i, using int converted to string works for messagebox title
+                MessageBox.Show("i = " + i.ToString(), "Page " + i.ToString());
+            }
+        }
+
+Create button2.  If you ever want the for loop to continue indefinately (to infinity), just omit the second part of the for 
+loop, but leave the semi-colon, in there:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // for statement, create var i, while true(; runs forever), execute curly braces, do math in 3rd statement, loop back
+            for (int i = 0; ; --i)
+            {
+                // print to messageBox contents of i, using int converted to string works for messagebox title
+                MessageBox.Show("i = " + i.ToString(), "Page " + i.ToString());
+            }
+        }
+
+Create button3 for this part of the tutorial.  The foreach statement, is for iterating through all the items in an array list.
+First make a string array, a few items in it.  Then to create the foreach statement, write; foreach, then within parenthesis
+(string, then a new or old variable, in, array name).  Then us messagebox to print out the 'new or old' variable, as it loops
+until all the items in the array are iterated through.
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string[] arrayName = { "zero", "one", "two" };
+            foreach (string s in arrayName)
+                MessageBox.Show("arrayName is " + s, "Title is " + s);
+
+        }
+
+
+Create button4.  We will now make a similar example using foreach, for an integer list.  First make a list with a few 
+integers:
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            List<int> integerList = new List<int>();
+            integerList.Add(1);
+            integerList.Add(2);
+            integerList.Add(3);
+            foreach (int i in integerList)
+                MessageBox.Show("this is item #" + i, "Title" + i);
+        }
+
+
+
+
+
+
+
+
+******************* Highlights from the comments area ********************
+
+
+
+
+
+Arrays do not resize dynamically. The List type in the C# language does. With List, you do not need to manage the size on your own. This 
+type is ideal for linear collections not accessed by keys. It provides many methods and properties.// found this on google :)
+
+
+
+
+
+
+
+You can type i+=2 or i+=2 or i = i + 1000 which is equivalent to i+= 1000
+
+
+
+
+
+
+If you wanted to do a loop that never ends could you just do a while loop? Kinda scared to try it as it may keep opening up
+text boxes and stuff then that might be a problem.XD
+
+
+Just try it.
+while(true)
+
+
+
+
+
+
