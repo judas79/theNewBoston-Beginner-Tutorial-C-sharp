@@ -1,0 +1,87 @@
+﻿Create a button1 and a textBox1, for this lesson using while statements.  While statements are conditionsl, so we will first
+create a variable int, to use for this purpose.  A while statement is created by first writing: while, then in parenthesis(an
+algoryhem to test a condition), then in curly code braces{soemthing you want executed, while the while statement is true}, then
+something that changes the context of the condition in the algorythem. Example for button1:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+			
+			// while its true, that i is less than 10
+            while (i < 10)
+            {
+				// the texBox1 will print numbers up to but not including 10
+                textBox1.Text += i.ToString();
+
+				// increment i by 1, every cycle as it gets to 10
+                i++;
+            }
+
+        }
+
+
+To make a while statement go on forever, and crash the program, you can set while to true:
+
+while(true)
+
+
+Create button2 and textBox2 to make a do statement.  Do statements loops use a while loop to do the loop at the very end, of 
+the statement.  As before, to make an infinite loop, set while(true).  Example of a do statement.
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // in variable
+            int i = 0;
+            do
+            {
+                textBox2.Text += i.ToString();
+                ++i;
+            }
+            while (i < 10);
+        }
+
+
+
+
+
+****************** highlights from the comments area **********************
+
+
+
+
+
+What's the diference between "=" and "+="?
+
++= is simply a shortcut. For example if i were to say x = x + 2, a shortcut to that would be x += 2
+
+
+
+
+
+
+a += b is the same as a = a+b, it's just a shortcut.
+
+
+
+
+
+
+what does he click when it freezes?
+
+f6
+
+
+
+
+
+You're printing from 0 to 9... How can you print from 9 to 0?? FANX U ALOT DAWG
+
+{
+            int i = 10;
+            do
+            {
+                textBox3.Text += i.ToString() + ", ";
+                --i;
+            }
+            while (i >= 0);
+        }

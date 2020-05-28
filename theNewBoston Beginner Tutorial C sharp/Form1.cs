@@ -19,22 +19,25 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // for statement, create var i, while true, execute curly braces, do math in 3rd statement, loop back
-            for (int i = 0; i < 5; ++i)
+            int i = 0;
+            while (i < 10)
             {
-                // print to messageBox contents of i, using int converted to string works for messagebox title
-                MessageBox.Show("i = " + i.ToString(), "Page " + i.ToString());
+                textBox1.Text += i.ToString();
+                i++;
             }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // for statement, create var i, while true(; runs forever), execute curly braces, do math in 3rd statement, loop back
-            for (int i = 0; ; --i)
+            // in variable
+            int i = 0;
+            do
             {
-                // print to messageBox contents of i, using int converted to string works for messagebox title
-                MessageBox.Show("i = " + i.ToString(), "Page " + i.ToString());
+                textBox2.Text += i.ToString();
+                ++i;
             }
+            while (i < 10);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -44,10 +47,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string[] arrayName = { "zero", "one", "two" };
-            foreach (string s in arrayName)
-                MessageBox.Show("arrayName is " + s, "Title is " + s);
-
+            int i = 10;
+            do
+            {
+                textBox3.Text += i.ToString() + ", ";
+                --i;
+            }
+            while (i >= 0);
         }
 
         private void button4_Click(object sender, EventArgs e)
