@@ -19,26 +19,41 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            while (i < 10)
+            string[] stringName = new string[2]; // "", ""
+            try
+                {
+                string subName = stringName[2];
+                }
+            
+            catch(Exception ex)
             {
-                textBox1.Text += i.ToString();
-                i++;
+                textBox1.Text += "an exception has occured ";
+                MessageBox.Show("smaller error message! \n\n" + ex.Message);
+                MessageBox.Show("larger error message! \n\n"  + ex.ToString());
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // in variable
-            int i = 0;
-            do
-            {
-                textBox2.Text += i.ToString();
-                ++i;
+            
+            try{
+                string[] stringName = new string[2]; // "", ""
+                string subName1 = stringName[0];
+                //string subName = stringName[2];
             }
-            while (i < 10);
+            
+            catch (Exception ex)
+            {
+                textBox1.Text += "an exception has occured ";
+                MessageBox.Show("smaller error message! \n\n" + ex.Message);
+                MessageBox.Show("larger error message! \n\n" + ex.ToString());
+            }
+            finally
+            {
+                MessageBox.Show("finally");
+            }
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

@@ -73,6 +73,8 @@
     <Content Include="Tutorial 13 For and Foreach Loop\L13FormCS.txt" />
     <Content Include="Tutorial 14 Do and Do While\L14 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 14 Do and Do While\L14FormCS.txt" />
+    <Content Include="Tutorial 15 Try, Catch and Finally\L15 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 15 Try, Catch and Finally\L15FormCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

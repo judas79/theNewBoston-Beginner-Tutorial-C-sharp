@@ -1,0 +1,104 @@
+﻿We will need to create a button1 to test try statements on code that may have an error in it.  Its better to use a try statement and catch
+the code instead of the program crashing because of the error.  We will create a string with two items, then try to read a
+non-exixtant 3rd item from the list to cause an error.  "catch", catches the exception, and to show the exception, we can 
+create a exception variable, to hold what type of exception it was.  to display the error use MessageBox, we write the Exception
+variable name dot Message:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] stringName = new string[2]; // "", ""
+            try
+                {
+                string subName = stringName[2];
+                }
+            
+            catch(Exception ex)
+            {
+                textBox1.Text += "an exception has occured ";
+                MessageBox.Show("smaller error message! \n\n" + ex.Message);
+                MessageBox.Show("larger error message! \n\n"  + ex.ToString());
+            }
+        }
+
+Create button2 for the 'finally' part of the lesson.  'finally' will be executed no matter if there was an exception, or not:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            try{
+                string[] stringName = new string[2]; // "", ""
+                string subName1 = stringName[0];
+                //string subName = stringName[2];
+            }
+            
+            catch (Exception ex)
+            {
+                textBox1.Text += "an exception has occured ";
+                MessageBox.Show("smaller error message! \n\n" + ex.Message);
+                MessageBox.Show("larger error message! \n\n" + ex.ToString());
+            }
+            finally
+            {
+                MessageBox.Show("finally");
+            }
+        }
+
+
+
+
+
+********************* highlights from the comments area ***********************
+
+
+
+
+
+
+You should mention that if an int[ ] isn't assigned a value, it is ZERO, as opposed to NULL (in Java)
+
+
+
+
+
+
+Try-Catch is one of the biggest and most helpful thing in programs for programers/hackers.
+
+you'll often encounter errors and you'll find that catching these errors will be helpful, so that your program doesnt 
+constantly crash
+
+
+
+
+
+
+What is the point of finally? Why not just write the statement after the try-catch?
+
+From what I've read its usually used for "clean-up" for more advanced programs.
+
+
+The code in the finally block is guaranteed to be executed even if the exception is caught in catch block and rethrown or of
+different exception is thrown in the catch block that is not caught again. in those cases your statements after try-catch 
+will not be executed because execution flow will go to caller without executing those statements. try following and see what
+happens...
+            try
+            {
+                int i = 0;
+                int j=0;
+                int k=i/j;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                Console.WriteLine("finally executed");
+            }
+            Console.WriteLine("statements after finally executed");
+
+
+
+
+
+
