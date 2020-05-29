@@ -40,9 +40,10 @@ Create button2 so we can use it to call our method, in the same manner we used t
             message();
         }
 
-To pass in a message into void message, we can create a variable in the methods, within the parenthesis, to be passed in
-when the buttons are clicked.  Notice, we changed the text in the MessageBox and  textBox, to reflect the use of the variable
-'passIn', to call the value within it.  So we will first create button3, and textBox3 and button4 also to demonstrate this:
+To pass thru a message into void message, we can create a variable in the methods parameter, within the parenthesis, to be 
+passed in when the buttons are clicked.  Notice, we changed the text in the MessageBox and  textBox, to reflect the use of 
+the variable 'passIn', to call the value within it.  So we will first create button3, and textBox3 and button4 also to 
+demonstrate this:
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -62,7 +63,7 @@ when the buttons are clicked.  Notice, we changed the text in the MessageBox and
         }
 
 
-To also pass in a title, for the MessageBox only, we can simply add another sting variable, and seperate the strings with a
+To also pass thru a title, for the MessageBox only, we can simply add another sting variable, and seperate the strings with a
 comma, and then assign it to the button as you did with the message field.
 
         private void button3_Click(object sender, EventArgs e)
