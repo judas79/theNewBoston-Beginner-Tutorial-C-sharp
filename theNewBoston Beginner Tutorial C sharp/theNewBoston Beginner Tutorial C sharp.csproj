@@ -75,6 +75,8 @@
     <Content Include="Tutorial 14 Do and Do While\L14FormCS.txt" />
     <Content Include="Tutorial 15 Try, Catch and Finally\L15 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 15 Try, Catch and Finally\L15FormCS.txt" />
+    <Content Include="Tutorial 16 Methods\L16 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 16 Methods\L16CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

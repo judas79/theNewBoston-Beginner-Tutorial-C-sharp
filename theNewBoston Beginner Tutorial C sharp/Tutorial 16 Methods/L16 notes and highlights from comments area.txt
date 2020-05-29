@@ -1,0 +1,141 @@
+﻿Create button1 so we can work on methods.  Methods are any block of code, that we would like to use more than once.  A block
+of code is what exist between two code braces { block of code }.  When using a method, in a button, we will put it outside of
+the buttons curly code braces.  There we will start our method by writing void Message followed by code braces, with a Message-
+box popup in it:
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+  
+        }
+        void Message()
+        {
+            MessageBox.Show("void Message");
+        }
+
+To show the MessageBox message, we will enter the void name message then parenthesis and a semicolon, in the code braces: 
+
+Message();
+
+...pertaining to the button:     
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            message();
+        }
+
+        void message()
+        {
+            MessageBox.Show("void Message");
+            textBox1.Text += "void message ";
+        }
+
+If you put a MessageBox, before a textBox, in the Method, the MessageBox will popup first, then after closing it, the textBox
+Text  will be displayed.
+
+Create button2 so we can use it to call our method, in the same manner we used to call it using button1:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            message();
+        }
+
+To pass in a message into void message, we can create a variable in the methods, within the parenthesis, to be passed in
+when the buttons are clicked.  Notice, we changed the text in the MessageBox and  textBox, to reflect the use of the variable
+'passIn', to call the value within it.  So we will first create button3, and textBox3 and button4 also to demonstrate this:
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            message2("button 3, using variable 'passIn' to pass this in");
+        }
+
+        void message2(string passIn)
+        {
+            MessageBox.Show(passIn);
+            textBox3.Clear();
+            textBox3.Text += passIn;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            message2("button 4, using variable 'passIn' to pass this in");
+        }
+
+
+To also pass in a title, for the MessageBox only, we can simply add another sting variable, and seperate the strings with a
+comma, and then assign it to the button as you did with the message field.
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            message2("button 3, using variable 'passIn' to pass this in", "Button 3 Title");
+        }
+
+        void message2(string passIn, string titleIn)
+        {
+            MessageBox.Show(passIn, titleIn);
+            textBox3.Clear();
+            textBox3.Text += passIn;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            message2("button 4, using variable 'passIn' to pass this in", "Button 4 Title");
+        }
+
+
+
+
+
+
+************************ highlights from the comments area *************************
+
+
+
+
+
+
+Whats the difference between a function and a method?
+
+A lot of people use both of these interchangeably but there is subtle difference:
+Methods have an implicit "this" parameter passed to them and functions do not. "this" is a reference to an object that the 
+method belongs to.
+Except for static methods which don't have the "this" reference because they can be called without their class being 
+instantiated first.
+
+
+
+
+
+
+There are many overloaded (=more functions with the same name but different parameter list) versions of MessageBox.show()  
+(21 of them exactly), 
+
+so when you call Messagebox.show(string1, string2) it's coded so that it shows the messagebox with title:string2 and text:
+string1 (the name of the arguments doesn't matter, just their order)
+
+
+
+
+
+
+a method is a function inside of a class.
+
+
+
+
+
+
+isn't that a function?
+
+Functions are outside of classes. Yes, I know this comment is 5 years old.
+
+and when you call Messagebox.show(string1) it will consider string2 to be empty so it will just show a messagebox with 
+text:string1 and empty title.
+
+
+
+
+
+
+
+
