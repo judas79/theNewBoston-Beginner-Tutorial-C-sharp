@@ -39,11 +39,14 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         }
 
+
         private void button3_Click(object sender, EventArgs e)
         {
+			// pass thru message2, using button3
             message2("button 3, using variable 'passIn' to pass this in", "Button 3 Title");
         }
 
+		// method, with 2 variable parametes - passIn and titleIn
         void message2(string passIn, string titleIn)
         {
             MessageBox.Show(passIn, titleIn);
@@ -53,6 +56,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button4_Click(object sender, EventArgs e)
         {
+			// pass thru message2, using button4
             message2("button 4, using variable 'passIn' to pass this in", "Button 4 Title");
         }
 	}
