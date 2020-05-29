@@ -1,1 +1,149 @@
-﻿To continue learning about methods create button1 and double click it.  
+﻿To continue learning about methods create button1 and double click it.  in the method we used last lesson, 'void message()', 
+'void' represents the type of return, the method will have.  In this example void means, nothing is to be returned and holds no
+'value'.  Make an method, myMethod, with a string parameter of name.  This 'void' type method also doesn't represent a type of
+variable:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			// passes on "text" to string variable 'name' because of its relative position in the parameter parenthesis
+            myMethod("doesn't represent a type of variable");
+        }
+		// doesn't return anything, doesn't represent a variable type, passes in 'name'
+        void myMethod(string name)
+        {
+            MessageBox.Show(name);
+            textBox1.Clear();
+            textBox1.Text += name;
+        }
+
+Create button2, textBox2 so we can make a method type that returns a representation; a string, in this example:
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // to display the returned contents in myMethod2's, string name
+            MessageBox.Show(myMethod2("represents a string type variable"));
+            textBox2.Clear();
+            textBox2.Text += myMethod2("represents a string type variable");
+        }
+
+		// since myMethod2 is a string type not a void type, it now can return a string value
+        string myMethod2(string name2)
+        {
+            return name2;
+        }
+
+You can also do this, without using a variable, and use a return that is static instead.  Create button3, textBox3 for this 
+example:
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // to display the returned contents in myMethod3's, static return
+            MessageBox.Show(myMethod3());
+            textBox3.Clear();
+            textBox3.Text += myMethod3();
+        }
+
+        // since myMethod3 is a static type not a void type, it now can return a static value
+        string myMethod3()
+        {
+            return "This is a static method";
+        }
+
+
+
+************* THIS IS NOT IN THE LESSON: TEST CODE **************
+
+Usually methods are used to do calculations so therefore use numbers (int) instead of (sting).  Create button4, textBox4, 
+and int i = 4, for this example:
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int i = 5;
+            // to display the returned contents in myMethod2's, string name
+            MessageBox.Show(myMethod4(i).ToString());
+            textBox4.Clear();
+            textBox4.Text += myMethod4(i);
+        }
+
+        // since myMethod2 is a string type not a void type, it now can return a string value
+        int myMethod4(int name4)
+        {
+            return name4;
+        }
+
+******************* END OF TESTING CODE AREA **********************
+
+
+We can also use a static int, like we did with the static string.  Don't forget to us .ToString() when printing the myMethod4
+.Show output, to the MessageBox.  Create button5; and textBox5, for this example:
+
+    private void button5_Click(object sender, EventArgs e)
+        {
+            // to display the returned contents in myMethod3's, static return
+            MessageBox.Show(myMethod5().ToString());
+            textBox5.Clear();
+            textBox5.Text += myMethod5();
+        }
+
+        // since myMethod3 is a static type not a void type, it now can return a static value
+        int myMethod5()
+        {
+            return 456;
+        }
+
+
+We can also use, almost the same method as myMethod4 and MyMethod5 above, for a boolean method.  Create button6 and button7 for 
+these examples.  First button6 will be the static bool, then button7 will hold the bool variable:
+
+private void button6_Click(object sender, EventArgs e)
+        {
+            // to display the returned contents in myMethod6's, static return
+            MessageBox.Show(myMethod6().ToString());
+          
+        }
+
+        // since myMethod3 is a static type not a void type, it now can return a static value
+        bool myMethod6()
+        {
+            return false;
+        }
+
+************* THIS IS NOT IN THE LESSON: TEST CODE **************
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bool b = true;
+            MessageBox.Show(trueFalse(b).ToString());
+        }
+
+        bool trueFalse(bool state7)
+        {
+            return state7;
+        }
+
+******************* END OF TESTING CODE AREA **********************
+
+
+
+
+
+
+
+*********************** highlights from the comments area *************************
+
+
+
+
+
+Why have I got a message in the error box saying
+No overload for method 'My Method ' takes 0 arguments
+
+what does that mean?
+
+Hint, call your method.
+
+
+
+
+

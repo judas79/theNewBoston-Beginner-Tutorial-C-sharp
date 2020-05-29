@@ -41,6 +41,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -120,7 +122,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(110, 258);
+            this.button5.Location = new System.Drawing.Point(110, 254);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 8;
@@ -130,7 +132,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(224, 215);
+            this.button6.Location = new System.Drawing.Point(110, 287);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 9;
@@ -140,7 +142,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(224, 258);
+            this.button7.Location = new System.Drawing.Point(224, 284);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 10;
@@ -151,7 +153,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(12, 244);
+            this.checkBox3.Location = new System.Drawing.Point(12, 254);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(80, 17);
             this.checkBox3.TabIndex = 11;
@@ -160,16 +162,33 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 267);
+            this.textBox3.Location = new System.Drawing.Point(12, 287);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(75, 20);
             this.textBox3.TabIndex = 12;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(199, 217);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 13;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(199, 254);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 293);
+            this.ClientSize = new System.Drawing.Size(311, 309);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.button7);
@@ -205,6 +224,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
