@@ -19,30 +19,26 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            myMethod("doesn't represent a type of variable");
+            for (int i = 0; i < 10; i++)
+            {
+                if (i ==2)
+                    break;
+                textBox1.Text += i.ToString();
+            }
         }
 
-        // myMethod doesn't represent anything, because its void, so no return functionality
-        void myMethod(string name)
-        {
-            MessageBox.Show(name);
-            textBox1.Clear();
-            textBox1.Text += name;
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // to display the returned contents in myMethod2's, string name
-            MessageBox.Show(myMethod2("represents a string type variable"));
-            textBox2.Clear();
-            textBox2.Text += myMethod2("represents a string type variable");
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                    continue;
+                textBox2.Text += i.ToString();
+            }
         }
 
-        // since myMethod2 is a string type not a void type, it now can return a string value
-        string myMethod2(string name2)
-        {
-            return name2;
-        }
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -120,6 +116,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

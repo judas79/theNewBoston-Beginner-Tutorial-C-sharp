@@ -79,6 +79,8 @@
     <Content Include="Tutorial 16 Methods\L16CS.txt" />
     <Content Include="Tutorial 17 Methods\L17 notes and highlights from comments area .txt" />
     <Content Include="Tutorial 17 Methods\L17FormCS.txt" />
+    <Content Include="Tutorial 18 Continue and Break\L18 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 18 Continue and Break\L18FormCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

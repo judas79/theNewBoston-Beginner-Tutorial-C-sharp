@@ -1,0 +1,65 @@
+﻿Create a button1 and a textBox1 for this tutorial on Continue and Break.  First we will create a for statement that spits,
+out some values while it is running.  If we put break before our code to be executed statement, it would break out of the
+function and totally skip it:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+				// If we put break here it would skip the following area and everything in it
+				break;
+                textBox1.Text += i.ToString();  // this line would be skipped
+            }
+        }
+
+We can use an if statement to choose when the code will break out of the function:
+		
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i ==2)
+                    break;
+                textBox1.Text += i.ToString();
+            }
+        }
+      *
+	  |  When i reaches 2, while looping through the for statement, it will jump out to this position '*' in the code.
+
+
+Make button2, and textBox2, so we can work with a continue example.  Continue, unlike break, loops back into the beginning 
+of the function, that it is in, when it hits a set parameter in the if statement.  So, when i reaches 5, while looping, it
+will skip the rest of the code to execute, within the statement, and go back up to the begining of the for statement, and 
+continue with the next value '6' and continue as up to 10, as it usually would.  When you look at the textBox2, contents, 
+you will notice that the number 5 is missing, because the line of code, that said to print it to the textBox was skipped.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                    continue;
+                textBox2.Text += i.ToString();
+            }
+        }
+
+
+
+
+
+
+*********************** highlights from the comments area **************************
+
+
+
+
+
+
+Think of it as "continue onto the next iteration", not "skip over the rest of the code"
+
+
+
+
+
+
