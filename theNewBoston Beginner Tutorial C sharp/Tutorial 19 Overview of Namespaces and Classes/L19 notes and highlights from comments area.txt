@@ -1,0 +1,48 @@
+﻿We will first create a class, by clicking Project, in the main menu, then add class.  We will then rename the namespace within
+class from its default, whatever the projects name; it takes as a name, to myNamrespace, for this lesson.  Namespaces are used
+for organizing classes, interfaces, and struts.  You can have a namespace within a namespace, as a sub category of the main
+namespace.  Within the mySubNamespace we can put, classes, interfaces and struts, as well.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// renamed from theNewBoston_Beginner_Tutorial_C_sharp
+namespace myNamespace
+{
+    // sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myNamespace
+    {
+    }
+}
+
+
+Classes are used to organize variables, and the methods.  Usually things within a  class work together or close together.  So
+things that do similar actions, to each other.  To access the namespace, and thing within it, we need to make a use statement,
+at the top where the other use statements are located, to refer to the namespace.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using myNamespace:
+
+If we need to use something withing our class myNamespace, and did have a 'use' statement, we woulld have to write out the full
+path:
+
+myNamespace.myNamespace. 'whatever else the class method you where trying to access'
+
+Using 'use' statements' save a lot of typing in of the namespace name, before every use of a class.
+
+
+
+
+
+************************ highlights from the comments area ***********************

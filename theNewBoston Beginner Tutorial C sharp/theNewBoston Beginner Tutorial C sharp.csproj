@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="myNamespace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
@@ -81,6 +82,8 @@
     <Content Include="Tutorial 17 Methods\L17FormCS.txt" />
     <Content Include="Tutorial 18 Continue and Break\L18 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 18 Continue and Break\L18FormCS.txt" />
+    <Content Include="Tutorial 19 Overview of Namespaces and Classes\L19 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 19 Overview of Namespaces and Classes\L19myNamespaceCSclass.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
