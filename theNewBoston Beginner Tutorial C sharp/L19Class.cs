@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
+namespace myNamespace
 {
     class L19Class
     {
