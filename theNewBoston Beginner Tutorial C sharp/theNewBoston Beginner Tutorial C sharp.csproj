@@ -84,6 +84,9 @@
     <Content Include="Tutorial 18 Continue and Break\L18FormCS.txt" />
     <Content Include="Tutorial 19 Overview of Namespaces and Classes\L19 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 19 Overview of Namespaces and Classes\L19myNamespaceCSclass.txt" />
+    <Content Include="Tutorial 20 Constructors\L20myNamespaceCSclass.txt" />
+    <Content Include="Tutorial 20 Constructors\L20 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 20 Constructors\L20Form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

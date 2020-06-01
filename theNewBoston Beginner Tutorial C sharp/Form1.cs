@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// added L20
+using myNamespace;
+
+
 
 namespace theNewBoston_Beginner_Tutorial_C_sharp
 {
@@ -19,12 +23,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                if (i ==2)
-                    break;
-                textBox1.Text += i.ToString();
-            }
+            // create instance of a class: class name, instance name, equals, 
+            //new, class name, parenthesis, semicolon
+            myClass mc = new myClass("myName");
         }
 
 

@@ -1,0 +1,165 @@
+﻿We will need a button for this lesson on instances of a class.  Double click the button and creat an instance of the class
+you made in the namespace document last tutorial.  To make an instance of a class, you use the name of the class, instance
+name, equals, new, class name, parenthesis, then a semicolon.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // create instance of a class: class name, instance name, equals, 
+            //new, class name, parenthesis, semicolon
+            myClass mc = new myClass();
+        }
+
+
+When an instance of a class is created, the compile will look for a constructor, where the class is, and create a default
+constructor, that doesn't have much funcionality(doesn't pass anything and sets the default valuess of the variables inside the
+class), if there isn't one.  To create a custom constructor, in our class in the myNamespace.cs document, we type ctor then
+click tab button twice, and visual studio will generate it for you.
+
+    class myClass
+    {
+        public myClass()
+        {
+
+        }
+    }
+
+This generated method constructer will share the same name as the class name, and is public.  So the code we put in the button
+will call myClass constructor, the execute the method within the curly code braces.  To pass in a parameters we can give them
+names and put them within the parenthesis.
+
+class myClass
+    {
+        public myClass(string name)
+        {
+
+        }
+    }
+
+If we go back to the button1 code, you will now notice the new class name has a jagged red line, meaning there is an error:
+myClass mc = new myClass();
+             -----------
+
+There is an error because we do not a s string name, to pass, that should be in the parenthesis, since we created 'string name'
+in ou myNamespace.cs document.
+
+myClass mc = new myClass("myName");
+
+Next we will go back to our myNamespace.cs document and create a string variable(Name), that will hold the value of the passed 
+through variable(name).
+
+    class myClass
+    {
+        string Name;
+        public myClass(string name)
+        {
+            Name = name;
+        }
+    }
+}
+
+We can also add more constructors but, make them be for other variable types than string, since we used that once.  If you use
+another string variable the compiler will not know which variable that is a string goes to which string constructor.  So we will
+generate a constructor for a bool.
+
+// L19 renamed from theNewBoston_Beginner_Tutorial_C_sharp
+namespace myNamespace
+{
+    // sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myClass
+    {
+        string Name;
+        public myClass(string name)
+        {
+            Name = name;
+        }
+
+        public myClass(bool TF)
+        {
+
+        }
+       
+    }
+}
+
+
+
+
+
+
+
+****************** highlights from the comments area ***********************
+
+
+
+
+
+newboston forgot to explain that whenever we create a method with the same methodname, this is called as method overloading.. 
+if you want to get more information about method overloading, search it!
+
+
+
+
+
+
+it would've been more educational if he referenced the global variable 'Name' as 'name' using the 'this' keyword
+
+
+
+
+
+
+so a constructor is basically a Method or how should i understand this??
+
+
+essentially, a constructor is a special method used to initialize an object from a class (blueprint)...
+if no constructor is defined, a default constructor is used...ex. Dog myDog = new Dog(); 
+will intialize space in memory for the object to be 
+created, but all the properties of myDog will still have to be added manually...
+however, lets say you want every dog you create to have a color as well as 4 legs...
+you can add arguments to the constructor...ex. public Dog (string color, int num_of_legs = 4)...
+note that num_of_legs has a default value of 4, which can be changed...
+so when creating myDog, you can no longer write Dog 
+myDog = new Dog(); because the constructor is looking for arguments and you will get an error before you even run the code..
+this forces you to give some values prior to building...
+now you can write Dog myDog - new Dog("black");..
+this will create a new object myDog that is black and has 4 legs (because num_of_legs is set to a default of 4)...
+further, you can change the default value by saying Dog myDog = new Dog ("black", 3);....
+just note that any default values must be at the end of the constructor, so you cant put the default num_of_legs before the 
+color property in the constructors arguments...hope this made sense!
+
+
+
+
+
+
+
+Is it necessary for the 'constructor' to be named same as the 'Class'?
+
+
+I believe so
+
+
+
+
+
+
+What do you mean by instance in C# in general and for this tutorial. No book or forum can explain this
+
+
+An instance refers to a copy of the object in memory.  So lets say you have a "Dog" class, before you declare the 
+first instance, zero dogs exist in memory. You would create a new instance w/ code like "Dog fido = new Dog();"   Here 
+resources are allocated for holding the Dog's variables, like the Dog's name, etc.  You can create more dogs if you wish, 
+give them different names, or call methods and make them do different things e.g. rollover, play dead, etc, because they 
+are each separate instances of the Dog class.
+
+
+
+
+
+
+
+
