@@ -1,0 +1,157 @@
+﻿We need a click button1 event and the myNamespace.cs document we made two lessons ago, to learn how to us an Access Modifier,
+and how to make a Mehthod inside a class.  A access  modifier limits access a user has to a method or a class.  So first, in
+our class document, we will make a public method in our class.  We will have it return the contents of 'name'.
+
+namespace myNamespace
+{
+    // sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myClass
+    {
+        string Name;
+        public myClass(string name)
+        {
+            Name = name;
+        }
+
+		// public string name method, can be accessed from anywhere, and get the return value for Name.
+		// from here within the class, or outside of this document, like in button1's code
+        public string name()
+        {
+            return Name;
+        }      
+    }
+}
+
+We will access what is in the public string name, using form1.cs, in the button1, field:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // create instance of a class: class name, instance name, equals, 
+            //new, class name, parenthesis, semicolon
+            myClass mc = new myClass("myName");
+
+			// accessing the public string name() method to get the return value of Name:
+            mc.name();
+			MessageBox.Show(mc.name());
+        }
+
+If we change this access modifier to 'private', or do not put 'public', in front of the string name,
+we will no longer be able to access it from button1:
+
+// no access from buton1 because its private
+private string name()
+        {
+            return Name;
+        }     
+
+// no access from buton1 because the access is not defined as public
+string name()
+        {
+            return Name;
+        }     
+
+There are other access modifiers, that we will work on in the future.  
+Moving on, next we will make a way of accessing, using the public(access modifier) static(modifier) method.  This is useful 
+because you will not have to make an instance, of the class to use it.
+
+        // public static method, can be used outside of this class document without creating an instance
+        // we could of used another string, but used a bool, make sure to convert bool TF to string to Show.
+        public static void Showmessage(bool TF)
+        {
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+    }
+}
+
+
+The code in the form holding the button1 is passed thru the class, into the public static void method, so it can be displayed
+use Messagebox to Show 'true'
+
+myClass.Showmessage(true);
+
+
+
+
+
+
+************************* highlights from the comments area *****************************
+
+
+
+
+
+Here is a good example. MessageBox is a class. Messagebox.Show is a static method because it does not require a new instance 
+of the MessageBox class to be invoked. 
+
+
+
+
+
+
+The one big difference when using the access modifier Static, that isn't touched upon in this video, is that instanced static
+variables and methods (when you instantiate a new object of a class) ,  share the same value, so if you change the value of a
+variable on one instance, it affects the value of the same variable on other instances . 
+
+Also this why you can call a method without instantiating an new object. Static methods are great for utility methods... 
+such as Console.WriteLine(); You could in fact still instantiate a new instance but a new object will not alter the outcome 
+of the method call. Changing the access modifier to static is more intuitive in cases as such.
+
+
+
+
+
+
+could somebody plz explain me something?
+what's the difference between :
+MyClass mc = new MyClass();
+mc.ShowMessage("what ever");
+
+and the other way:
+MyClass.ShowMessage("show crab");
+
+is there any benefits of one to another?
+
+
+in the first case, u are creating an instance of the class which is an object, but in the latter case, u are accessing a 
+method of a class without creating an instance of that class.
+
+
+
+
+
+
+You can do it like this. Put the ID into a Collection for example an array. Then another Array for the Name, Quantity, and Price.
+Proportional to the index of the array of ID. Then when an event is triggered in the combobox, make it update the textboxes.
+
+
+
+
+
+
+At the start, the first method you made you made the method named "name" and the variable named "Name".... I wanted to punch 
+my screen. You just cant do that
+
+
+In programming there are big difference between name and Name,because they look different,so they have they both have their 
+own binary code and their integer form or number or how you say it.
+
+
+
+
+
+
+Purpose of using Class over Methods? It seems to be the same. Can some please explain Class in use?
+
+
+Classes are used to combine diffrent parts of any program or diffrent 1work of Programers to make one single part which is 
+the last part of a project!
+
+
+
+
+
+

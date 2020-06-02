@@ -23,9 +23,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // create instance of a class: class name, instance name, equals, 
+            // L20 create instance of a class: class name, instance name, equals, 
             //new, class name, parenthesis, semicolon
-            myClass mc = new myClass("myName");
+            myClass mc = new myClass("myNameGoesHere");
+
+            // L20 accessing the public string name() method to get the return value of Name:
+            mc.name();
+            MessageBox.Show(mc.name());
+
+            // L21 The code in the form holding the button1 is passed thru the class, into the public static void method, 
+            // so it can be displayed use Messagebox to Show 'true'
+            myClass.Showmessage(true);
         }
 
 
