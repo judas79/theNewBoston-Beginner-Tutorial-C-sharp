@@ -1,0 +1,120 @@
+﻿Overloading the method, is using the same method as many times as you like, as long as you chain the parameter.  This means,
+you can't have more than method, with the same name and  parameter type; bool TF cant match the second bool TF.  
+
+public static void Showmessage(bool TF)
+        {
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+
+public static void Showmessage(bool TF)
+		{
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+
+You can re-use the method, without overloading it, by changing the variable type, in the parameter area, or changing the 
+method name, or adding a second variable, to the parameter variables. In the file, myNamespace.cs add the following examples
+to try overloading the method, without causing errors.
+
+public static void Showmessage(bool TF)
+        {
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+		
+public static void Showmessage(int TF)
+        {
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+
+public static void Showmessage(bool TF, bool myTF)
+        {
+            System.Windows.Forms.MessageBox.Show(TF.ToString());
+        }
+
+Add this to your push button1, to pass tru to the examples above:
+
+			// L22 In myNamespace.cs class doc, changed var. type 
+            // to allow more than one usage of that method name.
+            myClass.Showmessage(3);
+
+            // L22 notice the same method name and var type is being used
+            // in the myNamespace.cs class a different var name is associated with 
+            // this second exxample, of the same method and parameter var type
+            myClass.Showmessage(false);
+
+
+An enumeration is an integer array, represented by names used to represent the constant integers within the array.  To create
+a simple 'integer' kind of enumeration we use enum, keyword enumeration name, {the elements, of the enumeration, seperated by 
+commas}.
+We usually list the elements of the list, in rows, if small; the object is readability.  Example in myNamespace.cs class:
+
+    class myClass
+    {
+        // L22 enumeration integer type array
+        enum enumIntNames
+        {
+            Bob,
+            Carol,
+            Ted,
+        }
+		
+		
+Now that we have an enumeration array, we can make a name variable for our enum array, using the name of the array, which will
+now make our variable name equal to Carol:
+
+        // L22 enumeration name, variable enumeration name, equals the enumeration name, dot, item elements
+        enumIntNames myNames = enumIntNames.Carol;
+
+As the elements of the array are now, the first element is equal to 0, and proceed to be identified in ascending integers.
+To change the default integer assigned to the element, we can do the following, in the enumeration array:
+
+        // L22 enumeration integer type array, with assigned integer to an element, 
+		// Notice since Alice is now assigned to integer 6, Jack will be equal to 7
+        enum enumIntNames2
+        {
+            John,
+            Max,
+            Bif = 4,
+			Alice = 6,
+			Jack,
+        }
+
+
+To make an enumeration byte array, as apposed to an integer array, we set it up like this, outside of the public string and
+return we created last tutorial:
+
+
+enum enumByteNames : byte
+        {
+            Carl,
+			Axel = 5,
+			Spence,
+        }
+
+
+
+
+
+
+*********************** highlights from the comments area **********************
+
+
+
+
+
+Here is an example. Lets say you make a Person class. Then lets say you make an enum with Male, Female. Then you make an 
+instance of that enum in the Person class called "Gender". Now someone can do this. Person Sarah = new Person(); 
+Sarah.Gender = Female [P.S. correct me if I'm wrong with this syntax]
+
+
+
+
+
+
+Best and easiest ways to explain it is they are properties that are usually used to define something for a class object.
+
+
+
+
+
+
+Best and easiest ways to explain it is they are properties that are usually used to define something for a class object.

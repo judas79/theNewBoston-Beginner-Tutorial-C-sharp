@@ -34,6 +34,15 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L21 The code in the form holding the button1 is passed thru the class, into the public static void method, 
             // so it can be displayed use Messagebox to Show 'true'
             myClass.Showmessage(true);
+
+            // L22 In myNamespace.cs class doc, changed var. type 
+            // to allow more than one usage of that method name.
+            myClass.Showmessage(3);
+
+            // L22 notice the same method name and var type is being used
+            // in the myNamespace.cs class a different var name is associated with 
+            // this second exxample, of the same method and parameter var type
+            myClass.Showmessage(false);
         }
 
 
