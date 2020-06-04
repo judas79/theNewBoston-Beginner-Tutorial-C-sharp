@@ -92,6 +92,9 @@
     <Content Include="Tutorial 21 Access Modifiers and Static\L21myNamespaceCSclass.txt" />
     <Content Include="Tutorial 22 Overloading Methods and Enumerations\L22 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 22 Overloading Methods and Enumerations\L22myNamespaceCS.txt" />
+    <Content Include="Tutorial 23 Creating Your Own Properties\L23 myNamespaceCS.txt" />
+    <Content Include="Tutorial 23 Creating Your Own Properties\L23 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 23 Creating Your Own Properties\L23FormCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
-    <Folder Include="Tutorial 23 Creating Your Own Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tutorial 01 setup Visual Studio\Images\click button the click form and drag to size.png" />

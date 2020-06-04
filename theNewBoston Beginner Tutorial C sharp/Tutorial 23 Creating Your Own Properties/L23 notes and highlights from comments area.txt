@@ -1,0 +1,154 @@
+﻿Create a button1 a public class, with a string constructor, and in the button1 file, a instance of that class, with a string
+element to pass back to the class.  In myNamespace.cs you should have this:
+
+namespace myNamespace
+{
+    // L19 sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myClass
+    {
+      public myClass(string myNameGoesHere)
+		{
+      
+		}
+
+    }
+}
+
+For your button1 you should have this:
+
+        {
+            // L23 create instance of a class: class name, instance name, equals, 
+            //new, class name, parenthesis, semicolon
+            myClass mc = new myClass("myNameGoesHere");
+        }
+
+To add a new property to the class 'myClass', we will first type in the access modifier we want, which will be public, but 
+there are time we will use others.  Then decide what kind ov variable you want your property to hold.  We will use string,
+because the string being passed to our class, through our constructer from our button1 is a string, and that will be equal 
+to our property.  Then give your property a name; no need for parenthesis after it, because its not a method.
+
+
+    class myClass
+    {
+        public myClass(string passThruName)
+        {
+      
+        }
+        public string propName
+        {
+
+        }
+    }
+}
+
+There are two keywords that are used in the properties area, the first 'get', is to enable users to read the properties.
+The other is 'set', it allows the user to write to or change the property.  To set the propName to the name being passed thru
+to the constructer myClass using the string passThruName, we do this:
+
+    class myClass
+    {
+        public myClass(string passThruName)
+        {
+            propName = passThruName;
+        }
+        public string propName
+        {
+            get;
+            private set;
+        }
+    }
+}
+
+If you do not have get; or set; in your public property string, you will see a squigly red line under propName, because of
+the lack of get or set permisions.  You can add access properties to get or set, or by default have them set to whatever the
+the properties permissions is set to.  Above 'private set' properties would only be accessable in the class, but not over in
+the button1 form.
+
+Back in the button1 code we will add a message box and a textbox, to show the contents of the properties.
+
+            MessageBox.Show(mc.propName);
+            textBox1.Text += mc.propName;
+
+
+To make things read only, including within the class document, we will first make a string variable 'string readOnlyName;'.  
+Then we will create another properties, named 'public string readName'.  We will set the get to return the var readOnlyName
+and now you will not be able to change the properties of the readName, anywhere, including within the class.
+
+		// L23 string var for readName in MyClass, read only
+        string readOnlyName;
+
+		// L23 read only, everywhere, can't change value of readName
+        public string readName
+        {
+            get { return readOnlyName; }
+        }
+
+To see if the value a user is trying to write, to your name property, is an identical string(equal to the value you have in
+the string readName), we can use set within the class.  
+
+// L23 read only, everywhere, can't change value of readName
+        public string readName
+        {
+            get { return readOnlyName; }
+            set
+            {
+                if (value != "readOnlyName") System.Windows.Forms.MessageBox.Show("entered name value, not identical");
+                else
+                    System.Windows.Forms.MessageBox.Show("entered name value confirmed");
+            }
+
+If the value to the readName property is trying to be set, to a different value, than what it is within the class, we will
+get a messagebox popup, telling the user the value entered does not match, the one on file.  Write the non matching entry
+in button1, to submit it:
+
+            // L23 entered, purposly a non matching value, to the one in the string in the class
+            mc.readName = "Joe";
+
+
+
+
+************************* highlights from the comments area **************************
+
+
+
+
+
+
+You explained how to work with properties but not why we use them. In short as I understand it they are used for encapsulation. They 
+are like a middle man allowing us to have private fields but to still access them outside the class using public properties. 
+
+
+
+
+
+
+ Property's are used to access private variables. Originally in C# to access a private variable we would create a method in 
+ that same class as the private variable and return it to the method (getter). Now in order to assign a value to that private
+ variable you'd use a method and pass 1 parameter with it and assign that parameter to the private variable (setter). Using 
+ a property is basically the same idea as those setters and getters, but it requires less code.
+
+
+
+
+
+
+ Properties are values that can be assigned to an object. If you have a object called Auto, you can have a property called color, 
+ which you can set to red, blue, etc...
+
+
+
+
+
+
+ You missed sth in set.It can't work!It should be :-------------------------
+if(value==""){MessageBox.Show("Error!");}
+else {myString=value;}-->if there isn't any error value should set MyString!
+
+
+
+
+

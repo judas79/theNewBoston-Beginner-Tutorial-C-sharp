@@ -39,7 +39,7 @@ namespace myNamespace
             {
                 if (value != "readOnlyName") System.Windows.Forms.MessageBox.Show("entered name value, not identical");
                 else
-                    System.Windows.Forms.MessageBox.Show("entered name value confirmed: "+ value, value + " Welcome");
+                    System.Windows.Forms.MessageBox.Show("entered name value confirmed");
             }
         }
     }
