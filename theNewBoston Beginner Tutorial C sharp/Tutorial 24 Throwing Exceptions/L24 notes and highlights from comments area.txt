@@ -1,0 +1,97 @@
+﻿Create button1 for this lesson on throwing excemptions.  First in myNamespace.cs, we will check if CheckString is an empty 
+string.  This will cause an exception, when button one is pushed and it trys to set CheckStrings' string, myString, to empty:
+
+    class myClass
+    {
+        // L24 public static void, cause an exception
+        public static void CheckString(string myString)
+            {
+                if (myString == "") throw new Exception("You can't set a string to an empty ' ' string");
+            }
+
+Cause the exception by clicking button1.  An exception box will pop up:
+
+			// L24 set myString to empty to cause exception
+            myClass.CheckString("");
+
+If you have two or more areas, in which an exception can be raised, we can make a name, for the exception, kind of like a 
+variable, and put the value(statement you want it to post), in it, to use in more than one place. 
+NOTE: we will put "text" in the myString value, instead of leaving it blankj, so the program will move passed it, to the 
+myString2 example, of how to throw an exception, with a name, instead of "writing it out each time."
+
+		// L24 exception name and statement
+        static Exception myException = new Exception("You can't set a string to an empty ' ' string 2");
+
+		// L24 public static void, cause an exception, throw using an exception name
+        public static void CheckString2(string myString2)
+            {
+                if (myString2 == "") throw myException;
+            }
+
+Cause the exception by clicking button1.  An exception box will pop up:
+
+
+			// L24 set myString to empty to cause exception
+            myClass.CheckString2("");
+
+
+Some exceptions will crash the program, and close it before displaying the exception error, so you cannot see what the exception is, to repair it.  Now that the 
+error can be thrown and viewed, we can use a try statement to aliviate the exception problem.  We will use a second button to demonstrate how to handle the 
+exception, using 'try' and 'catch':
+
+private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                myClass.CheckString2("");
+            }
+			// the '+ 3' is there to refer to the 3rd example, to the user, ... the try and catch statement
+            catch  (Exception ex){ MessageBox.Show(ex.Message +"3"); }
+
+        }
+
+
+
+*********************** highlights from the comments area ************************
+
+
+
+
+
+Coming from the java world I think that using base class Exception for all your exceptions is pretty fucking useless. Maybe 
+it's done all differently in C# but in Java you would normally use a more specific exception (e.g InvalidArgumentException) 
+so it can be caught and handled in some useful manner. Just my two cents...
+
+
+
+
+
+
+It throws the first exception that occurs. 
+
+
+
+
+
+
+I just started as well but.. When a program crashes regardless it will throw something. And when we learned to put the throw
+in a try/catch to display in the message box it would just put that in. But now in our class we are throwing our OWN error 
+in there cause..without the throw... it would take an empty string no problem. But lets say we didnt want for it to accept 
+empty string well we would throw it.. so the code between the TRY{}'s crashes cause WE told it to.so it displays what WE told
+it2
+
+
+
+
+
+Exception keyword is a special datatype that contains a text representation of a logical error after the app builds successfully. so the compiler tells the app which 
+error to display and stores it in the "ex" variable for further use rather then crashing your application. hope this makes 
+sense
+
+
+
+
+
+
+Thanks! I couldn't figure out how to get the message to show without crashing the program. My book and everywhere else 
+online was no help. This video saved my butt. 

@@ -34,17 +34,22 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L23 entered
             mc.readName = "readOnlyName";
+
+            // L24 set myString to empty to cause exception
+            myClass.CheckString("");
+            myClass.CheckString2("");
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            try
             {
-                if (i == 5)
-                    continue;
-                textBox2.Text += i.ToString();
+                myClass.CheckString2("");
             }
+
+            catch  (Exception ex){ MessageBox.Show(ex.Message +"3"); }
+
         }
 
 
