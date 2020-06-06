@@ -1,0 +1,197 @@
+﻿In this lesson we will need button1 and myNamespace.cs.  In myClass class, we will start out with a public string, int, and 
+void method.  The void will return a message back to the user.  Note all inheritable  members are public.  Private memebers
+will not even show up in the VS browser, when you are trying to display a member from a class, with a member that is private.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// added L20
+using myNamespace;
+
+// L19 renamed from theNewBoston_Beginner_Tutorial_C_sharp
+namespace myNamespace
+{
+    // L19 sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myClass
+    {
+        public string myName = "Adam";
+		// private values cannot be inherited
+        private int myAge = 18;
+        public void showMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }    
+    }
+}
+
+If we want to make another class, that has all the same members, as the class, above, we could make a new class, and copy/
+and paste all the members into into it, or inherit from it.  In heritence will allow you to use all the non private members
+of the parent class (myClass) and use them in the child class (mySecondClass).  To inherit all the members, create a new class
+followed by a colon, then then the name of the class you wish to inherit the public members from.
+
+    // L25 inherit fron myClass
+    class mySecondClass : myClass
+    {
+
+    }
+
+Next in button1, we will create a new instance, for the mySecondClass class, to demonstrate that we can use the members of,
+myClass, that where inherited.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L23 create instance of a class: class name, instance name, equals, 
+            // class name, instance name, equals, new, class name, parenthesis, semicolon
+			// L25 creating a instance for inherting class, mySecondClass 
+            mySecondClass msc = new mySecondClass();
+			MessageBox.Show(msc.myName);
+            textBox1.Text += msc.hairColor;
+		}
+
+Even after inheriting, from another class we can a more members within our new class:
+
+ // L25 inherit fron myClass
+    class mySecondClass : myClass
+    {
+        public string hairColor = "brown";
+    }
+
+We can create a method, for a member, that has been inherited, as if it exixted within the new class.  We refer inherited 
+members in code as, base, and members of the class inheriting from another class as, derived class:
+
+    // L25 inherit fron myClass
+    class mySecondClass : myClass
+    {
+        // L25 add local member to mySecondClass
+        public string hairColor = "brown";
+        
+        // L25 add method for inherited member
+        void messageboxSpecial()
+        {
+            // L25 display from inherited member, myWeight using base.
+            System.Windows.Forms.MessageBox.Show(base.myWeight.ToString());
+        }
+    }
+}
+
+
+To display the contents of messageboxSpecial in button1:
+
+// class name, instance name, equals, new, class name, parenthesis, semicolon
+            // L25 creating a instance for inherting class, mySecondClass 
+            mySecondClass msc = new mySecondClass();
+            MessageBox.Show(msc.myName);
+            textBox1.Text += msc.hairColor;
+
+            // L25 show contents (myWeight) which is in public void messageboxSpecial()
+            // using instance msc for class mySecondClass
+            msc.messageboxSpecial();
+
+We can use base. to show a message box of one of our public members, as follows, in our mySecondClass class:
+
+        public void messageboxSpecial()
+        {
+            // L25 display from inherited member, myWeight using base.
+            System.Windows.Forms.MessageBox.Show(base.myWeight.ToString());
+
+            // L25 use base. to display myName in messageboxSpecial
+            base.showMessage(base.myName);
+        }
+
+
+We can also make it, so that you can only use the derived class name and not the base classe name, to obtain information of
+a member.  We use the 'protected' access modifier to do this, instead of using 'public' in the base class.  For this example
+we will change the member myWeight from public to protected, in myClasss, which is the base classs.
+
+class myClass
+    {
+        // L25
+        public string myName = "Adam";
+        private int myAge = 18;
+		// L25 now only accessable through the derived class, but not here in the base class
+        protected int myWeight = 205;
+        public void showMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }    
+    }
+
+Now that myWeight is protected in myClass, it will not work in button1.
+
+            myClass mc = new myClass();
+           // L25 this will not work in base class, its protected
+           // MessageBox.Show(mc.myWeight);
+
+To replace a method inherted from the base.  We use the original method with 'new' and then alther the executable portion 
+with what we want.  For example, the method in our base class is:
+
+ public void showMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }    
+
+If we want to change our message from showing (message) to a title, for example, we would write it as follows in the derived
+class using 'new' and for access in the base class 'virtual.  This will display message + 'my title' instead of just the 
+contents of message if accessed now:
+
+// class base
+virtual new void showMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+		
+// derived class
+public new void showMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message, "my title");
+        }
+		
+
+To use button1 to display the overide message in 'showMessage' in the derived class
+
+		msc.showMessage("message portion");
+
+
+
+
+
+
+************************ highlights from the comments area *************************
+
+
+
+
+
+
+About virtual/overried vs new... they are the same if you're using instances the way you showed. But if you've used 
+something like: MyClass mc = new MySecondClass you wouldn't get the same result. Virtual/override would  use 2nd method
+and new would use 1st method.
+
+
+
+
+
+
+To those people who say Why do i need to learn this namespace,class,methods,properties,exceptions ,try and catch  and such 
+and such its because these things will help you better organize 
+your coding to sum it up, so don't complain. It will all make sense when you start coding programs and you can find sh*t to 
+fix.
+
+
+
+
+if ur using system then that means you are using all the properties, methods etc. in that namespace if ur using 
+system.Windows.Forms for example then u r using all the methods in properties etc. in that namespace. So if u r using 
+system but not system.windows.forms then u will have to type windows.forms.MessageBox.Show() if u want a msgbox instead 
+of MessageBox.Show()
+
+
+
+
+

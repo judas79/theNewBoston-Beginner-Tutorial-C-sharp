@@ -98,6 +98,9 @@
     <Content Include="Tutorial 24 Throwing Exceptions\L24 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 24 Throwing Exceptions\L24 myNamespaceCS.txt" />
     <Content Include="Tutorial 24 Throwing Exceptions\L24 formCS.txt" />
+    <Content Include="Tutorial 25 Inheritance and Overriding\L25 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 25 Inheritance and Overriding\L25 FormCS.txt" />
+    <Content Include="Tutorial 25 Inheritance and Overriding\L25 myNamespaceCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

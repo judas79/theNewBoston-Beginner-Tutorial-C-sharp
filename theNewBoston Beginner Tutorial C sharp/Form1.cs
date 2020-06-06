@@ -24,31 +24,38 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         private void button1_Click(object sender, EventArgs e)
         {
             // L23 create instance of a class: class name, instance name, equals, 
-            //new, class name, parenthesis, semicolon
-            myClass mc = new myClass("passes my Name thru");
-            MessageBox.Show(mc.propName);
-            textBox1.Text += mc.propName;
+            // class name, instance name, equals, new, class name, parenthesis, semicolon
+            // L25 creating a instance for inherting class, mySecondClass 
+            mySecondClass msc = new mySecondClass();
+            MessageBox.Show(msc.myName);
+            textBox1.Text += msc.hairColor;
 
-            // L23 read only example
-            textBox2.Text += mc.readName;
+            myClass mc = new myClass();
+            // L25 this will not work in base class, its protected
+            // MessageBox.Show(mc.myWeight);
+            msc.showMessage("message portion");
 
-            // L23 entered
-            mc.readName = "readOnlyName";
 
-            // L24 set myString to empty to cause exception
-            myClass.CheckString("");
-            myClass.CheckString2("");
+            // L25 show contents (myWeight) which is in public void messageboxSpecial()
+            // using instance mc for class mySecondClass
+             msc.messageboxSpecial();
+
+            /*
+                        // L23 read only example
+                        textBox2.Text += mc.readName;
+
+                        // L23 entered
+                        mc.readName = "readOnlyName";
+
+                        // L24 set myString to empty to cause exception
+                        myClass.CheckString("");
+                        myClass.CheckString2("");
+            */
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                myClass.CheckString2("");
-            }
-
-            catch  (Exception ex){ MessageBox.Show(ex.Message +"3"); }
 
         }
 
@@ -135,6 +142,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
