@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L23 create instance of a class: class name, instance name, equals, 
+            // class name, instance name, equals, new, class name, parenthesis, semicolon
+            // L25 creating a instance for inherting class, mySecondClass 
+            mySecondClass msc = new mySecondClass();
+            MessageBox.Show(msc.myName);
+            textBox1.Text += msc.hairColor;
+
+            myClass mc = new myClass();
+            // L25 this will not work in base class, its protected
+            // MessageBox.Show(mc.myWeight);
+            msc.showMessage("message portion");
+
+
+            // L25 show contents (myWeight) which is in public void messageboxSpecial()
+            // using instance mc for class mySecondClass
+             msc.messageboxSpecial();
+
+            // L26 inheriting from mySecondclass, makes members from both 
+            // myClass and mySecondClass available
+            myThirdClass mtc = new myThirdClass();
+            MessageBox.Show(mtc.hairColor);
+            mtc.myVoid();
+		}
+	}
+}

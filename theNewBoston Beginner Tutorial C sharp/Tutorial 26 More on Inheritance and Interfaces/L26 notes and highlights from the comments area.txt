@@ -1,0 +1,154 @@
+﻿Your derived class can only inherit from one base class, it cannot have multiple classes to inherit from, but many derived 
+classes can share the same base class.  Next we will create another class in our myNamespace.cs document, and inherit from
+base mySecondClass.  Since mySecondClass inherits from myClass, myThirdClass now inherits all the non private members from
+both of those classes:
+
+// L26 inherit from myClass, and mySecondclass using a daisy chain of inheritance through mySecondClass
+    }
+    class myThirdClass : mySecondClass
+    {
+
+    }
+
+To see this example render hairColor, using button1:
+
+// L26 inheriting from mySecondclass, makes members from both 
+            // myClass and mySecondClass available
+            myThirdClass mtc = new myThirdClass();
+            MessageBox.Show(mtc.hairColor);
+
+
+Next we will work on using interface.  We use the word interface, then give it a name;  this interface name, generally begins
+with a capital 'I' to help make it obvious that it is an interface and not a class, to others that may be using the code.  
+Inside an interface, you can create names for methods, properties, indexors, and events, but you cannot create a definition
+{executable portion within braces}, for them.  We will make a void in the interface, in which something can be passed.  
+Interface is also always public, and thier access cannot to be changed.
+
+    // L26 create interface, interface, 'I' + name, followed by braces
+    interface ImyInterface
+    {
+        void myVoid(string pass);
+    }
+
+Interfaces are used for inheriting into a class.  You can only inherit from one class, but can inherit from many interfaces.
+In the derived class you will be using to inherit from an interface, simply add a comma, after the colon, and add your inherited
+interfaces:
+
+
+    class myThirdClass : mySecondClass, ImyInterface
+    {
+        public string eyeColor = "red";
+
+        // L26 define void here, after inheriting it here
+        public void myVoid()
+        {
+            // L26 use base. to display my void in messageboxSpecial
+            base.showMessage("My Void");
+        }
+    }
+    // L26 create interface, interface, 'I' + name, followed by braces
+    interface ImyInterface
+    {
+        void myVoid();
+    }
+}
+
+
+Use button1 press to view myVoids contents:
+
+mtc.myVoid();
+
+
+
+
+
+
+
+*********************** highlights from the cmments area ************************
+
+
+
+
+
+
+Still don't know what the point of an interface is... 
+
+
+it can be used to make different kind of wrappers like decorator wrapper classes which make use of a complex subsystem 
+easier via the use of classes and interfaces. like when you call a method MessageBox.Show(Message) that method may be 
+internally calling different methods in the complex subsystem for example make the dialog box, buffer and write text etc...
+but the use of that interface makes it easier for the end progrmmer like us to just write .Show(Message); 
+
+
+
+
+
+you can think of it as a place holder for a return type with one exception the void does NOT return anything...
+example 
+
+int myMethod(){
+return 5;
+}//this will return an integer 
+
+//but the next example will not return anything 
+
+void anotherMethod(){
+MessageBox.Show("this will NOT return a value, notice no 'return' statement");
+}
+
+
+
+
+
+
+Interface is an empty class. A skeleton of a class, with all the method, and variable undefined so the class that 
+inheritance have to define them all. 
+
+
+
+
+
+
+also interface could be used as a reference to any concrete class which implement it. 
+
+ IMyInterface iM = new MySecondClass();
+ iM.MyVoid(); 
+
+or in metods as parametar : 
+
+void someMetod(IMyInterface iM){
+
+iM.MyVoid();
+
+}
+
+Then you can do this:
+
+someMetod(new PDFReader());    or    some Metod(new DOCReader())
+
+
+
+
+
+
+
+The interface doesn't "inherit" MySecondClass, it "implements" MySecondClass
+
+
+
+
+
+
+
+For those of you who do not understand the concept of interfaces I must tell you that it would make sense if you have learned
+the c++ first. This reminds me of a classes in c++ where in header file you declare function name or prototype whatever you 
+call it, and then in cpp file you define the class (write the code in it). The thing about interfaces is, if you declare a 
+method's name in an interface and for example you have 3 classes that inherit from the same interface, using same interface 
+reference you can access to all the methods of those 3 different classes. Correct me if I'm wrong, but that's how I see it.
+
+
+
+
+
+
+

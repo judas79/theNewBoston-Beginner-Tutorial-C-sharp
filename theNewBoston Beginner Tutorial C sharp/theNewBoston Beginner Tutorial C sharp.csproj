@@ -101,6 +101,9 @@
     <Content Include="Tutorial 25 Inheritance and Overriding\L25 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 25 Inheritance and Overriding\L25 FormCS.txt" />
     <Content Include="Tutorial 25 Inheritance and Overriding\L25 myNamespaceCS.txt" />
+    <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 FormCS.txt" />
+    <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 MyNamespaceCS.txt" />
+    <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 notes and highlights from the comments area.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +130,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="NewFolder1\" />
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
   </ItemGroup>
   <ItemGroup>
