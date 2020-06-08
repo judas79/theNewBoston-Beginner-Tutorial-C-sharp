@@ -104,6 +104,9 @@
     <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 FormCS.txt" />
     <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 MyNamespaceCS.txt" />
     <Content Include="Tutorial 26 More on Inheritance and Interfaces\L26 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 27 Indexers\L27 myNamespace.cs.txt" />
+    <Content Include="Tutorial 27 Indexers\L27 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 27 Indexers\L27 Form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

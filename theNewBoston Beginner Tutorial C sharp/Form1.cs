@@ -27,42 +27,12 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // class name, instance name, equals, new, class name, parenthesis, semicolon
             myClass mc = new myClass();
 
-            // L25 creating a instance for inherting class, mySecondClass 
-            mySecondClass msc = new mySecondClass();
-            MessageBox.Show(msc.myName);
-            textBox1.Text += msc.hairColor;
+            // L27 MB show what is in stringArray[1], using public string this[index] in myClass
+            MessageBox.Show(mc[1]);
 
-
-            // L25 this will not work in base class, its protected
-            // MessageBox.Show(mc.myWeight);
-            msc.showMessage("message portion");
-
-
-            // L25 show contents (myWeight) which is in public void messageboxSpecial()
-            // using instance mc for class mySecondClass
-             msc.messageboxSpecial();
-
-            // L26 inheriting from mySecondclass, makes members from both 
-            // myClass and mySecondClass available
-            myThirdClass mtc = new myThirdClass();
-
-            // L26 display hairColor
-            MessageBox.Show(mtc.hairColor);
-
-            // L26 display contents of myVoid
-            mtc.myVoid();
-
-            /*
-                        // L23 read only example
-                        textBox2.Text += mc.readName;
-
-                        // L23 entered
-                        mc.readName = "readOnlyName";
-
-                        // L24 set myString to empty to cause exception
-                        myClass.CheckString("");
-                        myClass.CheckString2("");
-            */
+            // messagebox to show that we are overwriting contents of stringArray[2] 
+            // with alternate item Tinny
+            MessageBox.Show(mc[2]="Tinny");
         }
 
 

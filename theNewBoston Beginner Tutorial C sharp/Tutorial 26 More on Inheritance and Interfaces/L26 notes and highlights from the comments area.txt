@@ -132,6 +132,8 @@ someMetod(new PDFReader());    or    some Metod(new DOCReader())
 
 
 
+
+
 The interface doesn't "inherit" MySecondClass, it "implements" MySecondClass
 
 

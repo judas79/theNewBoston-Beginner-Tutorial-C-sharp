@@ -1,0 +1,128 @@
+﻿We need button1 and an array variable inside a class for this tutorial on how to use indexers.  We will also create an string
+access modifier, because we are using a string.  The keywords for the array and access modifier must match, so if you used an
+int instead of a string your access modifier should match that.  In the access modifier instead of using the string arrays
+name, we will use 'this[with at least 1 parameter in here]'.
+
+    // L19 sub namespace
+    namespace mySubnamespace
+    {
+
+    }
+    class myClass
+    {
+        // L27 string access modifier, keyword string matches array keyword string,
+		// use keyword this instead of array name, enter 1 parameter
+        public string this[int index]
+            {
+
+            }
+        // L27 indexers, string array 3 items
+        string[] stringArray = {"Bob", "Carol", "Alice"};
+
+    }
+}
+
+In the field, we will use get; and set; as we did with the properties.  In the get and set we must use curly braces, to tell 
+the compiler, what we are going to do with the [index], and how we will read the information out of the stringArray.  So when
+index[which will be a decimal] is passed from the button1, return the index number passed through public string this, and that
+number will determine which item in the stringArray list is requested.  Instead of using 'value' as we did, in the set; 
+portion, we could also determine if value is valid instead setting its value.
+
+   class myClass
+    {
+        // L27 string access modifier,
+        public string this[int index]
+            {
+            // return the index passed through stringArray and 
+            // index what is passed through the [index] parameter
+            get { return stringArray[index]; }
+
+            // index number value determines which stringArray item is selected
+            set { stringArray[index] = value; }
+            }
+        // L27 indexers, string array 3 items
+        string[] stringArray = {"Bob", "Carol", "Alice"};
+
+    }
+}
+
+
+Now we will write some code to pass an  integer into our 'public class string this', to choose an item from the stringArray.
+First we create an instance of myClass, then to pass the indexes value to public string this[index], we use messagebox show,
+followed by the instance name for myClass, the the integer value, for the item we want to select from the stringArray.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L23 create instance of a class: class name, instance name, equals, 
+            // class name, instance name, equals, new, class name, parenthesis, semicolon
+            myClass mc = new myClass();
+
+            // L27 MB show what is in stringArray[1], using public string this[index] in myClass
+            MessageBox.Show(mc[1]);
+        }       
+
+
+To write to the array and change the displayed the item in button1 in form1:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L23 create instance of a class: class name, instance name, equals, 
+            // class name, instance name, equals, new, class name, parenthesis, semicolon
+            myClass mc = new myClass();
+
+            // L27 MB show what is in stringArray[1], using public string this[index] in myClass
+            MessageBox.Show(mc[1]);
+
+            // messagebox to show that we are overwriting contents of stringArray[2] 
+            // with alternate item Tinny
+            MessageBox.Show(mc[2]="Tinny");
+        }
+
+
+If you want to set the indexer to read only delete the set, or comment it out:
+
+class myClass
+    {
+        // L27 string access modifier,
+        public string this[int index]
+            {
+            // L27 return the index passed through stringArray and 
+            // index what is passed through the [index] parameter
+            get { return stringArray[index]; }
+
+            // L27 index number value determines which stringArray item is selected
+			// commented out to make indexer read only
+            // set { stringArray[index] = value; }
+            }
+        // L27 indexers, string array 3 items
+        string[] stringArray = {"Bob", "Carol", "Alice"};
+
+    }
+}
+
+
+
+
+
+********************** highlights from the comments area ***********************
+
+
+
+
+
+
+Before you start the tutorial you should read this: Indexers are pretty much classes that are used as arrays. They will 
+remind you of property's.. you declare them by typing: 
+public string this[int index]  // string can be replaced by whatever your array is
+{
+get;
+set;
+}
+
+
+
+
+
+Quick tip:
+Goto view > Error list and enable it. 
+Saves you some time becouse you dont need to hover the error.
