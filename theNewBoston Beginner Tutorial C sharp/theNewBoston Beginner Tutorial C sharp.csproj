@@ -107,6 +107,9 @@
     <Content Include="Tutorial 27 Indexers\L27 myNamespace.cs.txt" />
     <Content Include="Tutorial 27 Indexers\L27 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 27 Indexers\L27 Form1CS.txt" />
+    <Content Include="Tutorial 28 Structs\L28 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 28 Structs\L28 Form1CS.txt" />
+    <Content Include="Tutorial 28 Structs\L28 myNamespaceCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,7 +136,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
   </ItemGroup>
   <ItemGroup>

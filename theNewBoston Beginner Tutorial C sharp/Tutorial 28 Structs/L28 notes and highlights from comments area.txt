@@ -1,0 +1,322 @@
+﻿We will need myNamespace.cs and Form1 with button1, for this lesson on structs.  In the nameSpace.cs we will creat the struct.
+First we type Struct, then Struct name, followed by curly braces.  Structs cannot inherit from classes or another struct, but 
+inherit from interfaces(see at bottom of lesson).
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// added L20
+using myNamespace;
+
+// L19 renamed from theNewBoston_Beginner_Tutorial_C_sharp
+namespace myNamespace
+{
+    // L28 struct, name, braces
+    struct Client
+    {
+
+    }
+    // L19 sub namespace
+    namespace mySubnamespace
+    {
+    }
+
+Next we will go in our form to button1 and enter a couple of variables as an example.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L28 variables for struct example
+            string ClientName = "Peter";
+            int ClientAge = 34;
+        }
+
+Lets say we wanted to add another client to the other variables.  Since it is only 1 more client it wouldn't be so bad to do 
+it like this:
+			// L28 variables for struct example
+            string ClientName = "Peter";
+            int ClientAge = 34;
+			// L28 variables for struct example
+            string ClientName2 = "Peter2";
+            int ClientAge2 = 35;
+
+Now if we had 40 clients and included their address and SS, phone, and Id#.  It would become impractical to make new variables
+for all thos seperate items.  So instead we will create the struct, as we already have done, in myNamespace.cs, and within the
+braces will create public strings and int variables to store the names and ages in single variables, for multiple values, inside 
+the struct.
+
+namespace myNamespace
+{
+    // L28 struct, name, braces
+    struct Client
+    {
+        // public variables for holding the values of clients
+        // name and age inside of the struct
+        public string Name;
+        public int Age;
+    }
+
+
+Next we will go back to our form1 and comment out the variables we had there and replace them with two single variables, 
+representing age and name.  This will clean up the code making it more organized.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L28 variables for struct example
+            // string ClientName = "Peter";
+            // int ClientAge = 34;
+
+            // we replace variables above with, an instance of the struct
+            // struct name, name, equals, new, struct name, parenthesis, for each client
+            Client client1 = new Client();
+            Client client2 = new Client();
+
+            // enter first clients name and age
+            client1.Name = "Bob";
+            client1.Age = 34;
+
+            // enter second clients name and age
+            client1.Name = "Carol";
+            client1.Age = 35;
+
+        }
+
+
+Next, to be able to easily clear the clients information we will create a method in our struct.  Otherwise we would have to
+clear thier information one at a time in our form1.cs:   Client1.Name=""; and again for the Age.
+
+ struct Client
+    {
+        // public variables for holding the values of clients
+        // name and age inside of the struct
+        public string Name;
+        public int Age;
+
+        // method to clear clients information
+        public void clearClientInfo()
+        {
+            Name = "";
+            Age = 0;
+        }
+    }
+}
+
+
+Otherwise we would have to
+clear thier information one at a time in our form1.cs:   
+
+Client1.Name="";
+Client1.Age= 0;
+
+We can clear client2 or client1 info, in one line:
+
+
+            // use void method to clearClientInfo
+            client2.clearClientInfo();
+
+
+We can also add properties, events, or indexes to our struct, but for this next example we will add a constructor; ctor TAB
+If variables fields already exist in the struct, make sure they are set to something or you will get an error, because there
+has to be a default setting.  You also have to pass at least 1 parameter in your constructor (string name).
+
+ struct Client
+    {
+        // add a constructor c t o r TAB, set varibles to something if they exist below the constroctor
+        public Client(string name)
+        {
+            Name = name;
+            Age = 0;
+        }
+
+Now if we want to add another client name we can add them as a parameter, from the form1 page.  But we can also leave the 
+parameter empty.
+
+Client client1 = new Client("chang");
+
+or
+
+Client client1 = new Client();
+
+
+We can add a interface to our struct and inherit from it:
+
+
+
+
+
+
+
+
+*********************** highlights from the comments area ************************
+
+
+
+
+
+
+Basically, only in the default access specification for the data of that type. In a struct, the members are public access by
+default--but in a class, they are private by default. You still need a constructor to create either, and each can hold member
+variables and methods. 
+
+
+
+
+
+
+you are right, interfaces can't have fields defined in it, the only thing that are allowed to be defined in an interface are
+methods definitions.
+
+
+
+
+
+
+
+You didn't mention the most important aspect of structs. They are *value* types. When you create a struct and pass it to a
+method you are passing a copy to the method. When you create an object from a class and pass it to a method you are passing
+a copy of the *pointer* only.
+
+The difference is subtle but important. An object can be modified by a method but a struct cannot. 
+
+Recommendation: Avoid structs. There's no advantage to them and they can cause you grief if you misunderstand their use.
+
+
+
+
+
+
+
+
+
+i'm not sure if you are talking about structures or classes being allocated on the heap, but structures are actually allocated on the stack.
+references:
+- tried to post the site but youtube wouldnt alllow me, you can google it.
+- book: Microsoft Visual C# 2012 Step by Step
+
+
+This is not entirely true. All fields of the class object are stored in the heap - yes. No matter the reference type they are
+or the type of values.
+But for the structure, everything happens like this: value type fields are stored on the stack, and reference type fields are
+stored again on the heap. In the stack there is only a link to a place in the heap. This means that if a structure contains 
+an instance of a class (reference type), then this instance will be on the heap, where it should be. And... these are cases, 
+sometimes you need to think carefully about of assigning / changing reference data of one structure and the assignment /
+influence of this data on the contents of another structure
+
+
+
+
+
+
+No advantage to structs? Are you serious? There are plenty of times when you want to pass a type by value rather than by 
+reference. If value types like int and float behaved like reference types you'd pull your hair out. The ability to create 
+your own value types is incredibly useful.
+
+
+
+
+
+
+
+
+Also value types store actual data, if you copy it you make the copy of the data too. Reference types store only references 
+of objects (like a pointer). Make a class and then struck both with the name Client and one field and use this code to test 
+both: Client c1 = new Client(); c1.name = "Adam"; Client c2 = c1;  c2="Bob". In struct c1 will not change because c2 was his
+copy and it has a new value now. In class c1 will change every time we change c2 because they reference the same object. 
+
+
+
+
+
+
+Nice non argument there.  Since Java - ints and floats are value types - same is in C#. No one is arguing for these to be 
+reference types but structs are useless and dangerous in modern languages. One reason why C# is less popular than Java.  
+Heck at least C++ uses them properly by using different operators. In C# it's not  obvious whats a struct vs a class since 
+they both use the dot.   Now stop apologizing. 
+
+
+
+
+
+
+Structs are value types not reference types so if you were to do something like 
+
+struct MyStruct 
+{
+     int number;
+}
+MyStruct obj = new MyStruct(); 
+obj.number = 5;
+ MyStruct obj2 = obj; 
+obj2.number = 6;
+ Console.WriteLine(obj.number); //this will print 5 if struct(value type) it will print 6 if class(reference type)
+
+ Definition of objects : Simply things in memory
+ Definition of reference type variables : variables that point to an object out on the heap.
+ Definition of instances : things that point to objects such as reference type variables and value type variables(obj and 
+ obj2).
+
+There is a reason why people use the words instances and objects interchangeably it's because a instance points to a object 
+so we tend to think technically a instance is an object.
+If MyStruct was a class it would print 6 because both obj and obj2 are both referencing the same object allocated out on the
+heap. The word reference is used when a instance(obj,obj2) is pointing to an object out on the heap. If it's a struct then 
+obj2 and obj will both allocate memory on the stack. (struct)When i set obj2 to obj it will copy the contained value of obj 
+into  a new object so any changes made to obj2 won't affect obj and vice versa because they are two different objects if that
+makes sense.
+
+
+so youre saying if i passed a struct (object? or whatever a struct thing is called ) through a method or an object and change
+d the value in the method, the outside struct thing would actually change right but an object if passed through a method the
+value of the real object stays the same ?
+
+
+
+
+
+Classes are much better though. Little to no issue in foreach loops.
+
+
+
+
+
+
+As Adam said struct can inherit only from interface. What he didn't say is that struct is value type and class is a reference
+type. According to MSDN you should use struct when you're dealing with the data that won't change after the object is created
+and class is more for data that you intend to change plus when you need stronger inheritance.
+
+
+
+
+
+
+LINK:
+
+http://stackoverflow.com/questions/13049/whats-the-difference-between-struct-and-class-in-net?newreg=3ce0cf73c6044dab9995595eda011f80
+
+
+
+
+
+
+
+The difference between a class and a struct... Structs get cached on the stack when building an instance, Classes are put on
+the Heap... as far as I know. This video doesn't go over the difference so please correct me if I am wrong. Thanks!
+
+
+
+
+
+
+
+computer memories have two different  sections called stack and heap. When you create an instance of an object the adress of
+object will be on the stack (not itself but its adress) the value inside the stack points out the heap area, where the real 
+value stored. But when you create a structure, it stores the data inside the stack it doesn't have anything with the 
+addresses.
+If you don't know what adress and pointing means you should search for Pointers or the basic Assembly knowledge.
+
+
+
+
+
+
+

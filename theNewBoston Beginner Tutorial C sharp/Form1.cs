@@ -23,16 +23,57 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L23 create instance of a class: class name, instance name, equals, 
-            // class name, instance name, equals, new, class name, parenthesis, semicolon
-            myClass mc = new myClass();
+            // L28 variables for struct example
+            // string ClientName = "Peter";
+            // int ClientAge = 34;
+            Client client1 = new Client();
+            // we replace variables above with, an instance of the struct
+            // struct name, name, equals, new, struct name, parenthesis, for each client
+            // after addin a constructor to our struct we can now add a new client name
+            // in the parameter new Client(new name here);  or leave it blank
 
-            // L27 MB show what is in stringArray[1], using public string this[index] in myClass
-            MessageBox.Show(mc[1]);
+            Client client2 = new Client();
 
-            // messagebox to show that we are overwriting contents of stringArray[2] 
-            // with alternate item Tinny
-            MessageBox.Show(mc[2]="Tinny");
+            // enter first clients name and age
+            client1.Name = "Bob";
+            client1.Age = 34;
+            
+
+            // enter second clients name and age
+            client2.Name = "Carol";
+            client2.Age = 35;
+
+            // use void method to clearClientInfo
+            client2.clearClientInfo();
+
+            // ********** create 3rd client for personal TEST CODE NOT WORKING ************
+
+            // enter second clients name and age
+            Client client3 = new Client();
+            client3.Name = "Ted";
+            client3.Age = 36;
+
+            for (int i = 0; i < 2; i++)
+            {
+            if (i <= 0)
+                {
+                MessageBox.Show(client3.Name);
+                MessageBox.Show(client3.Age.ToString());
+                i++;
+                textBox1.Text += "if " + i.ToString();
+                }
+           
+            else
+                {
+                    
+                textBox1.Text += " else " + i.ToString();
+                MessageBox.Show(client1.Name);
+                MessageBox.Show(client1.Age.ToString());
+                i--;
+                }
+                
+            }
+
         }
 
 
