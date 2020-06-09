@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// added L20
-using myNamespace;
 
-// L19 renamed from theNewBoston_Beginner_Tutorial_C_sharp
 namespace myNamespace
 {
     // L29 partial key
     partial class myClass
     {
         
-        public string Name = "Mr. Ropper";
-        public int Age = 46;
+        public string HairColor = "Brown";
+        public bool Glasses = false;
     }
 }
-

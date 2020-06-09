@@ -1,0 +1,31 @@
+﻿In this turorial we well use a button1 and a class, to show how to use a partial keyword.  Set the class up to have a key
+field, consisting of a public string, and a public int, each with a value.  If we want to finish difining this class into a
+file, we will add partial, to the beginning of the class name.
+
+namespace myNamespace
+{
+	// L29 partial key
+    partial class myClass
+    {        
+        public string Name = "Mr. Ropper";
+        public int Age = 46;
+    }
+}
+
+If we now made another class with the same name, they would share the things within both parts of the two classes.  So create a
+new class file; right click in solution explorer, Add, Class.  Set it up the same as the original class.
+
+namespace myNamespace
+{
+    // L29 partial key
+    partial class myClass
+    {
+        
+        public string HairColor = "Brown";
+        public bool Glasses = false;
+    }
+}
+
+Now the combined fields, 4 of them, belong to both partial classes.  So now we will go over to our button and interact with
+our fields.
+
