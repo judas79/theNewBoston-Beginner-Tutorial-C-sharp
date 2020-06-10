@@ -27,5 +27,138 @@ namespace myNamespace
 }
 
 Now the combined fields, 4 of them, belong to both partial classes.  So now we will go over to our button and interact with
-our fields.
+our fields, using an instance.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L29 partial classes
+            // create instance of myClass
+            myClass mc = new myClass();
+            MessageBox.Show("Glasses " + mc.Glasses.ToString());
+            MessageBox.Show(mc.Age.ToString());
+            MessageBox.Show(mc.HairColor);
+            MessageBox.Show(mc.Name);
+        }
+
+We can also share a method between the two classes, using partial.  We cannot provide implimintation for it, with curly 
+braces, within the original class though, but in the second partial class we can.  In both partial classes we will type the 
+method.  We can only use this type of method within a class.
+
+namespace myNamespace
+{
+    // L29 partial key
+    partial class myClass
+    {
+        public string HairColor = "Brown";
+        public bool Glasses = false;
+
+		// L29 share method using partial, no implimintation
+		partial void Message(string message);
+    }
+}
+
+Second partial class:
+
+namespace myNamespace
+{
+    // L29 partial key
+    partial class myClass
+    {
+        public string HairColor = "Brown";
+        public bool Glasses = false;
+
+		// L29 share method using partial, {providing implimintation}
+		partial void Message(string message);
+		{
+			System.Windows.Forms.MessageBox.Show("message");
+		}
+    }
+}
+
+Since we can only use the above method within a class, we will use a different public method to display its contents.  In
+class1.cs we add:
+
+namespace myNamespace
+{
+    // L29 partial key
+    partial class myClass
+    {
+        // variable fields
+        public string HairColor = "Brown";
+        public bool Glasses = false;
+
+        // L29 share method using partial, {providing implimintation}
+        partial void Message(string message)
+        {   
+            // shortcut type m b TAB to create the messagebox pathway
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        // public void method to display Messages parameter, string message
+        public void ShowMessage(string message)
+        {
+            Message(message);
+        }
+    }
+}
+
+Do display the Message message through public method ShowMessage, using button1:
+
+			// L29 partial classes
+            // create instance of myClass
+            myClass mc = new myClass();
+            
+            mc.ShowMessage("Clients");
+
+
+
+
+
+
+
+***************************** highlights from the comments area ***************************
+
+
+
+
+
+
+
+ok, so at the end of the tutorial you wrote, mc.ShowMessage("Adam");, but what if i want to display the Name, or HairColor, 
+or Age, how should i modify the code? I am trying to learn more on each of your tutorials by modifying and playing with them.
+
+// create instance of class name
+myClass Mc = new myClass();
+
+// show contents of name using messagebox
+Mc.ShowMessage(mc.Name);
+
+
+
+
+
+
+It's bad practice to use partial classes. They are only needed for the Visual Studio design tools.
+
+
+
+
+
+
+Why do you type out the whole thing, as apposed to just putting:
+using System.Windows.Forms; 
+at the top
+Works for me
+
+
+
+
+
+
+i think it's more about neatness, you just divide your class in multiple files so that for example you can save the fields 
+in one file and methods in another file. but in the end it's not that necessary
+
+
+
+
+
 

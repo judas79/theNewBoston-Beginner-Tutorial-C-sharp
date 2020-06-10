@@ -12,9 +12,9 @@ namespace myNamespace
     // L29 partial key
     partial class myClass
     {
-        
         public string Name = "Mr. Ropper";
         public int Age = 46;
+        partial void Message(string message);
     }
 }
 

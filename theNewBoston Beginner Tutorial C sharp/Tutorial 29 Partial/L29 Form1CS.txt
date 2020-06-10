@@ -1,1 +1,40 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L29 partial classes
+            // create instance of myClass
+            myClass mc = new myClass();
+            MessageBox.Show("Glasses " + mc.Glasses.ToString());
+            MessageBox.Show(mc.Age.ToString());
+            MessageBox.Show(mc.HairColor);
+            MessageBox.Show(mc.Name);
+
+            // L29 display message from private method Message
+            // using public method ShowMessage
+            mc.ShowMessage("Clients");
+
+        }
+	}
+}
