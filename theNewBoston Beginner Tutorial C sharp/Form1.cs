@@ -23,18 +23,21 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L29 partial classes
-            // create instance of myClass
-            myClass mc = new myClass();
-            MessageBox.Show("Glasses " + mc.Glasses.ToString());
-            MessageBox.Show(mc.Age.ToString());
-            MessageBox.Show(mc.HairColor);
-            MessageBox.Show(mc.Name);
+            // L30 how to access class consisting of fields and methods
+            // that are all static; instance will not work
+            MessageBox.Show(myClass.Age.ToString());
 
-            // L29 display message from private method Message
-            // using public method ShowMessage
-            mc.ShowMessage("Clients");
+            // L30 create an instance that has no use because all members of class are static
+            //myClass mc = new myClass();
+            //mc.  No identifiers in the list for the variable fields or method.
 
+            // L30 show messagebox using mySecondClass, to show method Message
+            // contents, that was inherited from abstract myClass
+            mySecondClass.Message("inherited from abstract class");
+
+            // L30 instance of mySecondClass used to display messagebox of inherited message
+            mySecondClass msc = new mySecondClass();
+            msc.ShowMessage("instance used here");
         }
 
 

@@ -1,0 +1,124 @@
+﻿Create a button1 and a class with two static fields and one static method, for this lesson on the keyword, abstract.
+
+namespace myNamespace
+{
+    // L30 abstract
+    class myClass
+    {
+        // public static fields
+        public static string Name = "Mr. Ropper";
+        public static int Age = 46;
+
+        // L30 public static method
+        public static void Message(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+    }
+}
+
+As this class is currently, there is no use in making an instance, for this class, because all items are static.  If you 
+create an instance:
+
+			myClass mc = new myClass();
+            mc.
+You will notice the fields will be empty, in the fields, when you try to use it.
+
+
+If you want to access the class from within the button1, you would add this to execute it; without an instance:
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(myClass.Age.ToString());
+        }
+
+
+To stop the user from creating an instance (that doesn't have any use); but to stop it from being created we add abstract
+before the class name in our myNamespace.cs doc.:
+
+namespace myNamespace
+{
+    // L30 abstract, inhibits instances from being created
+    abstract class myClass
+    {
+	}
+
+You can also apply abstract to members of, events, properties, and indexers. The abstract members also must be in an abstract 
+class, to work.   Abstract methods must have an access modifier, but cannot have an initializer, ther for no {body}. 
+The abstract keyword is commonly used, with the purpose of being overriden, eventually, using a different class that has 
+inherited it, to overwrite it.  To demonstrate this we will create an abstract 
+'show messasge' method in our class.
+
+        // L30 abstract method, must have access modifier, but no initializer {body}
+        public abstract void ShowMessage(string message);
+
+
+The second class, that is inheriting myClass, along with the abstract statement, to be overwritten, will use its own method,
+to do so.  When using the keyword 'override' after you have comleted typing the word override, the VS browser will allow you
+to click on the method being inherited, and will generate the rest of the code for you, and we can change the portion, in the
+body of that generated method.
+
+    // L30 create second class to override ShowMessage by inheritting myClass
+    class mySecondClass : myClass
+    {
+        // access modifier, use keyword override for myClasses ShowMessage method
+        // after typing 'override' click the ShowMessage, in browser, and the rest will be generated
+        public override void ShowMessage(string message)
+        {
+			// we will comment this out and write our own code here
+            //throw new NotImplementedException();
+
+			// our over written code content
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+    }
+
+
+We can now use mySecondClass or an instance of mySecondClass to view the messagebox created in the inherited myClasses
+statement, inside of an abstract keyword, then being inherited by a public mySecondClass, and using the keyword override to overwrite
+what was originally in it.  To view this using button1:
+
+            // L30 show messagebox using mySecondClass, to show method Message
+            // contents, that was inherited from abstract myClass
+            mySecondClass.Message("inherited from abstract class");
+
+            // L30 instance of mySecondClass used to display messagebox of inherited message
+            mySecondClass msc = new mySecondClass();
+            msc.ShowMessage("instance used here");
+
+
+
+
+
+
+*************************** highlights from the comments area **************************
+
+
+
+
+
+
+
+what is the difference between virtual method and abstract method ?
+
+
+abstract method forces implementation into other classes. Forces you to use it...
+
+
+
+
+
+
+
+just type mbox then the press the (Tab) button twice
+
+
+
+
+
+
+this really isnt a good example of when to use abstract. Abstract is to be used when modelling a type hierarchy where it 
+does not make sense to be able to create an instance of the base class. For example you may have a class vehicle, with 
+child classes for each vehicle type, however vehicle itself is abstract, and you would only allow instants of the inherited
+classes. Here you would be more suited to create a static class

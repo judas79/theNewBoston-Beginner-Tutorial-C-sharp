@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +114,9 @@
     <Content Include="Tutorial 29 Partial\L29 myNamespaceCS.txt" />
     <Content Include="Tutorial 29 Partial\L29 Form1CS.txt" />
     <Content Include="Tutorial 29 Partial\L29 class1CS.txt" />
+    <Content Include="Tutorial 30 Abstract override\L30 notes highlights from comments area.txt" />
+    <Content Include="Tutorial 30 Abstract override\L30 myNamespaceCS.txt" />
+    <Content Include="Tutorial 30 Abstract override\L30 Form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
