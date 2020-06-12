@@ -1,0 +1,122 @@
+﻿For this lesson we will need a button1 and a class with three void methods, a public void, and two void methods with string
+parameters.  If we wanted to pass both of the parameters through, the strings, you will need to create delegate.  A delegate
+is a list of methods, than can be called at the same time, to pass the parameters through.
+
+namespace myNamespace
+{
+    // L31 abstract, inhibits instances from being created
+    class myClass
+    {
+        // L31
+        public void ShowThoseMessages()
+        {
+
+        }
+
+        // L31 void method
+        void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        // L31 void method
+        void ShowAnotherMessage(string a)
+        {
+            System.Windows.Forms.MessageBox.Show(a, "Test");
+        }
+    }
+}
+
+To create a delegate, we write keyword delegate.  Then we decide what kind of return method, delegate should  be.  We will
+use void, since both of the parameters we want to pass are in void methods.  Then give the method a name, the in parenthesis,
+the type of parameters being passed and a string name.  If the parameter was not a string, or if the method of one of the 
+statements was not void, delegate would not be able to be used.  Parameter and method types must match.
+
+ class myClass
+    {
+        // L31 delegate, type of method based on methods being passed.
+        // delegate method name, types of parameters being passed, parameter name
+        delegate void myDelegate(string myString);
+
+
+To instantiate our delegates we will create an instance in the public ShowThoseMessages method.  We add the delegates to the
+list, but do not pass or invoke them, so no parenthesis after the delegate names.  Putting parenthesis behind the name would
+invoke the {body} of the void method, to execute.  To call the ShowThoseMessages, within it, we use the instance to do so.
+
+ class myClass
+    {
+        // L31 delegate, type of method based on methods being passed.
+        // delegate method name, types of parameters being passed, parameter name
+        delegate void myDelegate(string myString);
+
+        // L31 instantiate our delegate
+        public void ShowThoseMessages()
+        {
+            // after creating instance add method to the list of delegates, no parenthesis
+            myDelegate md = new myDelegate(ShowMessage);
+
+            // add second method to delegate list, 
+            // method is not being passed, so no parenthesis
+            md += ShowAnotherMessage;
+
+			// call ShowThoseMessages to pass string payload to delegate strings
+            md("Payload goes here");
+			
+        }
+
+        // L31 void method
+        void ShowMessage(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
+        }
+        // L31 void method
+        void ShowAnotherMessage(string a)
+        {
+            System.Windows.Forms.MessageBox.Show(a, "Test");
+        }
+
+
+So now we will go to our button1 and create another instance of our class, to initialize our delegate to show our parameters:
+
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L31 create instance to display the contents of our paeameters
+            // in myClass
+            myClass mc = new myClass();
+
+            // L31 call the method ShowThoseMessages in myClass using instance mc
+            mc.ShowThoseMessages();
+        }
+
+
+So, delegates are useful if you want to call multiple like methods with the same parameter types.  More use of delegates in
+the events turorial.
+
+
+
+
+
+
+************************** highlights from the comments area *************************
+
+
+
+
+
+
+if c# is not your first language, u won't need most of the features native to c# but u will need delegates in c# if you want
+to use events.
+
+
+
+
+
+
+Delagates are usefull for CALLBACKS!!!!!!!!!!!!!!!!!!! all the rest are just stories
+
+
+
+
+
+
+

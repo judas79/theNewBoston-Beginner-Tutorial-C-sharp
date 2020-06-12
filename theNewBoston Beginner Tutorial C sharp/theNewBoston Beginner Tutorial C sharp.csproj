@@ -117,6 +117,9 @@
     <Content Include="Tutorial 30 Abstract override\L30 notes highlights from comments area.txt" />
     <Content Include="Tutorial 30 Abstract override\L30 myNamespaceCS.txt" />
     <Content Include="Tutorial 30 Abstract override\L30 Form1CS.txt" />
+    <Content Include="Tutorial 31 Delegates\L31 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 31 Delegates\L31 Form1CS.txt" />
+    <Content Include="Tutorial 31 Delegates\L31 myNamespaceCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

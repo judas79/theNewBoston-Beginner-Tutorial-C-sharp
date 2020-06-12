@@ -23,21 +23,12 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L30 how to access class consisting of fields and methods
-            // that are all static; instance will not work
-            MessageBox.Show(myClass.Age.ToString());
+            // L31 create instance to display the contents of our paeameters
+            // in myClass
+            myClass mc = new myClass();
 
-            // L30 create an instance that has no use because all members of class are static
-            //myClass mc = new myClass();
-            //mc.  No identifiers in the list for the variable fields or method.
-
-            // L30 show messagebox using mySecondClass, to show method Message
-            // contents, that was inherited from abstract myClass
-            mySecondClass.Message("inherited from abstract class");
-
-            // L30 instance of mySecondClass used to display messagebox of inherited message
-            mySecondClass msc = new mySecondClass();
-            msc.ShowMessage("instance used here");
+            // L31 call the method ShowThoseMessages in myClass using instance mc
+            mc.ShowThoseMessages();
         }
 
 
