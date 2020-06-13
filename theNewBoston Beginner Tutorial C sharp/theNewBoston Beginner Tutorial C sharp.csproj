@@ -120,9 +120,9 @@
     <Content Include="Tutorial 31 Delegates\L31 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 31 Delegates\L31 Form1CS.txt" />
     <Content Include="Tutorial 31 Delegates\L31 myNamespaceCS.txt" />
-    <Content Include="Tutorial 32 Events\L32 notes and highlights from comments area.txt" />
-    <Content Include="Tutorial 32 Events\L32 Form1CS.txt" />
-    <Content Include="Tutorial 32 Events\L32 myNamespaceCS.txt" />
+    <Content Include="Tutorial 32 Events Subscribers\L32 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 32 Events Subscribers\L32 Form1CS.txt" />
+    <Content Include="Tutorial 32 Events Subscribers\L32 myNamespaceCS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
