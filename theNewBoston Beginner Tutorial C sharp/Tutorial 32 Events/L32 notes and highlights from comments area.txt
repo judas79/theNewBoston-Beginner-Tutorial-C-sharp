@@ -1,0 +1,116 @@
+﻿In this tutorial we will need a buttton1 and a class with a public property, to create an event.
+
+namespace myNamespace
+{
+    class myClass
+    {
+        // L32 create empty var string name
+        string name = "";
+
+        // L32 create public string property
+        public string Name
+        {
+            get { return name; }
+            set { name = value;}
+        }
+    }
+}
+
+
+Next, we will create our public event.  Then we will use delegate to determine which trturn method is used to pass the 
+parameter to our subscriber method.  A subscriber method. is any method used when another method calls it because of an event
+is raised or happens. 
+For instance when button1 is pushed, raising the event, the method:
+
+private void button1_Click(object sender, EventArgs e)
+
+is called, making this method, the subscriber to the button being pushed, event.  In this example, void is the return type, 
+and the two parameters being returned are an object named 'sender', and an event arguement.  An event arguement is information
+about the event.  Event is the default delegate for this event type method, with the void, object, and event arguements.
+
+After we added public event, to our class, we will add eventhandler, to handle the event information being passed from the EventArgs e parameter,
+which is nothing.  So 'event handler' is used specifically to empty events being passed to it.  Next we will name it to reflect what it does 
+onPropertyChange, because this method will be raised whenan event triggers it, followed by a colon.  To clarify when somehting changes in 
+'public string Name' then onPropertyChange will be triggered.
+
+		// L32 create public keyword event, delegate to return  what parameter passed
+        // to subscriber method, handle the event parameter, event method name
+
+        public event EventHandler OnPropertyChanged;
+
+
+
+To raise the event when the button is clicked, we add the method onPropertyChange, in the set, portion of the 'public string name', method.  We 
+then pass the sender parameter to 'this' which means the class we are in 'myClass', then since we are passing no information about the event, we
+use new eventArgs, to pass no event information.
+
+				// L 32 to raise the event and pass to 'this' (myClass)
+                // pass no event information EventArgs()
+                OnPropertyChanged(this, new EventArgs());
+
+Now to use button1 to trigger the event, we will first create an instance of myClass.  Then we will create the event handler for out event, 
+which is the change in our properties that triggers the event.  Note, while we are creating the event handler, we will use VS to generate a 
+portion of the code, including mainly of the 'Mc_OnPropertyChanged' method.  We will type in 'mc.OnPropertyChanged +=' and a popup will appear
+with 'Mc_OnPropertyChanged' 'click tab'.  Do so to generate the code.
+
+			// L32 create instance mc to trigger event
+            myClass mc = new myClass();
+
+            // create an event handler for our property change, event
+            // after typing += double click popup Mc_OnPropertyChanged to generate the following method
+            mc.OnPropertyChanged += Mc_OnPropertyChanged;
+
+        }
+
+        private void Mc_OnPropertyChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
+We will replace the throw in the body, with a messagebox, to notify us the passed value has changed the properties, in an event:
+
+
+ private void Mc_OnPropertyChanged(object sender, EventArgs e)
+        {
+            // this message does not change the properties, but notifies us that they have changed
+            MessageBox.Show("This was caused by an event, because properties have changed");
+        }
+
+Finally we will add the change in our properties var 'name', to change the properties, and cause an event.
+
+			// catalist change of property to cause the event
+            mc.Name = "Trigger";
+
+
+
+
+
+************************ highlights from the comments area *************************
+
+
+
+
+
+
+
+haven't finished watching this yet, but I think i understand why this was so hard to understand...until now. 
+"subscriber methods" is the culprit to the confusion. Just call it a delegate. I delegate essentially holds a list of 
+methods it'll call when you call the delegate. So an event just calls a delegate when the event happens. Since we 
+know from the previous video that a delegate is just a grouped up list of other methods...it pretty much explains 
+itself now.
+
+
+
+
+
+
+
+So an event is basically a container for delegates, similar to how delegates are containers for methods of a matching 
+signature. Got it.
+
+
+
+
+
+
