@@ -23,16 +23,24 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L32 create instance mc to trigger event
-            myClass mc = new myClass();
+            /* L33 NOT a ternary operator
+            string myString = "";
+            if (checkBox1.Checked)
+                myString = "Checkbox1 is Checked";
+            else
+                myString = "Checkbox1 is Not Checked";
+            MessageBox.Show(myString);
+            */
 
-            // create an event handler for our property change, event
-            // after typing += double click popup Mc_OnPropertyChanged to generate the following method
-            // all code until the end of button1 will be generated for you
-            mc.OnPropertyChanged += Mc_OnPropertyChanged;
+            // L33 ternary operator to a string
+            // string, name, with something to evaluate in parenthesis
+            // question mark, 
+            string myString = (checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked";
 
-            // catalist change of property to cause the event
-            mc.Name = "Trigger";
+            MessageBox.Show(myString);
+
+            // L33 ternary operators being passed in as a parameter, with messagbox title, at the end
+            MessageBox.Show((checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked", "as a parameter");
         }
 
         private void Mc_OnPropertyChanged(object sender, EventArgs e)
@@ -139,6 +147,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

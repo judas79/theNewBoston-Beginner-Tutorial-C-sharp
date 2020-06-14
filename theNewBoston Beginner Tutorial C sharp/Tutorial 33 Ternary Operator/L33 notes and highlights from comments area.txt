@@ -1,0 +1,88 @@
+﻿In this tutorial we will need a button and a checkbox, to learn how to usr the ternary operator.  In the button1 area, create string
+myString set it to empty. Then create an if and else statement, to say wheather the checkbox is checked or not, in a messagebox.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L33 Not a ternary operator
+
+            string myString = "";
+            if (checkBox1.Checked)
+                myString = "Checkbox1 is Checked";
+            else
+                myString = "Checkbox1 is Not Checked";
+            MessageBox.Show(myString);
+        }
+
+Above is not a ternary operator, but and if statement used as an example, to help define what the differences are between and if 
+statement and ternary operator.  So comment the if statement out.  To use a ternary operator we first create a string that equals
+something that you would like to compare, to get a true or false, like what an if statement does, within its parenthesis.  Then a
+question mark, which means, what you whant the program to do if the item in the parenthesis is true.  Next, in parenthesis, type
+what you want the ternary operator to do if its true, the add a colon, and then type what you want the operator to do if the statement
+is false. End it with a semi-colon.
+
+			// ternary operator
+            // string, name, with something to evaluate in parenthesis
+            // question mark, 
+            string myString = (checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked";
+
+We will end the ternary operator with a message box to display it.  The ternary operator will do what the if statement does, compare
+two items, and evaluate them to be true or false.  The items that are to be compared, do not have to be bools; ints will work also: 
+
+			string myString = (checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked";
+
+            MessageBox.Show(myString);
+
+
+You can also pass a ternary operator directly as a parameter.  This condenses things down to one line, making it a little harder for
+others to read.  Notice the parameter for the messagebox title is added at the end:
+
+
+			// L33 ternary operators being passed in as a parameter, with messagbox title, at the end
+            MessageBox.Show((checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked", "as a parameter");
+
+
+
+
+
+
+*************************** highlights from the comments area **************************
+
+
+
+
+
+
+Than what's the point of if statement? I mean, you can already use switch for multiple cases, and TO covers single cases, where does 
+if even fit? is it just for educational purposes?
+
+rubjellyonme I'm still not sure. It's just convenient, like implicit Boolean statements.
+
+whats an implicit boolean statement?
+and for readability IF is much nicer to see and explains to me better whatI want, if they are the exact same at run time and ones 
+not compiled in a more efficient way, I see no point
+
+I was half asleep. I used the wrong term. Implicit booleans (or "truthiness") is just the fact that certain things are true/false by 
+default. Null is false, empty strings are false, 0 is false, etc. I meant to say a boolean assignment such as x = 2 > 3. This sets x 
+to false because of that. Usually this is a proper use case for ternary by the way. string X = 2 < 3 ? "Math appears to be broken" :
+"Well obviously";
+
+
+rubjellyonme Regardless, you'll eventually find that it can be much more readable once you get used to seeing ternary assignments. 
+It'll also be much less of a headache when you can save a few lines in a class that's 300 lines (try to avoid that obviously). If 
+you think this seems inane, wait for lambdas and delegates.
+
+
+
+
+
+
+if you want to comment a whole bunch of text do this,
+/*
+..... your text
+*/
+
+
+
+
+
+
