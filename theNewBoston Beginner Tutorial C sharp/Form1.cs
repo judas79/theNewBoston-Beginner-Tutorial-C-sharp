@@ -23,24 +23,34 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /* L33 NOT a ternary operator
-            string myString = "";
-            if (checkBox1.Checked)
-                myString = "Checkbox1 is Checked";
-            else
-                myString = "Checkbox1 is Not Checked";
-            MessageBox.Show(myString);
-            */
+            // L34 create and use a new openfiledialog
+            OpenFileDialog ofd = new OpenFileDialog();
 
-            // L33 ternary operator to a string
-            // string, name, with something to evaluate in parenthesis
-            // question mark, 
-            string myString = (checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked";
+            // change default title of open file dialog box
+            ofd.Title = "Open Folders & Files";
 
-            MessageBox.Show(myString);
+            // restrict file types that can be opened
+            ofd.Filter = "PDF text / image|*.pdf|TXT text|*.txt|YOMOMA ho|*.uho|All Files|*.*";
 
-            // L33 ternary operators being passed in as a parameter, with messagbox title, at the end
-            MessageBox.Show((checkBox1.Checked) ? "Checkbox1 is Checked" : "Checkbox1 is Not Checked", "as a parameter");
+            // call show dialog to see open dialog
+            //ofd.ShowDialog();
+
+            string myFileStatus = "";
+
+            // check to see if file opened or not, OK is an 
+            // enumeration used to see if there is something or nothing
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                 myFileStatus = "File is Open";
+
+            else myFileStatus = "File did not open";
+
+            MessageBox.Show(myFileStatus,"File Status");
+
+            // get the file path and file name of the file you opened
+            MessageBox.Show(ofd.FileName, "File Path and Name");
+
+            // get file name only
+            MessageBox.Show(ofd.SafeFileName, "File Name only");
         }
 
         private void Mc_OnPropertyChanged(object sender, EventArgs e)

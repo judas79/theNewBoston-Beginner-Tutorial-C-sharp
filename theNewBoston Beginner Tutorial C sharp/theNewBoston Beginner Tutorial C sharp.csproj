@@ -125,6 +125,8 @@
     <Content Include="Tutorial 32 Events Subscribers\L32 myNamespaceCS.txt" />
     <Content Include="Tutorial 33 Ternary Operator\L33 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 33 Ternary Operator\L33 Form1CS.txt" />
+    <Content Include="Tutorial 34 OpenFileDialogs\L34 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 34 OpenFileDialogs\L34 Form1.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

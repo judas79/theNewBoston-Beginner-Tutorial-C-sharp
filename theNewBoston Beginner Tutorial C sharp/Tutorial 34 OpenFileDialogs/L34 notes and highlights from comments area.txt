@@ -1,0 +1,87 @@
+﻿In this lesson we will need a button1 and textbox1 to learn how to use OpenFileDialogs.  There are two ways to create an OpenFileDialog.
+From the toolbox drag it onto your form, or create in code, within your form.  We will create one from code.  Inside the button1 body,
+we type: OpenFileDialog, then a name, equals, new, OpenFileDialog, with parenthesis, then a semi-colon.
+
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            // L34 create and use a new openfiledialog
+            OpenFileDialog ofd = new OpenFileDialog();
+        }
+
+Open dialogfiledialog is commonly used to browse and open a file.  We will not be doing that yet.  To display the open dialog to the 
+user, we will call the show dialog method.
+
+			// call show dialog to see open dialog
+            ofd.ShowDialog();
+
+Now that we can browse to folders and files, but are not set up to open one, we will make sure that we indeed opened a file, even 
+though we don't see, the actual opened file.  The OK, is an enumeration, so if ofd.ShowDialog() is equal to an enumeration, this sees
+it as open.  If you click cancel or the X in the dialog box, you will get a popup that says "File did not open", if you open one you
+get the inverse, message.
+
+
+            string myFileStatus = "";
+
+            // check to see if file opened or not
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                 myFileStatus = "File is Open";
+
+            else myFileStatus = "File did not open";
+
+            MessageBox.Show(myFileStatus);
+
+
+To get the path and the filename you just opened, we use our open file dialog name.FileName:
+
+			// get the file path and file name of the file you opened
+            MessageBox.Show(ofd.FileName);
+
+
+To get  only the file name use SafeFilename:
+
+
+To restrict what file types, we can open using the open file dialog:
+
+            // restrict file types that can be opened
+            ofd.Filter = "PDF text / image | *.pdf";
+
+To add more than one file type that can be opened by file dialog:
+
+			// restrict file types that can be opened
+            ofd.Filter = "PDF text / image|*.pdf|TXT text|*.txt|YOMOMA ho|*.uho|All Files|*.*";
+
+
+To change the title of your open file dialog box:
+
+			// change default title of open file dialog box
+            ofd.Title = "Open Folders & Files";
+
+
+
+
+
+******************************** highlights from the comments area **********************************
+
+
+
+
+
+
+I was playing with the filter and i found out that for All Files is . or just **  using . (the dot) is not actually necessary, you 
+could write like this "PNG Image | *png | BIK ....and so on
+
+
+
+
+
+
+don't forget Using System.IO;
+
+
+
+
+
+do we need to have the button? what can i delete to get rid of it?
+
+Nope you dont  need a button to open File Dialogs :)

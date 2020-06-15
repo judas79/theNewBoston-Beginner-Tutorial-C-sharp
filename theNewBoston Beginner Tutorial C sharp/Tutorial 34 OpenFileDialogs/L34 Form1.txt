@@ -1,0 +1,56 @@
+﻿ using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L34 create and use a new openfiledialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // change default title of open file dialog box
+            ofd.Title = "Open Folders & Files";
+
+            // restrict file types that can be opened
+            ofd.Filter = "PDF text / image|*.pdf|TXT text|*.txt|YOMOMA ho|*.uho|All Files|*.*";
+
+            // call show dialog to see open dialog
+            //ofd.ShowDialog();
+
+            string myFileStatus = "";
+
+            // check to see if file opened or not, OK is an 
+            // enumeration used to see if there is something or nothing
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                 myFileStatus = "File is Open";
+
+            else myFileStatus = "File did not open";
+
+            MessageBox.Show(myFileStatus,"File Status");
+
+            // get the file path and file name of the file you opened
+            MessageBox.Show(ofd.FileName, "File Path and Name");
+
+            // get file name only
+            MessageBox.Show(ofd.SafeFileName, "File Name only");
+        }
+	}
+}
