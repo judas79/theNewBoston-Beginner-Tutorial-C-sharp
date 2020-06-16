@@ -23,38 +23,56 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L34 create and use a new openfiledialog
-            OpenFileDialog ofd = new OpenFileDialog();
+            // L35 byte variable max 255 bits only possitive integers
+            byte myByte = 255;
 
-            // change default title of open file dialog box
-            ofd.Title = "Open Folders & Files";
+            // an signed byte sbyte, supports negative integers as well as positive ones, min -255
+            sbyte mySbyte = -1;
 
-            // restrict file types that can be opened
-            ofd.Filter = "PDF text / image|*.pdf|TXT text|*.txt|YOMOMA ho|*.uho|All Files|*.*";
+            // two bytes put together is called a short, 16 bit
+            short myShort = 0;
 
-            // call show dialog to see open dialog
-            //ofd.ShowDialog();
+            // another way to represent a short is an Int16
+            Int16 myInt16 = myShort;
 
-            string myFileStatus = "";
+            // regular int is 32 bits
+            int myInt = 0;
 
-            // check to see if file opened or not, OK is an 
-            // enumeration used to see if there is something or nothing
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                 myFileStatus = "File is Open";
+            // another way to represent int is Int32
+            Int32 myInt32 = myInt;
 
-            else myFileStatus = "File did not open";
+            // a long is 8 bytes long or 64 bit
+            long myLong = 0;
 
-            MessageBox.Show(myFileStatus,"File Status");
+            // another way to represent a long is Int64
+            Int64 myInt64 = myLong;
 
-            // ternary
-            MessageBox.Show(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK ? "File is Open" : "File did not open", "Ternary");
 
-            // get the file path and file name of the file you opened
-            MessageBox.Show(ofd.FileName, "File Path and Name");
+            // these are unsigned variables, only 0 and up numbers
 
-            // get file name only
-            MessageBox.Show(ofd.SafeFileName, "File Name only");
+            byte myByte2 = 1;
+            ushort myUshort = 0;
+            UInt16 myUint = 1;
+            uint myUin = 2;
+            UInt32 myUInt32 = myUin;
+            ulong myUlong = 0;
+            UInt64 myUInt64 = myUlong;
+
+            // float for very small or very large numbers, only accurate to 7 digits
+            float myFloat = 123456789746435;
+            MessageBox.Show(myFloat.ToString());
+
+            // float with decimal point
+            float myDecimalFloat = 12.33F;
+
+            // a double does what a float does, but does not need the F suffix
+            double myDouble = 123.456;
+
+            // 1 character, within single quoates
+            char myChar = '1';
+            char myChar2 = 'a';
         }
+
 
         private void Mc_OnPropertyChanged(object sender, EventArgs e)
         {

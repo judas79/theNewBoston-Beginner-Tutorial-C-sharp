@@ -1,1 +1,76 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L35 byte variable max 255 bits only possitive integers
+            byte myByte = 255;
+
+            // an signed byte sbyte, supports negative integers as well as positive ones, min -255
+            sbyte mySbyte = -1;
+
+            // two bytes put together is called a short, 16 bit
+            short myShort = 0;
+
+            // another way to represent a short is an Int16
+            Int16 myInt16 = myShort;
+
+            // regular int is 32 bits
+            int myInt = 0;
+
+            // another way to represent int is Int32
+            Int32 myInt32 = myInt;
+
+            // a long is 8 bytes long or 64 bit
+            long myLong = 0;
+
+            // another way to represent a long is Int64
+            Int64 myInt64 = myLong;
+
+
+            // these are unsigned variables, only 0 and up numbers
+
+            byte myByte2 = 1;
+            ushort myUshort = 0;
+            UInt16 myUint = 1;
+            uint myUin = 2;
+            UInt32 myUInt32 = myUin;
+            ulong myUlong = 0;
+            UInt64 myUInt64 = myUlong;
+
+            // float for very small or very large numbers, only accurate to 7 digits
+            float myFloat = 123456789746435;
+            MessageBox.Show(myFloat.ToString());
+
+            // float with decimal point
+            float myDecimalFloat = 12.33F;
+
+            // a double does what a float does, but does not need the F suffix
+            double myDouble = 123.456;
+
+            // 1 character, within single quoates
+            char myChar = '1';
+            char myChar2 = 'a';
+        }
+	}
+}

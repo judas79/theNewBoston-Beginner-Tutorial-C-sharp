@@ -1,1 +1,98 @@
-﻿Today we will learn about other variables, using form1 and button1.
+﻿Today we will learn about other variables, using form1 and button1.  We will first make the Byte variable, whic is composed of 8 bits.
+These bits are either a 1 or a 0 and a byte consist of a maximum of 255 bits.  The byte variable is only for positive numbers, but can
+be written as and sbyte, to be a signed byte.  The following are other signed integers, meaning theycan be positive or negative numbers,
+thus signed.  
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            // L35 byte variable max 255 bits only possitive integers
+            byte myByte = 255;
+
+            // an signed byte sbyte, supports negative integers as well as positive ones, min -255
+            sbyte mySbyte = -1;
+
+            // two bytes put together is called a short, 16 bit
+            short myShort = 0;
+
+            // another way to represent a short is an Int16
+            Int16 myInt16 = myShort;
+
+            // regular int is 32 bits
+            int myInt = 0;
+
+            // another way to represent int is Int32
+            Int32 myInt32 = myInt;
+
+            // a long is 8 bytes long or 64 bit
+            long myLong = 0;
+
+            // another way to represent a long is Int64
+            Int64 myInt64 = myLong;
+        } 
+
+
+To make the all the other variables unsigned, other than byte, we put a designation of 'u' in front of them.  Now these unsigned 
+variables will only be able to represent 0 and up; no negative numbers.  Notice, when the first letter is of lower case so is the 
+preceeding u, and vice versa.
+
+            // these are unsigned variables, only 0 and up numbers
+
+            byte myByte2 = 1;
+            ushort myUshort = 0;
+            UInt16 myUint = 1;
+            uint myUin = 2;
+            UInt32 myUInt32 = myUin;
+            ulong myUlong = 0;
+            UInt64 myUInt64 = myUlong;
+
+
+Next is float, which includes a floating point, to accomodate very large or very small numbers.  Float is only accurate up to 7 numbers
+long.  Floats are able to do both positive and negative numbers, including decimals.  When using a decimal, we let the compiler know 
+its a decimal by marking it with suffix with 'F':
+
+			// float for very small or very large numbers, only accurate to 7 digits
+			// this example has too many digits, not accurate when used
+            float myFloat = 123456789746435;
+            MessageBox.Show(myFloat.ToString());
+
+			// this one is good
+            float myFloat = 1234567;
+            MessageBox.Show(myFloat.ToString());
+
+			// float with decimal point, with suffix F
+			float myDecimalFloat = 12.33F;
+
+We also can use a double to do what a float does, but do not have to mark the suffix.
+
+            // a double does what a float does, but does not need the F suffix
+            double myDouble = 123.456;
+
+
+A character variable represents one character as text and can only have one at a time, and is in single quoates.
+
+			 // 1 character, within single quoates
+            char myChar = '1';
+            char myChar2 = 'a';
+
+
+
+
+
+*************************** highlights from the comments area *******************************
+
+
+
+
+
+
+Except for Double and Float, you'll use them ALOT, since an interger can't hold decimal numbers.
+So for example Double is used for making calculators
+
+
+
+
+
+
+
+
+
