@@ -46,6 +46,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             MessageBox.Show(myFileStatus,"File Status");
 
+            // ternary
+            MessageBox.Show(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK ? "File is Open" : "File did not open", "Ternary");
+
             // get the file path and file name of the file you opened
             MessageBox.Show(ofd.FileName, "File Path and Name");
 
