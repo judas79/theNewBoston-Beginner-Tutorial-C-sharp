@@ -127,6 +127,7 @@
     <Content Include="Tutorial 33 Ternary Operator\L33 Form1CS.txt" />
     <Content Include="Tutorial 34 OpenFileDialogs\L34 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 34 OpenFileDialogs\L34 Form1.txt" />
+    <Content Include="Tutorial 35 More Variable Types\float only accuraye to 7 digits.png" />
     <Content Include="Tutorial 35 More Variable Types\L35 Form1CS.txt" />
     <Content Include="Tutorial 35 More Variable Types\L35 notes and highlights from comments area.txt" />
     <EmbeddedResource Include="Form1.resx">
