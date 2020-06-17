@@ -130,6 +130,8 @@
     <Content Include="Tutorial 35 More Variable Types\float only accuraye to 7 digits.png" />
     <Content Include="Tutorial 35 More Variable Types\L35 Form1CS.txt" />
     <Content Include="Tutorial 35 More Variable Types\L35 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 36 StreamReader pt 1\L36 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 36 StreamReader pt 1\L36 Form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +158,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="NewFolder1\" />
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
   </ItemGroup>
   <ItemGroup>

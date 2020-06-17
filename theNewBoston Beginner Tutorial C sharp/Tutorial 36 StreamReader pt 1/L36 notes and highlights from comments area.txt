@@ -1,0 +1,61 @@
+﻿In this lesson we will need a button1 and a textbox1, to learn about the StreamReader class.  In the form1 area we need to access the
+StreamReader class library through its namespace which is system.io.  So at the top add the access to its namespace so we can create
+an instance of it.
+
+// added L36 for StreamReader
+using System.IO;
+
+
+First we will make an instance of the OpenFile Dialog, and an if statement to help create the stramReader instance. To create the 
+instance we will assign sr to opening a (stream); file to read, while creating the instance, which is a neccessary and expected.  
+Within the parenthesis we tell the compiler its a File that we want to open and read.  Then we use the instance of the OpenFileDialog 
+to use its class FileName to get our file.  (Personal note) I think we could also use a static path there instead, if we wanted.
+
+ 
+            // L36 instanc of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // create instance of streamReader, and give it a file to openread, 
+                //  using a (path) or useing ofd to access the openfiledialog class filename
+                StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));
+            }
+
+
+Now that we have the 'stream' set up we will use the ReadEnd method to read all of the Text, until the end of the document, the 
+display the text in textBox1 window.
+
+				// to read a streams text file, ReadToEnd method 
+                // sr.ReadToEnd();
+                // to read all the Text file into a textbox1
+                textBox1.Text += sr.ReadToEnd();
+
+
+In order not to accidently making two instance the open the same files we use dispose to shut down the 'stream' for the particular file
+and close it properly, to avoid an error:
+
+				// dispose of the 'stream' used to get this file
+                sr.Dispose();
+
+
+Now download a hexadecimal reader, and look at your text file you opened.  That's what the next lesson will be about; reading bytes:
+HxD hexadecimal editor download:
+
+https://mh-nexus.de/en/hxd/
+
+
+
+
+
+
+
+****************************** highlights from the comments area **********************************
+
+
+
+
+
+
+
+NONE
