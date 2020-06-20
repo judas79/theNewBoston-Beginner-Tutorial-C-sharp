@@ -1,1 +1,47 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+// added L36 for StreamReader
+using System.IO;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // create instance of streamReader, and give it a file to open 
+                // and read, using a (path) or useing ofd to access the openfiledialog class filename
+                StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));
+
+                // L38 char values for read and peek values
+                // convert byte in StreamReader to character (char)
+                char cPeek1 = (char)sr.Peek();
+                char cPeek2 = (char)sr.Peek();
+                char cRead1 = (char)sr.Read();
+                char cRead2 = (char)sr.Read();
+                MessageBox.Show(" Peek : " + cPeek1.ToString() + " : " + cPeek2.ToString() + " :\n Read : " + cRead1 + " : " + cRead2 + " : ");
+            }
+        }
+	}
+}
