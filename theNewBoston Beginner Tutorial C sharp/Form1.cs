@@ -25,7 +25,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L36 instanc of openfildialog
+            // L36 instance of openfildialog
             OpenFileDialog ofd = new OpenFileDialog();
 
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -34,92 +34,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // and read, using a (path) or useing ofd to access the openfiledialog class filename
                 StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));
 
-                // to read a streams text file, ReadToEnd method 
-                // sr.ReadToEnd();
-                // to read all the Text file into a textbox1
-                // L37 disabled because we can't display this example at the same time with the following example, causes an error
-                //textBox1.Text += sr.ReadToEnd();
-
-                // dispose of the 'stream', used to get this file
-                // L37 disabled because we can't display this example at the same time with the following example, causes an error
-                //sr.Dispose();
-
-                // Tutorial 37 starts here:
-                // L37 instance sr, BaseStream, ReadByte(), byte number goes in parenthesis. Output in base 10
-                //textBox1.Text += sr.BaseStream.ReadByte().ToString();  // L37 disabled, go to next example
-                //sr.Dispose();
-
-                // L37 instance sr, BaseStream, ReadByte(), byte number goes in parenthesis, 
-                // "X" in ToString field makes the output in hexadecimal
-                //textBox1.Text += sr.BaseStream.ReadByte().ToString("X");  // L37 disabled, go to next example
-                //sr.Dispose();
-
-                /*
-                // L37 create byte array (buffer), empty byte array (buffer), three bytes in length
-                byte[] buffer = new byte[3];
-
-                // instance sr (StreamReader) to open document, 
-                // put one byte in, buffer,starting byte 0 (at begining), read one at a time for bytes 0-2
-                sr.BaseStream.Read(buffer, 0, 2);
-
-                // clear textbox1 before every use and re-use 
-                // as not to have to re-start, for every document
-                textBox1.Text = string.Empty;
-
-                // loop through the buffer, getting one byte per pass,
-                // put the byte in myByte
-                foreach (byte myByte in buffer)
-                {
-                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
-                    textBox1.Text += (myByte.ToString("X")+" ");  // L37 disabled, go to next example
-                    sr.Dispose();
-                }
-                */
-                /*
-                // NOT in this tutorial and messy, needs work!
-                // L37 create byte array (buffer), empty byte array (buffer), 15 bytes in length
-                byte[] buffer = new byte[0x0f];
-
-                // instance sr (StreamReader) to open document, 
-                // put one byte in, buffer, start at byte two (the third byte), and do this for 4 bytes 
-                sr.BaseStream.Read(buffer, 0x02, 3);
-
-                // clear textbox1 before every use and re-use 
-                // as not to have to re-start, for every document
-                textBox1.Text = string.Empty;
-
-                // loop through the buffer, getting one byte per pass,
-                // put the byte in myByte
-                foreach (byte myByte in buffer)
-                {
-                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
-                    textBox1.Text += (myByte.ToString("X") + " ");  // L37 disabled, go to next example
-                    sr.Dispose();
-                }
-                */
-
-                // L37 set offset starting position, to read bytes from document
-                sr.BaseStream.Position = 0x0A;
-
-                // L37 create byte array (buffer), empty byte array (buffer), three bytes in length
-                byte[] buffer = new byte[3];
-
-                // instance sr (StreamReader) to open document, 
-                // put one byte in, buffer, start byte 0 beginning, read bytes 0-2 one at a time
-                sr.BaseStream.Read(buffer, 0, 2);
-
-                // clear textbox1 before every use and re-use 
-                // as not to have to re-start, for every document
-                textBox1.Text = string.Empty;
-
-                // loop through the buffer, getting one byte per pass,
-                // put the byte in myByte
-                foreach (byte myByte in buffer)
-                {
-                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
-                    textBox1.Text += (myByte.ToString("X") + " ");  // L37 disabled, go to next example
-                    sr.Dispose();
-                }
+                // L38 char values for read and peek values
+                // convert byte in StreamReader to character (char)
+                char cPeek1 = (char)sr.Peek();
+                char cPeek2 = (char)sr.Peek();
+                char cRead1 = (char)sr.Read();
+                char cRead2 = (char)sr.Read();
+                MessageBox.Show(" Peek : " + cPeek1.ToString() + " : " + cPeek2.ToString() + " :\n Read : " + cRead1 + " : " + cRead2 + " : ");
             }
         }
 

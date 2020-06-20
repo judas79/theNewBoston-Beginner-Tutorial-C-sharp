@@ -1,0 +1,49 @@
+﻿In this lesson we will need button1, textBox1, using System.IO;  and the method used in the previous tutorials, to open a file, make 
+sure it opened OK, and that their is an instance of StreamReader, to work with the document.
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // create instance of streamReader, and give it a file to open 
+                // and read, using a (path) or useing ofd to access the openfiledialog class filename
+                StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));               
+            }
+        }
+
+
+We will be working with the 'Peek' method, which is very similar to the 'read' method.  Peek will read the positions, but unlike read,
+it will not advance it by 1. So, if we used a for statement, for example, the 'read' method will advance 1 position, the second time
+that it looped, and the 'Peek' would look at the same position, that it looked at previously.  We will create two characters 'char'
+to hold the position values, for Peek and Read values, for this example.  We use (char) to convert the contents of the byte inside
+StreamReader to a character:
+
+				// L38 char values for read and peek values
+                // convert byte in StreamReader to character (char)
+                char cPeek1 = (char)sr.Peek();
+                char cPeek2 = (char)sr.Peek();
+                char cRead1 = (char)sr.Read();
+                char cRead2 = (char)sr.Read();
+
+
+We will use a message box to show the read, increasing by 1, compaired to the peek method, which remains at the same place.  The output
+will be in regualr text and decimals.:
+
+MessageBox.Show(" Peek : " + cPeek1.ToString() + " : " + cPeek2.ToString() + " :\n Read : " + cRead1 + " : " + cRead2 + " : ");
+            
+
+
+
+
+
+
+******************** highlight from the comment area***********************
+
+
+
+
+fyi system.IO stands for Input Output
+
