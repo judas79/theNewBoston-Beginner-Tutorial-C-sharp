@@ -1,0 +1,129 @@
+﻿For more on  StreamReaders, we will need the code from the last tutorial, button1, and textBox1. In the last lesson we looked at text,
+in the textbox1.Text (text box) then downloaded a hexadecimal editor to se what the text and symbols where comprised of, which are 
+hexadecimal bytes.  Here is an example of hexadecimal and the text it represents:
+
+EF BB BF 48 78 44 20 48 65 78 20 45 64 69 74 6F                       ï»¿HxD Hex Edito
+
+To read text, in the form of the hexadecimal, of which it is made of, we will use button1, to send the first  hexadecimal byte, to be
+displayed in textBox1 and then comment it out and move on to the next example.  This example will convert the hexadecimal to a decimal 
+amount, because we are converting a decimal number to string; this way it will be in base 10 not hexidecimal: 
+
+				// L37 instance sr, BaseStream, ReadByte(), byte number goes in parenthesis,
+				// ouput decimal to string in base 10
+                textBox1.Text += sr.BaseStream.ReadByte().ToString();
+                sr.Dispose();
+
+To get the Byte value, in its hexadecimal amount we put a capitol in quoates("X") in the ToString(X) field.  We will use button1 and 
+textBox1:
+
+// L37 instance sr, BaseStream, ReadByte(), byte number goes in parenthesis, 
+                // "X" in ToString field makes the output in hexadecimal
+                textBox1.Text += sr.BaseStream.ReadByte().ToString("X");  
+                sr.Dispose();
+
+
+Hexadecimal is base 16, from 1 to F, 20 would be the equivelent to 16 and the maximum byte would be FF, or 255.
+To read the first byte, using SreamReader instance sr, we write sr, dot, BaseStream, do ReadByte().  Since there is nothing in the 
+parenthesis, it will read byte 0, which is the first byte. In this example we will read multiple bytes. To do this, we will need to
+create a byte array, commonly known as a 'buffer'.
+
+                // L37 create byte array (buffer), empty byte array (buffer), three bytes in length
+                byte[] buffer = new byte[3];
+
+                // instance sr (StreamReader) to open document, 
+                // put one byte in, buffer, start at byte 0, and do this for 3 bytes (bytes 0-2)
+                sr.BaseStream.Read(buffer, 0, 2);
+
+                // loop through the buffer, getting one byte per pass,
+                // put the byte in myByte
+                foreach (byte myByte in buffer)
+                {
+                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
+                    textBox1.Text += (myByte.ToString("X")+" ");  // L37 disabled, go to next example
+                    sr.Dispose();
+                }
+
+
+To read the bytes using an offset, for a starting point, there are two methods.  this first method is not in the lesson and seems 
+rather messy, with mor characters displayed then we as for.  It also requires us to set out buffer (byte array) we made, earlier, to
+hold a larger amount of item, bytes, wasting space.
+
+				/*
+                // NOT in this tutorial and messy, needs work!
+                // L37 create byte array (buffer), empty byte array (buffer), 15 bytes in length
+                byte[] buffer = new byte[0x0f];
+
+                // instance sr (StreamReader) to open document, 
+                // put one byte in, buffer, start at byte two (the third byte), and do this for 4 bytes 
+                sr.BaseStream.Read(buffer, 0x02, 3);
+
+                // clear textbox1 before every use and re-use 
+                // as not to have to re-start, for every document
+                textBox1.Text = string.Empty;
+
+                // loop through the buffer, getting one byte per pass,
+                // put the byte in myByte
+                foreach (byte myByte in buffer)
+                {
+                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
+                    textBox1.Text += (myByte.ToString("X") + " ");  // L37 disabled, go to next example
+                    sr.Dispose();
+                }
+                */
+
+This method will allow us to offset are starting point, to read bytes within a byte array(buffer), in a document we opened using the
+instance 'sr' of StreamReader which used an instance 'ofd' OpenFileDialog, to open a dialog, and find a folder to open a file with.
+We also will change our byte array length back down to 3 bytes.  We will use 'Position' to set our offset for our byte reading, starting
+point,  When we want to differentiate a letter representing a hexadecimal value, we use, for example of 'A' which is 10 in base 10 'dec',
+we write as 0x0A:
+
+				private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // create instance of streamReader, and give it a file to open 
+                // and read, using a (path) or useing ofd to access the openfiledialog class filename
+                StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));
+
+                // L37 create byte array (buffer), empty byte array (buffer), three bytes in length
+                byte[] buffer = new byte[3];
+
+                // instance sr (StreamReader) to open document, 
+                // put one byte in, buffer, start byte 0 beginning, read bytes 0-2 one at a time
+                sr.BaseStream.Read(buffer, 0, 2);
+
+                // clear textbox1 before every use and re-use 
+                // as not to have to re-start, for every document
+                textBox1.Text = string.Empty;
+
+                // loop through the buffer, getting one byte per pass,
+                // put the byte in myByte
+                foreach (byte myByte in buffer)
+                {
+                    // display the current myByte in textBox1 as hexadecimal, with a space between bytes
+                    textBox1.Text += (myByte.ToString("X")+" ");  // L37 disabled, go to next example
+                    sr.Dispose();
+                }
+
+
+
+
+
+********************* highlights from the comments area ************************
+
+
+
+
+
+
+
+Well actualy your array has 4 elements not 3 .net is 0 based Array
+
+
+
+
+
+
