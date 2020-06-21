@@ -136,6 +136,8 @@
     <Content Include="Tutorial 37 StreamReader pt 2\L37 form1CS.txt" />
     <Content Include="Tutorial 38 StreamReader pt 3\L38 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 38 StreamReader pt 3\L38 from1CS.txt" />
+    <Content Include="Tutorial 39 StreamWriter pt 1\L39 form1CS.txt" />
+    <Content Include="Tutorial 39 StreamWriter pt 1\L39 notes and highlights from comments area.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

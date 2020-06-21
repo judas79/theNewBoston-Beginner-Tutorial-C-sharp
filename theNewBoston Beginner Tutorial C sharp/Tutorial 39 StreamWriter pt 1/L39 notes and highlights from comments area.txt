@@ -1,0 +1,116 @@
+﻿In this lesson we will need button1, button2, textBox1, using System.IO;  and the method used in the previous tutorials, to open a 
+file, make sure it opened OK, and that their is an instance of StreamReader, to work with the document.  In addition, we will need a
+'string' named 'path', outside of button1, and button2 Enabled, is set to 'true' within the if statements body within button1.  Also,
+when the if statement is found to be true set the variable named 'path', to the instance of open file dialogs filename, to open files
+with.  Also, in 'properties' name button1 to open, button2 to write and also set button2 to 'disabled' (Enabled = False).
+
+        // L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+            }
+        }
+
+Now, in button2 we will create an instance of StreamWriter as we did previously with StreamReader. Instead of the parameter to open a
+file and read it we will open a File and write to it, using the "path", var. we made, to use open file dialog to get the document. To
+display the text we are writing, we will type it into textbox1.  Then dispose of the text inside of StremWriter, to prevent errors by
+cloding it down, properly.  NOTE, It will not write to the file without Disposing.  Not in the tutorials as of yet; clear textbox1 when
+the Write button is pressed.
+
+private void button2_Click(object sender, EventArgs e)
+        {
+			// L39 instance of StreamWriter, open File using var. path, and overwrite it
+            StreamWriter iSW = new StreamWriter(File.OpenWrite(path));
+			
+			// L39 write text in textBox1, using instance iSW
+            iSW.Write(textBox1.Text);
+
+			// L39 dispose of text, stops errors by closing properly
+            // will not write to document without it
+            iSW.Dispose();
+
+			// clear contents of textBox1, when Write is clicked
+            textBox1.Clear();
+        }
+
+
+When we use OpenWrite to write to our file, you will notice it overwrites/replaces;  on top of the existing text.  So if there is a 
+length of text longer thant the texted being submited to replace it, the remaining original text well still be there, where the new
+text ended.  We will replace the OpenWrite method, with 'Create' which will clear the document making it empty, to resolve this.
+
+            // L39 instance of StreamWriter, open File using var. path, and 'Create' clear everything then write to it
+            StreamWriter iSW = new StreamWriter(File.Create(path));
+
+
+There's other ways to write to the document.  This is a method to write to a new line and at the same time enter the text from textbox1
+into the first line:
+
+            // L39 write text from texbox1 and then message below, on the next line
+            iSW.WriteLine(textBox1.Text);
+            iSW.WriteLine("This is on a new line");
+
+Since we used the WriteLine method, if we as a regular Write, after it, that text would be written to another line.
+			
+			// L39 write text from texbox1 and then message below, on the next line, the Write to the following line
+            iSW.WriteLine(textBox1.Text);
+            iSW.WriteLine("This is on a new line");
+			iSW.Write("third line")
+
+NOT IN TUTORIAL:
+            // L39 NOT IN LESSON: write text from texbox1 on line 1 
+            // and then the message below, on the third line
+            // if the Write button is continually pressed an error occurs, set write button Enabled to false
+            //iSW.WriteLine(textBox1.Text);
+            //iSW.WriteLine("");
+            //iSW.WriteLine("This is on a new line");
+            //button2.Enabled = false;
+
+
+
+
+
+
+
+************************** highlights from the comments area **************************
+
+
+
+
+
+
+i wrote all the code right but button2 is not Disabled before i opened a file
+Maybe cause its Visual Studio 2013 and not 2010 or 2008 whatever your using.
+But I don't think that' s it
+
+
+Ok problem solved, for those who had the same problem, what i did is that i replaced ' button2.Enabled = true ' with 
+' button2.Visible = true ' and then i put     ' button2.Visible = false ' in the Form1_Load event
+
+
+And i can do the same thing with Enabled, I'm just answering myself its pretty stupid, sorry
+
+
+Yeah, but that doesn't disable the button, it just hides the button (Not able to see).
+To actually make it work you'll need to do 'button2.Enabled = false;' in the Form1_Load event and keep the 'button2.Enabled = true;' 
+the same.
+
+I know, thats what i sayed and anyway by hiding it, it works just as well
+
+
+Actually, rather than typing 'button2.Enabled = false;' you could just click on the button once, look under properties and you'll 
+find "Enabled" then just make it false. So, you don't need 'button2.Enabled = false;' anywhere.
+
+
+
+
+
+

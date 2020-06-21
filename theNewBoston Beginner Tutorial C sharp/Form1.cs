@@ -22,25 +22,19 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             InitializeComponent();
         }
-
+        // L39 string 
+        string path;
         private void button1_Click(object sender, EventArgs e)
         {
             // L36 instance of openfildialog
             OpenFileDialog ofd = new OpenFileDialog();
 
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                // create instance of streamReader, and give it a file to open 
-                // and read, using a (path) or useing ofd to access the openfiledialog class filename
-                StreamReader sr = new StreamReader(File.OpenRead(ofd.FileName));
-
-                // L38 char values for read and peek values
-                // convert byte in StreamReader to character (char)
-                char cPeek1 = (char)sr.Peek();
-                char cPeek2 = (char)sr.Peek();
-                char cRead1 = (char)sr.Read();
-                char cRead2 = (char)sr.Read();
-                MessageBox.Show(" Peek : " + cPeek1.ToString() + " : " + cPeek2.ToString() + " :\n Read : " + cRead1 + " : " + cRead2 + " : ");
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
             }
         }
 
@@ -58,7 +52,36 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // L39 instance of StreamWriter, open File using var. path, and 'OpenWrite' overwrite to it
+            //StreamWriter iSW = new StreamWriter(File.OpenWrite(path));    // see next example
 
+            // L39 instance of StreamWriter, open File using var. path, and 'Create' clear everything then write to it
+            StreamWriter iSW = new StreamWriter(File.Create(path));
+
+            // L39 write text in textBox1, using instance iSW
+            //iSW.Write(textBox1.Text);
+
+            // L39 write text from texbox1 and then message below on the next line, 
+            // Write on the following line, another Write on same line with last Write
+            iSW.WriteLine(textBox1.Text);
+            iSW.WriteLine("This is on a new line");
+            iSW.Write("'Write' on third line....");
+            iSW.Write(" another 'Write' also on third line");
+
+            // L39 NOT IN LESSON: write text from texbox1 on line 1 
+            // and then the message below, on the third line
+            // if Write is continually pressed an error occurs, set write button Enabled to false
+            //iSW.WriteLine(textBox1.Text);
+            //iSW.WriteLine("");
+            //iSW.WriteLine("This is on a new line");
+            //button2.Enabled = false;
+
+            // L39 dispose of text, stops errors by closing properly
+            // will not write to document without it
+            iSW.Dispose();
+
+            // clear contents of textBox1, when Write is clicked
+            textBox1.Clear();
         }
 
 
