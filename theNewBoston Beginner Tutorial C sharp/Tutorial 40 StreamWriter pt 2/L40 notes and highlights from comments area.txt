@@ -1,0 +1,103 @@
+﻿In this lesson we will need button1, button2, textBox1, using System.IO;  and the method used in the previous tutorials, to open a 
+file, make sure it opened OK, and that their is an instance of StreamReader, to work with the document.  In addition, we will need a
+'string' named 'path', outside of button1, and button2 Enabled, is set to 'true', within the if statements body within button1.  Also,
+when the if statement is found to be true set the variable named 'path', to the instance of open file dialogs filename, to open files
+with.  Also, in 'properties' name button1 to open, button2 to 'Write' and also set button2 to 'disabled' (Enabled = False).
+
+        // L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+            }
+        }
+
+Within the button2, named Write, we need an instance of StreamWriter, to write to files, opened by button1; the Open button.  The Create
+method will delete any existing text, in an opened document, and write whatever the users entered text may be.  We also will use Dispose
+to remove the entered text and close the instance of StreamWriter, after its finished writing the users input.  Clear, will clear any 
+text in the textBox window after the Write button is pressed, user data entered and instance closed.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            // L39 instance of StreamWriter, open File using var. path, and 'Create' clear everything then write to it
+            StreamWriter iSW = new StreamWriter(File.Create(path));
+
+            // L39 dispose of text, stops errors by closing properly
+            // will not write to document without it
+            iSW.Dispose();
+
+            // clear contents of textBox1, when Write is clicked
+            textBox1.Clear();
+        }
+
+
+We will start by writing a simple byte to our open document.  To do this, in button2, the Write button body, simply add the instance
+for StreamWriter, dot, then BaseStream to get the stream as to write to it, then WriteByte to tell the compiler we are writing one 
+in hexadecimal notation, finally the hex number you wish to write to the open file.
+
+            // L40 simple write a hex. value to opened document
+            iSW.BaseStream.WriteByte(0x12);
+
+Compile the code, and open the files you just finished writing to, in your hex editor, to check and see if everything is functioning
+as expected.
+To offset the starting position to write the hex. number to, we use the instance of StreamWriter, then BaseStream to get the document
+to stream to write to, and Position, to tell it the starting place to write the hex notation to, as an equals designation.
+
+			// L40 Position of where to start writing the hex value
+            iSW.BaseStream.Position = 0x1C;
+            // L40 simple write a hex. value to opened document
+            iSW.BaseStream.WriteByte(0x12);
+
+
+Compile and verify as before.  
+As you have noticed everything in the hex editor for the document you opened is zero
+except the hex. number you entered.  If you just wanted to add a hex byte entry to a document, that contained 
+information you wanted to keep, into a certain spot, you would have to use the OpenWrite method instead of 
+Create, when you make the instance of StreamWriter.
+
+			StreamWriter iSW = new StreamWriter(File.OpenWrite(path));
+			
+			iSW.BaseStream.Position = 0x1E;
+            
+            iSW.BaseStream.WriteByte(0x13);
+
+            iSW.Dispose();
+			
+            textBox1.Clear();
+
+            button2.Enabled = false;
+
+
+To write multiple bytes to a position, we will need a byte array (buffer).  In the buffer we will put 3 bytes, using the hexadecimal
+syntax. To write the three bytes in var. buffer, we use Write, which requires byte array name, the offset which is the '0' in 0xFF, for
+example, then the amount of bytes to be written, which is 3.
+
+            // L40 Multiple bytes, written using a byte array buffer and Write
+
+            StreamWriter iSW = new StreamWriter(File.OpenWrite(path)); 
+
+            iSW.BaseStream.Position = 0x1E;
+
+            // L40 buffer byte array
+            byte[] buffer = { 0x01, 0x02, 0x03 };
+
+            // L40 Write, name of byte array, offset, amount of bytes to be written
+            iSW.BaseStream.Write(buffer, 0, 3);
+
+            iSW.Dispose();
+
+            textBox1.Clear();
+
+
+
+**** no highlights from the comments area *****
