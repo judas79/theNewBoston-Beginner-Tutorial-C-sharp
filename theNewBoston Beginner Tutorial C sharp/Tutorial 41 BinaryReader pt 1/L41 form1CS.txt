@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+// added L36 for StreamReader
+using System.IO;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        // L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+
+                // Not in lesson
+                textBox1.Clear();
+            }
+        }
+
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L41 instance of BinaryReader, open path to stream and read.
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+
+            // L41 read from defined Position using instance of BaseStream
+            iBR.BaseStream.Position = (0x10);
+
+            // L41 read the first char. in document since position not defined,
+            // display to messagebpx
+            //textBox1.Text += iBR.ReadChar().ToString();    // SEE NEXT EXAMPLE
+
+            // L41 foreach statement, to get multiple ReadChars NOT Readchar
+            // 6 chars specified. Display results converted to string in text box
+            //foreach (char cBinary in iBR.ReadChars(6)) textBox1.Text += cBinary.ToString();   // SEE NEXT EXAMPLE
+
+            // L41 read two bytes using int16 at position 0x10 (Position defined above)
+            // in hexadecimal, right to left(little endian)
+            textBox1.Text += iBR.ReadInt16().ToString( "X" );
+
+            iBR.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+        }
+
+
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+	}
+}

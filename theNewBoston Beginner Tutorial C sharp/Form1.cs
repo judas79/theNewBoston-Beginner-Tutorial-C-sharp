@@ -35,6 +35,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // button2 set to True (active) when page is confirmed to be opened
                 button2.Enabled = true;
                 path = ofd.FileName;
+
+                // Not in lesson
+                textBox1.Clear();
             }
         }
 
@@ -52,61 +55,28 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // L39 instance of StreamWriter, open File using var. path, and 'OpenWrite' overwrite to it
-            //StreamWriter iSW = new StreamWriter(File.OpenWrite(path));    // see next example
+            // L41 instance of BinaryReader, open path to stream and read.
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
 
-            /* 
-            // L39 instance of StreamWriter, open File using var. path, and 'Create' clear everything then write to it
-            StreamWriter iSW = new StreamWriter(File.Create(path));
+            // L41 read from defined Position using instance of BaseStream
+            iBR.BaseStream.Position = (0x10);
 
-            // L40 where to start writing the hex value
-            iSW.BaseStream.Position = 0x1C;
-            // L40 simple write a hex. value to opened document
-            iSW.BaseStream.WriteByte(0x12);
+            // L41 read the first char. in document since position not defined,
+            // display to messagebpx
+            //textBox1.Text += iBR.ReadChar().ToString();    // SEE NEXT EXAMPLE
 
-            // L39 dispose of text, stops errors by closing properly
-            // will not write to document without it
-            iSW.Dispose();
+            // L41 foreach statement, to get multiple ReadChars NOT Readchar
+            // 6 chars specified. Display results converted to string in text box
+            //foreach (char cBinary in iBR.ReadChars(6)) textBox1.Text += cBinary.ToString();   // SEE NEXT EXAMPLE
 
-            // clear contents of textBox1, when Write is clicked
-            textBox1.Clear();
+            // L41 read two bytes using int16 at position 0x10 (Position defined above)
+            // in hexadecimal, right to left(little endian)
+            textBox1.Text += iBR.ReadInt16().ToString( "X" );
 
-            // disable button2 (itself, the Write button) when Write button is pressed
-            button2.Enabled = false;
-            */                                      // SEE NEXT EXAMPLE
-            /*
-            // L40 Overwrite one byte by setting the position, 
-            // without deleting the original data, in the document
-            // using .OpenWrite instead of .Create
-            StreamWriter iSW = new StreamWriter(File.OpenWrite(path));
+            iBR.Dispose();
 
-            iSW.BaseStream.Position = 0x1E;
-
-            iSW.BaseStream.WriteByte(0x13);
-
-            iSW.Dispose();
-
-            textBox1.Clear();
-
-            button2.Enabled = false;
-            */                           // SEE NEXT EXAMPLE
-
-            // L40 Multiple bytes, written using a byte array buffer
-
-            StreamWriter iSW = new StreamWriter(File.OpenWrite(path));
-            
-            iSW.BaseStream.Position = 0x57;
-
-            // L40 buffer byte array
-            byte[] buffer = { 0x01, 0x02, 0x03 };
-
-            // L40 Write, name of byte array, offset, amount of bytes to be written
-            iSW.BaseStream.Write(buffer, 0, 3);
-
-            iSW.Dispose();
-
-            textBox1.Clear();
-
+            // Not in lesson
+            //textBox1.Clear();
             button2.Enabled = false;
 
         }

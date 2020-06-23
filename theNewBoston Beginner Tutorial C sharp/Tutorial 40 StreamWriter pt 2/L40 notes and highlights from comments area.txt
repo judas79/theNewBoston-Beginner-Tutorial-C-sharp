@@ -1,8 +1,8 @@
 ﻿In this lesson we will need button1, button2, textBox1, using System.IO;  and the method used in the previous tutorials, to open a 
-file, make sure it opened OK, and that their is an instance of StreamReader, to work with the document.  In addition, we will need a
+file, make sure its opened OK, and that their is an instance of StreamReader, to work with the document.  In addition, we will need a
 'string' named 'path', outside of button1, and button2 Enabled, is set to 'true', within the if statements body within button1.  Also,
 when the if statement is found to be true set the variable named 'path', to the instance of open file dialogs filename, to open files
-with.  Also, in 'properties' name button1 to open, button2 to 'Write' and also set button2 to 'disabled' (Enabled = False).
+with.  Also, in 'properties' name button1 to open, set button2 to 'Write' and also set button2 to 'disabled' (Enabled = False).
 
         // L39 string 
         string path;

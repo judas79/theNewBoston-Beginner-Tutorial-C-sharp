@@ -1,0 +1,98 @@
+﻿In this lesson we will need button1, button2, textBox1, using System.IO;  and the method used in the previous tutorials, to open a 
+file, make sure its opened OK, and that their is an instance of StreamReader, to work with the document.  In addition, we will need a
+'string' named 'path', outside of button1, and button2 Enabled, is set to 'true', within the if statements body within button1.  Also,
+when the if statement is found to be true set the variable named 'path', to the instance of open file dialogs filename, to open files
+with.  Also, in 'properties' name button1 to open, set button2 to 'Read', and also set button2 to 'disabled' (Enabled = False), in the 
+properties dialog.  These methods, we use are from the System.IO namespace.
+
+		// L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+
+				// Not in lesson, clear previous text in textbox when opening file
+				textBox1.Clear();
+            }
+        }
+
+The first object we will create today, to use BinaryReader, is a instance of BinaryReader, within the button2 body.  It calls for a
+stream to open and make ready to read.
+
+			// L41 instance of BinaryReader, open path to stream and read.
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+
+			// close properly to avoid two instances and avoid that error
+			iBR.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+
+Now that we can open the fille, we need to read the file using char.read and convert the char to string. Since the position is not
+defined, it will read the first position in the document.
+
+			// L41 read the first char. in document since position not defined,
+            // display to messagebpx
+            textBox1.Text += iBR.ReadChar().ToString();
+
+
+To read, another position, in the document we use BaseStream and Position to define the particular position, in hexadecimal syntax.
+
+			// L41 instance of BinaryReader, open path to stream and read.
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+
+            // L41 read from defined position using instance of BaseStream 
+			// and starting coordinates in hex
+            iBR.BaseStream.Position = (0x10);
+
+            // L41 read the first char. in document since position not defined,
+            // display to messagebpx
+            textBox1.Text += iBR.ReadChar().ToString();
+
+
+In order to read multiple characters we will use a for each loop, with BaseStream start position, the loop through the ReadChars and
+get the amount of ReadChars that is specified.
+
+		    // L41 foreach statement, to get multiple ReadChars NOT Readchar
+            // six chars specified. Display results converted to string in text box
+            foreach (char cBinary in iBR.ReadChars(6)) textBox1.Text += cBinary.ToString();
+
+
+To read two bytes as hexadecimal numbers, we use ReadInt16, then convert the "X"(hexadecimal value) to a string.  This will read the
+two byte values from the document, from right to left.  This way of reading, from right to left, is known as litte endian.  An example
+is:  If your hex editor had text, as hexadecimal values as 12 34, little endian will read them as 34 12, one byte starting from the right,
+then the left byte.
+
+			// L41 read two bytes using int16 at position 0x10 (Position defined above)
+            // in hexadecimal, right to left(little endian)
+            textBox1.Text += iBR.ReadInt16().ToString( "X" );
+
+
+
+
+************************ highlights from the comments area *************************
+
+
+
+
+
+at 6:04 how come it's not 1000 (3 zeroes)? can anyone explain?
+
+Because the program is not reading the individual values backwards, they are just reading the two digit values in reverse order.
+
+So 00 01 = 01 00 or 0100 or 100.
+if it was 12 34 it would read 34 12.
+
+
+
+
