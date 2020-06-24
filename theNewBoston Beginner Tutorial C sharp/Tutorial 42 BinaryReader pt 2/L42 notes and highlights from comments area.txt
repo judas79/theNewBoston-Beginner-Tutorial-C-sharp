@@ -1,0 +1,169 @@
+﻿In this video we will start, where we left off last from the last video.  So far we have is the following for button1 and button2, in 
+our form1.  We also have button2 set to enabled false, in our properties and we have a texrbox1, as well:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+// added L36 for StreamReader
+using System.IO;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        // L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+
+                // Not in lesson
+                textBox1.Clear();
+            }
+        }
+
+
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L41 instance of BinaryReader, open path to stream and read.
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+
+            // L41 read from defined Position using instance of BaseStream
+            iBR.BaseStream.Position = (0x10);
+
+            // L41 read the first char. in document since position not defined,
+            // display to messagebpx
+            //textBox1.Text += iBR.ReadChar().ToString();    // SEE NEXT EXAMPLE
+
+            // L41 foreach statement, to get multiple ReadChars NOT Readchar
+            // 6 chars specified. Display results converted to string in text box
+            //foreach (char cBinary in iBR.ReadChars(6)) textBox1.Text += cBinary.ToString();   // SEE NEXT EXAMPLE
+
+            // L41 read two bytes using int16 at position 0x10 (Position defined above)
+            // in hexadecimal, right to left(little endian)
+            textBox1.Text += iBR.ReadInt16().ToString( "X" );
+
+            iBR.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+        }
+
+
+We left off with reading two bytes, which is stored in memory in little endian.  To reverse the order, of the bytes, we will first
+read the two bytes into an array; that is set to hold two bytes.  Then using the Array class, we will reverse the order of the bytes
+in the var. buffer.  Then we will diplay the reversed bytes, by converting the bits in the bytes in the buffer to a short Int16), and
+start at the first byte(0), after converting it to a string, in hexadecimal ("X").
+
+
+            BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+            iBR.BaseStream.Position = (0x10);
+
+            // L42 byte array equal to 2 bytes read
+            byte[] buffer  = iBR.ReadBytes(2);
+
+            // L42 use the Array class to reverse the bytes in the buffer
+            Array.Reverse(buffer);
+
+            // L42 convert buffer bytes into Int16, and display in textBox1
+            textBox1.Text += BitConverter.ToInt16(buffer, 0).ToString( "X");
+
+            iBR.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+
+To do this same convertion for a read of 4 bytes, which is Int32, we do the same thing except for the ReadBytes, and when we use the 
+BitConverter:
+
+			BinaryReader iBR = new BinaryReader(File.OpenRead(path));
+            iBR.BaseStream.Position = (0x10);
+
+			// byte array equal to 4 bytes read
+            byte[] buffer = iBR.ReadBytes(4);
+
+            // L42 use the Array class to reverse the bytes in the buffer
+            Array.Reverse(buffer);
+
+            // L42 convert buffer bytes into Int16, and display in textBox1
+            textBox1.Text += BitConverter.ToInt32(buffer, 0).ToString("X");
+
+            iBR.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+
+To display the buffer contents as a decimal we leave the field in ToString empty or ("D").  Since this is converting all the bits, it is
+calculated as one number.  If we calcuated it to bytes, it would be decimal equivelants of each individual byte, in big endian order.
+
+textBox1.Text += BitConverter.ToInt32(buffer, 0).ToString("D");
+
+
+To convert a decimal number to a hexadecimal, we create empty buffer.  Next we bit convert the bytes (1234), then we display them
+as hexadecimal values h(4D2):
+
+            // byte array empty
+            byte[] buffer = {};
+
+			// convert decimal numbers to bytes
+            buffer = BitConverter.GetBytes(1234);
+
+			// display bytes as hexadecimal in textBox1
+            textBox1.Text += BitConverter.ToInt32(buffer, 0).ToString("X");
+
+
+
+
+
+**************************** highlights from the comments area *****************************
+
+
+
+
+
+This is used to embed images into database as codes. I wish you showed that rather than simply doing this video because beginners
+might be confused what this is all about.
+
+
+
+
+
+suppose that we have a textBox2 and we gonna enter the position (offset)
+how to make this work !! br.BaseStream.Position = textBox2.text;
+
+Br.BaseStream.Position = Convert.ToInt32(textBox2.Text);
+
+Try it, it should work!
+By the way, your mistake was that you tried to set the position equal to a string! The position is an int!
+
+or maybe Br.BaseStream.Position = int.Parse(textbox2.text);
