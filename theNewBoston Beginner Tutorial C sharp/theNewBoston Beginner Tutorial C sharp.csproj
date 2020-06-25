@@ -146,6 +146,8 @@
     <Content Include="Tutorial 42 BinaryReader pt 2\L42 form1CS.txt" />
     <Content Include="Tutorial 43 BinaryWriter\L43 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 43 BinaryWriter\L43 form1CS.txt" />
+    <Content Include="Tutorial 44 SaveFileDialog\L44 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 44 SaveFileDialog\L44 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

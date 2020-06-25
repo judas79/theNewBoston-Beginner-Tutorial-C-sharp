@@ -1,0 +1,95 @@
+﻿For this lesson we will only need button1, to save a new document to.  inside the button1 body, we create an empty var. named path,
+make an instance of BinaryWriter and name it iBW, and have it create a new file, and use path to choose the path.  Then write some test
+example text, to the file, and close instance iBW properly using, dispose.
+
+			// L44 string 
+            string path = "";
+
+            // L44 instance to create new file, and choose path
+            BinaryWriter iBW = new BinaryWriter(File.Create(path));
+            {
+                // L44 write to file
+                iBW.Write("test example");
+
+                // close file properly
+                iBW.Dispose();
+            }
+
+
+Now that we have this set up, we need to set the 'path' variable to something.  We could set it to a static path:
+
+string path = "C:\\users\...";
+
+But we want to choose where to write the text file to, so we will use SaveFileDialog, so we will create an instance of it, then set 
+the path to the instance iSFD.FileName.  We will also write an if statement to confirm that all was opened properly.
+
+	
+	private void button1_Click(object sender, EventArgs e)
+        {
+            // L44 instance of SaveFileDialog
+            SaveFileDialog iSFD = new SaveFileDialog();
+
+            // L44 verify if everything is opened properly
+            if (iSFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            { 
+            // L44 string 
+            string path = iSFD.FileName;
+
+            // L44 instance to create new file, and choose path
+            BinaryWriter iBW = new BinaryWriter(File.Create(path));
+                
+            // L44 write to file
+            iBW.Write("test example");
+
+            // close file properly
+            iBW.Dispose();
+            }
+
+
+Just like the OpenFileDialog, we can set what types of file are save.  We will use Filter to save files as text, or document files.
+        
+
+            // L44 save files as a certain file type
+            iSFD.Filter = "Text File|*.txt|Document|*.doc";
+
+We can also set the file to be saved, name, to a default name.
+
+			//L44 set default filename for file
+            iSFD.FileName = "Name Me 'Dame un nombre'";
+
+
+Just like the OpenFileDialog, we can also name our SaveFile, to something other than the default, 'Save As'.
+
+
+			// L44 change SaveFileDialog name
+            iSFD.Title = "Save Ass";
+
+
+
+
+
+
+************************************** highlights from the comments area **********************************
+
+
+
+
+
+You got to make an instance of BinaryWriter and then acces the dispose method. You can't use it like System.IO.BinaryWriter.Dispose();
+because it is not a static method.
+
+
+
+
+
+When i use BinaryWriter and try to duplicate this result. My code inserts a 13 or . as the first char. Unless I use StreamWriter 
+which doesnt. It wasn't the length of the string either, that was  > 13.
+ 
+
+Yes !! you're right ! A better option would be to use StreamWriter.
+
+
+
+
+
+
