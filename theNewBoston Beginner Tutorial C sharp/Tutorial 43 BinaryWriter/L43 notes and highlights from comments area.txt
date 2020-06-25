@@ -1,0 +1,133 @@
+﻿In this video we will start, where we left off last from the last video.  So far we have is the following for button1 and button2, in 
+our form1.  We also have button2 set to enabled false, in our properties and we have a texrBox1, as well:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// added L20
+using myNamespace;
+// added L36 for StreamReader
+using System.IO;
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        // L39 string 
+        string path;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L36 instance of openfildialog
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // L37 see if file opened ok
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // button2 set to True (active) when page is confirmed to be opened
+                button2.Enabled = true;
+                path = ofd.FileName;
+
+                // Not in lesson
+                textBox1.Clear();
+            }
+        }
+
+
+Since we have the Open button1 all set up, next we will work on the BinaryWriter for the writer, button2.  First we will make an 
+instance of BinaryWriter.  Notice everything is the same as the BinaryReader in the last tutorial, except instead of Read, it is
+Write, including the path that is set to OpenWrite.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L43 instance of BinaryWriter, open path to stream and write to.
+            BinaryWriter iBW = new BinaryWriter(File.OpenWrite(path));
+
+            // L43                                    
+            iBW.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+		}
+
+
+The BinaryWrite method, is very overloaded, mean it can be used to write many value types to a file.  We already included dispose to
+close the BinaryWriter, from a previous lesson.  This will write two bytes but in little endian (right byte then left byte) 
+01 43 is what 'C' will be in hexidecimal in the document which is .C in text.
+
+			// L43 instance of BinaryWriter, open path to stream and write to.
+            BinaryWriter iBW = new BinaryWriter(File.OpenWrite(path));
+
+            // L43 write character C to the file
+            iBW.Write("C");
+            
+            // close properly
+            iBW.Dispose();
+
+
+
+Just as it did when reading files, the Write file used little endian (right to left, writing), so we will have to create a byte array,
+and the class Array, to flip the order, as we did previously in tutorial 42.  First we will make a variable of a short, to store our
+numbers, in decimal or as hexadecimal.  Then we will get our bytes from myShort and convert the bytes with bitConverter and store them
+in our buffer byte array.  Then we will use the class Array to reverse the order from little endian to big endian and write that to
+the opened file.  Then close properly
+
+
+			// L43 two bytes or Int16, d9999
+            short myShort = 9999;                                   // Next example
+
+            // L43 two bytes or Int16, hex 0x1234                   
+            short myShort = 0x1234;                               
+
+			// L43 byte array to using BitConverter to convert bytes
+            byte[] buffer = BitConverter.GetBytes(myShort);
+
+            // flip little endian stored in buffer
+            Array.Reverse(buffer);
+
+            // L43 write var. buffer to the file
+            iBW.Write(buffer);
+
+            // close properly
+            iBW.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+
+We can also store bytes as Int32 bytes, 4 bytes of hexadecimal in this example.  Ignore the name 'myShort'; its not a short:
+
+			// L43 four bytes or Int32, hex 0x1234                   
+            int myShort = 0x12345678; 
+
+			// L43 byte array to using BitConverter to convert bytes
+            byte[] buffer = BitConverter.GetBytes(myShort);
+
+            // flip little endian stored in buffer
+            Array.Reverse(buffer);
+
+            // L43 write var. buffer to the file
+            iBW.Write(buffer);
+
+            // close properly
+            iBW.Dispose();
+
+            // Not in lesson
+            //textBox1.Clear();
+            button2.Enabled = false;
+
+
