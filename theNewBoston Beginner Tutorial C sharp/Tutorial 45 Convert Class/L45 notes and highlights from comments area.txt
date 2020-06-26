@@ -1,31 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-// added L20
-using myNamespace;
-// added L36 for StreamReader
-using System.IO;
+﻿For this lesson we will need a button1 and textBox.1, to work with the convert class.  In the last view tutorials we looked at the
+BitConverter class, which handle bytes, but we will be looking at handling things other than bytes.  We will be using the Converter
+class, in button1.  The first example is Convert., after typing the dot all those are static methods for converting different types
+of variables, and no need or way of making instances of them.  The first Convert type we will do is a string to an integer.  We will
+also use try, because if the user enters something the Convert class doesn't handle, they will be given an oportunity to do so, and a
+MessageBox will tell them what is allowed.
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            try
+			try
             {
                 // L45 convert string to integer, using 
                 int iConverted = Convert.ToInt32(textBox1.Text);
@@ -35,24 +15,30 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             catch (Exception)
             {
                 // message box tells user the error and to clear (the text entered in button1)
-                MessageBox.Show("whole integers only!  \nClear " + textBox1.ToString());                             
+                MessageBox.Show("whole integers only!  \nClear " + textBox1.ToString());
+				textBox1.Clear();
             }
-            */                                                  // GO TO NEXT EXAMPLE
-            /*
-            try
+
+
+
+We can use Convert.ToInt32(textBox1.Text) as a integer variable and do math:
+
+			try
             {
-                // L45 convert string to integer, using Convert.ToInt32 and adding 100
+                // L45 convert string to integer, using 
                 int iConverted = Convert.ToInt32(textBox1.Text)+100;
                 MessageBox.Show(iConverted.ToString());
                 textBox1.Clear();
             }
             catch (Exception)
             {
-
+                // message box tells user the error and to clear (the text entered in button1)
                 MessageBox.Show("whole integers only!  \nClear " + textBox1.ToString());
             }
-            */                                                   // GO TO NEXT EXAMPLE
-            /*
+
+
+Here is an example for Converting an entered value (string) to a char.
+
             try
             {
                 // L45 convert string to char, using 
@@ -64,8 +50,10 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {            
                 MessageBox.Show("One char character only or nothing entered!  \nCLEAR " + textBox1.ToString()+"\n Then start again");
             }
-            */                                                  // GO TO NEXT EXAMPLE
-            /*
+
+
+Next example is string from textBox1 as boolean:
+
             try
             {
                 // L45 convert string to char, using 
@@ -77,9 +65,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {            
                 MessageBox.Show("True or False only!  \nCLEAR " + textBox1.ToString()+"\n Then start again");
             }
-            */
 
-            // NOT IN LESSON get ASCII in Hexadecimal
+ NOT IN LESSON get ASCII in Hexadecimal
+
             try
             {
                 // convert string to byte, using 
@@ -99,23 +87,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 MessageBox.Show("what did you enter?!  \nCLEAR " + textBox1.ToString()+"\n Then start again");
             }
             
-        }
 
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
+******************** highlights from the comments area ********************
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+NONE
 
-        }
-    }
-}
+
