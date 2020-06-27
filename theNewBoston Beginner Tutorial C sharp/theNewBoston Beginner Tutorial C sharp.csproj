@@ -151,8 +151,8 @@
     <Content Include="Tutorial 45 Convert Class\L45 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 45 Convert Class\L45 form1CS.txt" />
     <Content Include="Tutorial 46 %28doesn%27t exist%29 see Tutorial 47\see tutorial 47.txt" />
-    <Content Include="Tutorial 47 Special Folder Locations\formerly L46 notes and highlights from comments area.txt" />
-    <Content Include="Tutorial 47 Special Folder Locations\formerly L46 form1CS.txt" />
+    <Content Include="Tutorial 47 Is, as, and Casting\L47 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 47 Is, as, and Casting\L47 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

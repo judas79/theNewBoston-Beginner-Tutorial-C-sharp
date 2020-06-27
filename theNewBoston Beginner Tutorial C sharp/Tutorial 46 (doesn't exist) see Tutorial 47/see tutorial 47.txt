@@ -1,2 +1,3 @@
-﻿Tutorial 46 and 48 are both copies os tutorial 45.  See tutorial 47 for your next tutorial.  Names of Tutorials may be offset by one,
-beware of name to content of the video.
+﻿Tutorial 46 and 48 are both copies as tutorial 45.  C# Beginners Tutorial - 46 - Special Folder Locations doesn't exist as a tutorial,
+on the youTube page, even though the name does.  See tutorial 47 for your next tutorial.  Names of Tutorials may be offset by one, and
+also beware of name to content of the video, they may not match in the tutorials that lie ahead.
