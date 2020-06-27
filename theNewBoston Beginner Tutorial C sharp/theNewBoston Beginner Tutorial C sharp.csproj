@@ -153,6 +153,7 @@
     <Content Include="Tutorial 46 %28doesn%27t exist%29 see Tutorial 47\see tutorial 47.txt" />
     <Content Include="Tutorial 47 Is, as, and Casting\L47 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 47 Is, as, and Casting\L47 form1CS.txt" />
+    <Content Include="Tutorial 48 does %28not exist%29\See tutorial 49.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
