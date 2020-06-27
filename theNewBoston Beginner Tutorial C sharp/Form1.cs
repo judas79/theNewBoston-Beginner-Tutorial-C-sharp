@@ -24,7 +24,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
+            /* L45
             try
             {
                 // L45 convert string to integer, using 
@@ -77,17 +77,18 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {            
                 MessageBox.Show("True or False only!  \nCLEAR " + textBox1.ToString()+"\n Then start again");
             }
-            */
-
+            */                                                   // GO TO NEXT EXAMPLE
+            /*
             // NOT IN LESSON get ASCII in Hexadecimal
             try
             {
+                
                 // convert string to byte, using 
                 byte[] bConverted = Encoding.Default.GetBytes(textBox1.Text);
-
+                
                 // get a string with dashes
                 var sConverted = BitConverter.ToString(bConverted);
-
+                
                 // replace the dash with a space
                 sConverted = sConverted.Replace("-", " ");
 
@@ -98,7 +99,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {            
                 MessageBox.Show("what did you enter?!  \nCLEAR " + textBox1.ToString()+"\n Then start again");
             }
-            
+            */
         }
 
 

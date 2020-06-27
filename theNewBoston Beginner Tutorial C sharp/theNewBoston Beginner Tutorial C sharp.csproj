@@ -150,6 +150,8 @@
     <Content Include="Tutorial 44 SaveFileDialog\L44 form1CS.txt" />
     <Content Include="Tutorial 45 Convert Class\L45 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 45 Convert Class\L45 form1CS.txt" />
+    <Content Include="Tutorial 47 Special Folder Locations\formerly L46 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 47 Special Folder Locations\formerly L46 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
+    <Folder Include="Tutorial 46 %28doesn%27t exist%29 see Tutorial 47\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tutorial 01 setup Visual Studio\Images\click button the click form and drag to size.png" />
