@@ -1,1 +1,116 @@
-﻿
+﻿All we need for this tutorial is a button1, for the keyword 'cast' operator.  First, in button1 we will ad an object, and set it to an
+empty string.
+
+			// L47 set object to string adam
+            object oMyString = "adam";
+
+Since the item 'adam' is an object, we can find out what type of object, is inside of 'oMyString', by using an if statement with the 
+'is' deffensive cast operator.  It will give you a true, only if the type of variable it is asked to determine truth, is correct:
+
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L47 set object to empty string
+            object oMyString = "";
+            
+            // 47 use if and is to determine if var. is a string
+            if(oMyString is string) MessageBox.Show("true, it a string");
+            else MessageBox.Show("False");   
+
+        }
+
+
+We can see if the if statement is true, the usual way, using ToString():
+
+            // 47 use if and is to determine if var. is a string
+            if (oMyString is string) MessageBox.Show(oMyString.ToString(), "string:  oMyString.ToString()");
+            else MessageBox.Show("False");
+
+
+There is a path method that can achieve the same thing, as our above example, but also convert the object to a type of variable, if
+the if statement with the is operator, is true.  We will put string in front of the var. we are checking, to convert it into a string
+object if the if statement is true and it will then be displayed as a messageBox item.
+
+            // 47 use if and is to determine if var. is a string
+            if (oMyString is string) MessageBox.Show((string)oMyString, "Convert to string if, if statement is true: (string)oMyString");
+            else MessageBox.Show("False");
+
+
+If you tried converting the object string to a different type variable, other than string, you will get ane error.  We tried object int
+to string, and object int to int, and both gave us an error.
+
+			/*
+			object oMyint = 12;
+
+            // 47 use if and is to determine if var. is a object int, if true convert to string
+            if (oMyint is int) MessageBox.Show((string)oMyint, "Convert to string if, if statement is true: (string)oMyint");
+            else MessageBox.Show("False");
+
+              DID NOT WORK COULDN'T CONVERT OBJECT INT TO INT
+            // 47 use if and is to determine if var. is a object int, if true convert to int
+            if (oMyint is int) MessageBox.Show((int)oMyInt, "Convert to string if, if statement is true: (int)oMyint");
+            else MessageBox.Show("False");
+            */
+
+
+Next we will use this method  to convert the Control variable to a button, if the if/ is statement is true.  We will first set our
+control variable, to button1.  Then we will cast our control variable to a Button:
+
+
+            // L47 use if/ is to change control variable to cast as a Button
+            Control cMyControl = button1;
+            if(cMyControl is Button)
+            {
+                // notice parenthesis around cast (button)
+                Button bMyButton = (Button)cMyControl;
+
+                // notice .Text not .ToString()
+                MessageBox.Show(bMyButton.Text);
+            }
+
+
+We can use keyword 'as' instead of the parenthesis around the casting variable, to do the same thing:
+
+			// L47 use if/ is to change control variable to cast as a Button using 'as'
+            Control cMyControl2 = button1;
+            if(cMyControl2 is Button)
+            {
+                // notice 'as' after cMyControl2 then Button
+                Button bMyButton = cMyControl2 as Button;
+
+                // notice .Text not .ToString()
+                MessageBox.Show(bMyButton.Text);
+
+
+We can use this as method to convert an string object to a string, also:
+
+
+            // 47 use as to convert string object to string
+            object oMyString2 = "TRUE 2!";
+            if(oMyString2 is string)
+            {
+                string sMyString2 = oMyString2 as string;
+                MessageBox.Show(sMyString2);
+            }
+
+
+
+
+
+*********************** highlights from the comments area ***************************
+
+
+
+
+
+There are very different behaviors that needs to be understood when using 'is' or (cast) vs 'as'. Some speed differences too. It was quickly glossed over. John Skeet gave a great discussion on this topic at 
+http://stackoverflow.com/questions/496096/casting-vs-using-the-as-keyword-in-the-clr?answertab=votes#tab-top
+
+
+
+
+
+
+The reason you(in the tut.) got an error with "cannot convert int to string" is not because myObj was a string, it didn't know it until runtime.  
+The reason was because the .Show method of the MessageBox class as EXPECTING a string as an argument, but since you were casting to 
+an int then it complained.
