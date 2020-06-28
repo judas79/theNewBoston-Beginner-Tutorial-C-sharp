@@ -1,0 +1,47 @@
+﻿All we'll need for this lesson is button1, about substrings, which are part of the string class.  first we will create a string, that 
+consists of a first and last name.
+
+			// L49 string
+            string sFullName = "John Smith";
+
+
+Supposed we only want the last name.  We will use the substring method to get the part of the string, we want, and put it into another
+string, as its own entity.  We keep the character we want, from the original string, by first, marking the starting point, then the 
+amount of characters, you want to keep, including spaces, if you wish to keep them.
+
+
+            // get substring of string 
+            // (starting address of what you want to get, how many characters you wish to get
+            string sLastName = sFullName.Substring(5, 5);
+            string sFirstName = sFullName.Substring(0, 4);
+
+            MessageBox.Show("last name: " + sLastName + ",\nfirst name: " + sFirstName);
+
+
+If you want to get the characters from a certain point, all the way to the end of the string, you don't need to specify the second 
+parameter, which is the amount of characters.
+
+			// get starting point through all the characters, to the end
+            string sToEndName = sFullName.Substring(3);
+
+            MessageBox.Show("last name: " + sLastName + ",\nfirst name: " + sFirstName + ",\npartial name: " + sToEndName);
+
+
+
+
+
+********************* highlights from the comments area ***********************
+
+
+
+
+
+
+i think it would be much better to use
+string[] array = Name.split(' ');
+
+
+
+
+
+
