@@ -156,6 +156,8 @@
     <Content Include="Tutorial 48 does %28not exist%29\See tutorial 49.txt" />
     <Content Include="Tutorial 49 Substrings\L49 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 49 Substrings\L49 form1CS.txt" />
+    <Content Include="Tutorial 50 IndexOf and Trim %28substring%29\L50 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 50 IndexOf and Trim %28substring%29\L50 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

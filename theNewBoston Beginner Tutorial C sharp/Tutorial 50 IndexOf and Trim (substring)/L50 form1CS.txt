@@ -60,22 +60,5 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             MessageBox.Show("Trim Start name: " + sTrimStartName + ";\ntrim end name: " + sTrimEndName, "L50 TrimStart and TrimEnd");
         }
-
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }

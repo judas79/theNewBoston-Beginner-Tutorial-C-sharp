@@ -1,0 +1,66 @@
+﻿All we'll need for this lesson is button1, to use index of string in our substring.  Instead of getting our information from a string,
+by making a substring, to get the starting point, then the amount of characters we want, we will use the starting point, then the space
+between the first name and last name, to isolate the characters wee want.  So continuing on from last lesson:
+
+
+			// L49 string
+            string sFullName = "John Smith";
+
+
+to get the first name from our string we use our starting point as 0 and end point is the empty space;  IndexOf(' ') from the originsl
+string sFullName.
+To use this principle to get the last name, we use the blank space index point as the start of the substring read, that will go to the 
+end.  No need for the second component for the substring.
+
+
+			// L50 using index of string, and starting point to get substring characters, last name
+            string sIndexFirstName = sFullName.Substring(0, sFullName.IndexOf(' '));
+
+
+            // using index of string, and index (empty space) as the starting point, 
+            // to get substring characters to the end, last name
+            string sIndexLastName = sFullName.Substring(sFullName.IndexOf(' '));
+
+
+If you will notice after compiling it, the last name has a space before it.  That is because when we our doing our indexof parcing, it
+pacrces before the space.  To remedy this we add 1.
+
+			string sIndexLastName = sFullName.Substring(sFullName.IndexOf(' ') + 1);
+
+			
+
+
+Next we will use the trim operator, to get rid of unwanted spaces, that may be at the beginning and at the end of character, that you
+want to save string.  Notice, Trim is not a substring method.
+
+			// L50 use trim default to get rid of spaces at beginning and end of string
+
+            // string 2
+            string sFullNameSpaces = "      Mike Jones    ";
+            string sTrimedFullName = sFullNameSpaces.Trim();
+
+            MessageBox.Show("last name: " + sIndexLastName + ",\nfirst name: " + sIndexFirstName + ",\ntrimmed name: " + sTrimedFullName, "Tutorial 50");
+
+
+We can also use TrimStart to get rid of, only the spaces at the beginning and TrimEnd, to get rid of spaces only at the end.
+
+            // L50 TrimStart, get rid of empty spaces at the begining, before the characters
+            string sTrimStartName = sFullNameSpaces.TrimStart();
+
+            // L50 TrimEnd, get rid of empty spaces at the end, after the characters
+            string sTrimEndName = sFullNameSpaces.TrimEnd();
+
+            MessageBox.Show("Trim Start name: " + sTrimStartName + ";\ntrim end name: " + sTrimEndName, "L50 TrimStart and TrimEnd");
+
+
+
+
+
+**************************** highlights from the comments area ***************************
+
+
+
+NONE
+
+
+
