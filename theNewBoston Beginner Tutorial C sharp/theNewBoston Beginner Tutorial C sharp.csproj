@@ -160,6 +160,8 @@
     <Content Include="Tutorial 50 IndexOf and Trim %28substring%29\L50 form1CS.txt" />
     <Content Include="Tutorial 51 Remove and Replace\L51 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 51 Remove and Replace\L51 form1CS.txt" />
+    <Content Include="Tutorial 52 Split and ToCharArray\L52 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 52 Split and ToCharArray\L52 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

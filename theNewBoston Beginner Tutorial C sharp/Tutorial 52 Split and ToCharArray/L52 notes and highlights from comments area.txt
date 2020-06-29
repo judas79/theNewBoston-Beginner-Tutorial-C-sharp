@@ -1,0 +1,82 @@
+﻿All you need is button1 for the lesson on using the split and ToCharArray methods.  We will first create a string with 6 first names,
+each seperated by a semicolon.  Then we will use the split method to seperate them.  The split method splits things up from left to 
+right using the entered char to mark the splits, to the end.
+
+
+            // L52 string names, semicolon between them
+            string sSemiColonFNames = "John;Adam;Spock;Mike;Kirk;Spaz";
+            string sSemiColonFNames2 = "John Adam Spock Mikem Kirk Spaz";
+
+            // L52 string array, sSemiColonFNames into separate items in array
+            // the splits occur in order using the (';') whatever char, you choose 
+            string[] saSeparatedFNames = sSemiColonFNames.Split(';');
+
+We will use a foreach statement to show the results of the contents of the array, in a few MessageBoxs.  Notice after debugging, that
+char used to seperarate items is omited.
+
+
+            // L52 display saSeparatedFNames array names in message box using foreach
+            foreach (string sFName in saSeparatedFNames)
+                MessageBox.Show(sFName + "\n");
+
+			for (int i = 0; i < sSemiColonFNames2.Length; i++)
+			{
+				string s = sSemiColonFNames2[i];
+				MessageBox.Show(s + "\n");
+			}
+
+		  // NOT IN LESSON
+            for (int i = 0; i < saSeparatedFNames2.Length; i++)
+            {
+                string s = saSeparatedFNames2[i];
+                MessageBox.Show(s + "\n");
+                textBox1.Text += s+ " ";
+			}
+
+To get a char array or a long sequence of letters into a char array we will use the ToCharArray method.  First we will make a string,
+consisting of all the letters of the alphabet, without spaces.  Then we will use the ToCharArray mthod to split them up into individual
+chars 'a' in an array.  Then we will use foreach to split them up to be displayed in textBox1, then one at a time in a message box.
+
+			// L52 string partial alphabet
+            string _sLetters = "abcdefghijkl";
+
+            // split string in individual char items
+            char[] caLetter = _sLetters.ToCharArray();
+
+            // display using textBox1 and for each
+            foreach (char c in caLetter)
+            {
+                textBox1.Text += c + " ";
+            }
+
+
+Try this in messageboxes using for statement:
+
+            for (int i = 0; i < caLetter.Length; i++)
+            {
+                char s = caLetter[i];
+                MessageBox.Show(s.ToString() + "\n");
+                textBox1.Text += s.ToString() + " ";
+            }
+
+
+
+
+
+
+********************** highlights from the comments area ************************
+
+
+
+
+
+
+You never thought of replacing delimiters that consist of two or more characters with say a '#' and then split the string like shown
+in the video. Really that hard?
+
+
+
+
+
+
+i found that can use Regex's split method to split a string  : system.text.regularexpressions.regex.split
