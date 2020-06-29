@@ -1,0 +1,74 @@
+﻿All you need is button1 for the lesson on using the Remove and Replace Methods.  First we will create a complete string of text.  Then 
+we will usr the Remove method to remove everything but the first work, in the complete string, and use MessageBox to display it:
+
+            // L51 string
+            string sCompleteSentence = "John says Hi, and ge Hi";
+
+            // L51 get first word in sentence
+            string sRemoveStartSentence = sCompleteSentence.Remove(0 ,5);
+
+
+Next we will remove everything except, the first 4 characters, by setting the start to 4:
+Then as a bonus, we will remove everything but the first and last words.  To count the space, to where you want to set your end point,
+depress shift, and starting from the begining, click your arrow button and keep count.  If you put a starting possition offset in,
+subtract that from your total count.
+
+
+            // L51 Get everything but the last 6 characters of the sentence
+            string sRemoveEndSentence = sCompleteSentence.Remove(4);
+
+            // NOT IN LESSON omit everything but the first and last word in the example sentence
+            string sOmitMiddleSentence = sCompleteSentence.Remove(5, 17);
+            
+
+            MessageBox.Show("remove from start, to fifth char.: " + sRemoveStartSentence + ";\nRemove everything to the end, after first 4 chars: " + sRemoveEndSentence + ";\nremove the middle of the sentence: " + sOmitMiddleSentence, "L51 RemoveStart and RemoveEnd");
+        
+
+
+Next we will use the Replace method.  We will replace the string text elements with other string elements.  The string text you want to
+replace goes first, withing the replace parenthesis, and the the text you want to replace it with.
+
+
+            // L51 Replace 1st parameter, text to replace, then, the text you want to use.
+            string sReplaceWord = sCompleteSentence.Replace("Hi", "Hello");
+
+
+Replace all the single element chars with another single element char.  Char elements are in single quoates, and the replacement, order
+within the parenthesis is the same as the above example
+
+			// L51 Replace single characters using single quoates
+            string sReplaceChar = sCompleteSentence.Replace(' ', '-');
+
+
+			// NOT IN LESSON Replace empty spaces with -.-
+            string sReplaceSpaces = sCompleteSentence.Replace(" ", "-.-");
+
+
+			// NOT IN LESSON FROM COMMENTS AREA
+            string str = "10110101";
+            str = str.Substring(0, str.Length - 3) + (char)((((char)str[str.Length - 3] + 1) % '2') + '0') + str.Substring(str.Length - 2, 2);
+            MessageBox.Show("was 10110101 now = " + str);
+
+
+			
+
+
+
+
+
+********************** highlights from the comments area *************************
+
+
+
+
+
+
+
+Hello Bucky,
+If string, sentence = "10110101".
+I need to toggle the 3rd bit/character from the right end.
+That implies after = "10110001"
+How to do that using Remove and Replace functions?
+
+
+str = str.Substring(0, str.Length - 3) + (char)((((char)str[str.Length - 3] + 1) % '2') + '0') + str.Substring(str.Length - 2, 2);

@@ -55,22 +55,5 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             str = str.Substring(0, str.Length - 3) + (char)((((char)str[str.Length - 3] + 1) % '2') + '0') + str.Substring(str.Length - 2, 2);
             MessageBox.Show("was 10110101 now = " + str);
         }
-
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }
