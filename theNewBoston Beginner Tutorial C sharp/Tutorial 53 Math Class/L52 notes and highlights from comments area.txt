@@ -1,0 +1,41 @@
+﻿For this tutorial we need a button1 and label1 to learn about the math, class.  To acces the math class, write math and to access the
+methods inside of the math class, a dot, which means the methods are all static.  The first method in the math class we will test and
+display using label1, is the absolute value. 
+
+			// L53 Math class type, methods are all static
+
+            // absolute value, method
+            label1.Text = Math.Abs(-432).ToString();
+
+
+The class type math, also contains some values as well as methods, such as PI.
+
+            // value, PI
+            //label1.Text = Math.PI.ToString();
+
+The math class also has the power to functionality, for exponential calculations.  The first number in the Pow() field is the number 
+you want to use the exponent on, and the second is the exponents value.
+
+			// power to, first is the number, second is the exponent
+            label1.Text = Math.Pow(-4,3).ToString();
+
+
+
+The Math class, also has the Round method, which will round a decimal point to its nearest whole decimal value, using the default 
+setting.  Round can be set to control what point the decimal point is rounded to.  In this example the decimal point is set for hundreds
+which is the value, 2.
+
+
+            // Default, Round decimal point to whole decimal value
+            //label1.Text = Math.Round(-23.5).ToString();
+
+            // Round decimal point to nearest specified decimal point value
+            // first is number to be altered, 2nd number the place amount to round to
+            label1.Text = Math.Round(12.87655, 2).ToString();
+
+
+
+
+NO HIGHLIGHTS FROM THE COMMENTS AREA
+
+
