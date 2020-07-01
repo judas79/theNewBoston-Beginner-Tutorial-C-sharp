@@ -164,6 +164,8 @@
     <Content Include="Tutorial 52 Split and ToCharArray\L52 form1CS.txt" />
     <Content Include="Tutorial 53 Math Class\L53 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 53 Math Class\L53 form1CS.txt" />
+    <Content Include="Tutorial 54  Generating Random Numbers\L54 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 54  Generating Random Numbers\L54 forms1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

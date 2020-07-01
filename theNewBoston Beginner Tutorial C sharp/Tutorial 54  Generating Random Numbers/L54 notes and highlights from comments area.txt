@@ -1,0 +1,87 @@
+﻿For this lesson we will need button1 to learn about the Random class and its methods.  We will use Random, in its default state, to
+generate random numbers.  first we will make an instance of the random class.  They will be whole decimals from 0 to infinity.
+
+
+			// L54 the Random class instance
+            Random IRandom = new Random();
+
+            // L54 using Next method to generate fom 0-infinity, whole numbers
+            label1.Text = IRandom.Next().ToString();
+
+
+We can set parameters in th Next() field, to specify a lowest numerical value and a highest, for the random numbers to be generated 
+from.
+
+
+            // L54 use Next with minimum and maximum vakues specified
+            textBox1.Text = IRandom.Next(0, 100).ToString();
+
+
+The Next method also has a NextByte method available, to generate bytes.  To use this we will first have to generate a byte array, to
+store the bytes in.  We will create a byte array that stores 5 bytes, for this example. Then we will generate the random bytes, into the
+byte array.  Then we will convert the bytes, using BitConverter, and convert those to string, for display using Messagebox. 
+
+
+		    // L54 NextBytes, random bytes specified by byte array
+            byte[] bBuffer = new byte[5];
+
+            // L54 create random bytes in buffer
+            IRandom.NextBytes(bBuffer);
+
+            // use convert to display bytes in messagebox
+            MessageBox.Show(BitConverter.ToString(bBuffer));
+
+
+Next, also has a method for generating random decimal point numbers using Double, and display in messagebox.
+
+
+            // NextDouble to generate decimal point values between 0 - 1
+            MessageBox.Show(IRandom.NextDouble().ToString());
+
+
+
+            // NOT IN LESSON MIXED RANDOM
+            MessageBox.Show(IRandom.Next(0, 100).ToString() + IRandom.Next(0, 100).ToString()+IRandom.NextDouble().ToString()+ BitConverter.ToString(bBuffer));
+
+
+
+
+
+
+
+************************ highlights from comments area *************************
+
+
+
+
+
+
+how do you generate a set of random numbers that no two equal numbers will be next to each other? help!!!!!!!
+
+generate the number+1
+
+
+
+
+
+
+
+Actually, the default value for a byte is 0, not null. It's still a primitive type
+
+
+
+
+
+
+How do I output this into a label?
+
+Gortex Wrecker label1.Text = number.ToString(); (replacing label1 and number of course with your own variable names that you may 
+have)
+
+
+
+
+
+you should know that if you write:
+r.Next(0,100);
+it will generate a random number between 0 and 99
