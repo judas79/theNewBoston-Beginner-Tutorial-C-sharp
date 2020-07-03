@@ -1,0 +1,88 @@
+﻿All we will need is button1, for lesson on FolderBrowserDialog.  Inside button we will first create an instance of FolderBrowserDialog.
+Then we will check if the instance, makes the path to folders.
+
+
+            // L56 instance of FolderBrowserDialog
+            FolderBrowserDialog IFBD = new FolderBrowserDialog();
+
+            // L 56 check 'if' the instance makes the path
+            if (IFBD.ShowDialog() == System.Windows.Forms.DialogResult.OK);
+            {
+                MessageBox.Show("IFBD Functional");
+            }
+
+
+The most import properties you acan use with FolderBrowserDialog is to get the selected path, for display, or other uses.
+
+
+                // Display the selected pat property
+                MessageBox.Show(IFBD.SelectedPath);
+
+
+You can set FolderBrowserDialog to open a default root folder, meaning any folder you choose to be the folder it starts at, when you
+launch, FolderBrowserDialog.  This is also a property of FolderBrowserDialog.  Most of the root folder set, only alow you to choose
+that particular set root folder, without browsing to other folders.
+
+            // L56 property to set a determined folder (root folder) for FolderBrowserDialog
+            IFBD.RootFolder = Environment.SpecialFolder.UserProfile;
+
+
+To give a brief description about the root folder area your browser is opening at we use the  description property:
+
+
+           // L56 set description of the folder root your are opening
+            IFBD.Description = "these sub-folders are your only choices";
+
+
+
+
+
+
+************************ highlights from the comments area *************************
+
+
+
+
+
+How can i do it showing the directory in a text box?. Thanks.
+
+
+FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Program verilerini nereye kaydetsin?";
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                textBox1.text = fbd.SelectedPath;
+            }
+
+
+
+
+
+
+
+So to save as a varible it would be something like "NewVarible = fbd.SelectedPath" ??? yes I'm in 2020
+
+yes
+
+
+
+
+
+
+
+Here's an updated version: 
+OpenFileDialog open = new OpenFileDialog();
+
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                lbPath.Text = open.FileName;
+            }
+
+
+
+
+
+
+there is also the option "shownewfolderbutton" which is very nice cause you can disable that button if you want the user to select a 
+existing directory ;)

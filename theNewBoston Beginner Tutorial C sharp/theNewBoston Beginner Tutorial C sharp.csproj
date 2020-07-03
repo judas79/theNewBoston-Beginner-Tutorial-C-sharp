@@ -168,6 +168,8 @@
     <Content Include="Tutorial 54  Generating Random Numbers\L54 forms1CS.txt" />
     <Content Include="Tutorial 55 Generating Random String\L55 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 55 Generating Random String\L55 form1CS.txt" />
+    <Content Include="Tutorial 56 FolderBrowserDialog\L56 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 56 FolderBrowserDialog\L56 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
