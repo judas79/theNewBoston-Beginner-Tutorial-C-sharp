@@ -1,0 +1,108 @@
+﻿We will need button1 and textBox1 for this lesson on generating Random Strings.  First we will create a instanc of Random, then a char
+array to hold the letters of the alphabet, for this example.  The char array is created from a string that is converted to a char array.
+The letters in the array, do not need to be in any order, since this array will be used to get the Random letters.
+
+			// L54 the Random class instance
+            Random IRandom = new Random();
+
+            // L55 char array, all letters of the alphabet (string), converted to char array
+            char[] cLetters = "zxcvbnmasdfghjklqwertyuiop".ToCharArray();
+
+
+So we will generate a random number to represent the index number for the cLetter, which will point to the random letter.  This will\
+point at a single index within the array which is the letter from the char var. cLetter., We will, use .ToString to display in 
+messagebox.
+			
+			
+			// generate one random index number to define the index for chars letter
+            MessageBox.Show(cLetters[IRandom.Next(0, 25)].ToString());
+
+
+To get a few or many letters at one time we will use a for statement and create an empty string:
+
+
+			// generate more than one letter using a for statement
+            string sRandom = "";
+            for(int iCount=0; iCount<5; iCount++)
+            {
+                // add chars to string (+=)
+                sRandom += cLetters[IRandom.Next(0, 25)].ToString();
+            }
+            MessageBox.Show(sRandom);
+
+
+
+
+
+
+
+
+*********************** highlights from the comments area **************************
+
+
+
+
+
+
+
+Computers count from 0.
+So if u want to find something in 26-long array, u search from index 0 to 25 (which will give us 26 options).
+
+
+
+
+
+
+
+Random.Next(0,25) will not ever return 25, because the upper bound is exclusive. So you will never get to the 'z' character. You 
+should always add 1 to the maxValue, if you want it to be included.
+
+Yup!
+
+array starts with index 0 dumb ass
+
+ u selve dumb ass bc u dont know anything about it, hes right
+it dont mind if it starts with 0
+
+
+
+
+
+
+I want to make a random string that prints out the words "rock", "paper", "scissors" not random letters. Idk if you can help me out?
+
+
+Yes. Change the letter pool to "R, P, S". R stands for rock, P stands for paper, and S stands for scissors. Now, if you want the words
+to show, you can do that if the text in textbox one is "R", then the text in textbox two is rock.
+
+
+
+
+
+
+How would I be able to display them to labels? 
+
+label1.Text = (letters[R.Next(0, 25)].ToString());
+
+label1.Text = randomstring.ToString();
+
+
+
+
+
+
+
+yes you can use split method to put al strings in string array and than you randomly go through then
+stringArray[Random.Next()]     and if you want to be shore to not make some string twice just use if statement if it's been already 
+used
+
+
+
+
+
+
+
+public List<string> randomColour = new List<string>();
+
+int num = Random.Range(0, 12);
+ string temp = randomColour[num];
