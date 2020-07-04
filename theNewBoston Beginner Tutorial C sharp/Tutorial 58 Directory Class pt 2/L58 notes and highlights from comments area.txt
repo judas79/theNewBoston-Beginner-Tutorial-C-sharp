@@ -1,0 +1,50 @@
+﻿For this lesson we will need button1 to learn more about the Directory class.  We will need and instance for  FolderBrowserDialog and
+a way to check if the path was correctly implimented, from the previous tutorial.
+
+
+			// L56 instance of FolderBrowserDialog
+            FolderBrowserDialog IFBD = new FolderBrowserDialog();
+
+            // L56 check 'if' the instance makes the path
+            if (IFBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IFBD Functional");
+			}
+
+
+Resumming where we left off, above, we will continue with the Directory class.  We will write Directory the the . dot operator, to see
+all the different, methods it has.  We will start at the GetCreationTime, to get the date/ time, a directory was created.  We will look
+at the date time variable, in detail, in a future lesson.
+
+				// L58 Get creation date/time for folder, display in messagebox after converting ToString()
+                MessageBox.Show(Directory.GetCreationTime(IFBD.SelectedPath).ToString());
+
+
+Next we will Get the Last Accessed time/ date:
+
+				// L58 Get last accessed time/date for folder, convert to string
+                MessageBox.Show(Directory.GetLastAccessTime(IFBD.SelectedPath).ToString());
+
+
+Next we will Get the last time /date the folder was written to:
+
+                // L58 Get last time written to time/date for folder, convert to string
+                MessageBox.Show(Directory.GetLastWriteTime(IFBD.SelectedPath).ToString());
+
+
+
+Finally we will get the parent directorys' path, of the sub folder, we chose:
+
+
+				// L58 Get the parent directorys path for sub-folder, convert to string, messageboxs title
+                MessageBox.Show(Directory.GetParent(IFBD.SelectedPath).ToString(), "GetParent");
+
+
+
+
+
+NO HIGHLIGHTS FROM THE COMMENTS AREA
+
+
+
+
