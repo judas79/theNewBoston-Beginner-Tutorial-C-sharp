@@ -32,21 +32,15 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {
                 MessageBox.Show("IFBD Functional");
 
-                // L58 Get creation date/time for folder, convert to string, messagebox title
-                MessageBox.Show(Directory.GetCreationTime(IFBD.SelectedPath).ToString(), "GetCreationTime");
+                // L59 create a folder, , messagebox title
+                //Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder");
 
-                // L58 Get last accessed time/date for folder, convert to string
-                MessageBox.Show(Directory.GetLastAccessTime(IFBD.SelectedPath).ToString(),"GetLastAccessTime");
+                // NOT IN LESSON, lets you know you created a folder
+                MessageBox.Show(Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder").ToString(), "Folder");
 
-                // L58 Get last time written to time/date for folder, convert to string
-                MessageBox.Show(Directory.GetLastWriteTime(IFBD.SelectedPath).ToString(), "GetLastWriteTime");
-
-                // L58 Get the parent directorys path for sub-folder, convert to string, messageboxs title
-                MessageBox.Show(Directory.GetParent(IFBD.SelectedPath).ToString(), "GetParent");
-
-                // NOT IN THE LESSON
-                
-                MessageBox.Show(Directory.GetLastWriteTimeUtc(IFBD.SelectedPath).ToString(), "GetLastWriteTimeUtc");
+                // L59 select folder move and rename
+                //Directory.Move(IFBD.SelectedPath, "C:\\Users\\Roddy\\OneDrive\\Documents\\VS Test folder\\New Sub Folder2");
+             
             }
             button2.Enabled = true;
 

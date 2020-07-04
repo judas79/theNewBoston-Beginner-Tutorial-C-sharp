@@ -1,0 +1,33 @@
+﻿For this lesson we will need button1 to learn more about the Directory class.  We will need and instance for  FolderBrowserDialog and
+a way to check if the path was correctly implimented and a folder chosen to be opened, from the previous tutorial.  also make sure you
+have using System.IO; in your form1.cs, to access namespace for accessing folders.
+
+
+			// L56 instance of FolderBrowserDialog
+            FolderBrowserDialog IFBD = new FolderBrowserDialog();
+
+            // L56 check 'if' the instance makes the path
+            if (IFBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IFBD Functional, folder selected");
+			}
+
+
+Forst we will use the Directory class to create a folder, with a name designation.  We will be using IFBD.ShowDialog() to select a 
+folder, as we did in the previous tutotials, and create a folder within it using	 and then adding + the name you want to call your
+new folder.  Note, while using a / for creation of the sub-directory, you actually need two  slashes //, because the compiler will read
+one / as an omit next character as a character, as to use double quoates.
+
+
+				// L59 create a folder, , messagebox title
+                Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder");
+
+                // NOT IN LESSON, lets you know you created a folder
+                //MessageBox.Show(Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder").ToString(), "Folder");
+
+
+Next we will move a folder, that we will choose using, IFBD.SelectedPath, into another folder (directory), and give that folder, a new
+name, using Move.
+
+
+
