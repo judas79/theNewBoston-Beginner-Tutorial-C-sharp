@@ -1,0 +1,62 @@
+﻿For this lesson we will need button1 to learn more about the File class.  We will need and instance for  OpenFileDialog and
+a way to check if the path was correctly implimented and a file chosen to be opened, from a previous tutorial.  also make sure you
+have using System.IO; in your form1.cs, to access namespace for accessing folders and files.
+
+
+			// L60 instance of OpenFileDialog
+            OpenFileDialog IOFD = new OpenFileDialog();
+
+            // L60 check 'if' the instance makes the path
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IOFD Functional, file selected");
+
+            }
+
+
+The first method in the File class, we will examine is the Exists method.  All the File classes methods are static, so don't attempt to
+create a instance of them.  Exist, will tell you if the file you are looking for exists, at a described path.  This will give you a true
+or false, so convert to string for message box.
+
+
+
+                // L60 does the file exists, IOFD open file path, show messagebox
+               MessageBox.Show(File.Exists(IOFD.FileName).ToString(), "File.Exists");
+
+
+
+Seeing if a file exists after, seeing the file in the open file dialog, would not be the way we use the 'exixts' method.  Instead, we
+would be using it, with a static path, to the file in a usefull, real situation. NOT IN LESSON, we used verbatim '@' for path strings,
+and variables for the name and extension, for the file name as well as for the messagebox title:
+
+
+			string sFileName = "test";
+            string sExtension = ".txt";
+            // L60 does the file exists, static path to a file, show messagebox
+            MessageBox.Show(File.Exists(@"C:\Users\Roddy\OneDrive\Documents\VS Test folder\" + sFileName + sExtension).ToString(), "File " + sFileName + sExtension + " Exists?");
+            
+
+
+Next we will demonstrate the delete method.  Since the delete method is void, we can not directly apply it to the messagebox for display:
+
+
+				// L60 open path to, select file to delete
+                File.Delete(IOFD.FileName);
+
+
+NOT IN LESSON delete static path, to var filename, consisting of a variable for name and a variable for the extension.  Then verify if
+that file has been deleted:
+
+			string sFileName = "test";
+            string sExtension = ".txt";
+
+            // L60 open static path to, var file to delete
+            File.Delete(@"C:\Users\Roddy\OneDrive\Documents\VS Test folder\" + sFileName + sExtension);
+
+            // L60 does the file exists, static path to a file, show messagebox
+            MessageBox.Show(File.Exists(@"C:\Users\Roddy\OneDrive\Documents\VS Test folder\" + sFileName + sExtension).ToString(), "File " + sFileName + sExtension + " Exists?");
+
+
+
+
+*************** NO highlights from the comments area *************
