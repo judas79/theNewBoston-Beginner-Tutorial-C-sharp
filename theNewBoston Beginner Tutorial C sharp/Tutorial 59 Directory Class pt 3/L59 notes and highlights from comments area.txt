@@ -26,8 +26,42 @@ one / as an omit next character as a character, as to use double quoates.
                 //MessageBox.Show(Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder").ToString(), "Folder");
 
 
-Next we will move a folder, that we will choose using, IFBD.SelectedPath, into another folder (directory), and give that folder, a new
-name, using Move.
+Next we will move a folder, that we will choose using, IFBD.SelectedPath, into another folder (directory), and give that moved folder,
+a new name, using Move.  Don't use this move method, at the same time as the lesson before it 'create folder' it caused an error.
+
+
+				// L59 select folder move and rename
+                Directory.Move(IFBD.SelectedPath, "C:\\Users\\Roddy\\OneDrive\\Documents\\VS Test folder\\New Sub Folder\\New Sub Folder2");
+            
+				// NOT IN LESSON try vebatim @ instead of using double backslashes in file path strings
+                //Directory.Move(IFBD.SelectedPath, @"C:\Users\Roddy\OneDrive\Documents\VS Test folder\New Sub Folder\New Sub Folder2");
+
+
+Next we will select a folder to be targeted and deleted.
+
+				// L59 delete selected folder
+                Directory.Delete(IFBD.SelectedPath);
 
 
 
+
+********************* highlights from the comments area ********************
+
+
+
+
+
+
+when working with filepaths,just put @ in front of your String.
+It is called a verbatim String and makes it, so you don't have to type \\, but \
+
+
+
+
+When we try to Move from a volume to another we have the following, "Source and destination path must have identical roots. Move will 
+not work across volumes."
+
+But I think that we can overcome this solution by using the File.Copy and copy file each file in the directory to another created 
+directory
+
+Then delete the Directory. 

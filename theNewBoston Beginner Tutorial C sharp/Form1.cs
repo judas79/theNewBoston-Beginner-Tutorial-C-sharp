@@ -36,11 +36,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 //Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder");
 
                 // NOT IN LESSON, lets you know you created a folder
-                MessageBox.Show(Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder").ToString(), "Folder");
+                //MessageBox.Show(Directory.CreateDirectory(IFBD.SelectedPath + "//New Sub Folder").ToString(), "Folder");
 
                 // L59 select folder move and rename
-                //Directory.Move(IFBD.SelectedPath, "C:\\Users\\Roddy\\OneDrive\\Documents\\VS Test folder\\New Sub Folder2");
-             
+                //Directory.Move(IFBD.SelectedPath, "C:\\Users\\Roddy\\OneDrive\\Documents\\VS Test folder\\New Sub Folder\\New Sub Folder2");
+
+                // L59 delete selected folder
+                //Directory.Delete(IFBD.SelectedPath);
+
+                // NOT IN LESSON try vebatim @ instead of using double backslashes in file path strings
+                Directory.Move(IFBD.SelectedPath, @"C:\Users\Roddy\OneDrive\Documents\VS Test folder\New Sub Folder\New Sub Folder2");
+
             }
             button2.Enabled = true;
 
