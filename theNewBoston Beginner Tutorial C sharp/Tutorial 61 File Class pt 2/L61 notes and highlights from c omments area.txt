@@ -1,0 +1,38 @@
+﻿For this lesson we will need button1 to learn more about the File class.  We will need and instance for  OpenFileDialog and
+a way to check if the path was correctly implimented and a file chosen to be opened, from a previous tutorial.  also make sure you
+have using System.IO; in your form1.cs, to access namespace for accessing folders and files.
+
+
+			// L60 instance of OpenFileDialog
+            OpenFileDialog IOFD = new OpenFileDialog();
+
+            // L60 check 'if' the instance makes the path
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IOFD Functional, file selected");
+
+            }
+
+
+Resuming where we left off last tutorial, we will be examining the File class using the 'copy' method.  The Parameters for the copy
+metod are, first a path to the file we want to copy, the a path to where the copy will be copied to.  We will use our open file dialog
+instance, to select our FileName, that we want to copy, and a static path to where we will copy it to.  The coppied file will also need
+to be renamed along with having an extention specified, at the end of the path, to its destination folder.
+
+				// L61 open path to, select file to copy, use static path to paste renamed file
+                string sFileName = "test";
+                string sExtension = ".txt";
+                //File.Copy(IOFD.FileName, @"C:\Users\Roddy\OneDrive\Documents\VS Test folder\New Sub Folder\" + sFileName + sExtension);
+				
+
+
+The Next method we will use is the Move method.  Its structure is identical to the Copy method, the difference being that the original
+file is moved and renamed, so it will not be in its former folder, after it is moved.
+
+
+                // L61 open path to, select file to move, use static path to paste renamed file
+                File.Move(IOFD.FileName, @"C:\Users\Roddy\OneDrive\Documents\VS Test folder\New Sub Folder\New Sub Folder2\" + sFileName + sExtension);
+                
+
+
+******************** NO highlights from the comments area *******************
