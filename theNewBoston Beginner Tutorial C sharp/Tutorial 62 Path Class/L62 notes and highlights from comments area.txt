@@ -1,0 +1,75 @@
+﻿For this lesson we will need button1 to learn more about the Path class.  We will need and instance for  OpenFileDialog and
+a way to check if the path was correctly implimented and a file chosen to be opened, as we did in the previous tutorial.  Also make 
+sure you have using System.IO; in your form1.cs, to access namespace for accessing folders and files.
+
+
+			// L60 instance of OpenFileDialog
+            OpenFileDialog IOFD = new OpenFileDialog();
+
+            // L60 check 'if' the instance makes the path
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IOFD Functional, file selected");
+
+            }
+
+
+We will first examine the Path class, GetDirectoryName method, which will get the path to the directory in which the file you choose
+is in.  Then we will use an identical mehtod to get the Extension of the file.
+
+
+                // L62 Path class, get directory path of the IOFD chosen FileName
+                // display with messagebox
+                MessageBox.Show(Path.GetDirectoryName(IOFD.FileName), "Path.GetDirectoryName");
+
+                // 62 Path GetExtension of the file we choose, and display with messagebox
+                MessageBox.Show(Path.GetExtension(IOFD.FileName), "Path.GetExtension");
+            }
+
+
+
+The Path class, GetFileName, will get the name and its extension, using the same layout for the method, above. Then we will also Get 
+the filename without the extension:
+
+				// 62 Path GetFileName and extension of the file we choose, and display with messagebox
+                MessageBox.Show(Path.GetFileName(IOFD.FileName), "Path.GetFileName with Extension");
+
+
+				// 62 Path GetFileName without the extension of the file we choose, and display with messagebox
+                MessageBox.Show(Path.GetFileNameWithoutExtension(IOFD.FileName), "Path.GetFileNameWithoutExtension");
+
+
+
+Next we will GetFullPath, which gets the path including the filename and extension.  We will also simply show the instance of the Open
+Dialog we made, that will display the same conten as the GetFullPath does; redundant:
+
+
+				// 62 Path GetFullPath, get path, file and extension of the file we choose, and display with messagebox
+                MessageBox.Show(Path.GetFullPath(IOFD.FileName), "Path.GetExtension");
+
+                // 62 Show IOFD.FileName, get path, file and extension of the file we choose, and display with messagebox
+                MessageBox.Show(IOFD.FileName, "Show IOFD.FileName");
+
+
+
+
+The final Path class method is the, HasExtension, which checks and returns a boolean true/ false; so we will need to use ToString(),
+to display it in messagebox.
+
+
+
+                // 62 Show IOFD.FileName, get path, file and extension of the file we choose, and display with messagebox
+                MessageBox.Show(Path.HasExtension(IOFD.FileName).ToString(), "Path.HasExtension");
+
+
+
+
+
+********************* highlight from comments area **********************
+
+
+
+
+Hay
+The get gull path is very useful is you have a relative path and you need to get the full path 
+I have used it alot

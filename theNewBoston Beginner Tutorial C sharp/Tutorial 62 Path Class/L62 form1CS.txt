@@ -63,21 +63,5 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             button2.Enabled = true;
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            label1.Text = "";
-            textBox1.Clear();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }
