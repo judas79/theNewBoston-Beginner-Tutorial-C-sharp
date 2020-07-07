@@ -1,0 +1,64 @@
+﻿For this lesson we will need button1 to learn more about the Path class.  We will need and instance for  OpenFileDialog and
+a way to check if the path was correctly implimented and a file chosen to be opened, as we did in the previous tutorial.  Also make 
+sure you have using System.Diagnostics; in your form1.cs, to access namespace for accessing folders and files.
+
+// added L63
+using System.Diagnostics;
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			// L60 instance of OpenFileDialog
+            OpenFileDialog IOFD = new OpenFileDialog();
+
+            // L60 check 'if' the instance makes the path
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("IOFD Functional, file selected");
+
+            }
+
+
+The first method we will examine in the Process class, is Start.  We will use an instance of OpenFileDialog to select a file then the 
+Start method will execute the exe file.  Shortcuts will not function as desired, using this method and will return an error.
+
+
+				// L62 proccess class, start method, 
+                // browse to using instance IOFD and start an executable
+                MessageBox.Show(Process.Start(IOFD.FileName).ToString(), "Process.Start");
+
+
+
+For some executables (located in the system32 folder)you don't need a path to them, for instance notepad.exe.  We can simply add the 
+name of the executable to our Start method:
+
+
+			// L62 process class, Start method, launch notepad.exe, cmd.exe
+            //Process.Start("notepad.exe");
+            Process.Start("cmd.exe");
+
+
+
+Next we will use the GetCurrentProcess, to display, what process we are using, and display it in messagbox, using the .ProcessName method.
+if you look in Task Manager, in a sub category of VS, you will see the same proccess, in there, running.
+
+
+				// L62 Process class, GetCurrentProcess method, Get ProcessName
+                MessageBox.Show(Process.GetCurrentProcess().ProcessName);
+
+
+
+
+The last Process class we will look at, in this lesson is the Process.GetCurrentProcess(). method using Kill to close the process.
+
+
+
+                // L62 Process class, GetCurrentProcess method, Kill
+                Process.GetCurrentProcess().Kill();
+
+
+
+
+
+
+
+****************** NO highlights from the comments area*********************
