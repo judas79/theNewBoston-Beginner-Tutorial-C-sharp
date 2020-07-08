@@ -1,4 +1,4 @@
-﻿For this lesson we will need button1 to learn more about the Path class.  We will need and instance for  OpenFileDialog and
+﻿For this lesson we will need button1 to learn more about the Process class.  We will need and instance for  OpenFileDialog and
 a way to check if the path was correctly implimented and a file chosen to be opened, as we did in the previous tutorial.  Also make 
 sure you have using System.Diagnostics; in your form1.cs, to access namespace for accessing folders and files.
 

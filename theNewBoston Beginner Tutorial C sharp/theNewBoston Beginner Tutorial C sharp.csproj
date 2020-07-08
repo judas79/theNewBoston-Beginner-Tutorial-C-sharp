@@ -184,6 +184,8 @@
     <Content Include="Tutorial 62 Path Class\L62 form1CS.txt" />
     <Content Include="Tutorial 63 Process Class pt 1\L63 notes and highlights from m comments area.txt" />
     <Content Include="Tutorial 63 Process Class pt 1\L63 form1CS.txt" />
+    <Content Include="Tutorial 64 Process Class pt 2\L64 form1CS.txt" />
+    <Content Include="Tutorial 64 Process Class pt 2\L64 notes and highlights from message area.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
