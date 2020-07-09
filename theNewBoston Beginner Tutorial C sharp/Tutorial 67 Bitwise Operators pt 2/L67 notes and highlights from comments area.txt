@@ -11,34 +11,7 @@ be 30 bits by 2 bits.
 
             // L66 short var, not it, inverted 
             short sMyShort = ~3;
-
             // Converts sMyshort binary ',2' to string
             MessageBox.Show(Convert.ToString(sMyShort, 2));
 
 
-
-			// L66 short var, un not it, uninverted 
-            short sMyShort2 = ~5;
-            //
-            MessageBox.Show(Convert.ToString(sMyShort2, 2));
-
-            button2.Enabled = true;
-
-
-
-
-
-************************ highlights from the comments area ****************************
-
-
-
-
-
-I think the squiggly thing is called a tilde character. I could be wrong though. lol Trying to think back to Spanish class..
-
-
-
-
-
-
-and btw on the Calculator there IS a 'not' button witch inverses and makes you understand better, for anybody out there wondering

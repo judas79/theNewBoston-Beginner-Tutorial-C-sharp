@@ -29,13 +29,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L66 short var, not it, inverted 
             short sMyShort = ~3;
-            //
+
+            // Converts sMyshort binary ',2' to string
             MessageBox.Show(Convert.ToString(sMyShort, 2));
 
-            // L66 short var, un not it, uninverted 
-            short sMyShort2 = ~5;
             //
-            MessageBox.Show(Convert.ToString(sMyShort2, 2));
 
             button2.Enabled = true;
 
