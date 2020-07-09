@@ -1,0 +1,73 @@
+﻿For this tutorial we will need button1 in form1, and a string that equals 'null' and an if statement to check if the string is null or
+if its some other value.  we will use MessageBox to display the results.
+
+			// L65 string equal to value null
+            string sMyString = null;
+
+            // check if string is null
+            if (sMyString == null)
+                MessageBox.Show("True, sMyString = null");
+            else MessageBox.Show("False sMyString = " + sMyString);
+
+
+There is a more efficiant way of doing this using the null-coalescing operator ??  It returns the value of its left-hand operand if it
+isn't null; otherwise, it evaluates the right-hand operand and returns its result. First example is null the second has characters.
+
+            string sMyString = null;
+            // use null-coalescing operator ?? to evaluate if string is null or not
+            MessageBox.Show(sMyString ?? "sMyString is null", "null - coalescing operator ??");
+
+            string sMyString2 = "sMyString2 is this string of words";
+            // use null-coalescing operator ?? to evaluate if string is null or not
+            MessageBox.Show(sMyString2 ?? "sMyString2 is null", "null - coalescing operator ??");
+
+
+We can check variables other than string, to see if they are null, but we have to set the variable up a little different when we declare 
+them.  We add a ? after the declaration type of the variable it will be.  We will make the second varibale equal to the first variable,
+then use the null-coalescing operator to see if it is null or not.  If its null it will print the number to its right, which is the '8'
+and if it isn't null the it will print the value of the first variable.  We will do an int for two examples.  The first will have the
+first variable equal to null, and the second example, the first variable will be equal to 0.
+
+
+
+            // use ? to set up a null int
+            int? iMyInt = null;
+            // set up second int to equal first int then evaluate that first int and if true print 8
+            int iMyInt2 = iMyInt ?? 8;
+            // use null-coalescing operator ?? to evaluate if int is null or not
+            MessageBox.Show(iMyInt2.ToString(), "null - coalescing operator ??");
+
+            // use ? to set up a null int
+            int? iMyInt3 = 0;
+            // set up second int to equal first int then evaluate that first int and if true print 8
+            int iMyInt4 = iMyInt3 ?? 8;
+            // use null-coalescing operator ?? to evaluate if int is null or not
+            MessageBox.Show(iMyInt4.ToString(), "null - coalescing operator ??");
+
+
+
+
+
+
+
+********************** highlights from the comments area **************************
+
+
+
+
+
+
+
+The null-coalescing operator ?? returns the value of its left-hand operand if it isn't null; otherwise, it evaluates the right-hand 
+operand and returns its result.
+
+
+
+
+
+don't call the entire tutorial bad just because he didn't explain one thing. It's basically putting the variable type into question 
+of whether or not it can be null. Null is nothing. And int can't equal nothing. By putting the question mark there it allows and 
+variable type that normally can't equal null to be set to null
+
+
+
