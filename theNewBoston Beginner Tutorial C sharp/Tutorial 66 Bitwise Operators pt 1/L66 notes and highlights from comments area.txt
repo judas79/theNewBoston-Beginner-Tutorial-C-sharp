@@ -1,0 +1,43 @@
+﻿For this tutorial we will need button1 in form1, and a short(int16) that equals '3' and then we will use the class Convert, to change 
+the number to binary then invert (its not) the number, to as many bits comprise its variable, places. To invert the number, we must use 
+the invert operator '~' when we define our variable:  short sMyShort = ~3;   
+We will use MessageBox to display the results.  We will have to convert I binary short variable to a string to display the binary.  then
+in the ToString parenthesis, the variable we are converting and a number pertaining to what base the variable is, in this example, 2.
+Since a short is 16 bits, the number 3 in binary 11, would have 14 zeroes in front of
+it:  0000000000000011.  After we invert it, it will have 14 ones followed by two 0's:  1111111111111100.  If it where a int it would 
+be 30 bits by 2 bits.
+
+
+
+            // L66 short var, not it, inverted 
+            short sMyShort = ~3;
+            //
+            MessageBox.Show(Convert.ToString(sMyShort, 2));
+
+
+
+			// L66 short var, un not it, uninverted 
+            short sMyShort2 = ~5;
+            //
+            MessageBox.Show(Convert.ToString(sMyShort2, 2));
+
+            button2.Enabled = true;
+
+
+
+
+
+************************ highlights from the comments area ****************************
+
+
+
+
+
+I think the squiggly thing is called a tilde character. I could be wrong though. lol Trying to think back to Spanish class..
+
+
+
+
+
+
+and btw on the Calculator there IS a 'not' button witch inverses and makes you understand better, for anybody out there wondering

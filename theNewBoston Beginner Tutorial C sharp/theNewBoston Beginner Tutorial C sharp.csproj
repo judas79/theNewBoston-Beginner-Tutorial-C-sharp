@@ -188,6 +188,8 @@
     <Content Include="Tutorial 64 Process Class pt 2\L64 notes and highlights from message area.txt" />
     <Content Include="Tutorial 65 Null Coalesce Operator\L65 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 65 Null Coalesce Operator\L65 form1CS.txt" />
+    <Content Include="Tutorial 66 Bitwise Operators pt 1\L66 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 66 Bitwise Operators pt 1\L66 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
