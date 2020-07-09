@@ -2,3 +2,104 @@
 
 // added L63
 using System.Diagnostics;
+
+
+We will work with the Procces class, which outputs a process array, of all the running processes. Then we will use a foreach statement
+to get the individual proccesses from the process array.  Then we will use messagebox to get the ProccessName of each of the array
+members.
+
+
+            // L64 Process class, Get Processes, gets all running processes
+            //Process.GetProcesses();
+
+            label1.Text += "\n";
+
+            // L64 foreach to get individual proccesses in GetProcesses array
+            foreach (Process pEachProcess in Process.GetProcesses())
+
+                //MessageBox.Show(pEachProcess.ProcessName)
+                label1.Text += (" \n" + pEachProcess.ProcessName);
+
+
+
+We could kill each and all processes in the foreach statement, using the kill method.  Notice, you can use both the ProcessName and
+kill at the same time in the same foreach statement, as it is written here.
+
+			// L64 foreach to get individual proccesses in GetProcesses array
+			foreach (Process pEachProcess in Process.GetProcesses())
+
+				// kill, (shut down) all processes
+                //pEachProcess.Kill();
+
+
+If a program is not working correctly, you can use the foreach to see if all the processes are responding or not.  The output from the
+Response method will be a boolean; so convert it to string.  We also included the ProcessName, in the label1 display.
+
+
+            // L64 foreach to get individual proccesses in GetProcesses array
+            foreach (Process pEachProcess in Process.GetProcesses())
+                
+
+                // check to see if process is responding, running correctly
+                label1.Text += (" \n" + pEachProcess.ProcessName + ":  " + pEachProcess.Responding.ToString());
+
+
+To kill a process that is not Responding, we would use Response in conjuction with the kill method to go through all the processes,
+find the ones that are not True and kill the process, using if statement.
+
+                // kill not True process (process not working)
+                if(!pEachProcess.Responding)
+                    pEachProcess.Kill();
+
+
+We can use GetProcessByName in a Process foreach statement, to get the amount of instances a requested name is running at the same 
+time.  This example, will also let you know if each process item is running.
+				
+				// L64 GetProcessesByName, get all of the processes of a requested process name
+				foreach (Process pProcessByName in Process.GetProcessesByName("Chrome"))
+                label1.Text += (" \n" + pProcessByName.ProcessName + ":  " + pProcessByName.Responding.ToString());
+
+
+Not in lesson.  Make a process, that does what task manager does.  Drag listBox into your form1.cs form, name it listBox1:
+
+
+            // Not in lesson, task manager wanna be
+            foreach (Process pEachProcess in Process.GetProcesses())
+                listBox1.Items.Add(pEachProcess.ProcessName);
+
+        listBox1.Sorted = true;
+
+
+
+
+
+************************** highlights from the comments area ***************************
+
+
+
+
+
+fun thing to do with this is to add a listbox then add each process to the listbox just like the actual task manager.
+In the foreach loop
+
+
+listBox1.Items.Add(p.ProcessName);
+
+
+then outside the loop
+
+
+listBox1.Sorted = true;
+
+
+
+
+
+
+Damn i spent 5 minutes to go through all my processes
+
+
+Display it in a label or listBox:
+label1.Text +=  p.ProcessName);
+listBox1.Items.Add(p.ProcessName);
+

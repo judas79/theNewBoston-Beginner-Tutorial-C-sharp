@@ -33,21 +33,40 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 MessageBox.Show("IOFD Functional, file selected");
-
-                // L62 proccess class, start method, 
-                // browse to using instance IOFD and start an executable
-                MessageBox.Show(Process.Start(IOFD.FileName).ToString(), "Process.Start");
-
-                // L62 Process class, GetCurrentProcess method, Get ProcessName
-                MessageBox.Show(Process.GetCurrentProcess().ProcessName);
-
-                // L62 Process class, GetCurrentProcess method, Kill
-                Process.GetCurrentProcess().Kill();
-
             }
-            // L62 process class, Start method, launch notepad.exe, cmd.exe
-            //Process.Start("notepad.exe");
-            Process.Start("cmd.exe");
+            /*
+            // L64 Process class, Get Processes, gets all running processes
+            //Process.GetProcesses();
+
+            label1.Text += "\n";
+            // L64 foreach to get individual proccesses in GetProcesses array
+            foreach (Process pEachProcess in Process.GetProcesses())
+                //MessageBox.Show(pEachProcess.ProcessName)
+                //label1.Text += (" \n" + pEachProcess.ProcessName);
+
+                // kill, (shut down) all processes
+                //pEachProcess.Kill();
+
+                // check to see if process is responding, running correctly
+                //label1.Text += (" \n" + pEachProcess.ProcessName + ":  " + pEachProcess.Responding.ToString());
+
+                // kill not True process (process not working)
+                //if(!pEachProcess.Responding)
+                    //pEachProcess.Kill();
+
+                */
+            /*
+        // L64 GetProcessesByName, get all of the processes of a requested process name
+        foreach (Process pProcessByName in Process.GetProcessesByName("chrome"))
+            label1.Text += (" \n" + pProcessByName.ProcessName + ":  " + pProcessByName.Responding.ToString());
+            */
+
+            // Not in lesson, task manager wanna be
+            foreach (Process pEachProcess in Process.GetProcesses())
+                listBox1.Items.Add(pEachProcess.ProcessName);
+
+        listBox1.Sorted = true;
+
 
             button2.Enabled = true;
 
@@ -65,6 +84,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
