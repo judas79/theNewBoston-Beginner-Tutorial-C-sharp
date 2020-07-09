@@ -28,12 +28,42 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
 
             // L66 short var, not it, inverted 
-            short sMyShort = ~3;
+            //short sMyShort = ~3;
+
+            // L66 Converts sMyshort binary ',2' to string
+            //MessageBox.Show(Convert.ToString(sMyShort, 2));
+
+            // L67 use and operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort = 3 & 5; // 011 & 101 = 001
 
             // Converts sMyshort binary ',2' to string
-            MessageBox.Show(Convert.ToString(sMyShort, 2));
+            MessageBox.Show(Convert.ToString(sMyShort, 2), "& And operator");
 
-            //
+            // L67 use and & operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort2 = 3 & 4; // 011 & 100 = 000
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort2, 2), "& And operator");
+
+
+
+            // L67 use or | operator to compare both numbers 
+            // in the short in a bitwise level to get 110 = d6
+            short sMyShort3 = 3 | 5; // 011 & 101 = 110
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort3, 2), "Or | operator");
+
+
+            // L67 use or | operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort4 = 3 | 4; // 011 & 100 = 111
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort4, 2), "Or | operator");
+
 
             button2.Enabled = true;
 

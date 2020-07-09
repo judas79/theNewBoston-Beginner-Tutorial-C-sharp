@@ -15,3 +15,79 @@ be 30 bits by 2 bits.
             MessageBox.Show(Convert.ToString(sMyShort, 2));
 
 
+We will now look at the single and operator &, not to be the double and operator we use in an if statement: &&.  We use this & operator
+to look at two numbers in a bitwise level.  We do this while difining the variables.  So the and operator compares 011 with 101 bit to
+bit, and when the binary numbers match, there will be a 1 and if they don't match, there will be a 0.  So these two binaries the and
+operator will equal 1:
+
+			// L67 short var, not it, inverted 
+            short sMyShort = 3 & 5; // 011 & 101 = 001
+
+			// Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort, 2));
+
+			// L67 use and operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort2 = 3 & 4; // 011 & 100 = 000
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort2, 2));
+
+
+We will next look at the or operator |, which unlike the or operator, in an if statement only has 1 | pipe, instead of two of them.
+This time it compares the two numbers in the short var, and gives us a 1, if either of the numbers are a 1, in a binary comparison,
+line by line to each other.  The only way to get a zero is if they both have 0's, in a lined up comparison.
+
+
+
+
+            // L67 use or | operator to compare both numbers 
+            // in the short in a bitwise level to get 110 = d6
+            short sMyShort3 = 3 | 5; // 011 & 101 = 110
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort3, 2), "Or | operator");
+
+
+            // L67 use or | operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort4 = 3 | 4; // 011 & 100 = 111
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort4, 2), "Or | operator");
+
+
+
+
+
+
+
+
+************************ highlights from the comments area ***************************
+
+
+
+
+
+
+
+Probably should have explain that you can think of 0 is false and 1 is true. Then, compare the values. e.g. 0 & 1 = false && true
+
+
+
+
+
+
+what is this used for ? 
+
+
+usually we store true/false values in bool variable. But this takes 1 full byte of space. sometimes to save space every bit of that 
+byte is used to store boolean value so 1 byte can store 8 values. For example this is done many times when passing flags to some 
+.NET methods. in those cases, if you want to pass multiple flags, you have to bitwise OR them as in following statement
+File.Create("myfile.txt", 1000, FileOptions.Encrypted | FileOptions.DeleteOnClose);
+
+
+
+
+
+
