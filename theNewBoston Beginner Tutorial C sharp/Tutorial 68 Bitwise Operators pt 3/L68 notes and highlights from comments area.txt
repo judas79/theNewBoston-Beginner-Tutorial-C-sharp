@@ -1,0 +1,72 @@
+﻿For this tutorial we will need button1 in form1, and a short(int16) and a messagebox to display the binary.
+
+
+			// L66 short var, 'not it', inverted 
+            //short sMyShort = ~3;
+
+            // L66 Converts sMyshort binary ',2' to string
+            //MessageBox.Show(Convert.ToString(sMyShort, 2));
+
+
+First we will examine the exclusive or, (xor) operator.  With this ^ caret operator both lines of the binary numbers must have different
+values, to be equal to 1.
+
+
+            // L68 use xor operator to compare both numbers 
+            // in the short in a bitwise level to get 1, numbers must not match
+            short sMyShort = 3 ^ 5; // 011 & 101 = 110
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort, 2), "& And operator");
+
+            // L68 use and & operator to compare both numbers 
+            // in the short in a bitwise level to get 1
+            short sMyShort2 = 3 ^ 4; // 011 & 100 = 111, numbers must not match
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort2, 2), "& And operator");
+
+
+Next we will use the shift operator >>, to shift bits, to the right one place, in this example.  When shifting right, the far right 
+digit is eliminated, as its shifted out of the binary number.  If we use the left shift operator << it will shift to the left, and fill
+in the first place, on the right of the binary number, with a shifted in 0.  The first decimal number in the short variable is the 
+number that will be converted to binary, and the number after the shift operator, is how many places it will be shifted.
+
+
+			// L68 use right shift >> operator to move numbers to the right the specified amount of places
+            // in the short in a bitwise level to get 110 = d6
+            short sMyShort3 = 3 >> 1; // 011 >> 1 = 001
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort3, 2), "shift >> operator");
+
+
+            // L68 use shift left << operator to move numbers to the left, the specified amount of places 
+            // in the short in a bitwise level to get 1
+            short sMyShort4 = 3 << 1; // 011 << 1 = 110
+
+            // Converts sMyshort binary ',2' to string
+            MessageBox.Show(Convert.ToString(sMyShort4, 2), "shift << operator");
+
+
+
+
+
+******************************** highlights from the comments area *************************************
+
+
+
+
+
+
+
+
+Many flags are standing by those bitwise operations. E.g. OpenGL flags. That's very handy thing for turning features on and off, 
+so you dont have to use multiple get/set. Just use myMode |= SOME_FEATURE, where SOME_FEATURE = 1 << 5, for example. Cheers)))
+
+
+
+
+
+
+Exclusive Or
