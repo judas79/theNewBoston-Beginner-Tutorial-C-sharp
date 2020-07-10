@@ -1,0 +1,79 @@
+﻿For this tutorial we will need a button1 and a function within the button1, to use a method to freeze the button1 when pressed.  We
+will use a for statement without any set parameters, for a continious loop.  Normaly we would not use an infinite loop, and would have
+a method to break out of the loop, application.
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            // L69 Freeze function
+            {
+                // call Freeze function
+                Freeze(); 
+            }
+
+            // L69 freeze function that loops
+            void Freeze()
+            {
+                // endless loop method to freeze program
+                for (; ; );
+            }
+        }
+
+
+Notice you can't stop the debugging after pressing the button, because of the infinite loop is running in the foreground, without 
+ending the VS program.
+Threading allows for running methods, that take time but not freeze as the example did, in the background .  The application can continue
+running, while the treading does the time consuming calculations in the background, without causing the app to freeze.  To use 
+threading we need to import:  
+
+use System.Threading;
+
+To create a thread, we use a similar syntax layout to creating a instance.  At the end of the thread creation we enter the function that 
+we are threading, without the Parenthesis, because we are not invoking the method in the function.  To invoke (start) the thread, we 
+will use the thread name, dot .start().
+
+
+				// L69 create a thread for Freeze
+                Thread tFreeze = new Thread(Freeze);
+
+                // L69 invoke (start) Freeze method
+                tFreeze.Start();
+
+Now we can end the form1 debugging, because the infinite for loop is running in a thread in the background, but the main part isn't. 
+You will have to hit shift f5 to end the Freeze, and stop all the debugging, running in the background thread.
+To be able to use the treading, within all of the elements, in our form1; we will set up thread to equal a variable outside of our
+button, in the form1 area.  We will add a function to form1 to close the form.  Click on Form1.cs[Design] and right click in the empty
+space of form1 and choose 'Properties'   Then in the Properties box click on the 'events' tab, then double click, 'Form Closing' to add
+the function to form1.  tFreeze.Abort(); will terminate the background thread, and end the form1.
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tFreeze.Abort();
+        }
+
+
+
+
+
+
+
+*************************** highlights from the comments area **************************
+
+
+
+
+
+
+you can also do
+ t.isBackground = true;
+that will automaticly shutdown the thread when you close your form
+
+Aren't threads atomaticly in background? I thinked to they're afor being at backgrond. 
+
+These kind of threads he shows off are not in the background as standard. If you want to run a short task that runs on 
+another thread then you should look into the Task, async and await features.
+
+
+
+
+
