@@ -1,0 +1,274 @@
+﻿For this tutorial we will need a button1 and a function within the button1, to use a method to freeze the button1 when pressed.  We
+will use a for statement without any set parameters, for a continious loop.  Normaly we would not use an infinite loop, and would have
+a method to break out of the loop, application.  We will also need a multiline textbox1, click on the outline of the textBox and click
+the black sideways triangle, or in properties set multiline to true.  Set scrollbar to vertical in the properties settings for 
+textBox1 and drag your textBox1 vertically to resize the viewing portion of it.
+
+
+// added L69
+using System.Threading;
+
+
+        // L69 set up Thread variable global
+        Thread tFreeze;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            {
+                // L68 using global Thread
+                tFreeze = new Thread(Freeze);
+
+                // L69 invoke (start) Freeze method
+                tFreeze.Start();
+            }
+
+            // L69 freeze function that loops
+            void Freeze()
+            {
+                // endless loop method to freeze program
+                for (; ; );
+            }
+        }
+
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tWrite.Abort();
+        }
+
+
+After we update the functions for this lesson it will still not debug, as is, because there is a function made into the form1designing.cs, 
+not to be confused with form1.cs[design], that has objects accessing button1:
+
+
+		// L70 set up Thread variable global
+        Thread tWrite;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            {
+             
+                // L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L70 invoke (start) Freeze method
+                tWrite.Start();
+            }
+
+            // L70 function that loops 1000 times
+            void Write()
+            {
+                // L70 for loop method from 0 to 1000
+                for (int i = 0; i < 1000; i++)
+
+                    // L70 display text in textbox1 up to 1000 return and newline
+                    textBox1.Text += "Roddy: " +  i.ToString() + "\r\n";
+            }
+
+			private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tWrite.Abort();
+        }
+
+
+To resolve the debuging, while trying to run the code above, we will first add an empty string, out side of the other functions.  Then
+we will have to make a while statement, so the textbox1 will wait until the process of threading the for statement, is finshed before
+trying to display the output.  Without the while statement, the textBox1 would try to display the output at the same time, which would
+cause an error:
+
+
+        // L70 set up Thread variable global
+        Thread tWrite;
+
+        // L70 empty string to fix Thread debug error
+        string sThreadFix = "";
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            {
+             
+                // L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L70 invoke (start) Freeze method
+                tWrite.Start();
+
+                // while, to wait for the for statement thread is complete before displaying output in textBox1
+                while (tWrite.IsAlive) ;
+                    textBox1.Text += sThreadFix;
+            }
+
+            // L70 function that loops 1000 times
+            void Write()
+            {
+                // L70 for loop method from 0 to 1000
+                for (int i = 0; i < 1000; i++)
+
+                    // L70 display text in textbox1 up to 1000 return and newline
+                    sThreadFix += "Roddy: " +  i.ToString() + "\r\n";
+            }
+            button2.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label1.Text = "";
+            textBox1.Clear();
+            button1.Enabled=true;
+        }
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tWrite.Abort();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+***************************** highlights from the comments area ****************************
+
+
+
+
+
+
+Use invoke, making the main thread pause kind of defeats the purpose.
+
+
+
+
+
+
+don't use a while loop to what for the thread to finish. use
+ t.join()
+it will wait for the thread to terminate before continiuing
+
+
+This can be done in the thread so UI thread doesn't have to block. textBox1.Invoke(new Action(delegate(){ textBox1.Text = myString; }));
+
+
+ Yes or you can use a task for the job, so you dont need a control to invoke the action.
+
+
+
+
+
+
+
+
+ I guess something did not work out. As long as the program writes numbers, the program is frozen.
+Try to make a few more zeros.In this tutorial can't really see if program is frozen or not.
+By the way, thank you for tutorials.
+
+
+
+
+
+
+
+Hello, I realize this video is rather old, but your solution to the threading problem was not valid. The point of multithreading is to
+allow execution while code processes. One solution to this is to invoke a delegate once the function has finished with the result 
+which has been established on the main thread. Within the function it is tied to, you can use a new delegate and invoke it with this.
+invoke(delegate, param1,param2) etc, and you can bypass thread restrictions.
+
+
+
+
+
+
+Instead of doing the whole while loop isAlive thing you could have just added t.abort(); to the end of the Write() function so it stops 
+the thread when the for loop finishes?
+
+
+
+
+
+
+
+
+This would give better performance with Async, Await
+
+
+
+
+
+
+
+
+Or you can write:
+CheckForIllegalCrossThreadCalls = false;
+in the Form1 constructor.
+
+
+
+
+
+
+Instead of checking if the thread is still alive in a while loop, you can just call the join method. It has the same effect.
+
+t = new Thread(Write);
+t.Start();
+t.Join();
+textBox2.Text = line;
+
+In this case, the Form thread will wait for the Write thread until completion, before continuing. Both C# and Java have this join 
+method in their thread classes respectively. 
+
+
+
+
+
+
+textBox1.InvokeRequired
+
+
+
+
+
+
+
+So we send the heavy work to another thread in order to avoid blocking the UI and then we block the UI to wait for the task to be 
+ready.. really clever.
+
+
+This can be done in the thread so UI thread doesn't have to block. textBox1.Invoke(new Action(delegate()
+{ textBox1.Text = myString; }));
+
+if that's your goal then it's better to use Tasks
+
+
+
+
+
+
+You can also... let's say... join the main thread to the second thread...
+Or periodically test the IsAlive thing... like once in two seconds or so...
+
+
+
+
+
+
+You're still blocking the main thread with the line: while(t.isAlive);
+You could use the Control.Invoke method as explained by other comments. See: 
+https://msdn.microsoft.com/en-us/library/zyzhdc6b(v=vs.110).aspx
+
+
+
+
+
+
+i think
+t.Join();
+would do the job of
+while(t.isAlive) ;

@@ -34,12 +34,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             
             {
-                // call Freeze function
-                //Freeze(); 
-
-                // L69 create a thread for Freeze
-                //Thread tFreeze = new Thread(Freeze);
-
                 // L68 using global Thread
                 tFreeze = new Thread(Freeze);
 
@@ -53,7 +47,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // endless loop method to freeze program
                 for (; ; );
             }
-            button2.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
