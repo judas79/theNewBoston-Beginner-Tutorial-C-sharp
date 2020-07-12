@@ -1,0 +1,152 @@
+﻿We will start where we left off, last tutorial.  We have a button1, textBox1, with vertical scrollbar, and set for multiline.  We also have
+tWrite.Abort(); in form1 to close form1 and the following code:
+
+        // L70 set up Thread variable global
+        Thread tWrite;
+
+        // L70 empty string to fix Thread debug error
+        string sThreadFix = "";
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            {
+             
+                // L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L70 invoke (start) Freeze method
+                tWrite.Start();
+
+                // while, to wait for the for statement thread is complete before displaying output in textBox1
+                while (tWrite.IsAlive) ;
+                    textBox1.Text += sThreadFix;
+            }
+
+            // L70 function that loops 1000 times
+            void Write()
+            {
+                // L70 for loop method from 0 to 1000
+                for (int i = 0; i < 1000; i++)
+
+                    // L70 display text in textbox1 up to 1000 return and newline
+                    sThreadFix += "Roddy: " +  i.ToString() + "\r\n";
+            }
+            button2.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label1.Text = "";
+            textBox1.Clear();
+            button1.Enabled=true;
+        }
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tWrite.Abort();
+        }
+    }
+}
+
+First we will work on passing parameters to the Thread.  To pass parameters we must use and 'object'.  Strings, ints, chars, and other
+types of variables are not allowed.  So first we will create an object, in the functions parameter, to use instead of entering a static
+text.  We will then change the static name "Roddy" in the for statement, with object 'name'.  We will then pass in static "Roddy" as a
+parameter in tWrite.Start();, to invoke the thread start up and pass in the parameter.
+
+
+				// L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L70 invoke (start) pass in object 'name' value
+                tWrite.Start("Roddy");
+
+                // while, to wait for the for statement thread is complete before displaying output in textBox1
+                while (tWrite.IsAlive) ;
+                    textBox1.Text += sThreadFix;
+            }
+
+            // L70 function that loops 1000 times, using object 'name' parameter
+            void Write(object name)
+            {
+                // L70 for loop method from 0 to 1000
+                for (int i = 0; i < 1000; i++)
+
+                    // L70 display text from object 'name' convert object name to sting 
+                    // in textbox1 up to 1000 return and newline
+                    sThreadFix += name.ToString() + ": " +  i.ToString() + "\r\n";
+            }
+
+
+When using Thread and therfore using an object to pass in elements, we are only allowed to pass in one object.  The object can have more
+than one element, therefor we use an object array.  In this example the first element in the object array will be the name and the 2nd
+will be the amount of times the for loop will cycle.  
+So first we will create an object array oArray; the first element being the name value and the second the i value.  Then to invoke the
+start, we will pass in the OaArray.
+
+			{
+
+                // L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L71 object array holds two paramteters elements
+                object[] oaNameI = { "Roddy", 1000 };
+
+                // L71 invoke (start) pass through object 'oaNameI' value
+                tWrite.Start("oaNameI");
+
+                // L71 while, to wait for the for statement thread is complete before displaying output in textBox1
+                while (tWrite.IsAlive) ;
+                    textBox1.Text += sThreadFix;
+            }
+
+
+Next to pass in both elements in the oaName parameter field, we will have to create another object array in our Write function, and use
+it instead of 'name' and the amount of loops "1000", as to have both elements of the parameters, by using the locations of parameter 1 oArray[0] and parameter 
+two oArray[1].  When tWrite.Start(objA); stsrts the process, the values in objA are passed into the Thread tWrite, which is passed into the While function, and
+passed into the object oArray, then into 'o' as an object.
+
+
+			// L70 function that loops 1000 times, using object 'name' parameter
+            void Write(object oArray)
+            {
+                // L71 object array to hold two elements
+                object[] o = oArray as object[];
+
+We will the create another object array to handle the number ('1000') of loops i will count up to for the for statement.  We will name this object 'o' and make it equal to an
+oArray as object[].  We will also make the Thread sleep every 10 milliseconds, in the for loop, between each cycle.
+
+
+			// L71 pass in two parameters to thread
+            {
+
+                // L70 using global Thread
+                tWrite = new Thread(Write);
+
+                // L71 object array holds two paramteters elements
+                object[] objA = { "Roddy", 1000 };
+
+                // L71 invoke (start) pass through object 'oaNameI' value
+                tWrite.Start(objA);
+
+                // L71 while, to wait for the for statement thread is complete before displaying output in textBox1
+                while (tWrite.IsAlive) ;
+                textBox1.Text += sThreadFix;
+            }
+
+            // L70 function that loops 1000 times, using object 'name' parameter
+            void Write(object oArray)
+            {
+                // L71 object array to hold two elements
+                object[] o = oArray as object[];
+
+                // L70 for loop method from 0 to 1000
+                for (int i = 0; i < Convert.ToInt32(o[1]); i++)
+
+					// L71 Thread sleeps every cycle for 10 milliseconds .010
+					Thread.Sleep(10);
+
+                    // L71 display text from object 'name' convert object name to sting 
+                    // in textbox1 up to 1000 return and newline
+                    sThreadFix += o[0].ToString() + ": " + i.ToString() + "\r\n";
+            }

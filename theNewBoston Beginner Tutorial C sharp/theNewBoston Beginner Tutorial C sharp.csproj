@@ -198,6 +198,8 @@
     <Content Include="Tutorial 69 Threading pt 1\L69 form1CS.txt" />
     <Content Include="Tutorial 70 Threading pt 2\L70 notes and highlights from messages area.txt" />
     <Content Include="Tutorial 70 Threading pt 2\L70 formCS.txt" />
+    <Content Include="Tutorial 71 Threading pt 3\L71 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 71 Threading pt 3\L71 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
