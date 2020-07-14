@@ -1,0 +1,83 @@
+﻿For this lesson we will need a textbox1, with vertical scrollbar, and set to multiline = true and a label named status.
+We will then need to find a free host site on the web, that we can upload a text file to.  This will be the the text file
+we us as our example, to use a webclient to show a static log in out textBox1 window, which we will be able to change,
+by writing to our remote text file and saving the content there, on the hosting sites server.
+A status log is a way of letting your clients things about your program.  This is a way of ensuring everyone gets the same
+content, across the users, that view the log.  Since this log will be on a program, when the clients open it up they will
+all see whatever it is that you wrote on the server text document.
+
+We will load the content, when form1 is opened.  Click on form1 properties, then the events tab and double click Load.
+We will need to add the 
+
+using System.Net;
+
+
+to the top of form1, to use this class.  Next in the Load area in form1 we need to create a nesw WebClient class.  Then
+we need to access the url from the website that we uploaded the file to and  use our WebClient new class to download the
+string, which is the content of our text file, and display it in textBox1.
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L72 create new class of WebClient()
+            WebClient cWC = new WebClient();
+
+            // L72 textBox1 to the contents where the DownloadString points you
+            textBox1.Text = cWC.DownloadString("https://68ff5456-e6e4-4e8a-bf45-b7914fd680aa.usrfiles.com/ugd/68ff54_e1be3db1a21e40109c3f48cae31f0710.txt");
+        }
+
+
+		
+
+
+
+
+
+*********************** highlights from the comments area ************************
+
+
+
+
+
+
+
+you cant use FTP to access the files? What a crap hoster. All free hosters allow for FTP access.
+
+
+
+
+
+I had a problem with WebClient, which I fortunately solved. The form took too much time to start (download a string). 
+I tried to move the logic to a button and found out that this was only for the first click. The solution was to set 
+WebRequest.DefaultWebProxy = null; 
+"This occurs because WebRequest by default detects and loads proxy settings the first time it starts".
+
+
+
+
+
+
+You can use google drive
+
+How do you use google drive for this? I only manage to get the html of the final link
+
+
+
+
+
+
+I recommend using x10hosting. 1GB of storage and a pretty decent amount of bandwidth, can't exactly remember how much 
+though. And I know it works with x10hosting's free package because I use it and I can get this to function correctly
+
+
+
+
+
+If anyone is having problems with using Webs, you can just use Pastebin for strings.
+
+Pastebin worked great. Very easy to use.
+
+
+
+
+
