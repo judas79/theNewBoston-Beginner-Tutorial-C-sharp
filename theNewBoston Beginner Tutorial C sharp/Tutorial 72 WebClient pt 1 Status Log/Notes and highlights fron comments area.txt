@@ -24,7 +24,11 @@ string, which is the content of our text file, and display it in textBox1.
 
             // L72 textBox1 to the contents where the DownloadString points you
             textBox1.Text = cWC.DownloadString("https://68ff5456-e6e4-4e8a-bf45-b7914fd680aa.usrfiles.com/ugd/68ff54_e1be3db1a21e40109c3f48cae31f0710.txt");
-        }
+			//textBox1.Text = cWC.DownloadString("https://pastebin.com/raw/CufQ9tfb");
+            
+            // start new line for when button1 is clicked
+            textBox1.AppendText("" + "\r\n");	
+		}
 
 
 		
