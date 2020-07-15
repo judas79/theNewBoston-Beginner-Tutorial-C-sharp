@@ -65,7 +65,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // generated for download progress then commented out
             //throw new NotImplementedException();
 
-            // show progress completed of download in label
+            // show progress completed of download in label1
             label1.Text += "download progress: " + e.ProgressPercentage.ToString();
         }
 

@@ -1,4 +1,4 @@
-﻿For this lesson we will need button1, a label, the SaveDialog, and a way to verify that the user has chosen a file to 
+﻿For this lesson we will need button1, a label1, the SaveDialog, and a way to verify that the user has chosen a file to 
 download, then create a new class of the WebClient, to download a file.  We also need system. net to use the WevClient 
 class.
 
