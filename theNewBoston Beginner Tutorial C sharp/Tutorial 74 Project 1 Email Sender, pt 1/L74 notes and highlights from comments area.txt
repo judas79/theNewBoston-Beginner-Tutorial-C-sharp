@@ -1,0 +1,81 @@
+﻿For this 3 part tutorial, we will need 1 form, and within that form: 1 button, 5 textBoxes, and 5 labels.  We will then
+rename our labels to Properties, Subject, Body, Email and Password, from the top down in that order.  Mext we will rename
+the form1 to Email Sender and the button to Send Email.  
+
+Next we will drag and drop in a groupBox, from our Toolbox then highlight the two labels Email and Password, along with
+the two texBoxes associated with them and drag them into the groupBox.  You can now rename the groupbox to Credentials
+and drag the group into place, within the form.  see tutorial 74 Emailer.png.
+
+Next we will need a toolTip from the Toolbox.  So drag one into form1, then click in the textBox under 'Recipients' to
+be able to go to the textBoxes properties, and look in the list for ToolTip, and write the following in the space provided.
+"When providing more than one email address, please seperate 
+addresses with a semi-colon ;'
+
+Then for password security, while typing in a password, we will make the characters entered appear as a asterisk *, to
+keep prying eyes at bay.  Click in the textBox next to the label, password, and go to the textBox's properties.  In the
+passwordChar field, put in a *.
+
+Next we will make it so that the user cannot maximise the form.  Click form to se properties, and under the MaximiseBox,
+set it to False.  To keep the user from resizing the form we will go to FormBorderStyle and set it to FixedDialog.
+
+Last we will go over to icon.com and put 'send' in thier searchbox and choose a 16px or 24px size send icon an download
+it.  Click on the 'send email' button and go into properties, find image then navigate to the icon you downloaded, locally
+and choose it.  Now us the ImageAlign, to align the icon to the far left middle.  Then go to your Text properties for the
+button and align the text to the right middle, using textAlign, then resize the button till it looks like you want it to.
+
+
+
+
+
+
+
+
+******************** highlights from the comments area ***********************
+
+
+
+
+
+
+
+guys i can't find tooltip in my properties. can someone help me with it? i'm using VS 2013
+
+
++Ruben Hovasapyan You must go into the toolbox to create (drag and drop) the tooltip first! Press Ctrl + Alt + X, if 
+you can't find the Toolbox. Upgrade your VS to VS 2015 Community/Enterprise :D.
+
+
+
+
+
+in case anyone needs this, to type " • " you can push the "alt" button on your keyboard, and type the number 7 in your 
+numberpad, not the 7 in the row on top of "qwertyuiop" but the one to the right of everything •••••••
+
+Or they can copy the • from here and paste it into passwordChar. 
+
+
+
+
+
+You can also add an icon for the application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -204,6 +204,9 @@
     <Content Include="Tutorial 72 WebClient pt 1 Status Log\L72 Form1CS.txt" />
     <Content Include="Tutorial 73 WebClient Class pt 2 Downloading Files\L73 form1CS.txt" />
     <Content Include="Tutorial 73 WebClient Class pt 2 Downloading Files\L73 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\L74 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\L74 form1CS.txt" />
+    <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\sendEmail3.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
