@@ -1,0 +1,124 @@
+﻿In this lesson we will need everything from the last tutorial (tut. 74), to continue building our email sender.  We will
+also be using the net and net mail, in our form1.
+
+// L75 net namespace
+using System.Net;
+
+// L75 for email
+using System.Net.Mail;
+
+
+Double click the email button on your form, to go in to your button, where we will create an instance of the mail message
+class.  We will then handle the from portion of the email, by making IMessage.From equal to any instance of a new instance
+of the Mail.Adress class.  The email address used for this will be whatever was entered into textbox4, which ia the email
+field, in our form:
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L75 instance of mail message class
+            MailMessage IMessage = new MailMessage();
+
+            // L75 Imessage from, using instance of mail address class 
+            // that is entered into the email textbox
+            IMessage.From = new MailAddress(textBox4.Text);
+
+        }
+
+
+We will set the message in the Subject to whatever is entered into textBox2. We will also set our message it the Body, 
+to whatever is entered into textBox3.
+
+
+            // L75 set Subject to message entered text, in textBox2
+            IMessage.Subject = (textBox2.Text);
+            
+            // L75 set Body to message entered text, in textBox3
+            IMessage.Body = (textBox3.Text);
+
+
+Setting up the Recipients, is a little different, because their are multiple address entries, so we have to provide a 
+colection.  Since las tutorial, we set a tool popup window, to inform the user to pu a semi-colon between addresses, we
+will use 'split' to seperate the adresses from eachother.  We will start with a foreach statement to sepetate the emails
+from each other using split.  Then add each IMessage email address To.Add (to address):
+
+
+			// L75 seperate entered emails from each other using split at char ';'
+            foreach (string sAddress in textBox4.Text.Split(';'))
+            {
+                // adds the split Imessage emails to address 1 at a time
+                IMessage.To.Add(sAddress);
+            }
+        }
+
+
+In order to send the emails we will need a smpt client;  so we will set that up.  There are also a few properties we will
+have to set up, for the client.  The first is the network credentials, which consists of your username and password, in 
+that order.  The username and password data will be entered into textbox4 text and textBox5 text, so that is what we will enter as
+as far as the pararameters are concerned.
+
+
+            // L75 setup new smptClient
+            SmtpClient smtpClient = new SmtpClient();
+
+            // L75 client credintials properties for the network
+            // within parenthesis, username and password,
+            smtpClient.Credentials = new NetworkCredential(textBox4.Text, textBox5.Text);
+
+
+Next we will set up the gmail host service, to send the emails.  This means the user will have to use a gmail client
+account email and password fields, to send it.  Other email host services can be added to use other email types; yahoo,
+outlook and hotmail for example.  
+We will also set up the hosts port, for the SmtpClient to use on 587.
+Then to be able to send through gmail we must set enable ssl to true.
+And last we will have to provide the message it is to send, which is IMessage
+
+
+            // L75 setup email host to send (from gmail)
+            smtpClient.Host = "smtp.gmail.com";
+
+            // L75 set up hosts port number
+            smtpClient.Port = 587;
+
+            // L75 enable SSL for google to send
+            smtpClient.EnableSsl = true;
+
+
+
+
+
+
+****************** highlights from the comments area *******************
+
+
+
+
+
+
+Smtp =
+Send mail to people
+
+
+
+
+
+
+
+
+I think that this doesn't work anymore.
+You need to use IMAP protocol.Also you need to enable IMAP in your account settings if it is not enabled by default.
+
+how do i do that exacly?
+
+
+For those that come here after this post ; 2020 
+It worked for me.  I used one of my Gmail addresses to send to another Gmail of mine, with a different address, 
+from the same computer, to the same computer.  Haven't tried sending to a remote computer off my home network, 
+as of yet.
+
+
+
+
+
+
+

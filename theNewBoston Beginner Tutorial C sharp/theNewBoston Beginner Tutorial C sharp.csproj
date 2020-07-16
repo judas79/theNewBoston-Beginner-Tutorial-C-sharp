@@ -207,6 +207,8 @@
     <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\L74 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\L74 form1CS.txt" />
     <Content Include="Tutorial 74 Project 1 Email Sender, pt 1\sendEmail3.png" />
+    <Content Include="Tutorial 75  Project 1 Email Sender, pt 2\L75 notes and highlights from the coments area.txt" />
+    <Content Include="Tutorial 75  Project 1 Email Sender, pt 2\L75 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
