@@ -1,0 +1,156 @@
+﻿For this lesson we will need everything that we created, so far, in Tutorials 75 and 76.  After running the debugger, to
+verify that the code is working, as desired, we will continue adding features to our email app.
+First we will add a try and catch, to the code.  The catch portion, will have a Messagebox error statement , title: Error, an 'OK' to close the box
+and an Error icon:
+
+
+			try
+            {
+                // L75 instance of mail message class
+                MailMessage IMessage = new MailMessage();
+
+                // L75 Imessage from, using instance of mail address class 
+                // that is entered into the email textbox
+                IMessage.From = new MailAddress(textBox4.Text);
+
+                // L75 set Subject to message entered text, in textBox2
+                IMessage.Subject = (textBox2.Text);
+
+                // L75 set Body to message entered text, in textBox3
+                IMessage.Body = (textBox3.Text);
+
+                // L75 seperate entered emails from each other using split at char ';'
+                foreach (string sAddress in textBox1.Text.Split(';'))
+                {
+                    // adds the split Imessage emails to address 1 at a time
+                    IMessage.To.Add(sAddress);
+                }
+                // L75 setup new smptClient
+                SmtpClient smtpClient = new SmtpClient();
+
+                // L75 client credintials properties for the network
+                // within parenthesis, username and password,
+                smtpClient.Credentials = new NetworkCredential(textBox4.Text, textBox5.Text);
+
+                // L75 setup email host to send (from gmail)
+                smtpClient.Host = "smtp.gmail.com";
+
+                // L75 set up hosts port number
+                smtpClient.Port = 587;
+
+                // L75 enable SSL for google to send
+                smtpClient.EnableSsl = true;
+
+                // L75 tell smtp which message to send
+                smtpClient.Send(IMessage);
+            }
+            catch { MessageBox.Show("There was an error when sending your message.\r\nPlease check your internet connection and\r\n make sure you entered your credentials correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+    
+	
+
+Next, we will add an if statement, that will insure that a gmail address is being used to send email, to recipients.  Remember this emailer is only 
+setup to use gmail, for credentials, hosts and other requirements.  The '!' means if gmail isn't in the senders credential requirements, then the
+MessageBox will display its error message.  The 'return;' will halt and return us to our code, to continue running the rest of it, when the requirements
+of the if statement are satisfied (gmail is being used).
+
+
+				// L76 verify that gmail email address is being used to send emails
+                if (!textBox4.Text.Contains("@gmail.com"))
+                    {
+                    MessageBox.Show("You are required to use a @gmail.com address,\r\nas the 'Email' sender, in the credentials area", "Credential Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); 
+                    return; }
+
+
+
+After the user clicks the send button, and the if statement is satisfied and returns to run the code, we will diasable the send button, so that the
+user doesn't click it again, while it is sending the email message:
+
+                // L76 disable send button after clicked and email is on its way
+                button1.Enabled = false;
+
+
+At the very end of our button code, when the emailing has completed, or we have had an error, we will use 'Finally' to re-enable our button1, so we 
+can send more emails.
+
+
+            // L76 re-enable button1 after all the code is executed.
+            finally { button1.Enabled = true; }
+
+
+
+
+
+
+
+************************ highlights from the comments area ***********************
+
+
+
+
+
+
+If you want to use it on yahoo mail change this lines 
+client.Host = "smtp.mail.yahoo.com";
+client.Port = 587;
+client.EnableSsl = false;
+
+
+
+
+
+
+
+I got an error exception thrown saying System.Net.Mail.SmtpException occured in System.dll
+
+Nicholas you are absolutely right.  Google mail blocked the message my app was trying to send.  I will try to change the 
+firewall ss port.  Thanks for your help!
+
+
+
+
+
+
+
+
+
+Error	1	The name 's' does not exist in the current context	
+:(  is ??
+but seem evri thin is fine ...y he's giving me error.
+
+Maybe you forgot to say 'using System.Net'  and 'using System.Net.Mail'.
+
+
+
+
+
+
+
+You confused me when you did the if as true would have sent it to the error message. After watching several times I noticed you added
+! to make it "If it is not true" You should clarify that as newbies will be confused. Other then that I like the tutorials
+.
+
+
+
+
+
+
+
+it gives following error 
+"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 
+5.5.1 Authentication Required”
+
+
+I needed to enable access to less secure apps on my Google Account, worked fine after that. See link: 
+https://www.google.com/settings/u/1/security/lesssecureapps
+
+
+
+
+
+
+
+whats the point of finally if you could just type what is in there after the catch?
+
+I gave it a try, 8 years later, and I could not see the difference, in just using:
+button1.Enabled = true; 
+and finally...

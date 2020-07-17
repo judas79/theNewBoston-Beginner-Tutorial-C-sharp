@@ -56,6 +56,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Send Email";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button1, "Click me after the other fields are filled in.");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -115,6 +116,7 @@
             this.textBox1.TabIndex = 6;
             this.toolTip1.SetToolTip(this.textBox1, "When providing more than one email address, please seperate \r\naddresses with a se" +
         "mi-colon ;");
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -122,6 +124,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(256, 20);
             this.textBox2.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.textBox2, "Short descriptive title of the body, of the email.");
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
@@ -131,6 +134,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(294, 222);
             this.textBox3.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.textBox3, "Why you are to stupid to figure out what the body is for.");
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
@@ -139,6 +143,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(238, 20);
             this.textBox4.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.textBox4, "Only! use @gmail.com addresses to send mail.");
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox5
@@ -148,6 +153,7 @@
             this.textBox5.PasswordChar = '•';
             this.textBox5.Size = new System.Drawing.Size(238, 20);
             this.textBox5.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.textBox5, "Enter the password, for the email account, you are using.");
             // 
             // groupBox1
             // 
@@ -161,6 +167,8 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
+            this.toolTip1.SetToolTip(this.groupBox1, "credentials you need to send an email; Email, Password\r\nFull gmail address,\r\nlowe" +
+        "case, Upercase, and special characters Password");
             // 
             // Form1
             // 
@@ -179,6 +187,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Email Sender";
+            this.toolTip1.SetToolTip(this, "I\'m a Windows Form");
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

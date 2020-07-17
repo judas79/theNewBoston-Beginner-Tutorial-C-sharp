@@ -86,9 +86,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             }
             catch { MessageBox.Show("There was an error when sending your message.\r\nPlease check your internet connection and\r\n make sure you entered your credentials correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
-            // NOT in lesson but it works also as well as 'finally
-            //button1.Enabled = true;
-
             // L76 re-enable button1 after all the code is executed.
             finally { button1.Enabled = true; }
         }
