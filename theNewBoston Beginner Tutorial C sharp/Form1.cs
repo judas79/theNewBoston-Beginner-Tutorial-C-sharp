@@ -76,13 +76,36 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L77 convert datetime .Now to hex using .ToFileTime
             MessageBox.Show(DateTime.Now.ToFileTime().ToString("X"), "ToFileTime in hex");
 
-            // L77 use .FromFileTime to convert hex value back into plain text
-            MessageBox.Show(DateTime.Now.ToFileTime().ToString("X"), "ToFileTime in hex");
+            // L77 use .FromFileTime to convert hex value back into plain text(this did not work)
+            //Int64 int_value = Convert.ToInt32("1D661ED89BFE598", 16);
+            //DateTime dDT = DateTime.FromFileTime(int_value);        
+            //MessageBox.Show(dDT.ToString(), "Convert back to string using FromFileTime");
 
-            DateTime d = DateTime.Now;
-            // Next line, Does not work, error
-            long sHex = d.ToFileTime();
-            DateTime dDT = DateTime.FromFileTime(Convert.ToByte(sHex));
+            // L77 use .FromFileTime to convert base 10 value back into plain text(second try)
+            Int64 int_value = DateTime.Now.ToFileTime();
+            MessageBox.Show("Decimal value = " + int_value.ToString() + "\r\nHex Value = " + int_value.ToString("X"), "Convert to decimal and hex string using FromFileTime");
+            DateTime dDT1 = DateTime.FromFileTime(int_value);
+            MessageBox.Show(dDT1.ToString(), "Convert base 10 var from DateTime.Now.ToFileTime() back to string using FromFileTime");
+
+
+            // NOT in lesson convert back to date time string from dec. copied from clipboard
+            // show date time now in hex  
+            MessageBox.Show(DateTime.Now.ToFileTime().ToString(), "ToFileTime in base 10");
+
+            // clear the clipboard, to stop win 7 error
+            Clipboard.Clear();
+
+            // copy the output in messagebox window to clip board and save to long
+            Clipboard.SetText(DateTime.Now.ToFileTime().ToString());
+
+            string sDecText = Clipboard.GetText();
+            MessageBox.Show(sDecText, "copied decimal DT value from clipboard");
+            Int64 iDecText = Convert.ToInt64(sDecText);
+
+            // Next line, Does not work, error, could not convert from hex to deciaml
+            //long sHex = d.ToFileTime();
+
+            DateTime dDT = DateTime.FromFileTime(iDecText);
             MessageBox.Show(dDT.ToString(), "Convert back to string using FromFileTime");
         }
 
