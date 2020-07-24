@@ -1,0 +1,74 @@
+﻿All we will need for this lesson is the button1, and 'using System;', which contains DateTime Struct namespace, to learn about  
+DateTime Struct.  First we will make a new variable name for the DateTime.  Then we will pass in year, month, day, hour (military 
+time), minute, and second, as parameters, in the datetime field.  We will the display it using messagebox and tostring().
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+            // L77 create new name for datetime struct passing through Y M D
+            DateTime NDT = new DateTime(1961,7,3,23,59,59);
+            MessageBox.Show(NDT.ToString(), "static");
+
+        }
+
+
+To create a datetime variable, that will tell us the current time we use .Today.  Notice we do not use 'new' when creating the 
+following variables, that us a built in class, instead of passing in a static string of numbers.  Today, has the todays date but
+just 12:00 am, in there by default, so to get date and time we use "Now".
+
+			            // L77 create datetime struct "Today" for date without time
+            DateTime NDT2 = DateTime.Today;
+            MessageBox.Show(NDT2.ToString());
+
+            // L77 create datetime 'Now" for date and time
+            DateTime NDT3 = DateTime.Now;
+            MessageBox.Show(NDT3.ToString());
+
+
+DateTime has a usefull utility, to see weather a statically passed in year is a leap year or not.  Not in the lesson, but we made it
+into a for statement, so the user could enter a start date and an end date.  The format in the lesson is as follows
+
+// L77 Is this() a leap year or not.
+DateTime.IsLeapYear(1987);
+
+
+			// L77 Is this(input1) to this year (input2) a leap year or not.
+            int iCount = 1;
+            int iEndDate = Convert.ToInt32(textBox2.Text);
+            for(int iBeginDate = Convert.ToInt32(textBox1.Text); iBeginDate < iEndDate; iBeginDate++)
+            {
+                bool bDT = DateTime.IsLeapYear(iBeginDate);
+                MessageBox.Show(bDT.ToString(), iCount.ToString() + ". T/F " + iBeginDate.ToString() + " a Leap Year?");
+                iCount++;
+            }
+            
+
+
+We can also get how many days in a specific month, in a defined year.  NOT in lesson, we made a for statement, so the user can enter
+the year and month, instead of hard coding it.  We also did a conversion from the month, which is entered numerically, to the actual
+name of the month, for readability.
+
+
+// L77 how any days in a specified month in a defined year
+DateTime.DaysInMonth(1919, 4);
+
+            // NOT in lesson
+            int iCount2 = 1;
+            int iYear = Convert.ToInt32(textBox3.Text);
+            for (int iBeginMonth = Convert.ToInt32(textBox4.Text); iBeginMonth < 13; iBeginMonth++)
+            {
+                int iDT = DateTime.DaysInMonth(Convert.ToInt32(iYear), Convert.ToInt32(iBeginMonth));
+                string[] sMonths = {"", "January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December" };
+                MessageBox.Show(iCount2.ToString() + ". There are " + iDT.ToString() + " days in " + sMonths[iBeginMonth] + " .");
+                iCount2++;
+            }
+
+
+If there is a need to store date and time information, for certain apps, in bytes (in Hexadecimal), instead of plain text we will 
+use .ToFileTime, to do the convertion, for us.  We will use .Now, for our example.
+
+			// L77 convert datetime .Now to hex using .ToFileTime
+            MessageBox.Show(DateTime.Now.ToFileTime().ToString("X"), "ToFileTime in hex");
+
+
+To convert back to plain text from the hexadecimal value, we will use .FromFileTime, to do so, by plugging the hex value into the 
+field, to pass it in.

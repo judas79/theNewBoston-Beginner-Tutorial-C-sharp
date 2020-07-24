@@ -34,63 +34,56 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L76 catch errors so the program doesn't shut down when there is one
-            try
+            // L77 create new name for datetime struct passing through Y M D
+            DateTime NDT = new DateTime(1961, 7, 3, 23, 59, 59);
+            MessageBox.Show(NDT.ToString(), "static");
+
+            // L77 create datetime struct "Today" for date without time
+            DateTime NDT2 = DateTime.Today;
+            MessageBox.Show(NDT2.ToString(), "Today");
+
+            // L77 create datetime 'Now" for date and time
+            DateTime NDT3 = DateTime.Now;
+            MessageBox.Show(NDT3.ToString(), "Now");
+
+            // L77 Is this() a leap year or not.
+            DateTime.IsLeapYear(1987);
+
+            // NOT in lesson
+            int iCount = 1;
+            int iEndDate = Convert.ToInt32(textBox2.Text);
+            for(int iBeginDate = Convert.ToInt32(textBox1.Text); iBeginDate <= iEndDate; iBeginDate++)
             {
-                // L76 verify that gmail email address is being used to send emails
-                if (!textBox4.Text.Contains("@gmail.com"))
-                    {
-                    MessageBox.Show("You are required to use a @gmail.com address,\r\nas the 'Email' sender, in the credentials area", "Credential Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); 
-                    return; }
-
-                // L76 disable send button after clicked and email is on its way
-                button1.Enabled = false;
-
-                // L75 instance of mail message class
-                MailMessage IMessage = new MailMessage();
-
-                // L75 Imessage from, using instance of mail address class 
-                // that is entered into the email textbox
-                IMessage.From = new MailAddress(textBox4.Text);
-
-                // L75 set Subject to message entered text, in textBox2
-                IMessage.Subject = (textBox2.Text);
-
-                // L75 set Body to message entered text, in textBox3
-                IMessage.Body = (textBox3.Text);
-
-                // L75 seperate entered emails from each other using split at char ';'
-                foreach (string sAddress in textBox1.Text.Split(';'))
-                {
-                    // adds the split Imessage emails to address 1 at a time
-                    IMessage.To.Add(sAddress);
-                }
-                // L75 setup new smptClient
-                SmtpClient smtpClient = new SmtpClient();
-
-                // L75 client credintials properties for the network
-                // within parenthesis, username and password,
-                smtpClient.Credentials = new NetworkCredential(textBox4.Text, textBox5.Text);
-
-                // L75 setup email host to send (from gmail)
-                smtpClient.Host = "smtp.gmail.com";
-
-                // L75 set up hosts port number
-                smtpClient.Port = 587;
-
-                // L75 enable SSL for google to send
-                smtpClient.EnableSsl = true;
-
-                // L75 tell smtp which message to send
-                smtpClient.Send(IMessage);
+                bool bDT = DateTime.IsLeapYear(iBeginDate);
+                MessageBox.Show(bDT.ToString(), iCount.ToString() + ". T/F " + iBeginDate.ToString() + " is a Leap Year?");
+                iCount++;
             }
-            catch { MessageBox.Show("There was an error when sending your message.\r\nPlease check your internet connection and\r\n make sure you entered your credentials correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
-            // NOT in lesson but it works also as well as 'finally
-            //button1.Enabled = true;
+            // L77 how any days in a specified month in a defined year
+            DateTime.DaysInMonth(1919, 4);
 
-            // L76 re-enable button1 after all the code is executed.
-            finally { button1.Enabled = true; }
+            // NOT in lesson
+            int iCount2 = 1;
+            int iYear = Convert.ToInt32(textBox3.Text);
+            for (int iBeginMonth = Convert.ToInt32(textBox4.Text); iBeginMonth < 13; iBeginMonth++)
+            {
+                int iDT = DateTime.DaysInMonth(Convert.ToInt32(iYear), Convert.ToInt32(iBeginMonth));
+                string[] sMonths = {"", "January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December" };
+                MessageBox.Show(iCount2.ToString() + ". There are " + iDT.ToString() + " days in " + sMonths[iBeginMonth] + " .");
+                iCount2++;
+            }
+            
+            // L77 convert datetime .Now to hex using .ToFileTime
+            MessageBox.Show(DateTime.Now.ToFileTime().ToString("X"), "ToFileTime in hex");
+
+            // L77 use .FromFileTime to convert hex value back into plain text
+            MessageBox.Show(DateTime.Now.ToFileTime().ToString("X"), "ToFileTime in hex");
+
+            DateTime d = DateTime.Now;
+            // Next line, Does not work, error
+            long sHex = d.ToFileTime();
+            DateTime dDT = DateTime.FromFileTime(Convert.ToByte(sHex));
+            MessageBox.Show(dDT.ToString(), "Convert back to string using FromFileTime");
         }
 
 
@@ -110,6 +103,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
