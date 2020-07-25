@@ -37,6 +37,19 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L78 Get the values from datetimepicker (date and time)
             DateTime dDT = dateTimePicker1.Value;
             MessageBox.Show(dDT.ToString());
+
+            var date = DateTime.Now;
+            var vHour = date.Hour;
+            var vMinute = date.Minute;
+            var vSecond = date.Second;
+            var vTotalSeconds = (vSecond + (vMinute * 60) + (vHour * 3600));
+            MessageBox.Show("Hour - " + vHour + "\r\nMinute- " + vMinute + "\r\nSecond- " + vSecond + "\r\nTotal Seconds- " + vTotalSeconds, "Time in Seconds");
+
+            vHour = vTotalSeconds / 3600;
+            var vMod = vTotalSeconds % 3600;
+            vMinute = vMod / 60;
+            vSecond = vTotalSeconds - ((vHour * 3600) + (vMinute * 60));
+            MessageBox.Show("Hour - " + vHour + "\r\nMinute- " + vMinute + "\r\nSecond- " + vSecond, "back to HH MM SS");
         }
 
 
