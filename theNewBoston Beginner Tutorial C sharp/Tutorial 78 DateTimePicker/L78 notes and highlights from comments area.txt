@@ -1,0 +1,25 @@
+﻿For this lesson we will need a button1 and a DateTimePicker.  The datetimepicker default, only displays day of the week and the 
+current Date.  After starting debugging, the user can click the upside down triangle, on the datetimepicker, to choose the day, month,
+and year, and change them there.  In order to see the time, click the datetimepicker, and go over to the properies box, and look 
+for the 'format' section.  Long is what you see as the default, short will display the date like '1/2/1999', Time display only the
+time 12:33:12 PM and Custom.
+When set to the Custom property, the user will have to enter the custom values, that the user wants to include in the DateTimePicker.
+There is a list online that shows the different ones that can be used here:
+https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datetimepicker.customformat?view=netcore-3.1
+Try different ones in the Properties Format Custom space to enter the values. You can add symbols between the values, from the chart,
+such as H:m:s, to customize it the way you like.  You can also change the fonts or colors of the calender, in properties as well.
+
+To get what the user has selected, in the datetimepicker, we will go to button1, and add the following to get the date and time from
+the picker:
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L78 Get the values from datetimepicker (date and time)
+            DateTime dDT = dateTimePicker1.Value;
+            MessageBox.Show(dDT.ToString());
+        }
+
+
+
+************* NO highlights from comments area ***************

@@ -42,12 +42,13 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,6 +164,15 @@
             this.textBox7.TabIndex = 15;
             this.toolTip1.SetToolTip(this.textBox7, "1000 is equal to 1 second, because this in milleseconds.");
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(71, 303);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.PasswordChar = '•';
+            this.textBox5.Size = new System.Drawing.Size(221, 20);
+            this.textBox5.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.textBox5, "Enter the password, for the email account, you are using.");
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -214,20 +224,20 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Starting Month for days in a Month info.";
             // 
-            // textBox5
+            // dateTimePicker1
             // 
-            this.textBox5.Location = new System.Drawing.Point(71, 303);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PasswordChar = '•';
-            this.textBox5.Size = new System.Drawing.Size(221, 20);
-            this.textBox5.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.textBox5, "Enter the password, for the email account, you are using.");
+            this.dateTimePicker1.CustomFormat = "long time";
+            this.dateTimePicker1.Location = new System.Drawing.Point(15, 208);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(306, 20);
+            this.dateTimePicker1.TabIndex = 18;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 459);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.groupBox2);
@@ -271,5 +281,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
