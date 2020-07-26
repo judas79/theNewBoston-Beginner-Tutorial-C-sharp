@@ -3,7 +3,7 @@ the picturebox, large by pulling out the borders, to size.  We will also change 
 small triangle and then picking the centeredImage mode.  The picture will be centered in the image frame, but not resized.  The dotted
 lines, that outline the pictureboxes shape, indicate that the pictureboxes borders will not be visible.  To make these borders
 visibly outlined, change the border stile, to fixed3D or fixedSingle line.
-We will first add a iteration to openfile dialog with a way to make sure the user has selected and item. Then the image will be set
+We will first add a instance to openfile dialog with a way to make sure the user has selected and item. Then the image will be set
 in the picturBox, according to the Filename that was chosen.
 
         private void button1_Click(object sender, EventArgs e)
