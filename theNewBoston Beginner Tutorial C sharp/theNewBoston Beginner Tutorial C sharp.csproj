@@ -245,6 +245,8 @@
     <Content Include="Tutorial 78 DateTimePicker\L78 form1CS.txt" />
     <Content Include="Tutorial 79 Picture Box and Image Class\L79 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 79 Picture Box and Image Class\L79 form1CS.txt" />
+    <Content Include="Tutorial 80 Clipboard Class\L80 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 80 Clipboard Class\L80 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

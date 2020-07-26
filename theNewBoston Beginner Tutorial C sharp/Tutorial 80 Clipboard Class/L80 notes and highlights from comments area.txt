@@ -1,0 +1,131 @@
+﻿For this lesson we will need 1 button1, 2 pictureBoxes, and 2 textBoxes, for our lesson about the clipboard class.  We also need a 
+image to load, when we debug our form, automatically.  The clipboard is where data is stored, that has been copied, and the 
+clipboard class has access to all of that and the write, properties of what has been copied.  
+
+private void Form1_Load(object sender, EventArgs e)
+        {
+            // display picture from url in pictureBox1, using ImageLocation and url, when form is launched
+            pictureBox1.ImageLocation = "https://lh3.googleusercontent.com/proxy/co48KphBdiUKP7BbhalRoicXXlVOoBnuO_CYLTYWCJryJOfejoCEtKjb2rqAqEKjpPWUazRWBlEWIacshqQ4LBdfC19kW4yvrcSZovvwyWQCIsgd_mpDjws";
+        }
+
+
+In button1 we will use Clipboard class, to get any text in the clipboard memory, using the static method .GetText().  Then display 
+the text in textBox2.  After you start debugging this, you will notice if you write something in textBox1, then copy/cut it, the 
+text copied will appear in textBox2.  If you copy from anywhere, on your machine, this will be true, as well.
+
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            // L80 get any text that is in the clipboard memory
+            textBox2.Text = Clipboard.GetText();
+        }
+
+
+We can also use a static method of Clipboard, to get an image, that has been copied to it.  We will use button2 for this, and display
+it in pictureBox2.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L80 Get image from Clipboard and display it in pictureBox2
+            pictureBox2.Image = Clipboard.GetImage();
+        }
+
+
+We can also get specific types of data, by using the Clipboard class, then the GetData() method.  In the properties field (), of this
+method, we can then use the DataFormats class that has a large amount of specific data types, we can choose from.  Lets add button3 
+and use textBox1, and get something other than plain *.txt, a *.html would be good.
+
+    private void button3_Click(object sender, EventArgs e)
+        {
+            // L80 create string to hold value of html copied to clipboard
+            string sHtml = (string) Clipboard.GetData(DataFormats.Html);
+
+            // display in textbox1
+            textBox1.Text = sHtml;
+        }
+
+
+Instead of choosing an item then clicking or using ctrl copy, we can set text to the clipboard.  We can then use that text that has 
+been set copied) to the clipboard, and paste it, where we want it.  There is an error sometimes associated with this method due
+to VS C#, not the programmer, so but this method in a try/catch, do remedy the error from showing.  Create button4, and use 
+textbox2 to display the set text.
+
+
+    private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // L80 set string of text to clipboard
+                Clipboard.SetText("button4 setting text");
+            }
+            catch { }
+			
+            // display in textbox2
+            textBox2.Text = Clipboard.GetText();
+		}
+
+
+We can also use the set method, to set an image to the clipboard, and as we did above, put it in a try/catch statement, so a error
+doesn't show, when pasting.  Create button5 for this example and use pictureBox2, to display the set, then copied from the clipboard
+and assigned to pictureBox2, image.
+
+
+    private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // L80 set an image to clipboard
+                Clipboard.SetImage(pictureBox1.Image);
+            }
+            catch { }
+
+            // we can use clear to stop the error from happening, as another alternative to try/catch
+            //Clipboard.Clear();
+
+            // display in textbox2
+            pictureBox2.Image  = Clipboard.GetImage();
+        }        
+
+
+We can also completely clear everything from the clipboard.  Create button6 to clear the clipboard.
+
+
+	private void button6_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+        }
+
+
+
+
+
+
+******************* highlights from the comments area ********************
+
+
+
+
+
+
+
+If u use  System.Windows.Forms.Clipboard.SetText(" whatever u want"), u don't have to  copy it manually
+
+
+
+
+
+
+Clipboard.SetText("Adam"); works for me just fine, doesn't throw any errors
+
+
+
+
+
+
+
+
+Works perfectly if you clear the clipboard first
+
+            Clipboard.Clear();
+            Clipboard.SetText("HI");
