@@ -1,0 +1,76 @@
+﻿We will need a button1 and pictureBox1, from our toolBox, inside a form1, for this lesson on pictureBox and the image class.  Make
+the picturebox, large by pulling out the borders, to size.  We will also change the size mode, of the picturBox, bly clicking on the
+small triangle and then picking the centeredImage mode.  The picture will be centered in the image frame, but not resized.  The dotted
+lines, that outline the pictureboxes shape, indicate that the pictureboxes borders will not be visible.  To make these borders
+visibly outlined, change the border stile, to fixed3D or fixedSingle line.
+We will first add a iteration to openfile dialog with a way to make sure the user has selected and item. Then the image will be set
+in the picturBox, according to the Filename that was chosen.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L79 new name instance for openfiledialog
+            OpenFileDialog nOFD = new OpenFileDialog();
+
+            // L79 confirm user has selected a file
+            if (nOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // L79 set users selected image using nOFD, to the name that was chosen
+                pictureBox1.ImageLocation = nOFD.FileName;
+                 // show filepath to image in label1
+                label1.Text = nOFD.FileName;
+            }
+
+
+You can also use the Image variable, to create a variable, and open an image, similar to using, 
+pictureBox1.ImageLocation = nOFD.FileName;
+This method is useful if you want to set the same image in multiple pictureBoxes, or save an 
+image for later use.
+
+
+                // L79 another way to get selected image using nOFD, from the name that was chosen
+                Image imPicture = Image.FromFile(nOFD.FileName);
+
+                // L79 display imPicture in pictureBox1 using Image variable
+                pictureBox1.Image = imPicture;
+
+
+We can also set an image from a url, that points to the image, we want.  Drag in another pictureBox,
+(pictureBox2), and button2 and we will display the url image there:
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        // display picture from url in pictureBox2, using ImageLocation and url
+        pictureBox2.ImageLocation = "https://lh3.googleusercontent.com/proxy/co48KphBdiUKP7BbhalRoicXXlVOoBnuO_CYLTYWCJryJOfejoCEtKjb2rqAqEKjpPWUazRWBlEWIacshqQ4LBdfC19kW4yvrcSZovvwyWQCIsgd_mpDjws";
+            
+        }
+
+
+
+
+
+******************** highlights from the comments area *******************
+
+
+
+
+
+
+how do i save the image filename?
+
+
+For the 'Johnny come late-lies' like me:
+
+     private void button1_Click(object sender, EventArgs e)
+        {
+            // L79 new name instance for openfiledialog
+            OpenFileDialog nOFD = new OpenFileDialog();
+
+            // L79 confirm user has selected a file
+            if (nOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+              {        
+                // show image file name in label1
+                string stImageName = nOFD.SafeFileName;
+                label1.Text = stImageName;
+            }
+        }
