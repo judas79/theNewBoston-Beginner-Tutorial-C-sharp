@@ -1,0 +1,102 @@
+﻿We will only need button1 thru button4 for this lesson using the ColorDialog Class.  We will set the ColorDialog up, much as we did 
+the OpenFileDialog and have a way of making sure the user has selected a color, from the ColorDialog, that will popup, when the form1
+is running debug.  We will make ColorDialog global; to use in other buttons.
+
+		// L81 ColorDialog is global
+        ColorDialog ICD;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L81 colordialog name instance
+            ICD = new ColorDialog();
+
+            // Verify that user has selected a color
+            if (ICD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                button1.BackColor = ICD.Color;
+            }
+        }
+
+
+If we only want to allow the user to select from the pallette, as to not all custom colors... Our next example is in button2, and 
+will show how to set the properies of AllowFullOpen, to not allow custom colors.
+		// L81 ColorDialog is global
+        ColorDialog ICD;
+
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // only allow standard colors, no custom colors
+            ICD.AllowFullOpen = false;
+
+            // Verify that user has selected a color
+            if (ICD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // apply chosen color to button1's background color
+                button2.BackColor = ICD.Color;
+            }
+        }
+
+
+Instead of having to click inside the colordialog to be able to see the custom dialog colors, we can have that open for us, when we
+first open the dialog.  We will use button5 to do this: 
+
+
+    private void button5_Click(object sender, EventArgs e)
+        {
+            // L81 colordialog name instance
+            ICD = new ColorDialog();
+
+            // only allow standard colors, no custom colors
+            //ICD.AllowFullOpen = false;  // this will overide FullOpen, if set this way and not commented out
+
+            // open custom color portion of color dialog automatically
+            ICD.FullOpen = true;
+
+            // Verify that user has selected a color
+            if (ICD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // apply chosen color to button1's background color
+                button5.BackColor = ICD.Color;
+            }
+        }
+
+
+If we want to show the Help button, in the ColorDialog controls we use ShowHelp.  This example will be in button3.  
+ICD.ShowHelp = true;
+It will show the help button, but it will do nothing while running it until we set up an event handler for it.  To do this, in 
+button3, we add:  
+ICD.HelpRequest +=
+
+after we type in the += hit tab twice and it will set up the rest automatically for you, including the function to handle the event.
+
+   
+
+    private void button3_Click(object sender, EventArgs e)
+        {
+            // L81 colordialog name instance
+            ICD = new ColorDialog();
+
+            // show help button in color dialog
+            ICD.ShowHelp = true;
+
+            // set up event handler for help button
+            ICD.HelpRequest += ICD_HelpRequest;
+
+            // Verify that user has selected a color
+            if (ICD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // apply chosen color to button1's background color
+                button2.BackColor = ICD.Color;
+            }
+        }
+
+        // L81 handle event, help button being pressed
+        private void ICD_HelpRequest(object sender, EventArgs e)
+        {
+            MessageBox.Show("Select a color from the pallette or custom pallette with your mouse pointer, then click the 'OK' button", "Moron help");
+        }
+
+
+
+************** No highlight comments *************
