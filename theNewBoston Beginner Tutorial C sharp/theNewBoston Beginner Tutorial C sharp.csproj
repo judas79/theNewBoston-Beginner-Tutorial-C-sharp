@@ -249,6 +249,8 @@
     <Content Include="Tutorial 80 Clipboard Class\L80 form1CS.txt" />
     <Content Include="Tutorial 81 ColorDialog\L81 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 81 ColorDialog\L81 form1 CS.txt" />
+    <Content Include="Tutorial 82 Color Struct\L82 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 82 Color Struct\L82 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

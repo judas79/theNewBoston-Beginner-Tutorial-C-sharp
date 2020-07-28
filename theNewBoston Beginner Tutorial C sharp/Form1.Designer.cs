@@ -39,9 +39,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(13, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(90, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "custom Cls.";
+            this.button1.Text = "Clr Name var";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -57,21 +57,21 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(339, 15);
+            this.button3.Location = new System.Drawing.Point(305, 15);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(109, 23);
             this.button3.TabIndex = 7;
-            this.button3.Text = "clr Help";
+            this.button3.Text = "chs clr by name";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(340, 220);
+            this.button4.Location = new System.Drawing.Point(305, 220);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(76, 23);
+            this.button4.Size = new System.Drawing.Size(111, 23);
             this.button4.TabIndex = 8;
-            this.button4.Text = "set text to clipboard";
+            this.button4.Text = "chs clr by kwn clr";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -79,7 +79,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(13, 444);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(90, 23);
             this.button5.TabIndex = 9;
             this.button5.Text = "auto special";
             this.button5.UseVisualStyleBackColor = true;

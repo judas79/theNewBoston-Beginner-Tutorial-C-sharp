@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿In this lesson we will need at least 1 button, and the instance for the color dialog as well as a way to verify the user has selected
+a color.  We can use the Color property to make a new color, like a variable, that is assigned to the color you choosed in 
+ColorDialog.
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
 
         // L81 ColorDialog is global
         ColorDialog ICD;
@@ -27,9 +13,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L81 Verify that user has selected a color
             if (ICD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                // L82 apply name to a chosen color
+                // L82 apply name to a chosen colordialog color
                 Color coColorChosen = ICD.Color;
                 button1.BackColor = coColorChosen;
+            }
+        }
+
+
+
+One of the properies of the Color class, is that of IsNamedColor.  This property will return a bool, then we will use 
+coColorChosen.Name, to get the name of the color, that its known by in ColorDialog. The name that the user has entered, works like a
+var., name of a color.  If the colors name is a custom color, its an unknow name, and will return the hexadecimal color value of the
+chosen color, '.Name'.   We will use an if statement to verify if our newly created color name is seen, by this enviroment, as a 
+color name.
+
 
                 // L82 does this selected color already have a name t/f
                 if(coColorChosen.IsNamedColor)
@@ -37,9 +34,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                     MessageBox.Show("coColorChosen name is " + coColorChosen.Name);
                 }
                 else MessageBox.Show("coColorChosen is not a known named color " + coColorChosen.Name);
-
             }
         }
+
+
+
+Next we will look at IsKnowColor.  This will look up the color name, like IsNmaedColor, but not in the ColorDialog.  Instead it will
+see if it can find the color in the Window systems color, used for the windows graphics, and such.  For this example we will copy 
+what we need, from button1 into button2, and display it using button2.  Also notice we will us ToKnownColor, thats To not Is, ToString
+to show the color name, instead of 'Name', using messagebox.
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -64,9 +69,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
+Instead of choosing a color using the colordialog, we can choose colors using the name of the colors.  We will use button3, to 
+display the color and message box to show the name of the color.
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -79,6 +84,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
 
 
+We can also chose a color by its name, using FromKnowColor, to get those common windows colors.  Notice there are FromKnownColor to
+get the color and ToKnownColor to show the color, as well as converting  ToString(), as we had earlier in this lesson.  We will use 
+button4 to diplay the color and messagebox to show its name.
+
+
         private void button4_Click(object sender, EventArgs e)
         {
             // L82 apply color to a known color name
@@ -87,22 +97,27 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L82 display name of the color
             MessageBox.Show(coColorChosen.ToKnownColor().ToString(), "set color using color name");
+        }
 
-            // L82 save color as Argb int32, using ToArgb
+
+
+To store and have better control over our colors Alpha, Red, Green, Blue, we can use ToAreb, a 32 bit integer to handle the 
+conversion, fot storeage.  This integer of a color will represent the color channel as well as the rgb, and store it as numbers.  We
+will show this number, in hexidecimal, using button4, in a messagebox.
+
+
+            // L82 save color as Argb int32
             int inColor = coColorChosen.ToArgb();
 
-            // L82 show in hex using two methods
+			// show in hex using two methods
             MessageBox.Show(coColorChosen.ToArgb().ToString("X"), "ToArgb ToString");
             MessageBox.Show(inColor.ToString("X"), "int inColor var ToString");
 
-            // L82 change color from Argb int, to Color uing FromArgb
-            Color coConvertToColor = Color.FromArgb(inColor);
-
-            // apply coConvertToColor to button5 background
-            button5.BackColor = coConvertToColor;
 
 
-        }
+To convert a Argb int into a color, we will use the Color Class.  We will use button5 to do this and change the background color of
+button5.
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -121,11 +136,10 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // apply coConvertToColor to button5 background
             button5.BackColor = coConvertToColor;
         }
-        
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-          
-        }
-    }
-}
+
+
+
+
+
+
