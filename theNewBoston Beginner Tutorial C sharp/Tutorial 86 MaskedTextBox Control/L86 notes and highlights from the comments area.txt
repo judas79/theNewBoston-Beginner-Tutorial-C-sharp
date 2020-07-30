@@ -1,0 +1,72 @@
+﻿For this tutorial, we will need a button1, and a MaskedTexBox1, from the toolbox, for this lesson on the MaskedTexBox.  A
+MaskedTextBox will regulate what type of characters, are able to be entered into it.  This is done by selecting 'mask' 
+from the property box and choosing fron the dropdown, or choosing custom, and creating your own rules. 
+
+First we will choose 'numeric five digits' as an example.  With this example we will only be able to enter numbers and
+only five of them.  After starting the debugger, you will notice a line, inside the maskedtextbox.  This is where the 
+numbers go, ans you will be unable to enter anything elsewhere in the box, and only whole numbers there; no floating point
+decimals.  We will add some code to button1, to save the entered numbers, to a var int, and then display them in textBox1.
+Even though we are using numbers only, as the input content, we are allowed to have empty place, because the user does not 
+have to put a number in every space provided, for the five possible, numeric characters.  So we use var not int.
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L86 get entered numbers from maskedTextBox1
+            var iNumbers = maskedTextBox1.Text;
+            textBox1.Text = iNumbers.ToString();
+        }
+
+
+There are other choices from the properties mask, we can use, that have symbols within them, to help the user.  The phone
+entry one, for example, has parenthesis, where the area code goes and is seperated into prefix 3 numbers and 4 for the body
+of the number, by a dash.
+Next in button 2 we will create, a template, to enter HH:MM:SS  (hours minutes and seconds), using the mask elements, for
+a custom maskTextBox2 entry, format.  We will diplay the entry in textBox2.  We set up the properties mask custom elements
+fronm this page of elements:
+https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.maskedtextbox.mask?view=netcore-3.1
+
+We set the elements like this, in the custom field, to obtain the time format
+
+99:99:99
+
+Then we put this in button2 to get the numbers and show the, in textBox2:
+
+
+		private void button3_Click(object sender, EventArgs e)
+        {
+            // L86 var from maskedtextbox2
+            var vTime = maskedTextBox2;
+            textBox2.Text = vTime.ToString();
+        }
+
+
+
+
+
+
+********************** highlights from comments area *************************
+
+
+
+
+
+
+how about letters that only accept Capital Letters?
+
+
+You can use normal text box and set its property "CharacterCasing" to "Uppercase".Or this works too: 
+textbox1.CharacterCasing = CharacterCasing.Upper;
+
+
+
+
+
+
+how did you get the maskedtextbox in the beginning? the only one i have in my toolbox is a regular textbox
+
+Maybe you found a way to do it already but:
+-Right-click your toolbox
+-Select Choose Items
+-In the .NET Framework Components search for MaskedTextBox and check it
+-Click OK
+And this should work

@@ -255,6 +255,10 @@
     <Content Include="Tutorial 83 FontDialog\L83 form1CS.txt" />
     <Content Include="Tutorial 84 Timer Control\L84 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 84 Timer Control\L84 form1CS.txt" />
+    <Content Include="Tutorial 85 Playing Sounds\L85 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 85 Playing Sounds\L85 form1.txt" />
+    <Content Include="Tutorial 86 MaskedTextBox Control\L86 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 86 MaskedTextBox Control\L86 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

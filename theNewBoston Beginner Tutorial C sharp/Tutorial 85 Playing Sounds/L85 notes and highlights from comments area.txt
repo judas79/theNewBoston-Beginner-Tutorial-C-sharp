@@ -1,0 +1,43 @@
+﻿For this lesson we will need 2 buttons, 1 to play *.wav files and the other to play system sound files.  We will also need:
+use System.Media
+
+in our form1, to be able to play the *.wav files.  First create an instance of OpenFileDialog, an a way to verify the user
+has  selected a file.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L85 create instance of OprnFileDialog
+            OpenFileDialog IOFD = new OpenFileDialog();
+
+            // L85 verify that user has selected a file
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+            {
+
+            }
+        }
+
+
+In order to play the file, we will make an instance of SoundPlayer, and have it use the filename we chose, to point to that
+file, to play it.  Then we will use the soundplayer instance to play the wave.
+
+
+			// L85 verify that user has selected a file
+            if (IOFD.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+            {
+                // L85 create an instance of Sound player, direct it to use the filename we chose
+                SoundPlayer ISB = new SoundPlayer(IOFD.FileName);
+
+                // L85 play the chosen file
+                ISB.Play();
+            }
+
+
+Instead of just playing th file once we can have it repeat, and the is playsync, that freezes the app while it plays.
+
+                // L85 repeat the wav
+                ISB.PlayLooping();
+
+                // L85 playsync will free the program while it splaying
+                //ISB.PlaySync();
+
