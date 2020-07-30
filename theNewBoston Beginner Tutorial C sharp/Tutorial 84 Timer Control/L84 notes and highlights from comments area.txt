@@ -1,0 +1,106 @@
+﻿For this lesson, we will need button1, textBox1 and a timer, from the toolbox, for a tutorial using the timer class.  The
+timer is a background operation and is not a visible item, in form1.  The timer will be in its own box at the bottom of VS,
+and its properties accessable on the right, when clicked.  We will first make a crude timer that shows a messagebox, after 
+second.  Since the timer doesn't start until the value set as the interval amount of time in milleseconds, is reached, we 
+will set the interval in the properties box to 1000 (ms), which is one second.  We will use the start() method, to start the
+timer, in button1.  The timer will start, then wait till the second is finished then show message.  Then we will stop the 
+timer, so it doesn't continue posting message boxes every second.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L84 use start method to start timer which is a tic event
+            //Attribute the end of a second, not the beginning of the first (0)second
+            timer1.Start();          
+        }
+
+The tick event, will trigger the timer1 method, so we will add our message box code to be displayed there, and also to stop
+the timer1, so message boxes don't keep poping up every second.  Make sure the timer1.Stop() is before the messagebox, or
+it will continue popping up the message and not get to the Stop().
+
+
+		private void timer1_Tick(object sender, EventArgs e)
+        {
+            // L84 stop the timer1, before message, or it will continue looping
+            timer1.Stop();
+
+            // L84 show the message after timer stops at 1 second time lapse from the starting point
+            MessageBox.Show("1 second has elapsed", timer1.Interval.ToString()+ " millaseconds");      
+        }
+
+
+Next we will create a global int var, to display every second, the count of the timer2, in textBox1, using button2.  So 
+drag in timer2 and button2, to your form1.  We will start our timer2, as we did previously, then in the timer2 field, set 
+up our variable to display the count number in textBox1.
+
+
+
+        // L84 global variable counter
+        int iCount = -1;
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // L84 increment count 1 every tick event
+            iCount++;
+
+            // L84 show all the numbers, as count is incremented '+='
+            // show only the number, that the count is currently on '='
+            textBox1.Text = iCount.ToString() + " ";
+        }
+
+
+We also put a timer2 stop in button1, which will stop timer2 as it starts timer1, and does what we set it up to do, earlier.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L84 use start method to start timer which is a tic event
+            //Attribute the end of a second, not the beginning of the first (0)second
+            timer1.Start();
+
+            // button1 will stop timer2 
+            timer2.Stop();
+        }
+
+
+
+
+
+
+
+
+*************************** highlights from the comments area **************************
+
+
+
+
+
+
+This tutorial is missing loads of vital info. Why didn't you explain the difference between System.Timers.Timer and 
+System.Threading.Timer? it's really important. also it's best to programatically implement the event listener as an 
+async Task or Action so it doesn't interrupt your main thread. This is a tutorial for NOOBS, if you use timers like this 
+for a serious project, your gonna lose your job.
+
+
+
+
+
+how do i stop the timer from ticking using a button instead of having to hit the stop button in visual studio?
+
+Create button "stop" then in code timer1.Stop();
+
+
+
+
+
+how to calculate milli and nano seconds?
+
+Nano = 10 at the power of -9
+Milli = 10 at the power of -3
+
+
+
+
+
+
+create a variable to track a value starting at zero, then for the timer, just do button1.Position.X = yourVariableName * 10;
+this will move it 10 pixels each time.
