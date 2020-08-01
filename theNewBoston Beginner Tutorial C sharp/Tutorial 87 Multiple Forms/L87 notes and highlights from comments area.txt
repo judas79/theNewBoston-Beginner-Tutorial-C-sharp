@@ -1,0 +1,137 @@
+﻿For the lesson we will need Form1 and button1, with textbox1, and then a second form, with a label1, on it, for this lesson
+of adding, and using multiple forms.  To create a second form, we go up to the 'Project' tab and choose, 'add windows form..'
+We will choose 'windows form' from the dialog that pops up and name it form2, then add the labe to it, form the toolBox.
+We will change the name on the label to form 2, to help distinguish form1 from form2.
+
+As of now, we can't display form2.  So we will have to make an instance of form2.  First we double click form2, to see the
+code in its form2.CS, and see that the class name is form2.  We will use button1 in form1, to show form2 , when clicked,
+using the instance of form2, and show, to do the actual displaying of it.  Using .Show() allows for clicking between forms
+and bringinf the to the forefront in the window.  If we use .ShowDialog() to show window, instead, it will brinf form2 up
+to the forefront of the window, and form1, will remain in the back, and not selectable to be put in the foreground.  Form2
+will have to be closed first, before form1 is able to be closed, using this method.
+
+
+	    private void button1_Click(object sender, EventArgs e)
+        {
+            // L87 create instance of form2
+            Form2 IF2 = new Form2();
+
+            // L87 shows form2 when button1 clicked, toggle selection between windows
+            //IF2.Show();
+
+            // L87 shows form2 when button1 clicked, form2 stays at forefront of window
+            IF2.ShowDialog();
+        }
+
+
+Right now the two forms are not connected.  If we wanted to share a string between them, we would have to pass it from one
+form to the other, through the consturcter.  'Form2', is the constructor, within the form2.cs code:
+
+public Form2()
+
+Within this portion of the form2.cs:
+
+public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+
+We will create a string named sMyString, within the constructer of form2, to be able to pass it to form1.
+
+
+    public partial class Form2 : Form
+    {
+        // pass string, using constructer, to other Forms
+        public Form2(string sMyString)
+        {
+            InitializeComponent();
+        }
+
+
+Now we are able to pass a text string from Form1 to form2.  We will use our instance to pass a text string from our textBox1
+in form1, to our form2.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L87 create instance of form2, pass string in textBox1 to form2
+            Form2 IF2 = new Form2(textBox1.Text);
+
+
+Next we will move back over to form2 hand have the textbox1 text, display in label1 in form2.  We will run debug, then type
+some text into textbox1, in form 1, then click the button1 and the text in the textbox will be passed over to  sMyString in
+the constructer of form2.  Then we will set label1 in form2, to whatever is in sMyString.
+
+		// pass string, using constructer, to other Forms
+        public Form2(string sMyString)
+        {
+            InitializeComponent();
+            label1.Text = sMyString;
+        }
+
+
+If we want to pass other variables, we can add them to our constructer, in the same way.
+
+	// pass string, using constructer, to other Forms
+        public Form2(string sMyString, int iMyInt)
+        {
+            InitializeComponent();
+            label1.Text = sMyString;
+        }
+
+
+
+
+
+
+
+
+
+
+
+************************** highlights from the comments area ****************************
+
+
+
+
+
+
+
+
+please help me
+how can I close the first form when I click the button?
+for example when i click the button in form1, the form2 will appear and the form1 will be gone
+
+theres a hide method as well, so it would be this.hide() in form 1
+
+
+
+
+
+
+
+If you close your first form you'll close the application. If you use this.Hide() after the Form.Show() 
+// Form.ShowDialog() the "main" form will hide
+
+
+
+
+
+
+
+
+
+
+What if you want to go in reverse; access something on form1 from form2.
+
+Just at start initiate form2 and the create instances of form1
+
+
+
+
+
+
+

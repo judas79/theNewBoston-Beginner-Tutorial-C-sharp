@@ -41,7 +41,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         private void button3_Click(object sender, EventArgs e)
         {
             // L86 var from maskedtextbox2
-            var vTime = maskedTextBox2;
+            string vTime = maskedTextBox2.Text;
             textBox2.Text = vTime.ToString();
         }
 
