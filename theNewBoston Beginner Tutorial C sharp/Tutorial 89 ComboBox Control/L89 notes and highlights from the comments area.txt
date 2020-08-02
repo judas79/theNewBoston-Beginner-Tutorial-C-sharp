@@ -1,0 +1,79 @@
+﻿For this lesson we will need to drag and drop a comboBox and 4 buttons, for this tutorial on using comboBoxes.  A comboBox
+allows for selection of items from a list, or munipulation of the items, and to add items.  To add items, we can click 
+the black sideways triangle, and choose edit, then add the items, one per line(seperated by lines), and not seperated by
+cammas.  We can now run debugger and see the contents of the comboBox.
+The default setting of the comboBox, is that typing in someting at the pop of the box, in the empty area, is enabled.  To
+disable this, we go into the comboBox properties and chang the dropdown style from dropDown to DropDownList.  This will
+make the box read only.  The properties, dropdownbox 'Simple', will display the list in a larger drop down box window, and
+the write function will be enabled again.
+To see what itemis selected, in the comboBox, we use the 'text' property.  In button1 we will see if 'two' is selected from
+the list.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L89 check if string item is selected in comboBox
+            if (comboBox1.Text == "two")
+            {
+                MessageBox.Show("Yes 'two' is in list");
+            }
+        }
+
+
+
+We will use button2 to edit items in the comboBox, by choosing the content, using thier array value, then change the 
+value, of the string items content, by adding the string content, of textbox1's text.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L89 iterate through the comboBox list
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                // put text content in 'value' using array count 'i'
+                string value = comboBox1.GetItemText(comboBox1.Items[i]);
+
+                // use saved content in 'value' and add contnets of textbox1 to it
+                comboBox1.Items[i] = value + textBox1.Text.ToString();
+
+                // show edited combobox text and array value
+                MessageBox.Show("array vlaue = " + i.ToString() + "  new text = " + comboBox1.Items[i].ToString());
+            }
+        }
+
+
+
+We can also add new items, to our comboBox list.  We will use button3 to add the textbox1's text to the list.  We will 
+also get the count of how many items are in the combobox list, and display it.
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // L89 add text item from textbox1, to comboBox list
+            comboBox1.Items.Add(textBox1.Text.ToString());
+
+            // L89 get the count of the items in combobox1 and display it
+            MessageBox.Show(comboBox1.Items.Count.ToString());
+        }
+
+
+
+When the user selects a different item, within the comboBox, we can see the event, be triggered using the event property
+
+'selected index text changed'
+
+We will set this in the comboBox1 event properties.  To see that the user has changed items, we will add a messagebox
+to display so in the comboBox1 field.  We will also display the items index number, in the array, as the title:
+
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(comboBox1.SelectedItem.ToString(), comboBox1.SelectedIndex.ToString());
+        }
+
+
+
+
+********************** NO highlights from the comments area **********************
+

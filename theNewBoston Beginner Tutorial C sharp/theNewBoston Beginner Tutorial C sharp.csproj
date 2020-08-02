@@ -270,6 +270,8 @@
     <Content Include="Tutorial 87 Multiple Forms\L87 form2CS.txt" />
     <Content Include="Tutorial 88 Multi Document Interface MDI\L88 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 88 Multi Document Interface MDI\L88 Form1CS.txt" />
+    <Content Include="Tutorial 89 ComboBox Control\L89 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 89 ComboBox Control\L89 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
