@@ -25,7 +25,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             this.IsMdiContainer = true;
 
             // L88 create the new form that will reside within form1
-            Form Iform2 = new Form();
+            Form1 Iform2 = new Form1();
 
             // L88 form2 resides within parent, form1
             Iform2.MdiParent = this;
@@ -44,7 +44,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             this.IsMdiContainer = true;
 
             // L88 create the new form that will reside within form1
-            Form Iform2 = new Form();
+            Form1 Iform2 = new Form1();
 
             // L88 form2 resides within parent, form1
             Iform2.MdiParent = this;
@@ -54,19 +54,19 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             
 
             // L88 create the new form that will reside within form1
-            Form Iform3 = new Form();
+            Form2 Iform3 = new Form2();
 
             // L88 form2 resides within parent, form1
-            Iform3.MdiParent = this;
+            Iform3.MdiParent = Iform2;
 
             // shows form2 inside of form1, ShowDialog() will not work
             Iform3.Show();
 
             // L88 create the new form that will reside within form1
-            Form Iform4 = new Form();
+            Form3 Iform4 = new Form3();
 
             // L88 form2 resides within parent, form1
-            Iform4.MdiParent = this;
+            Iform4.MdiParent = Iform3;
 
             // shows form2 inside of form1, ShowDialog() will not work
             Iform4.Show();

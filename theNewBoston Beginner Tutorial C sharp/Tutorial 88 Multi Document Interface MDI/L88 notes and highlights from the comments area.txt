@@ -12,10 +12,14 @@ in the form1, button1 code.
 
 
 
-Next we will create an new form;  the one that will be contained form1.  We will name it form2, and created it using the same
-methodology as when we create an instance.  Then we will let the compiler know that form2's parent is form1 (this).  And
-lastly will enable form2 to show itself when button1 is clicked.  ShowDialog() will not work, because you wouldn't be able
-to close it.
+Next we will create an new form;  the one that will be contained in form1.  We will name it form2, and created it using 
+the same methodology as when we create an instance.  Then we will let the compiler know that form2's parent is form1 
+(this).  To create a new form, you must use a form that has already been created.  Since we already have created form1
+we can do this.
+Form1 Iform2 = new Form1();
+
+And lastly will enable form2 to show itself when button1 is clicked.  ShowDialog() will not work, because you wouldn't 
+be ableto close it.
 
  private void button1_Click(object sender, EventArgs e)
         {
