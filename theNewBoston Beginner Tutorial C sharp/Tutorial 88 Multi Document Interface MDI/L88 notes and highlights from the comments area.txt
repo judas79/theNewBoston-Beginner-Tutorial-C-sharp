@@ -116,4 +116,35 @@ forms, a bit larger, or even arrange the form horiizontally or vertically.
 
 
 
-******************** NO higlights from the comments area ***********************
+
+
+
+******************** higlights from the comments area ***********************
+
+
+
+
+
+
+
+
+I could not change the 'Form' numbers as you did in your code:  
+you did:
+
+            Form2 f2 = new Form2();
+            Form3 f3 = new Form3()
+
+I had to do them like this:
+
+            Form f2 = new Form();
+            Form f3 = new Form();
+
+Every time I clicked button2, the Forms would double, in amount.  I have VS 2017, has the method changed, to create the 
+child forms?
+
+
+to answer my own question.  To create a form you must use a form that already exists.  Therefore, we can't start 
+creating form 2 using form2;  Use the parent form to start with ( form1, in my circumstance....)
+
+
+
