@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-// L85 to use wav files
-using System.Media;
+﻿For this lesson we will need 3 buttons in form 1, to work with the Mdi, Multi Documents interface.  The Mdi class, is used 
+to put a Windows form within the borders of another Windows form.  We can also put many windows forms, inside of a form.
+To set this up, in button1, we will first let the compiler know that we are going to put a form within this form (form1).
+We will use the keyword 'this' which in this circumstance refferences the form1 class, since that is where 'this' is; located
+in the form1, button1 code.
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
-{
-    public partial class Form1 : Form
-    { 
-        public Form1()
+		private void button1_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            // L88 inform the compiler a form will be contained within form1
+            this.IsMdiContainer = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+Next we will create an new form;  the one that will be contained form1.  We will name it form2, and created it using the same
+methodology as when we create an instance.  Then we will let the compiler know that form2's parent is form1 (this).  And
+lastly will enable form2 to show itself when button1 is clicked.  ShowDialog() will not work, because you wouldn't be able
+to close it.
+
+ private void button1_Click(object sender, EventArgs e)
         {
             // L88 inform the compiler a form will be contained within form1
             this.IsMdiContainer = true;
@@ -29,15 +27,22 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L88 form2 resides within parent, form1
             Iform2.MdiParent = this;
-
-            // shows form2 inside of form1, ShowDialog() will not work
+			
+			// shows form2 inside of form1, ShowDialog() will not work
             Iform2.Show();
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+When you run debug, you will notice form1 is greyed out, and form2 will expand form1's side bars, when you drag form2 
+past the borders of form1.
+Lets say you want more forms within form 1.  We will just copy what we did in button1 to button2, and create more forms, using 
+the same methods.  Notice we only let the compiler, that we are putting forms within form1
+
+
+
+private void button2_Click(object sender, EventArgs e)
         {
-            // reset i in button3 for statement to 0
+			// reset i in button3 for statement, to 0
             i = 0;
 
             // L88 inform the compiler a form will be contained within form1
@@ -72,12 +77,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             Iform4.Show();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-                
-        }
 
-        int i;
+
+We will use button3, to arange the forms we created in button2, to place their minimized icons, in a row, or start the
+forms, a bit larger, or even arrange the form horiizontally or vertically.
+
+
+		int i;
         private void button3_Click(object sender, EventArgs e)
         {
             // L88 see the 4 mdiLayout types, one after another
@@ -99,49 +105,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 {
                     this.LayoutMdi(MdiLayout.TileVertical);
                 }
-                MessageBox.Show("i = " + i);
-                
+				// pauses the for statement between each mdiLayout and lets you know the number you're on
+                MessageBox.Show("i = " + i);                
             }
         }
 
 
-        private void button4_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-   
-        }
-
-        
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-          
-        }
-       
-        
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-    }
-}
+******************** NO higlights from the comments area ***********************
