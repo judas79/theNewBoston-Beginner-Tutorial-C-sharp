@@ -42,15 +42,17 @@
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(13, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 23);
+            this.button1.Size = new System.Drawing.Size(150, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Is two in comboBox?";
+            this.button1.Text = "ProgressBar increment 10%";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -60,7 +62,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "edit comboBox item";
+            this.button2.Text = "Reset ProgressBar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -96,11 +98,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(305, 58);
+            this.textBox1.Location = new System.Drawing.Point(12, 58);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // timer1
             // 
@@ -119,14 +122,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(305, 133);
+            this.textBox2.Location = new System.Drawing.Point(314, 58);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 11;
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(13, 58);
+            this.maskedTextBox1.Location = new System.Drawing.Point(13, 177);
             this.maskedTextBox1.Mask = "00000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -136,7 +139,7 @@
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(13, 132);
+            this.maskedTextBox2.Location = new System.Drawing.Point(305, 177);
             this.maskedTextBox2.Mask = "90:90:90";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
@@ -151,17 +154,34 @@
             "two",
             "three",
             "four"});
-            this.comboBox1.Location = new System.Drawing.Point(158, 57);
+            this.comboBox1.Location = new System.Drawing.Point(158, 177);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(158, 58);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(121, 23);
+            this.progressBar1.TabIndex = 15;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(158, 119);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(121, 23);
+            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar2.TabIndex = 16;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 479);
+            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.maskedTextBox1);
@@ -195,5 +215,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar2;
     }
 }

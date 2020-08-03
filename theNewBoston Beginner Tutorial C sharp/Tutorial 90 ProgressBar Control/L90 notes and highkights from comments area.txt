@@ -1,0 +1,90 @@
+﻿We will need 4 buttons and 1 progress bar, from the toolbox, for this lesson on progress bars.  We set our progressBar
+properties, min, to 0 so it will start all the way to the left hand side of it window.  The max is set to whatever the 
+user wants the progress bar to end at.  Max set at 100 (percent) will show the entire distance from the min, far left, to
+the far right, which is the maximum set to 100.  If you want the progress bar to only travel to the mid point of the bars
+display, set it to 50(percent).
+We will first set our property, Style to blocks.  We can set the progress bars value to an event from a button click.  
+We will set button1, to cause the value, of ProgressBar1, to move 10 percent, from its min value of 0 up to a possible 
+100 percent.
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L90 set ProgressBar to increment 10 percent
+            //progressBar1.Value += 10;                   // causes error when exceeding 100 % of PB maximum
+
+			// L90 set ProgressBar to increment 10 percent
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L90 set to move progressBar back to 0, reset
+            progressBar1.Value = 0;
+        }
+
+
+
+
+The progressBar will get an error if we click it 11 times when set to 10 percent, because the bar is 100 percent and the
+limit has been exceeded.  Instead of using the value to increment the progressbars progress, we will us a property named
+the form step method.  The form step method use the step properties to move the progressbar and will not cause the error,
+that the value method does.  So we will set our step property to 10, and set out code in button1 to perform step.  The
+style is set to blocks in the progressbar properties.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L90 set ProgressBar to increment 10 percent using value property
+            //progressBar1.Value += 10;                                     // causes error when exceeding 100 % of PB maximum
+
+            // L90 set ProgressBar to increment 10 percent using Step property
+            progressBar1.PerformStep();
+        }
+
+
+
+When we don't know when a progress being monitored by the progress bar is going to end, we will use the property Style:
+Marquee.  We will drag in a second progressbar for this.  The progresbar itself will look more like a wave going back and
+forth endlessly, depicting an 'end unknow' scenerio.  Choose Marquee from the property style for your progressbar2.  In
+button1 we will activate the Marquee progress bar and use button2, to stop it.  To stop it we will have to change the 
+style back to blocks, so when we restart it, we will need to also add code to switch style to marqee, in button1.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L90 set ProgressBar to increment 10 percent using value property
+            //progressBar1.Value += 10;                                     // causes error when exceeding 100 % of PB maximum
+
+            // L90 set ProgressBar to increment 10 percent using Step property
+            progressBar1.PerformStep();
+
+            // L90 set property style to Marquee for progressBar2
+            progressBar2.Style = ProgressBarStyle.Marquee;
+
+            // L90 set marquee bar progressbar2 to 100, and enable it
+            progressBar2.MarqueeAnimationSpeed = 100;
+        }
+
+
+
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+
+            // L90 set property style to blocks for progressBar2
+            progressBar2.Style = ProgressBarStyle.Blocks;
+
+            // L90 set to move progressBar2 back to 0, reset
+            progressBar2.Value = 0;
+		}
+
+
+
+
+
+
+
+******************* NO highlights from the comments area ******************
