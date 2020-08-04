@@ -276,6 +276,10 @@
     <Content Include="Tutorial 90 ProgressBar Control\L90 form1CS.txt" />
     <Content Include="Tutorial 91 ListView Control pt 1\L91 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 91 ListView Control pt 1\L91 form1CS.txt" />
+    <Content Include="Tutorial 92 ListView Control pt 2\getNameOfItem.png" />
+    <Content Include="Tutorial 92 ListView Control pt 2\ghostly menuStrip.png" />
+    <Content Include="Tutorial 92 ListView Control pt 2\L92 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial 92 ListView Control pt 2\L92 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

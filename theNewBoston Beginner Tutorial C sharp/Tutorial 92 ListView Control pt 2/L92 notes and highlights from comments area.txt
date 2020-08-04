@@ -1,0 +1,46 @@
+﻿We will need the form1.cs and all its content, from tutorial 91 (prior lesson).  We will start this lesson by dragging
+a context menu, into the form1, from the toolBox.  A context menu, is a box that pops up when your right click on an item
+in Windows, that contains a bunch of options or properties.  The context menu we are addding, will be one of those invisible
+items, that you can see listed, where the timers, where located, in a prior lesson; at the bottom of the page.  Drag in
+the contexMenuStrip from the toolbox.  You will see a ghostly image of it on your form towards the top left corner.  We
+will use this context menu to select (right click on items), within our listView. 
+To use this context menu, type this in the space, at the top of the ghostly contex menu:
+
+Get Name of Item
+
+Then in the form1 double click the ListView box, so its properties show at the right of VS, and choose contextMenu1, from
+the contextMenu property.  Now we can run debug.  In debug mode right click in the listView window, and see if 
+"Get Name of Item", that we created earlier, pops up.
+Next, we will click at the bottom of the screen, when we are in the form1.cs[Design], where it say "ContextMenuStrip1",
+once, so that the ghostly ContextMenuStrip appears in ou form1.  Double click the Ghostly contextmeustrip 
+'Get Name of Item'so we can add some code to be executed when someone clicks in the context menu Get Name of Item, area
+it will be run, and something will happen.
+We will create an if statement to insure that an item has been selected from the viewList.  Next we will create a way
+to view the data, of the selected item, from within the listview, by using its index number, to point to it, in the list.
+Zero, is always the first index number in a ListView and we will use it as an array and save the info as a collection.
+We will do the same for the sub-selections, which consist of 0-2, for the name, age and email.
+
+
+
+		private void getNameOfItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // L92 insure an items has been selected from the list, not blank space selected
+            if(listView1.SelectedItems.Count != 0)
+            {
+                // L92 choose main list selected item using index #,
+                // choose the first list item in sub selection (name), using context menu
+                MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
+
+                // get second item in sub list (age), using context menu
+                MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
+
+                // get third item in sub list using context menu (email)
+                MessageBox.Show(listView1.SelectedItems[0].SubItems[2].Text);
+            }
+
+
+
+
+
+
+	********************************* NO highlights from he comments area ***********************************
