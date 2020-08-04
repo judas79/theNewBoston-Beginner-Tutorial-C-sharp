@@ -1,0 +1,87 @@
+﻿For this lesson, we will need 1 button, 3 labels, and 3 textBoxes, for this tutorial on listview.  Next we will add a
+listView Box from the toolBox.  ListView boxes are used to hold data.  We will use ours to create a table consisting of 
+three rows that will store a users name, age and email.  We will first, click the sideways black triangle and choose the
+edit columns option.  We will add three columns and name them Name, Age, and Email, in the Text field.  We will go back
+one window by clicking OK, the click the view tab and select 'details'.  You can resize the columns by dragging them,
+left or right.  
+Next we will click within the Listview box to see the main properties.  We will change the Gridlines and the FullRowSelect 
+properties to true.  This will chow gridlines in the listview and show the entire selected row, instead of just the top 
+object.  While we're at it select true for the MultiSelect property so we can select multiple items.
+Now we will double click the Add Person button1, to go to it, in the form1.cs.  First we will create a new instance of
+ListViewItem and since name is the first one, we will pass in textbox1.  Then we will add textBox.2 and textBox3, for the
+age and email address, to complete the creation, of the view item and sub item categories.  No we will add the item and
+sub items, to the view list.
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L91 create new listViewItem to pass in textBox text entered text
+            ListViewItem ILV = new ListViewItem(textBox1.Text);
+
+            // add textbox2 and textBox3 to our ListView items, as sub items.
+            ILV.SubItems.Add(textBox2.Text);
+            ILV.SubItems.Add(textBox2.Text);
+
+            // Add the listview item and subitems to listView
+            listView1.Items.Add(ILV);
+        }
+
+
+Next we will sett all the textBoxes Text as empty strings, in button1.
+
+            private void button1_Click(object sender, EventArgs e)
+        {
+            // L91 create new listViewItem to pass in textBox text entered text
+            ListViewItem ILV = new ListViewItem(textBox1.Text);
+
+            // add textbox2 and textBox3 to our ListView items, as sub items.
+            ILV.SubItems.Add(textBox2.Text);
+            ILV.SubItems.Add(textBox3.Text);
+
+            // Add the listview item and subitems to listView
+            listView1.Items.Add(ILV);
+
+            // L91 set textBoxes text, all equal to empty strings.
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+        }
+
+
+We can run debug and add names, age and emails, and store them in our ListView.
+
+
+
+
+
+
+
+
+********************* Highlights from the comments area *************************
+
+
+
+
+
+
+I would create an array of the strings I want to add to the listview and then just add them:
+
+            string[] row = { comboBox1.Text, textBox1.Text };
+            ListViewItem lvi = new ListViewItem(row);
+            listView1.Items.Add(lvi);
+
+
+
+
+
+
+
+Or you can do
+TextBox1.Clear();
+and so on.
+
+
+
+
+
