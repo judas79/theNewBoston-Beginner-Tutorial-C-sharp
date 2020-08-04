@@ -42,13 +42,29 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {
                 // L92 choose main list selected item using index #,
                 // choose the first list item in sub selection (name), using context menu
-                MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
+                //MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
 
                 // get second item in sub list (age), using context menu
-                MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
+                //MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
 
                 // get third item in sub list using context menu (email)
-                MessageBox.Show(listView1.SelectedItems[0].SubItems[2].Text);
+                //MessageBox.Show(listView1.SelectedItems[0].SubItems[2].Text);
+
+                // L93 loop though all the selected items in listView1, for the data within
+                foreach (ListViewItem ILV in listView1.SelectedItems)
+                {
+                    // Get age only of selected items
+                    //MessageBox.Show(ILV.SubItems[1].Text);
+
+                    // loop through all the selected items to  get
+                    // all the data in all the sub items (name, age, email)
+                    int count = listView1.SelectedItems.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        MessageBox.Show(ILV.SubItems[i].Text);
+                    }
+                    
+                }
             }
         }
     }

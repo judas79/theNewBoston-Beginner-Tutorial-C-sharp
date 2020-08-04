@@ -137,13 +137,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.getNameOfItemToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 48);
             // 
             // getNameOfItemToolStripMenuItem
             // 
             this.getNameOfItemToolStripMenuItem.Name = "getNameOfItemToolStripMenuItem";
-            this.getNameOfItemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.getNameOfItemToolStripMenuItem.Text = "Get Name of Item";
+            this.getNameOfItemToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.getNameOfItemToolStripMenuItem.Text = "Get Name of Item(s)";
             this.getNameOfItemToolStripMenuItem.Click += new System.EventHandler(this.getNameOfItemToolStripMenuItem_Click);
             // 
             // Form1

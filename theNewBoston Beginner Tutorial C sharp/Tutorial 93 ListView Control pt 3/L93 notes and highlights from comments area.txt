@@ -1,0 +1,57 @@
+﻿For this lesson, we will need all the code and form1, from the two prior lessons, for this tutorials, further exploration
+of listView controls.  Controls collection on each Form instance—lets you access all the items such as TextBox, Button 
+and more in a unified way.  Since we will be working with multiple items, click the listView box and make sure multiSelect
+is set to true.  Also, click the contextMenuStrip1 and add an (s) in parethesis to the 'Get Name of Item' so it reads;
+'Get Name of Item(s)', since we will be working with multiple selected items.  Run the debugger and verify that you can
+add multiple entries and are able to select them using ctrl in the context box.
+As of now we are only set up to get the first item in the listView, even if we select two items.  If we want to only get
+the second item in list view, we would change the code fron:
+MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
+to:
+MessageBox.Show(listView1.SelectedItems[1].SubItems[0].Text);
+to get the second chosen items[1] in the lists, and its name[0], value.
+So, to get all the selected items, we will loop through the selcted items.  Then another loop get all the data in the 
+sub items, which are the name, age and email.
+
+
+
+ private void getNameOfItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // L92 insure an items has been selected from the list, not blank space selected
+            if(listView1.SelectedItems.Count != 0)
+            {
+                // L93 loop though all the selected items in listView1, for the data within
+                foreach (ListViewItem ILV in listView1.SelectedItems)
+                {
+                    // loop through all the selected items to  get
+                    // all the data in all the sub items (name, age, email)
+                    int count = listView1.SelectedItems.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        MessageBox.Show(ILV.SubItems[i].Text);
+                    }
+                    
+
+
+If we only wanted to get the age from the sub-items we could use, a static number to point to the array item, instead of
+the variable i, which will get the total count of all the sub items.
+
+
+		private void getNameOfItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // L92 insure an items has been selected from the list, not blank space selected
+            if(listView1.SelectedItems.Count != 0)
+            {
+                // L93 loop though all the selected items in listView1, for the data within
+                foreach (ListViewItem ILV in listView1.SelectedItems)
+                {
+					// Get age only of selected items
+					//MessageBox.Show(ILV.SubItems[1].Text);
+				}
+
+
+
+
+
+
+************************** No highlights from the comments area **************************
