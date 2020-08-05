@@ -42,6 +42,9 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.getNameOfItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removSelectedItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
+            this.deleteAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,6 +108,7 @@
             // 
             // listView1
             // 
+            this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -115,7 +119,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(17, 96);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(344, 342);
+            this.listView1.Size = new System.Drawing.Size(344, 313);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -135,22 +139,49 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.getNameOfItemToolStripMenuItem});
+            this.getNameOfItemToolStripMenuItem,
+            this.removSelectedItemToolStripMenuItem,
+            this.deleteAllItemsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 70);
             // 
             // getNameOfItemToolStripMenuItem
             // 
             this.getNameOfItemToolStripMenuItem.Name = "getNameOfItemToolStripMenuItem";
-            this.getNameOfItemToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.getNameOfItemToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.getNameOfItemToolStripMenuItem.Text = "Get Name of Item(s)";
             this.getNameOfItemToolStripMenuItem.Click += new System.EventHandler(this.getNameOfItemToolStripMenuItem_Click);
+            // 
+            // removSelectedItemToolStripMenuItem
+            // 
+            this.removSelectedItemToolStripMenuItem.Name = "removSelectedItemToolStripMenuItem";
+            this.removSelectedItemToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.removSelectedItemToolStripMenuItem.Text = "Remove selected Item";
+            this.removSelectedItemToolStripMenuItem.Click += new System.EventHandler(this.removSelectedItemToolStripMenuItem_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(285, 415);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // deleteAllItemsToolStripMenuItem
+            // 
+            this.deleteAllItemsToolStripMenuItem.Name = "deleteAllItemsToolStripMenuItem";
+            this.deleteAllItemsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.deleteAllItemsToolStripMenuItem.Text = "Delete all Items";
+            this.deleteAllItemsToolStripMenuItem.Click += new System.EventHandler(this.deleteAllItemsToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -161,6 +192,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,5 +214,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem getNameOfItemToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem removSelectedItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAllItemsToolStripMenuItem;
     }
 }

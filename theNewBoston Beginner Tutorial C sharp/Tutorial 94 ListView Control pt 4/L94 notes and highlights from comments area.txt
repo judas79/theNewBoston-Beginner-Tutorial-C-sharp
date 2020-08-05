@@ -1,0 +1,71 @@
+﻿We will need everything from the last 3 lessons and a button1 at the bottom of form1, for this tutorial on the ListView
+controls.  The first thing we are going to do is add 'Remove selected item' to our context menu.  Do this with the using
+the same procedure we did to add get name of item(s) in tutorial 92.  After adding Remove selected item, double click it
+to open the form1.cs, so we can enter code in the event handler, for it.  As we did before, we will write an if statement
+to insure an item has been selected and not empty.   Then we will remove anything that has been selected using a foreach
+loop.
+
+
+		private void removSelectedItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // L94 insure an items has been selected from the list, not blank space selected
+            if (listView1.SelectedItems.Count != 0)
+            {
+                // L94 go  through every selected item, and remove 
+                foreach (ListViewItem ILV in listView1.SelectedItems)
+                {
+                    ILV.Remove();
+
+                }
+            }
+        }
+
+Next we will create a method, in the same manner as we just finished doing, to delete all items in the List View.  First
+we enter 'Delete all Items' into our context menu, to start creating the method.  Then we will double click delete all
+items, to create the event handler in form1.  Then in the Delete all Items, we will enter the following code to do the 
+deleting, by clearing all the items in listView1.  This will clear all without having to select them.
+
+
+
+		private void deleteAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // L94 clear all items in listview1
+            listView1.Items.Clear();
+        }
+
+
+Next we will add checkboxes to our list items.  As the items are entered into out listview, a checkbox next to the item
+will not be generated.  After clicking listView, we go over to its properties and select true next to checkbox.  They will
+now show the checkboxes and be checkable, but do nothing.  We will add a button to remove the checked items, when the button
+is pressed.  We will first make a foreach statement to iterate through items in listview1, then an if statement to remove
+the items that are checked, in button2.
+
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // L94 iterate through the items in ListView
+            foreach (ListViewItem ILV in listView1.Items)
+            {
+                // L94 if its checked, remove it from the listview
+                if(ILV.Checked)ILV.Remove();
+            }
+        }
+
+
+
+		
+
+
+
+***************** highlight from the comments area *********************
+
+
+
+
+
+
+Yuo can use this code for removing checked items as well:
+foreach (ListViewItem lvi in listView1.CheckedItems)
+                lvi.Remove();
+At least that works for me :) hope that's usefull
