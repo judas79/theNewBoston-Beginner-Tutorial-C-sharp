@@ -1,0 +1,44 @@
+﻿For this lesson all we need is form1, to learn about, ToolStrip and StatusStrip Controls.  From the toolBox, drag a
+toolStrip into form1.  The tool strip holds a bunch of options you can use.  For example, the tool bar in VS is a tool-
+strip, that contains File, Edit ...+, and all the dropdon menus and options within.
+To make our first droptdown button click the black triangle and choose dropdownbutton from the list.  Next we will add
+opern and save into our dropdownbutton then start the degugger to see them.
+
+After debugging we will add sub folder options, Save as, and OverWrite, to the Save option, we just created.  Click on
+Save, and a place to add Save as and OverWrite, will appear, to enter them in to.
+
+The Icon that represents our DropDown, can be changed to display text, instead.  So if we click it ones, we can go over
+to properties and choose DisplayStyle and pick text.  Then we will go to the property, text and change that from 
+toolStripDropDownButton1 to file. After debugging, to make sure it all works, we will switch the DiplayStyle to Image 
+and Text.
+
+We can also add icons to our sub topics in the drop downs.  First lets go over to:  https://www.iconfinder.com/
+and find a free icon for our open button.  We will then put it on the hard drive, somewhere too access it from, the click
+on our 'open' dropdown and click once, the go to properties and choose 'image' then navigate to our icon file.  Debug
+to test if it works.
+
+Mext we will choose something other than a dropdown; a button, to add to our tool strip.  Next we will change our button
+from an image to text in diplayStyle property and change the text property to, 'About'.
+
+Next we will add a comboBox, much like we chose the others, from the toolstrip list.  We can add an option in the combobox
+field.  We will add another button so the next item, the separator will stand out better.  We can add seperators to divide 
+groups of items up by thier common functionality, and then a split button, to see what it looks like.
+
+SEE PICS OF ALL THESE TOOLSTRIP SETUPS WE DID, IN Tutorial 95 folder.
+
+Next we will add a statusStrip to our form1, by dragging it in from our toolBox.  Like the other strip tools, it will be
+ghostly, and appaear with the others, in the area at the bottom of the page, that you can click to munipulate it in the 
+form1.  When clicked, at the bottom of the page, you will see its controls, in the bottom left of form1.  The statusStrip
+is used to inform the user of what is going on in the app, as it runs.  So we will choose 'StatusLabel' by selecting it 
+after clicking the black triangle, from the list.  We can use this when we are doing something, for example have it print
+'opening file' when using the open button.  We added a progressBar also for the hell of it.
+
+See Pics in Tutorial 95 folder.
+
+
+
+
+
+
+
+******************** NO highlights from the comments area **********************

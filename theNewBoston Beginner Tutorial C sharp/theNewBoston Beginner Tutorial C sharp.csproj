@@ -284,6 +284,16 @@
     <Content Include="Tutorial 93 ListView Control pt 3\L93 form1CS.txt" />
     <Content Include="Tutorial 94 ListView Control pt 4\L94 notes and highlights from comments area.txt" />
     <Content Include="Tutorial 94 ListView Control pt 4\L94 form1CS.txt" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\About button added.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\add open and save dropDownButton.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\add saveAs OverWrite to save dropDownButton.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\add StatusLabel from StatusStrip.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\added comboBox buttons, separator and splitButton.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\Choose dropDownButton.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\debugging open and save dropDownButton.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\openFolder.png" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\L95 form1CS.txt" />
+    <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\L95 notes an highlights from the comments area.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
