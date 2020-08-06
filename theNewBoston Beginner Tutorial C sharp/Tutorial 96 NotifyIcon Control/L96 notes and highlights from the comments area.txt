@@ -1,0 +1,61 @@
+﻿In this lesson we will need a button and to drag in a NotifyIcon to learn how to use its controls.  The system tray
+will be used to notify the user of thing, using the notiyIcon.  We will need to provide an icon, for the system tray,
+that will represent the notification.  We can then click on it to see the notification, that our app, wants us to 
+see.  This icon has to be a *.ico file and you can find one here: https://www.iconfinder.com/
+
+Lets first load the icon we downloaded.  Click the notifyIcon1, down below in the non visible components area, and
+choose the 'Icon' property and navigate to you .ico file.  Next to show our notification lesson click on the button
+so we can enter some code in our form1.cs file.  To show the notification in a ballon, we will assign it to our
+notification1.
+
+
+		private void button3_Click(object sender, EventArgs e)
+        {
+            // L96 show our notification in a balloon, in the systemtray
+			// the int is timeout in milleseconds, then title, then message, then the exclamation point info icon
+            notifyIcon1.ShowBalloonTip(1000, "MyNotification", "Note button clciked", ToolTipIcon.Info);
+        }
+
+
+
+The notification is generally used when an app is running, but is not visible to the user.  So we will hide the app
+when the button is pressed, there will be a notification popup, and as before, it will run an icon in the system 
+tray.  We will use 'this' meaning this form 'form1' to hide the app.
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // L96 show our notification in a balloon, in the systemtray
+            // the int is timeout in milleseconds, then title, then message, then the exclamation point info icon
+            notifyIcon1.ShowBalloonTip(1000, "Still Running", "app is still running", ToolTipIcon.Info);
+
+            // L96 hide form1 from view
+            this.Hide();
+        }
+
+
+To be able to see the app again we will go into our notificationIcon1 properties and click the events 
+(lightening bolt) icon, and double click 'MouseDoubleClick'.  It should open up form1 at a 
+notifyIcon1_MouseDoubleClick generated event statement.  We will enter 'this' show, which will show 
+the form its in, again.
+
+		private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // L96 make form1 visible to the user
+            this.Show();
+        }
+    
+
+
+
+
+
+*********************** highlights from the comments area ************************
+
+
+
+
+
+
+I think you'd want to dispose of the notifyIcon by notifyIcon1.Dispose() when you get the form to the normal state, 
+so that there won't be visual bug of several notifyicons.

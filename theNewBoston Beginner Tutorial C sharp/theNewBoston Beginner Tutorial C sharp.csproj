@@ -294,6 +294,9 @@
     <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\openFolder.png" />
     <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\L95 form1CS.txt" />
     <Content Include="Tutorial 95 ToolStrip and StatusStrip Controls\L95 notes an highlights from the comments area.txt" />
+    <Content Include="Tutorial 96 NotifyIcon Control\notify.ico" />
+    <Content Include="Tutorial 96 NotifyIcon Control\L96 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial 96 NotifyIcon Control\L96 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
