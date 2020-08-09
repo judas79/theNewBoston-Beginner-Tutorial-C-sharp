@@ -1,0 +1,125 @@
+﻿In this lesson we will need a button and a textBox, for a tutorial on creating a place to save settings, in our app.
+So far, when we've closed our apps; if we reopen them, none of the data is remembered or settings, so it starts up
+anew.  We will create settings the store the setting or data entered into our app.
+
+To get to the properties, of our project, click the Project tab in VS, then go to the bottom, where it names your
+project name + the word  (properties) next to it.  Then a property box will popup; click on 'Settings'.  Within
+settings we will create a new setting called 'Name', by clicking on the tab called Name (also), then writing Name
+there.  The reason we are calling this Name, is because the content that goes there will be a name.  In the next 
+'Type' variable column, we will leave the setting at 'string' and the same with the 'scope', we will leave at 'user'.
+After that press save and save all.
+
+Next return to your form1, and double click the button1.  There we will write some code to save what is in textBox1
+to the properties setting, that we just finished creating.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L98 set, name of project, .Properties.Settings.Default.Name
+            // .Name is the setting we created; = to what we type in textBox1
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Name = textBox1.Text;
+        }
+
+
+In order to save the entered text, in textBox1, to the property settings, we need to use the save method, using the
+same path to our default setting.  This will save our settings even if the app is closed.  It will be there next time
+the app is re-opened.
+
+
+			// L98 save the entered saving using default path, in settings
+            // saves for the next time the app is re-opened, data will be there
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Save();
+
+
+
+in our public Form1(), we will have textBox1, display what is inside our property 'Name', when we run our app.
+
+
+		public Form1()
+        {
+            InitializeComponent();
+            
+            // L98 display contents of our property, Name
+            textBox1.Text = theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Name;
+        }
+
+
+To test that this is working, run debug, enter a name in textBox1, click button1 to save the entered text to our
+Name setting.  Then close out the debug, and run the app again.  The name you entered should be now displayed in
+textBox1.
+
+We can also create a property to hold an integer.  Create another property name, as we did earlier, and name this 
+one 'Age'.  We will set this to int in the Type column and leave the scope as user.  Don't forget to click the save
+button in VS.  Also drag in another textBox (2) to display the age in.
+
+Then we will go to button1 and add in age the same we did with Name, but this time we will convert the entered
+text in textBox2, to an int variable.  Notice we only need one save method to save both Name and Age, after they
+are entered.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L98 set, name of project, .Properties.Settings.Default.Name
+            // .Name is the setting we created; = to what we type in textBox1
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Name = textBox1.Text;
+
+            // L98 set, name of project, .Properties.Settings.Default.Age
+            // Age is the setting, = to the converted to in number entered into textBox2
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Age = Convert.ToInt32(textBox2.Text);
+
+            // L98 save the entered saving using default path, in settings
+            // saves for the next time the app is re-opened, data will be there
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Save();
+        }
+
+
+
+Finally, we will put textBox2 equal to the contents of our Age property, in our public form1.  We will have to also
+convert the contents to string, for it to display.
+
+
+		public Form1()
+        {
+            InitializeComponent();
+            // L97 show contnet of s (the file being opened path)
+            //MessageBox.Show(s);
+
+            // L98 display contents of our property, Name
+            textBox1.Text = theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Name;
+
+            // L98 display contents of our property, Age
+            textBox2.Text = theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Age.ToString();
+        }
+
+
+Next we will store a Button.  In the Name are name the button, buttonA, would be good.  in the type we will have to
+use 'browse...', since there is no variable for the button type.  We will browsr in the popup window, to 
+Windows.System.Forms, then in that category pick, Windows.System.Forms, yes the same sub category, then finally,
+button.  Don't forget to save in VS.  Next we will set it up in button1, similar to the last two methods we used.
+We will set it to button1, since its not a string or int. and has to be set to a button.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L98 set, name of project, .Properties.Settings.Default.Name
+            // .Name is the setting we created; = to what we type in textBox1
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Name = textBox1.Text;
+
+            // L98 set, name of project, .Properties.Settings.Default.Age
+            // Age is the setting, = to the converted to in number entered into textBox2
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Age = Convert.ToInt32(textBox2.Text);
+
+            // L98 set, name of project, .Properties.Settings.Default.buttonA
+            // .ButtonA is the setting we created; = to button1
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.buttonA = button1;
+
+            // L98 save the entered saving using default path, in settings
+            // saves for the next time the app is re-opened, data will be there
+            theNewBoston_Beginner_Tutorial_C_sharp.Properties.Settings.Default.Save();
+        }
+
+
+
+
+
+******************* NO highlights from the comments area **********************

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\Roddy\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -302,6 +302,15 @@
     <Content Include="Tutorial 97 Opening Files With Your App\L97 Form1.txt" />
     <Content Include="Tutorial 97 Opening Files With Your App\L97 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial 97 Opening Files With Your App\L97 ProgramCS.txt" />
+    <Content Include="Tutorial 98 Settings\L98 contents of the Name property displayed after re opening app.png" />
+    <Content Include="Tutorial 98 Settings\L98 final settings in our properties.png" />
+    <Content Include="Tutorial 98 Settings\L98 notes and highlighs from the comments area.txt" />
+    <Content Include="Tutorial 98 Settings\L98 form1CS.txt" />
+    <Content Include="Tutorial 98 Settings\L98 Project properties location.png" />
+    <Content Include="Tutorial 98 Settings\L98 property Settings dialog new setting called Name.png" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
