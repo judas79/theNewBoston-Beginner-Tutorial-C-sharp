@@ -1,0 +1,88 @@
+﻿For this lesson we will need a button1 and a treeView, to learn its controls.  In a treeview where the items split
+off into other items or sub categories, are know as  nodes.  In order to add a node to our treeView, we will go into
+button1 and write the name of our treeView1.  Then we will follow that with the Nodes property and use the add method
+to add a name as a string, to create the top one.  This first node will not have anything below it yet. Then we will
+add a few more nodes using the same method, but with different designations.
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L99 create the first node in treeView1
+            treeView1.Nodes.Add("People");
+
+            // L99 add more nodes
+            treeView1.Nodes.Add("Animals");
+            treeView1.Nodes.Add("Insects");           
+        }
+
+
+Next we will add sub nodes to these nodes, by treating the setup as an array.  The first node we created (People) 
+would be node[0] and Animals would be [1] and so on.  If you want to ad more than 1 sub node to a node, just keep 
+the sub node [number] the same.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L99 create the first node in treeView1
+            treeView1.Nodes.Add("People");
+            // sub nodes for this node
+            treeView1.Nodes[0].Nodes.Add("Doug");
+            treeView1.Nodes[0].Nodes.Add("Oscar");
+            treeView1.Nodes[0].Nodes.Add("George");
+
+            // L99 add more nodes
+            treeView1.Nodes.Add("Animals");
+            // sub nodes for this node
+            treeView1.Nodes[1].Nodes.Add("Bob");
+            treeView1.Nodes[1].Nodes.Add("Rex");
+
+            treeView1.Nodes.Add("Insects");
+            // sub nodes for this node
+            treeView1.Nodes[2].Nodes.Add("flee");
+        }
+
+
+
+To add nodes to sub nodes we simply use another Nodes[] to define the path to the top node, its parent node.  We 
+will do this for the Insect Node.  In the flee sub category, where we are creating another node under, this would
+be the first node, so Node[0].
+
+
+            treeView1.Nodes.Add("Insects");
+            // sub nodes for this node
+            treeView1.Nodes[2].Nodes.Add("flee");
+            // sub node to a sub node to a node
+            treeView1.Nodes[2].Nodes[0].Nodes.Add("flee balls");
+
+
+If we made a sub node under Oscar, it would look like this:
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L99 create the first node in treeView1
+            treeView1.Nodes.Add("People");
+            // sub nodes for this node
+            treeView1.Nodes[0].Nodes.Add("Doug");
+            treeView1.Nodes[0].Nodes.Add("Oscar");
+            // sub node to a sub node to a node
+            treeView1.Nodes[0].Nodes[1].Nodes.Add("Oscar balls");
+            treeView1.Nodes[0].Nodes.Add("George");
+
+            // L99 add more nodes
+            treeView1.Nodes.Add("Animals");
+            // sub nodes for this node
+            treeView1.Nodes[1].Nodes.Add("Bob");
+            treeView1.Nodes[1].Nodes.Add("Rex");
+
+            treeView1.Nodes.Add("Insects");
+            // sub nodes for this node
+            treeView1.Nodes[2].Nodes.Add("flee");
+            // sub node to a sub node to a node
+            treeView1.Nodes[2].Nodes[0].Nodes.Add("flee balls");
+        }
+
+
+
+
+
+************************ NO highlights from the comments area ************************

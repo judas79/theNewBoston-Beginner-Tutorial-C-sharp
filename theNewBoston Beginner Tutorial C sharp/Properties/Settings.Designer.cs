@@ -22,40 +22,5 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Name {
-            get {
-                return ((string)(this["Name"]));
-            }
-            set {
-                this["Name"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Age {
-            get {
-                return ((int)(this["Age"]));
-            }
-            set {
-                this["Age"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Windows.Forms.Button buttonA {
-            get {
-                return ((global::System.Windows.Forms.Button)(this["buttonA"]));
-            }
-            set {
-                this["buttonA"] = value;
-            }
-        }
     }
 }
