@@ -1,0 +1,69 @@
+﻿For this lesson all we will need is a form1.cs and the program.cs, that should already exist.   We will learn how
+to open a file using an app that we create.  We will be able to open a file by right clicking on it, and using the
+app we created, to open it.  
+
+First, right click on your windows form1.cs[Design] and choose 'view code'.  In the public form1 constructor, we will
+pass a string.  This string will be passed through the app we create to the file we are opening.
+
+		
+		public Form1(string s)
+        {
+            InitializeComponent();
+        }
+
+
+To get to the file that lands up with the string being passed, fromour app, we need to open our program.cs.  Double
+click the program.cs so we can see the code.  When we run a program, this is what it looks for first, and runs it.
+Program.sc code snippet:
+
+		static void Main()                                         // looks for this then runs, what is below.
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());                          //  this line creates the form1, when it is run
+        }
+
+
+To move past all the things the code above, including form1, is opening, we will add a string to the void Main().
+If we use this, we can pass the string array, to the file we are opening.  For each file we open, we will want
+the program.cs to make a form1 for.
+
+
+		// L97 added a string array to the main to pass to the file being opened
+        static void Main(string[] files)  
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            // L97 for each file opened, create a form1, and pass in s to form1
+            foreach(string s in files)
+            Application.Run(new Form1(s));
+        }
+
+
+We will now return to form1 and use a message box to show the path of the file that is being opened by our app., in
+a messagebox.
+
+	public partial class Form1 : Form
+    {
+        // L97 pass in s from Program.cs
+        public Form1(string s)
+        {
+            InitializeComponent();
+            // L97 show contnet of s (the file being opened path)
+            MessageBox.Show(s);
+        }
+    }
+
+
+Now we will switch from debug to release, so we can make an executable in the debug folder, found here, on this:
+C:\Users\Roddy\source\repos\theNewBoston Beginner Tutorial C sharp\theNewBoston Beginner Tutorial C sharp\bin\Debug\
+It will be a different path on your system, but should be similar, if you can find the repos\ folder.  Copy the *.exe
+app. and put it next to a *.txt file, in the folder you use to do your C# testing.  Any folder will due.  
+Drag a test .txt file on top of the app you just created.  You should get a messagebox that pops up that has the path
+and name to your text file.  After you close the messagebox, a blank for1 should popup.
+
+
+
+
+
+********************** NO highlights from the comments area *************************
