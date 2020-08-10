@@ -1,0 +1,55 @@
+﻿For this lesson, we will need everthing from the last tutorial, 2 buttons and a treeView from the Toolbox, to learn
+how to remove nodes from the treeView.  To remove a selected node, we will first click on button2, and go into its
+function.  There we add the name treView, then use the selectedmode to remove a selected node, from our form1.  The
+second method that clears all the nodes off form1 uses the Node method along with clear().
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // L100 use selectedNode to remove a node from form1
+            //treeView1.SelectedNode.Remove();
+
+            // clear all nodes from form
+            treeView1.Nodes.Clear();
+        }
+
+
+We can also remove nodes using checkboxes, but first we need to add checkboxes to out app.  In our treeView properties
+change from false to true, the checkBoxes property.  Now we will have checkBoxes next to all our nodes.
+To remove the nodes, using the checkBoxes we will first have to create a method.  We will name it 
+removeCheckedBoxes.
+
+// L100 list to add checked items to be removed
+        List<TreeNode> tnList = new List<TreeNode>();
+
+        // L100 method to remove checked nodes from form1
+        // uses iteration of TreeNodeCollection
+        void removeCheckedNodes(TreeNodeCollection tnc)
+        {
+            // L100 this will get the main nodes but no the sub nodes
+            foreach (TreeNode tn in tnc)
+            {
+                if (tn.Checked)
+                {
+                    // L100 add the checked items in ITNC to the list
+                    tnList.Add(tn);
+                }
+                // L100 this will get the sub nodes if they exist by checking the count
+                else if (tn.Nodes.Count != 0)
+                {
+                    removeCheckedNodes(tn.Nodes);
+                }
+            }
+
+            foreach (TreeNode tn in tnList)
+            {
+                    treeView1.Nodes.Remove(tn);
+            }
+        }
+
+
+Then to do the actual removing, we will pass our method into button2, to delete the checked nodes.
+
+
+			// L100 remove all checked nodes using removeCheckedNodes method
+            removeCheckedNodes(treeView1.Nodes);

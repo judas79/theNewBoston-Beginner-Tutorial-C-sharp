@@ -59,6 +59,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             removeCheckedNodes(treeView1.Nodes);
         }
 
+
         // L100 list to add checked items to be removed
         List<TreeNode> tnList = new List<TreeNode>();
 
