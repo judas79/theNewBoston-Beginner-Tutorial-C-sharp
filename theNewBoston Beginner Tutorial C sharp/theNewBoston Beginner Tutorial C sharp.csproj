@@ -312,6 +312,15 @@
     <Content Include="Tutorial 99 TreeView Control pt 1\L99 form1CS.txt" />
     <Content Include="Tutorial_100 TreeView pt 2\L100 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_100 TreeView pt 2\L100 form1CS.txt" />
+    <Content Include="Tutorial_101 TreeView pt 3\Animal.png" />
+    <Content Include="Tutorial_101 TreeView pt 3\Dragonfly.png" />
+    <Content Include="Tutorial_101 TreeView pt 3\Flea.png" />
+    <Content Include="Tutorial_101 TreeView pt 3\imageIndex number for People.png is 3 in images collection box.png" />
+    <Content Include="Tutorial_101 TreeView pt 3\imageList Properties and at right images Collection.png" />
+    <Content Include="Tutorial_101 TreeView pt 3\L101 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_101 TreeView pt 3\L101 formCS.txt" />
+    <Content Include="Tutorial_101 TreeView pt 3\People .png" />
+    <Content Include="Tutorial_101 TreeView pt 3\treeView1 properties selecting imageList1 in the imageList.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

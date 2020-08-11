@@ -1,0 +1,93 @@
+﻿For this lesson we will need button1, drag in an imageList from our ToolBox and some 20x20 png images from the internet,
+to further learn the treeView controls.  After we draf in our imageList, click on it once; it will be where the other
+hidden tools go, at the bottom of VS.  Go into the imageList properties, by right clicking 'imageList' at the bottom,
+and navigate to the image files you downloaded, in the images (collection) property, and add them to that list, then
+press ok.
+
+Next click your button1, so we can write some code, in the button area.  We will now make a new treeNode, as we did
+with instances, in other lessons.  Then we will set some text to the treenode name we just made.  Then we will set
+the imageIndex number to the image we put, in our imageList.  To do this go into your imageList1 properties and in
+the images (coleection) box, and choose the number next to the image, you added their, that corresponds to the text
+you just set.  After that, we will click in the treeView1 box to look into its properties.  In the imageList property
+within treeView1, choose imageList1, to be able to display the images in treeview.
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L101 create new treeNode;
+            TreeNode Itn0 = new TreeNode();
+            // set text in Node 0 to Person
+            Itn0.Text = "People";
+            // set image index to number in imagelist index #
+            Itn0.ImageIndex = 3;
+            // pass the tree node to treeView1
+            treeView1.Nodes.Add(Itn0);
+		}
+
+
+You will notice there is already a checkbox provided, that we didn't add ourselves;  I don't know why... 
+If you noticed, when you select the node, we just made, it changes the image.  We will have to also set up the selected
+image to look the same as the image, when its not selected.  The default setting for this is index image [0].
+
+			// make selected image the same as the unselected image
+            Itn0.SelectedImageIndex = 3;
+
+
+Next we will copy paste what we just finished, and chane the values, to create another treeNode.
+
+			// L101 Another treeNode
+            // L101 create new treeNode;
+            TreeNode Itn1 = new TreeNode();
+            // set text in Node 0 to Person
+            Itn1.Text = "Animals";
+            // set image index to number in imagelist index #
+            Itn1.ImageIndex = 0;
+            // pass the tree node to treeView1
+            treeView1.Nodes.Add(Itn1);
+            // make selected image the same as the unselected image
+            Itn1.SelectedImageIndex = 0;
+
+
+Last, we will make a sub treeNode under the Animals treeNode.  As we did in tutorial 100, we will have to use sub
+Nodes, to do this.  Since Animals is the second node, its index number is [1], and People, the first node is index 
+[0].  So we add insects to index [1].
+
+
+			// L101 sub node insects, for animals
+            // L101 create new treeNode;
+            TreeNode Itn2 = new TreeNode();
+            // set text in Node 0 to Animal
+            Itn2.Text = "Insects";
+            // set image index to number in imagelist index #
+            Itn2.ImageIndex = 2;
+            // pass the tree node to treeView1, to make sub node
+            treeView1.Nodes[1].Nodes.Add(Itn2);
+            // make selected image the same as the unselected image
+            Itn2.SelectedImageIndex = 2;
+
+
+To be thorough, we will add a sub node to the insects sub node.  So, Animals is at index [1], and since insects
+are at the first level of Animals, we will write it aas follows to add dragon flys to the sub index, insects:
+
+
+			// L101 sub node dragonfly, for insects
+            // L101 create new treeNode;
+            TreeNode Itn3 = new TreeNode();
+            // set text in Node 0 to Animal
+            Itn3.Text = "Insects";
+            // set image index to number in imagelist index #
+            Itn3.ImageIndex = 1;
+
+            // pass the tree node to treeView1, Animals at [1], insects at [0]
+            treeView1.Nodes[1].Nodes[0].Nodes.Add(Itn3);
+
+            // make selected image the same as the unselected image
+            Itn2.SelectedImageIndex = 1;
+
+
+
+
+
+
+
+
+************************* NO comments *******************************

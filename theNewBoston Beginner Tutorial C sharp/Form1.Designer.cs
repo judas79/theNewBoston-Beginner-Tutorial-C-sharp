@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -46,8 +49,11 @@
             // treeView1
             // 
             this.treeView1.CheckBoxes = true;
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(12, 41);
             this.treeView1.Name = "treeView1";
+            this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(396, 397);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -61,6 +67,15 @@
             this.button2.Text = "Remove Nodes";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Animal.png");
+            this.imageList1.Images.SetKeyName(1, "Dragonfly.png");
+            this.imageList1.Images.SetKeyName(2, "Flea.png");
+            this.imageList1.Images.SetKeyName(3, "People .png");
             // 
             // Form1
             // 
@@ -81,5 +96,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
