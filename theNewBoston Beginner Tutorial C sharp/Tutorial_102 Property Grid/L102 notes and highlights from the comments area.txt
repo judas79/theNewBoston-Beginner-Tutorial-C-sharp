@@ -1,0 +1,115 @@
+﻿For this lesson we will need, button1, 3 labels, and 3 textBoxes.  We will also need to set up, in form1, a class
+called persons, with 3 property strings with get; amd set; , to handle;  name, age, and email, of the people.  So,
+when the user clicks the button1, the program will create, a new person, with the name, age, and email.  Then we 
+will have a reload, that sets the three properties back to defaults.
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // create new instance of Person class
+        Person p = new Person();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            p.Name = "Adam";
+            p.Age = 15;
+            p.Email = "adam@gmail.com";
+            reload();
+        }
+
+        // reload the defaults for name, age and email
+        void reload()
+        {
+            textBox1.Text = p.Name;
+            textBox2.Text = p.Age.ToString();
+            textBox3.Text = p.Email;
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+    // L102 Person Class
+    class Person
+    {
+        public string Name
+        {
+                get;
+                set;
+        }
+        public int Age
+        {
+            get;
+            set;
+        }
+        public string Email
+        {
+            get;
+            set;
+        }
+
+
+Lets say for example we had a larger class, than this, with a lot more properties in it.  Kind of like the texBox properties, that has
+a lot of controls in it.  We would not want to create a textBox for each individual property, it would be too much work.  Instead we can
+use the propertyGrid control to manage the textboxes.  Drag a PropertyGrid into from1 from the toolBox.  It will look just like out VS
+properties box, but be in our form1.
+
+In button1, we will set it up so we can use the propertyGrid, when a Person object is created.  This will show the controls, in the 
+PropertyGrid panel, for the name, age and email, from the Person class instance 'p', that we created earlier.
+
+		// L102 create new instance of Person class
+        Person p = new Person();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L102 properties of the Person instance 'p' class
+            p.Name = "Adam";
+            p.Age = 15;
+            p.Email = "adam@gmail.com";
+
+            // show selected properties, above, in propertyGrid
+            propertyGrid1.SelectedObject = p;
+
+            reload();
+        }
+
+
+If we where to change a property, we would not be able to see the change in our app.  To set this up, we must go into the propertyGrid
+event properties, and scroll down to propertyValueChanged and have it add a function in our form1 by double clicking it.  In 
+the event hadling function for propertyGrid1_PropertyValueChanged, we will insert the reload() function, to be able to view
+any changes made to the properties in the 'p' Person class.
+
+
+private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            reload();
+        }
+
+
+After running debug you will nottice if you change a property in the propertyGrid, and click, anywhere, you will see the entered
+value mirrored in its corresponding textBox.
+We don't have to set our propertyGrid to a class ot items, we can also set them to the controls, in VS.  We will set the
+propertyGrid to button1, as an example.  Click on propertGrid, to select it and scroll down to SelectedObject, and choose button1.
+
+
+
+
+
+
+
+*********************** NO highlights from the comments area ************************

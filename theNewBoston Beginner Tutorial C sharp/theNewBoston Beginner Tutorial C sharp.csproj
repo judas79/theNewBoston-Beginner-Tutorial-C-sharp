@@ -321,6 +321,11 @@
     <Content Include="Tutorial_101 TreeView pt 3\L101 formCS.txt" />
     <Content Include="Tutorial_101 TreeView pt 3\People .png" />
     <Content Include="Tutorial_101 TreeView pt 3\treeView1 properties selecting imageList1 in the imageList.png" />
+    <Content Include="Tutorial_102 Property Grid\L102 initial setup pushed button to create person.png" />
+    <Content Include="Tutorial_102 Property Grid\L102 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_102 Property Grid\L102 form1CS.txt" />
+    <Content Include="Tutorial_102 Property Grid\L102 selected properties in propertyGrid panel.png" />
+    <Content Include="Tutorial_102 Property Grid\PropertiesGrid in form1.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
