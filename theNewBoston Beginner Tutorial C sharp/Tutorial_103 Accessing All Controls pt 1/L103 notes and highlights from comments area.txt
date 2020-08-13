@@ -1,0 +1,63 @@
+﻿For this lesson we will need 3 buttons and a button inside of a comboBox, for a tutorial on accessing all the 
+controls.  The first thing we will be doing, in button1, is setting the text control of everything in form1, to
+'Adam'.  We will do this using a foreach statement, in button1, that accesses the form1 controls using this.Control.
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L103 iterate thru each of the form1 Controls
+            foreach(Control c in this.Controls)
+            {
+                // change each top level controls' name to adam,
+                c.Text = "adam";
+            }
+        }
+
+
+You probably noticed, after running debug, that the button inside the groupBox, did not change.  That is because
+our for each satement, only changes the top ones in the form1, and the button inside of the groupBox was nested
+inside of another control.  A control that can hold other controls, is called a container.  In order to access the
+controls inside of a container, we will have to use the recursive method, which is calling a method using .this,
+which is 'from inside it'.  
+To do this we will write a method outside of the code for buttons and such, to iterate, as we did before, through
+the controls in form1, but then if controls are found to had children(a control inside a container = true), then it
+will run our method to iterate through our container, and change that control as well.
+
+
+		// L103 recusive method to access controls in containers
+        void accessAll(Control.ControlCollection ccc)
+        {
+            // L103 iterate thru each of the form1 Controls
+            foreach (Control c in ccc)
+            {
+                // change each top level controls' name to adam,
+                c.Text = "adam";
+                // L103 to see if thier are controls in containers, a bool is returned
+                // if true, pass all c contols through accessAll to change child control text
+                if (c.HasChildren) accessAll(c.Controls);
+            }
+        }
+
+
+
+To run the method we just made, we will use accessAll(this.Controls) to pass this.Controls into our function.
+
+
+			// L103 call our accessAll in our method in form1
+            accessAll(this.Controls);
+
+
+
+
+
+
+************************ highlight from comments area **************************
+
+
+
+
+
+
+Googled recursive:
+'A recursive function is a function that calls itself. A function that calls another function is normal but when a
+function calls itself then that is a recursive function. ... First we calculate without recursion (in other words,
+using iteration)', ....then call itself.
