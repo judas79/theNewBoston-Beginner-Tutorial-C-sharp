@@ -1,0 +1,82 @@
+﻿For this lesson we will need 4 buttons, a textBox and a webBrowser, to learn about web Browser control.  We will
+start off with naming, our button next to the textBox1, browsers url entry box, 'Go'.  Double click 'Go' (button1),
+to go to its coding area.  So we will want to go to the site address, entered in textBox1, when the Go button is
+pressed.  We will use the navigate method along with webBrowser1, to accomplish this.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L105 navigate method displays page in webBrowser1,
+            // after getting address from textBox1
+            webBrowser1.Navigate(textBox1.Text);
+        }
+
+
+To have the web address textBox1, display the current webpage address, as the user clicks on links, we will have to
+we will have to make an event hadler, to tell us when the address has changed in the webpage address window which is,
+textBox1.  To do this select the WebBrowser1 box, then go over to the properties box under the Events tab and double 
+click 'Navigated' to create an empty navigate event in form1.  There we will place the address boxes url equal to
+the current address that we are at.  For this we will use the webBrowser class to get the current urls address and 
+convert that address to a string, for diplaying in textBox1 (url address box).
+
+
+		private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            // L105 webBrowser class get current url converts it to string
+            // display url in the webpage address box
+            textBox1.Text = webBrowser1.Url.ToString();
+        }
+
+
+Next we will make our, go back, refresh and go forward buttons, functional.  In these buttons we will use the 
+webBrowser1 class, to do this.  For the go back button, double click button2 to enter some code.  We use the 
+webBrowser1 class and the goback() method.  We use the same class for the refresh() method for the refresh button, 
+as well as goforward() for the goforward button, each in its own code area.
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L105 go back to the prior web address in your browser, class webBrowser1 goBack method
+            webBrowser1.GoBack();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // L105 reload the page you are on, class webBrowser1 Refresh method
+            webBrowser1.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // L105 go to the web address you where at before going back in your browser, 
+            // class webBrowser1 goBack method
+            webBrowser1.GoForward();
+        }
+
+
+Lat we will add a home (button5) to our browser, using the webBrowser1 clas and gohome method.  Since the browser we
+created is based on the MS internet explorer browser, the home method will use whatever MS Edge has set for its 
+home page.
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // L105 go to the web address homepage set by the MS browser
+            // class webBrowser1 gohome method
+            webBrowser1.GoHome();
+        }
+
+
+
+
+
+
+********************* highlight from the comments area *********************
+
+
+
+
+
+The web browser control is not in my Visual Studio Express 2012 :( Which one is the new one?
+
+It is. Scroll all the way down in tool panel its the last tool in the list.
