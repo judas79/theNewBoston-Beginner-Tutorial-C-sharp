@@ -1,0 +1,121 @@
+﻿For this lesson we will need a couple checkBoxes, one in a groupBox, the other in form1, to learn variations of the
+recursive statement, we did in the prior lesson.   We will also need all the other buttons and labels, etc. from
+the prior lesson.  In the last lesson we turned all the contol names to 'Adam'.  
+We will start out by disabling all the controls.  We will use a similar reclusive method to do this.  
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+           // call our function to dissable all controls, pass in this.Control
+           accessAll(this.Controls);
+        }
+
+        // L103 recusive method to access controls in containers
+        void accessAll(Control.ControlCollection ccc)
+        {
+            // L104 iterate thru each of the form1 Controls
+            foreach (Control c in ccc)
+            {
+                // change each top level controls' to disabled,
+                c.Enabled = false;
+                // L104 to see if thier are controls in containers, a bool is returned
+                // if true, pass all c contols through accessAll to change child control text
+                if (c.HasChildren) accessAll(c.Controls);
+            }
+        }
+
+
+If you only want to disable the buttons, we could do that, like this, as before, by calling our method, when pressing
+button1 and calling accessAll(this.Controls);
+
+		// L103 recusive method to access controls in containers
+        void accessAll(Control.ControlCollection ccc)
+        {
+            // L104 iterate thru each of the form1 Controls
+            foreach (Control c in ccc)
+            {
+                // change only the buttons to be disabled
+                if (c is Button) c.Enabled = false;
+
+                // L104 to see if thier are controls in containers, a bool is returned
+                // if true, pass all c contols through accessAll to change child control text
+                if (c.HasChildren) accessAll(c.Controls);
+
+
+We could also change the check property, to checked using a similar setup, but we will have to make an instance of 
+the checkBox when a checkBox is found, using the if statement:  This will cast the c control as a checkbox object.
+It has to do this because the property exists only in the checkBox class and not in the control cast.
+
+
+		void accessAll(Control.ControlCollection ccc)
+        {
+            // L104 iterate thru each of the form1 Controls
+            foreach (Control c in ccc)
+            {
+                // L104 check all the checkBox boxes
+                // chectk to see if it is a checkbox
+                if (c is CheckBox)
+                {
+                    // if its a checkbox create a checkBox
+                    CheckBox ch = c as CheckBox;
+                    // put a check in the checkbox
+                    ch.Checked = true;
+                }
+
+                // L104 to see if thier are controls in containers, a bool is returned
+                // if true, pass all c contols through accessAll to change child control text
+                if (c.HasChildren) accessAll(c.Controls);
+            }
+        }
+
+
+We can also make an event handler always use the same method to handle a given too; buttons, in this example.  For 
+example, we will make the event handler go to a specific method, no matter which button we click on.  This will
+save on code, if you want a certain message to popup, for any button that is pressed.
+As we did before we first check if it is a button being pressed.  Then we make a control 'c' as a new object.  Then
+we create the event handler;  type b.Click += (HIT tab 2 times to generate your method and finish the line of code).
+Then we replace the exception handler that was generated in our new method, with the messagebox message we want to
+display
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           // call our function to dissable all controls, pass in this.Control
+           accessAll(this.Controls);
+        }
+
+        // L103 recusive method to access controls in containers
+        void accessAll(Control.ControlCollection ccc)
+        {
+            // L104 iterate thru each of the form1 Controls
+            foreach (Control c in ccc)
+            {              
+                // L104 if any button pressed, diplay messageBox
+				// check if its a button
+                if(c is Button)
+                {
+					// its a button, so control 'c' is now a button object
+                    Button b = c as Button;
+                    // L104 create a new click event handler, using 2x tab after +=
+                    b.Click += new EventHandler(B_Click1);
+                    
+                }
+                
+                // L104 to see if thier are controls in containers, a bool is returned
+                // if true, pass all c contols through accessAll to change child control text
+                if (c.HasChildren) accessAll(c.Controls);
+            }
+        }
+
+		// L104 generated event handler for button
+        private void B_Click1(object sender, EventArgs e)
+        {
+			// message we want to convey when any button is pressed
+            MessageBox.Show("a button has been pressed");
+        }
+
+
+
+
+********************* NO highlights from the comments area ************************
+

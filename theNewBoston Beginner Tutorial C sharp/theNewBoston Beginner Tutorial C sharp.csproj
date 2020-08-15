@@ -328,6 +328,8 @@
     <Content Include="Tutorial_102 Property Grid\PropertiesGrid in form1.png" />
     <Content Include="Tutorial_103 Accessing All Controls pt 1\L103 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_103 Accessing All Controls pt 1\L103 form1CS.txt" />
+    <Content Include="Tutorial_104 Accessing All Controls pt 2\L104 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_104 Accessing All Controls pt 2\L104 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
