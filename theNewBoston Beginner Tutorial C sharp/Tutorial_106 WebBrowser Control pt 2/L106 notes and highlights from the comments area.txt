@@ -1,0 +1,54 @@
+﻿Add a button6, label1 and another textbox2, so we can larn how to scrape a sight, using tags in there html code.
+We will use th following site for this lesson, using our webBrowser class.
+https://halo.bungie.net/Stats/Halo3/CareerStats.aspx?player=Lord%20Jozar&sg=0
+The first thing we will create is an new instance of a webBrowser, outside of the other object, in form1.  We 
+will then want the target webpage, above, to load when the user clicks button5, the scrape button.  So we will
+load our page using the instance of webBrowser 'Iwb' and pass in the webpages address using the Navigate method:
+To be able to see other users accounts for these same stats we will use textBox2 to enter the users name, instead of
+hard coding the entire url address.
+
+		// L106 create new instance of webBrowser
+        WebBrowser Iwb = new WebBrowser();
+        private void button6_Click(object sender, EventArgs e)
+        {
+			// Load this site, plus the username inputed into textBox2, then add the rest of the url to the end
+            Iwb.Navigate("https://halo.bungie.net/Stats/Halo3/CareerStats.aspx?player=" + textBox2.Text + "&sg=0");
+        }
+
+After the page loads or doesn't load, we will use the DocumentCompleted method to verify what happened.  For this
+we will need an event handler.  We type 
+Iwb.DocumentCompleted +=    click tab twice and the code is magically generated:
+In the generated method 'Iwb_DocumentCompleted' , we will scrape the webpage using a html id to gather information
+that pertains to it.
+
+        // L106 create new instance of webBrowser
+        WebBrowser Iwb = new WebBrowser();
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // L106 Load this site, plus the username inputed into textBox2, then add the rest of the url to the end
+            Iwb.Navigate("https://halo.bungie.net/Stats/Halo3/CareerStats.aspx?player=" + textBox2.Text.ToString() + "&sg=0");
+
+            // L106 documentCompleted method to see if the page loaded using an event handler; 
+            // += press tab twice to generate the event handler method
+            Iwb.DocumentCompleted += Iwb_DocumentCompleted;
+        }
+
+        // L106 generated method for the event when DocumentCompleted loading
+        private void Iwb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+			// we replace this generated syntax with something usefull
+            //throw new NotImplementedException();
+
+            // THIS VS 2017 DOES NOT CONTAIN THE 'getElementById'  IT MISSING!
+            // L106 use html id to get value of an item within the webpage
+            // use Document.GetElementById method
+            //label1.Text = "ID Value: " +   Iwb.Document.getElementById("ctl00_mainContent_hypEmbGamerTag");
+
+			// THIS TUTORIAL IS BEING ABORTED and this is added in its place
+			label1.Text = "LI tag Value: " + Iwb.Document.GetElementsByTagName("LI").Count;			
+		}
+
+
+
+
+******************** NO highlights from the comments area ***************************

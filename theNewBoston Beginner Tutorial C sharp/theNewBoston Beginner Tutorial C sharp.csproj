@@ -332,6 +332,8 @@
     <Content Include="Tutorial_104 Accessing All Controls pt 2\L104 form1CS.txt" />
     <Content Include="Tutorial_105 WebBrowser Control pt 1\L105 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_105 WebBrowser Control pt 1\L105 form1CS.txt" />
+    <Content Include="Tutorial_106 WebBrowser Control pt 2\L106 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_106 WebBrowser Control pt 2\L106 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
