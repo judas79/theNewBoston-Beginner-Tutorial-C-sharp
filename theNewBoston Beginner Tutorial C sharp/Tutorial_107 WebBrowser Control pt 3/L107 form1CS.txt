@@ -19,7 +19,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L106 send text from textbox1 into duck&Go's search box
+            // L106 send text from textbox1 into duck&Go's search box https://duckduckgo.com/
             // Documents properties, .GetElementById method, id value from ducduckgo, use main text or childs text, 
             // set value entered in textbox1 intto  duckduckgo's searchbox
             webBrowser1.Document.GetElementById("search_form_input_homepage").InnerText = textBox1.Text;

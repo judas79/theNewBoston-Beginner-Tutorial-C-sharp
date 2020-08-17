@@ -1,0 +1,47 @@
+﻿For this lesson we will need 2 buttons, 1 textbox and a webBrowser for part 3 of our webBrowser control tutorial.
+In this lesson we will load yahoo, then use are webBrowser app, to enter the text, from our textBox1, into the 
+yahoo searchbox then use our button click, as an event to click yahoo's search button.  
+First, we will enter www.yahoo.com in out webBrowser properties, URL.  We had to change to a non java site, for this code to
+perform correctly, so we swithed to https://duckduckgo.com/ instead of  the yahoo site.  If we debug, it should now automatically
+load https://duckduckgo.com/.
+The next thing we will do is put text inside the yahoo text element (searchbox), using out text.Box1 to do it.
+We will use Document.GetElementById to use our textBox, initiated by the event of clicking button1.  So first
+we have to get https://duckduckgo.com/ searchbox id, by opening thier website to the main page, using google
+chrome, then right clicking on the searchbox and choosing 'inspect' from the context menu.  Hihglight the ID
+information, ie 'ID='; what is after the = sign, and copy it.  Now we will paste that in our Document.GetElementById
+line of code.
+
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L106 send text from textbox1 into duck&Go's search box
+            // Documents properties, .GetElementById method, id value from ducduckgo, use main text or childs text, 
+            // set value entered in textbox1 intto  duckduckgo's searchbox
+            webBrowser1.Document.GetElementById("search_form_input_homepage").InnerText = textBox1.Text;
+        }
+    }
+
+
+Next we will have our button2 click the search button on duckduckgo's website, when our button is pressed.
+To do this, we will use the search buttons id, on the duckduckgo site as we did before to use the id to invoke
+that button to click when we press our button2.
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // L106 activate duck&Go's search box button, when are button is pressed
+            // Documents properties, .GetElementById method, id value from ducduckgo, use main text or childs text, 
+            // invoke the duckduckgo search to click when the click event is initiated in our app
+            webBrowser1.Document.GetElementById("search_button_homepage").InvokeMember("Click");
+        }
+
+
+
+Most if not all search buttons InvokeMember is the word "Click".  To verify that it is Click, we right click
+the search button on duckduckgo and choose 'inspect', then after google chromes editor loads, we click on 
+the scripts tab and search for "Click".  You will see it listed along with others.
+
+
+
+
+************************ No highlights from the comments area *********************

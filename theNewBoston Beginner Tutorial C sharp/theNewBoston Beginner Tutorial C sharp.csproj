@@ -334,6 +334,11 @@
     <Content Include="Tutorial_105 WebBrowser Control pt 1\L105 form1CS.txt" />
     <Content Include="Tutorial_106 WebBrowser Control pt 2\L106 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_106 WebBrowser Control pt 2\L106 form1CS.txt" />
+    <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 duckduckgo search buttons ID.png" />
+    <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 form1CS.txt" />
+    <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 right click yahoo searchbox and copy its ID.png" />
+    <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 webBrowser chosen properties URL entered yahoo.png" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,6 +400,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
