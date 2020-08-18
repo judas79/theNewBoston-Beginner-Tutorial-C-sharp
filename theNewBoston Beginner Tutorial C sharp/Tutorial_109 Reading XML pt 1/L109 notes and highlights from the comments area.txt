@@ -1,6 +1,6 @@
-﻿We will need a button and to download 'notepad++' for this lesson on reading XTML.  XTML is basically a way of
+﻿We will need a button and to download 'notepad++' for this lesson on reading XML.  XML is basically a way of
 storing data and is very similar to treeView, in VS.  Like treeView it stores nodes of data within nodes.  The
-way we create an XTML node is a less than sign, then the name of the node followed by a greater than sign.  This
+way we create an XML node is a less than sign, then the name of the node followed by a greater than sign.  This
 will be the begining point of the node.
 <node>
 
