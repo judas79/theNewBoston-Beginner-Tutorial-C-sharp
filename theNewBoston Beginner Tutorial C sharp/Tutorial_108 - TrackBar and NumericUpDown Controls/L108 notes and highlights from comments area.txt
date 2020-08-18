@@ -1,0 +1,45 @@
+﻿For this lesson we will need button1, 2 trackBar and a 1 NumericUpDown, to learn about thier controls.  Drag 
+in a trackBar from the toolbox.  The trackBars Max and Min properties can be set independently in its property
+fields.  Click on the trackBar, and change the Maximum to 100 and leave the Minimum at 0.  These can be changed
+to whatever the user would like, even negative numbers.  There is also a property to regulate the amount of 
+meassurements, there are, between the max and min values.  These are called ticFrequency, and is set to 1, as
+a default.  This amount can also be changed and the amount of tics will depend on the amount of the min and
+max amounts you set.  If max = 100, min = 0 and ticFrequency = 2, we will have 50 tics;  if our ticFrequency
+was 50, we would have 2 tics.
+The way it is set now if the user where to drag the slider all the way to the right, it would be 100 and all
+the way to the left would be 0.  We will use button1 to display our trackBar value as a string, because it
+returns an integer:
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            //L108 show messageBox with the trackBar Value
+            MessageBox.Show(trackBar1.Value.ToString());
+        }
+
+
+We can also change the trackBars orientation to vertical, by changing its properties. We will also multiply
+the values of both of the trackBars, for the hell of it.  We can also change the way the ticks are displayed
+using the tickStyle property.  
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //L108 show messageBox with the trackBar Value
+            MessageBox.Show(trackBar1.Value.ToString() + " times " + (trackBar2.Value.ToString()));
+
+            // not in lesson muliply trackBar1 value times trackBar2 value
+            int mult = (trackBar1.Value) * (trackBar2.Value);
+            MessageBox.Show(mult.ToString());
+        }
+
+
+Next we will work on the numericalUpDown, so drag that into your form.  The numericalUpDown is an input that
+only accepts numbers.  The black triangle to the right of the box, will go up or down and the number increment
+is scaleable.  If you go to the numberUpDown properties, we can change the increment, from its default, 1, to
+whatever you desire.  If you change that value, you should also change the maximum and minimum limits, to 
+accomedate large increments and decrements.
+
+
+
+************************ NO highlights from the comments area ************************

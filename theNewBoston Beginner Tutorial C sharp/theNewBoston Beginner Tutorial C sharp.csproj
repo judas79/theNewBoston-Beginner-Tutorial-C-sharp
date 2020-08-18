@@ -339,6 +339,13 @@
     <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 form1CS.txt" />
     <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 right click yahoo searchbox and copy its ID.png" />
     <Content Include="Tutorial_107 WebBrowser Control pt 3\L107 webBrowser chosen properties URL entered yahoo.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 horrizontal  trackBar1 tickStyle Both vertical set to default.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108  trackBar properties min 0 max 100 ticFrequency 50.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 horrizontal  trackBar1 and vertical tracBar2.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 NumericalUpDown max 10000 min neg 100000 increment 1000.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 trackBar min 0 max 100 ticFrequency 40 equals 2 tics.png" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 form1.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
