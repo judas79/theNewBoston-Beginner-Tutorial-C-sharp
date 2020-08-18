@@ -1,0 +1,64 @@
+﻿We will need a button and to download 'notepad++' for this lesson on reading XTML.  XTML is basically a way of
+storing data and is very similar to treeView, in VS.  Like treeView it stores nodes of data within nodes.  The
+way we create an XTML node is a less than sign, then the name of the node followed by a greater than sign.  This
+will be the begining point of the node.
+<node>
+
+Then end node is similar but has a forward slash in it, the name is the same.
+</node>
+
+The first thing we will do is make up an xml document to experiment with.  In notepad++ make a document like this
+and save as an .xml.
+
+<People>
+	<Person>
+		<Name>Roddy</Name>
+		<Age>44</Age>
+		<Email>robotrods@gmail.com</Email>
+	</Person>
+</People>
+
+
+We will also need:
+using System.Xml;
+to work with xml files, at the top of our form1.
+We will first use button1, in our form to open a file, and verify that the user has indeed, chosen one.  We will
+also make a filter, so we only can open xml files.  Then we will make an instance of the xmlDocument class and
+use the load method to open our xml document.  Finally we will use SelectSingleNode to read the contents of our
+<Name> node in our Ixml.  We recreate our path for this by using forward lines, instead of the greater and lesser
+than symbols, used in xml:
+
+<People>
+	<Person>
+		<Name>Roddy</Name>
+
+path will look like this:   People/Person/Name
+
+We will pass that path into our SelectSingleNode method, and the use the innerText property to get the Name:
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L109 open file dialog to select xml file
+            OpenFileDialog Iofd = new OpenFileDialog();
+
+            // L109 filter to only open xml file
+            Iofd.Filter = "XML|*.xml";
+            if(Iofd.ShowDialog() == DialogResult.OK)
+            {
+                // L109 make instance of xmlDocument class
+                XmlDocument Ixmld = new XmlDocument();
+
+                // L109 us load method to open, passed in, filename or url
+                Ixmld.Load(Iofd.FileName);
+
+                // L109 read the contents of a single line in the file
+                // the path to name is "People/Person/name, diplayed in messageBox
+                MessageBox.Show(Ixmld.SelectSingleNode("People/Person/Name").InnerText);
+            }
+
+
+
+
+************************ No Highlights from the comments area *************************

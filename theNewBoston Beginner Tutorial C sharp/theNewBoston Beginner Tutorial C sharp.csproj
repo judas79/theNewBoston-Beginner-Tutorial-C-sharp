@@ -346,6 +346,8 @@
     <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 trackBar min 0 max 100 ticFrequency 40 equals 2 tics.png" />
     <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_108 - TrackBar and NumericUpDown Controls\L108 form1.txt" />
+    <Content Include="Tutorial_109 Reading XML pt 1\L109 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_109 Reading XML pt 1\L109 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
