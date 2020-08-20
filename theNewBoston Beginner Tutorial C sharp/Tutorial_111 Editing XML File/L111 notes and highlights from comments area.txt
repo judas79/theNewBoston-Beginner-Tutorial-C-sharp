@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
+﻿/*
+For this lesson we will need an open buttton, save button, Name label w/ textBox, Age label w/ intergerBox, and a Email
+label w/ textBox.  First we will create an xml document over but not inside our button1 'open button' area.  This xml
+file will be used when we save it.  Also we will create a string named path, to have access to the path when we are saving
+the file.
+Then we can re-use the openDialog and verify it, along with the xml filter, code from the last to lessons to open our 
+xml file.  
+Next, the body of the openDialog, we will set the path to the path of the open file dialog.  Next, set the xml document,
+Ixml, to the xmlDocument class.  Then we will open the document using the 'load' method, and pass in the path we created
+earlier.
+*/
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        // L111 make xmlDocument document
+// L111 make xmlDocument document
         XmlDocument Ixmld;
 
         string Spath;
@@ -40,6 +32,12 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L111 us load method to open, passed in, filename or url
                 Ixmld.Load(Spath);
 
+/*
+Next we will use the xml data storing method, (stored similar to treView), to display the Name, Age and Email, into thier
+corresponding textBoxes and Age into the numericalUpDown box.
+*/
+
+
                 // L110 read the contents of a single line in the file
                 // the path to name is "People/Person/name, diplayed in textBox1
                 textBox1.Text = Ixmld.SelectSingleNode("People/Person/Name").InnerText;
@@ -50,12 +48,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // the path to Email is "People/Person/name, diplayed in textBox2
                 textBox2.Text = Ixmld.SelectSingleNode("People/Person/Email").InnerText;
             }
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
+
+Next we will want to save, the changes we make, or save the document with a different name.  So we will have to set
+this up to save the innertext, in our Name, Age and Email properties.  Double click button2 (save button).  To set 
+this up for saving we can copy/ paste most of our previous code that was used to be displayed in our text and 
+numericalUpDown boxes.  We will have to set the numericlaUpDown to string since it is a decimal, to save it.  Then
+we will use the save class to save the changes in the properties we set up.  The save method needs the path, in order
+to accomplish this, so include the 'path' to the file we opened, stored in the path variable.
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -75,5 +77,21 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 (numericUpDown1.Text = Ixmld.SelectSingleNode("People/Person/Age").InnerText) + "\r\n" + 
                 (Ixmld.SelectSingleNode("People/Person/Email").InnerText = textBox2.Text) + "\r\n", "SAVED");
         }
-    }
-}
+
+
+
+
+
+********************* highlights from the comments area ****************************
+
+
+
+
+
+
+Just a minor heads up, this program would crash if you were to press Save without loading an XMLfile. 
+The   xDoc.Save(Path); line isn't able to run because the string Path has no value inside of it. I would recommend 
+using try{} catch{} to prevent that from happening.
+Otherwise, this is a great tutorial on teaching me how to work with XML files in my program.
+
+no, you can save as long as you the xDoc variable is not empty
