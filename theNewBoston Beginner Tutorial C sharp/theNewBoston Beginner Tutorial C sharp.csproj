@@ -352,6 +352,8 @@
     <Content Include="Tutorial_110 Reading XML pt 2\L110 form1CS.txt" />
     <Content Include="Tutorial_111 Editing XML File\L111 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_111 Editing XML File\L111 form1CS.txt" />
+    <Content Include="Tutorial_112 Writing New XML file\L112 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_112 Writing New XML file\L112 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

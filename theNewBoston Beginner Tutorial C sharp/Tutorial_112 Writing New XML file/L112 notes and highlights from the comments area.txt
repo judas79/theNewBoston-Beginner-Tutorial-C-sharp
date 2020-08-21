@@ -1,0 +1,154 @@
+﻿For this lesson we will need the textboxes, labels, numericUpDown box from our prior lesson and another button3, for
+this lesson in writing to an xml file.
+The first thing we will do is rename our button to Write, then double click it to write to the code area for this 
+button.  Then we will make an instance of xmlWriter and pass in a static path to our, test xml file.  The next thing
+to do is to write our start element, which is the first item in the tree of elements in out xml document.  In this case 
+our start element is <People> then <Person>, without the <>.  Then we start our Name, and use WriteString, which will
+write whatever is in textbox1, to the file.  Next we close all the elements in the reverse order using the WritEndElement.
+Next we clos our instance of the xml writer,and finally we close our app using 'this' to close it.
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // L112 instance of xmlWriter, pass in test xml file path
+            XmlTextWriter IxmlTxtWrtr = new XmlTextWriter(Spath, Encoding.UTF8);
+
+            // L112 write the start element using the instance we created, first element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("People");
+
+            // L112 write the second start element using the instance we created, second element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("Person");
+
+            // L112 write the next start element using the instance we created, third element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("Name");
+
+            // L112 write the data in the Name element to string and display in textobox1 (the name field)
+            IxmlTxtWrtr.WriteString(textBox1.Text);
+
+            // L112 close off string write <name><Person><People?, by ending all of them
+            IxmlTxtWrtr.WriteEndElement(); // closes Name
+            IxmlTxtWrtr.WriteEndElement(); // closes Person
+            IxmlTxtWrtr.WriteEndElement(); // closes People
+
+            // L112 close our instance of the xml writer
+            IxmlTxtWrtr.Close();
+
+            // close our app
+            this.Close();
+        }
+
+
+After running the debuger we noticed that the text was all on one line, so we will add a xml formatter at the top of our
+code in button3 (writer button).  Next we will also make it possible to write the Age and Email to the file.  We will 
+move to close/ end the elements after the Age, and Email, code, then use a yes/no messagebox to let the us choose weather
+to close, or not.
+
+
+
+		// not in lesson; add a numeric value to default name of created xml file
+        int iNameNum = 0;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // L112 instance of xmlWriter, pass in test xml file path
+            XmlTextWriter IxmlTxtWrtr = new XmlTextWriter("C:\\Users\\Roddy\\Documents\\VS Test folder\\new" +iNameNum.ToString() + ".xml", Encoding.UTF8);
+
+            // L112 format our xml so elements are on separate lines
+            IxmlTxtWrtr.Formatting = Formatting.Indented;
+
+            // L112 write the start element using the instance we created, first element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("People");
+
+            // L112 write the second start element using the instance we created, second element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("Person");
+
+            // L112 write the next start element using the instance we created, third element in our xml tree
+            IxmlTxtWrtr.WriteStartElement("Name");
+
+            // L112 write the data in the Name element to string and display in textobox1 (the name field)
+            IxmlTxtWrtr.WriteString(textBox1.Text);
+
+            // L112 close off string write <name><Person><People?, by ending all of them
+            IxmlTxtWrtr.WriteEndElement(); // closes Name
+
+            // L112 write the Age start element, write text to it from numericalUpDown1, close age
+            IxmlTxtWrtr.WriteStartElement("Age");
+            IxmlTxtWrtr.WriteString(numericUpDown1.Value.ToString());
+            IxmlTxtWrtr.WriteEndElement(); // closes Age
+
+            // L112 write the Email start element, write text to it from textBox2, close Email
+            IxmlTxtWrtr.WriteStartElement("Email");
+            IxmlTxtWrtr.WriteString(textBox2.Text);
+            IxmlTxtWrtr.WriteEndElement(); // closes Email
+
+            // L112 close off string write <Person><People?, by ending all of them
+            IxmlTxtWrtr.WriteEndElement(); // closes Person
+            IxmlTxtWrtr.WriteEndElement(); // closes People
+
+            // L112 close our instance of the xml writer
+            IxmlTxtWrtr.Close();
+
+            // not in lesson; displays items saved,  yes/no messagebox continue program or close?
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show( "file new" + iNameNum.ToString() + ".xml\r\n\r\nClose the Program?", "Created", buttons);
+            if (result == DialogResult.Yes)
+            {
+                // close our app
+                this.Close();
+            }
+            else
+            {
+                // increment created xml doc name by 1
+                iNameNum++;
+                textBox1.Text = "";
+                numericUpDown1.Value = 0;
+                textBox2.Text = "";
+            }
+
+
+
+
+
+
+
+
+************************* highlights from the comments area ************************
+
+
+
+
+
+
+the formatting option isnt available ? any one help
+
+
+
+The XmltextWriter is now called XmlWriter.
+Here is the same example as his with the use of XmlWriter:
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "\t";
+            using (XmlWriter writer = XmlWriter.Create("C:\\Users\\Soulakas\\Desktop\\Test Folder\\xDoc1.xml",settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("People");//<People>
+                writer.WriteStartElement("Person");//<Person>
+                writer.WriteStartElement("Name"); //<Name>
+                writer.WriteString(textBox1.Text);
+                writer.WriteEndElement();//</Name>
+                writer.WriteStartElement("Age");//<Age>
+                writer.WriteString(numericUpDown1.Value.ToString());
+                writer.WriteEndElement();//</Age>
+                writer.WriteStartElement("Email"); //<Email>
+                writer.WriteString(textBox2.Text);
+                writer.WriteEndElement();//</Email>
+                writer.WriteEndElement();//</Person>
+                writer.WriteEndElement();//</People>
+                writer.WriteEndDocument();
+            }
+        }
+
+
