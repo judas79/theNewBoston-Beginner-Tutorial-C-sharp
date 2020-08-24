@@ -1,0 +1,152 @@
+﻿For this lesson we will need another button, and use the texBoxes and numericalUpDown box, to learn how to create new nodes
+in an xml document.  We will name our new button New Node, and double click it to go to its coding area.  We will first create
+a new document name xAddNwNd, then use the open button we created in a previous lesson to load as, xAddNwNd.  Make sure the
+xml document has at least one node, already written to it.  Next we will write two new nodes, named <Person> and <Name>. 
+When we first make the new element, Person, it only creates the <Person> but not the, innertext ot the </Person> end.  We 
+do the same for the Name element.
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // L113 add new xml document for adding new nodes
+            XmlDocument xAddNwNd = new XmlDocument();
+
+            // L113 open existing xml file from selected directory
+            xAddNwNd.Load(Spath);
+
+            // L113 create begining of new element in xAddNwNd and give it a name "Person"
+            XmlNode person = xAddNwNd.CreateElement("Person");
+
+            // L113 create begining of new element in xAddNwNd and give it a name "Name"
+            XmlNode name = xAddNwNd.CreateElement("Name");
+        }
+
+
+
+Next we will will set name entered into textbox1, as the name in the innertext of our xml element.  We will have to add the
+element <Name> as a child of <Person>, so the compiler will no where to put it.  Then we will add the element person to our
+xml document root as a child.  This will add it under the existing <Person> node, that is already in the document.  We will
+now make three more of these for the Age, Email and Address. Last we will want to save the added elements to our  file,
+using the same path we used to open the file.  Then we added some more code to save the new xml document with the added 
+elements, with a name inputed into textbox3, by the user, along with a messagebox popup if the user forgot tto enter a 
+name. Then after saving, telling the user the name the file was saved as, and question weather the program should 
+continue or close.
+
+
+ private void button5_Click(object sender, EventArgs e)
+        {
+            // L113 add new xml document for adding new nodes
+            XmlDocument xAddNwNd = new XmlDocument();
+
+            // L113 open existing xml file from selected directory
+            xAddNwNd.Load(Spath);
+
+            // L113 create begining of new element in xAddNwNd and give it a name "Person"
+            XmlNode person = xAddNwNd.CreateElement("Person");
+
+            //************************* <Name> element> ***************************
+            // L113 create begining of new element in xAddNwNd and give it a name "Name"
+            XmlNode name = xAddNwNd.CreateElement("Name");
+
+            // L113 set name entered in textbox1 as the innertext of our <name> element
+            name.InnerText = textBox1.Text;
+
+            // L113 make element name a child of element People, so compiler knows where to place it
+            person.AppendChild(name);
+
+            //************************* <Age> element> ***************************
+            // L113 create begining of new element in xAddNwNd and give it a name "Name"
+            XmlNode age = xAddNwNd.CreateElement("Age");
+
+            // L113 set name entered in textbox1 as the innertext of our <name> element
+            age.InnerText = numericUpDown1.Text;
+
+            // L113 make element name a child of element People, so compiler knows where to place it
+            person.AppendChild(age);
+
+            //************************* <Email> element> ***************************
+            // L113 create begining of new element in xAddNwNd and give it a name "Name"
+            XmlNode email = xAddNwNd.CreateElement("Email");
+
+            // L113 set name entered in textbox1 as the innertext of our <name> element
+            email.InnerText = textBox2.Text;
+
+            // L113 make element name a child of element People, so compiler knows where to place it
+            person.AppendChild(email);
+
+            //************************* <Address> element> ***************************
+            // L113 create begining of new element in xAddNwNd and give it a name "Name"
+            XmlNode address = xAddNwNd.CreateElement("Address");
+
+            // L113 set name entered in textbox1 as the innertext of our <name> element
+            address.InnerText = textBox4.Text;
+
+            // L113 make element name a child of element People, so compiler knows where to place it
+            person.AppendChild(address);
+
+            // L113 add element Person to our document as a child 
+            xAddNwNd.DocumentElement.AppendChild(person);
+            
+            // Not in lesson get path to opened directory, without the filename for saving
+            string Sdirpath = Path.GetDirectoryName(Spath);
+
+            // Not in lesson, get filename entered bu user in textBox3
+            string sNwFlNm = textBox3.Text;
+
+            // Not in lesson check if the file name has not been entered by the user
+            if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                MessageBox.Show("Enter a Name for your file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                // display filename of file being saved, and question if the program should save and close or continue.
+                DialogResult result = MessageBox.Show("Should this app continue? ", sNwFlNm + ".xml has been saved", MessageBoxButtons.YesNo);
+
+
+                // If user clicks yes file is save and program continue, if no file is save program is closed
+                if (result == DialogResult.No)
+                {
+                    // L113 save added elements using the path to the directory we opened initially
+                    xAddNwNd.Save(Sdirpath + "/" + sNwFlNm + ".xml");
+
+                    // close our app
+                    this.Close();
+                }
+                else
+                {
+                    // L113 save added elements using the path to the directory we opened initially
+                    xAddNwNd.Save(Sdirpath + "/" + sNwFlNm + ".xml");
+                }
+                
+            }
+		}
+
+
+
+
+
+
+******************************** highlight from comments area *******************************
+
+
+
+
+
+
+
+
+Is there any possibility to write a new node inside the second node? Like  people/person/>Heare<
+
+
+Yes, I had to add another textBox to enter the innertext.
+
+//*********************** <Address> element> *************************
+            // L113 create begining of new element in xAddNwNd and give it a name "Address"
+            XmlNode address = xAddNwNd.CreateElement("Address");
+
+            // L113 set name entered in textbox1 as the innertext of our <address> element
+            address.InnerText = textBox4.Text;
+
+            // L113 make element address a child of element People, so compiler knows where to place it
+            person.AppendChild(address);
