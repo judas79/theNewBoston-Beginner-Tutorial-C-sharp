@@ -356,6 +356,8 @@
     <Content Include="Tutorial_112 Writing New XML file\L112 form1CS.txt" />
     <Content Include="Tutorial_113 Write Nodes to Existing XML File\L113 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_113 Write Nodes to Existing XML File\L113 form1CS.txt" />
+    <Content Include="Tutorial_114 Deleting a XML Node\L114 notes and highkights from comment area.txt" />
+    <Content Include="Tutorial_114 Deleting a XML Node\L114 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

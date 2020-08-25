@@ -1,0 +1,139 @@
+﻿For this tutorial we will need 1 more button6, name it delete node and save, and we will also need all the code from before,
+pertaining to this tutorial, for this lesson on deleting node.  Not in lesson:  We will double click on button6, to open 
+up its coding area.  We will use the Open, button we created in an earlier lesson to open a file, using openFileDialog.... 
+so we can view the contents in our xml richText box, then decide if its the document we wanted to delete a node from.
+Now we will start lesson 114.  First we will create a new xml document.  Then instead of making a static path to the file, that
+we want to edit, we will use the same path, that we chose using the openFileDialog, to open, above.  This way we will be able 
+to see the files contents, as we decide to delete elements out of it (edit the file).
+
+
+private void button6_Click(object sender, EventArgs e)
+        {
+            // L113 add new xml document for adding new nodes
+            XmlDocument xAddNwNd = new XmlDocument();
+
+            // L113 open existing xml file from selected directory
+            xAddNwNd.Load(Spath);
+
+
+Next we will delete the innerText in the <Name> node, that lies in the first <Person> node, in the People/Person node path,
+in our opened xml document.  We will use a foreach statement to iterate through all of our <Name> node(s) within the first
+<Person> Node, that the node path leads to.  We will use an if statement to do the deleting of all the inner text values of
+all <Name> elements within the first <Person> node.  Then we will have to modify this lesson to save the edited code.
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                // L114 add new xml document for adding new nodes
+                XmlDocument AddNwNd = new XmlDocument();
+
+                // L114 open static path to xml file from directory example
+                //AddNwNd.Load("C:\\users\\*.xml");
+
+                // Not in lesson; open existing xml file from selected directory
+                AddNwNd.Load(Spath);
+
+                // L114 iterate through the opened documents node path, to find the first 
+                // <People>'s <Name> node within, to delete it
+                foreach (XmlNode xmlNode in AddNwNd.SelectNodes("People/Person"))
+
+                    // L114 remove all nodes within Person node using innertext of <Name> to target them
+                    // the empty <Person> node will still remain there, after it is saved
+                    if (xmlNode.SelectSingleNode("Name").InnerText == textBox1.Text) xmlNode.RemoveAll();
+
+                // L114 save added elements using the static path to the directory example
+                //AddNwNd.Save("C:\\users\\*.xml");
+
+
+If we want to delete the <Person> node, which is the parent node, as well as the child nodes <name>, <age>, <email> and
+any other nodes that might reside as children to <Person>, we will have to change the code a bit. Instead od deleting using
+the child, we choose the parent, and then remove the child and the parent.  You can also use "Age or "Email" and choose by
+the innertext of either of those, to delete nodes.  It did not work for me (only "Name" worked)
+
+
+					// L114 remove all nodes including Person node and its child nodes using innertext of <Name> to target them
+                    // the empty <Person> node will still remain there, after it is saved
+                    if (xmlNode.SelectSingleNode("Name").InnerText == textBox5.Text) xmlNode.ParentNode.RemoveChild(xmlNode);
+
+
+
+Here is the whole delete node lesson including the save portion I wrote, to be able to open a file, deletesome nodes, then to 
+save it with as a xml document, but with a different name.
+
+
+
+		private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                // L114 add new xml document for adding new nodes
+                XmlDocument AddNwNd = new XmlDocument();
+
+                // L114 open static path to xml file from directory example
+                //AddNwNd.Load("C:\\users\\*.xml");
+
+                // Not in lesson; open existing xml file from selected directory
+                AddNwNd.Load(Spath);
+
+                // L114 iterate through the opened documents node path, to find the first 
+                // <People>'s <Name> node within, to delete it
+                foreach (XmlNode xmlNode in AddNwNd.SelectNodes("People/Person"))
+
+                    // L114 remove all nodes within Person node using innertext of <Name> to target them
+                    // the empty <Person> node will still remain there, after it is saved
+                    //if (xmlNode.SelectSingleNode("Name").InnerText == textBox1.Text) xmlNode.RemoveAll();
+
+                    // L114 remove all nodes including Person node and its child nodes using innertext of <Age> to target them
+                    // the empty <Person> node will still remain there, after it is saved
+                    if (xmlNode.SelectSingleNode("Name").InnerText == textBox5.Text) xmlNode.ParentNode.RemoveChild(xmlNode);
+
+                // L114 save added elements using the static path to the directory example
+                //AddNwNd.Save("C:\\users\\*.xml");
+
+                // ****************************** Save Edited Changes***********************************
+
+                // Not in lesson get path to opened directory, without the filename for saving
+                string Sdirpath = Path.GetDirectoryName(Spath);
+
+                // Not in lesson, get filename entered buy user in textBox3
+                string sNwFlNm = textBox3.Text;
+
+                // Not in lesson check if the file name has not been entered by the user
+                if (string.IsNullOrEmpty(textBox3.Text))
+                {
+                    MessageBox.Show("Enter a Name for your file", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    // display filename of file being saved, and question if the program should save and close or continue.
+                    DialogResult result = MessageBox.Show("Should this app continue? ", sNwFlNm + ".xml has been saved", MessageBoxButtons.YesNo);
+
+
+                    // If user clicks yes file is save and program continue, if no file is save program is closed
+                    if (result == DialogResult.No)
+                    {
+                        // L113 save added elements using the path to the directory we opened initially
+                        AddNwNd.Save(Sdirpath + "/" + sNwFlNm + ".xml");
+
+                        // close our app
+                        this.Close();
+                    }
+                    else
+                    {
+                        // L113 save added elements using the path to the directory we opened initially
+                        AddNwNd.Save(Sdirpath + "/" + sNwFlNm + ".xml");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("an error has occured");
+            }
+        }
+
+
+
+
+*********************** No highlights from the comments area **************************
