@@ -1,0 +1,75 @@
+﻿For this lesson we will need two buttons, three labels and 4 textBoxes to learn about, MD5 and SHA1, hashes.  Hashes are data turned
+into a number, using an algorythem, and are never able to be decypted.  A MD5 hash is alway 16 bytes long and a SHA1 is 20 bytes long,
+and any small change in the data, will almost always, completely change the hash value.  So this is a way of making sure a data file
+is not altered or tampered with.  The likelyhood of two hashed data files, is highly ever to be the same.  Hashed data is good to 
+send data to someone or store it, because the user can use the has values to verify if the data has been tampered with.  If the hash
+record is different than a new has of a particular file means, its been altered.  It is also good for downloads, to verify all the
+data you meant to download was transfered, and there where no errors, in the transfer.
+The first has we will be calculating is MD5, so click button1 to go to its coding area.  At the top of our form add this namespace
+so we can use it for our two cryptography types.
+
+// L115 MD5 SHA1 namespace
+using System.Security.Cryptography;
+
+
+
+First, in button1, we will make a instance of our MD5 service provider class.  To compute the hash, we will need to first convert
+the text in textBox1, to a byte array.  To do this we create an instance of the UTFEncyption class, to store the byte array text in.
+We will next pass our UTF instance into our MD5 instance and GetBytes from our textBox1.text, inputed by the user.  We will also then
+have to convert all of those bytes to a string using ConvertBit.ToString(), to display it in textBox2 as text.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L115 instance of MD5CryptoServiceProvider class
+            MD5CryptoServiceProvider Imd5csp = new MD5CryptoServiceProvider();
+
+            // L115 instance of UTF encoding class to create string byte array
+            UTF8Encoding Iutfe = new UTF8Encoding();
+
+            // L115 compute MD5 hash using instance Imd5csp
+            // convert textBox1 text to bytes and store as Iutfe
+            // turn those bytes into a hash, then convert back to string and dipaly in textBox3
+            textBox3.Text=BitConverter.ToString(Imd5csp.ComputeHash(Iutfe.GetBytes(textBox1.Text)));
+        }
+
+
+We will use button2 to do our SHA1 calculations, so double click it to go to the code area.  Exactly like the MD5 code, we will 
+first make an instance of our SHA1CryptoServiceProvider.  To compute the hash, we will need to first convert
+the text in textBox3, to a byte array.  To do this we create an instance of the UTFEncyption class, to store the byte array text
+in.
+We will next pass our UTF instance into our SHA1 instance and GetBytes from our textBox3.text, inputed by the user.  We will also 
+then have to convert all of those bytes to a string using ConvertBit.ToString(), to display it in textBox4 as text.
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // L115 create instance of our SHA1CrptoServiceProvider
+            SHA1CryptoServiceProvider Isha5csp = new SHA1CryptoServiceProvider();
+
+            // L115 instance of UTF encoding class to create string byte array
+            UTF8Encoding Iutfe = new UTF8Encoding();
+
+            // L115 compute SHA1 hash using instance Isha5csp
+            // convert textBox2 text to bytes and store as Iutfe
+            // turn those bytes into a hash, then convert back to string and dipaly in textBox4
+            textBox4.Text = BitConverter.ToString(Isha5csp.ComputeHash(Iutfe.GetBytes(textBox3.Text)));
+        }
+
+
+
+
+
+*************************** highlights from the comments area *******************************
+
+
+
+
+
+
+SHA1 is 20 BITS.....not Bytes......thats a clompete difference
+
+This is what Google said:
+"SHA-1 is prone to length extension attacks. In cryptography, SHA-1 (Secure Hash Algorithm 1) is a cryptographic hash function 
+which takes an input and produces a 160-bit (20-byte) hash value known as a message digest – typically rendered as a hexadecimal
+number, 40 digits long."
