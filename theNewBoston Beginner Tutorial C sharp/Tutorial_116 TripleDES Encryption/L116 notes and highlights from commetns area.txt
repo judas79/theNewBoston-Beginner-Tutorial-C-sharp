@@ -1,0 +1,139 @@
+﻿/*
+For this lesson we will need a button3, 3 labels (4-6), and 3 textBoxes (5-7), and we will add these to what we created in the
+prior lessson (tutorial 115), and learn how to encryt TripleDES Encryption.  We will also need to use the namespace, 
+"using System.Security.Cryptography;" as we did in our prior lesson for the encryption.  Since TripleDES encryption requires a
+16 byte key, we will use MD5 to hash a word we put into the key field (textBox5) then pass it in to our tripleDES encrypter.  
+This will ensure we use 16 bits, and add a layer of protection, since it will not be in plain text.
+Click on button3 to go to the coding area, then we will first setup our MD5 and our UTF encoding instances, as we did in the 
+prior lesson.  Next we will create an instance for our TripleDES encoding.
+*/
+
+		private void button3_Click(object sender, EventArgs e)
+        {
+            // L115 instance of MD5CryptoServiceProvider class
+            MD5CryptoServiceProvider Imd5csp = new MD5CryptoServiceProvider();
+
+            // L115 instance of UTF encoding class to create string byte array
+            UTF8Encoding Iutfe = new UTF8Encoding();
+
+            // L116 instance of TripleDES encoding class
+            TripleDESCryptoServiceProvider Itdescsp = new TripleDESCryptoServiceProvider();
+
+
+/*
+Next we will use our instance of our TripleDES and make the key, using the entered text from textbox5 and converting it to a MD5
+hash, using our instance of that.  Next we will have to set two properties, mode and padding.  These have to be set or our 
+encytion will not function.  We will set the mode to a ECB cipher, which makes blocks that are the same equal to each other.
+Therefore it is not recommended, because its obvious vulnerabilities, but its good enough for an example.  The padding mode,
+specifies the type of padding to apply when the message data block is shorter than the full number of bytes needed for a 
+cryptographic operation.  The PKCS #7 padding string consists of a sequence of bytes, each of which is equal to the total number 
+of padding bytes added.
+*/
+
+
+            // L116 create TripleDES key from text entered in textbox5, and converted to MD5 16 byte hash
+            Itdescsp.Key = Imd5csp.ComputeHash(Iutfe.GetBytes(textBox5.Text));
+
+            // L116 these both have to be set for the encyption to work
+            // the cipher mode ECB is vulnurable to attacks since like blocks are alike, not recommended
+            Itdescsp.Mode = CipherMode.ECB;
+
+            // L116 padding for empty spaces pkcs7  sequential bytes
+            Itdescsp.Padding = PaddingMode.PKCS7;
+
+
+/*
+Last we will create an instance of ICryptoTransform which defines the basic operations of cryptographic transformations.  We will
+use our instance of our TripleDESCryptoServiceProvider to create our Encryptor.
+*/
+
+			// L116 instance of ICyptoTransform interface,
+            // using our instance of our TripleDESCryptoServiceProvider
+            ICryptoTransform Iict = Itdescsp.CreateEncryptor();
+
+
+/*
+Finally we will do our encyption by using our ICryptoTransforms' interface to encrypt our data.  TransformFinalBlock, will encrypt
+a specified region, using a specified byte array, using a offset, and feed it to the input buffer.  The first parameter the
+TransformFinalBlock takes is the specified byte array we want to encrypt, which will be put in instance of our UTF8Encoding "Iutfe".  
+We will use GetBytes out of our text to be encrypted contents in textBox6.  The next parameter for TransformFinalBlock, is the 
+number for the starting offset, which we will set to 0, the beginning.  The last parameter we need for TransformFinalBlock, is how 
+much of the data we want; which is all of it, to the end.  So we will get bytes to the length of textBox6 for our UTF8Encoding.  
+Last we will convert all the encypted bytes into a string and display it in textBox7 as text.
+*/
+
+
+            // L116 TransformFinalBlock, encrypts selected region, parameters:  (UTF8Encoding instance getBytes from textBox6
+            // set begining offset to 0, Get all bytes to the end of the length of textbox6)
+            // use instance of UTF8Encoding 'Iutfe' to encode TransformFinalBlock
+            // Bit convert to string all of the above, display in textbox7
+            textBox7.Text = BitConverter.ToString(Iict.TransformFinalBlock(Iutfe.GetBytes(textBox6.Text), 0, Iutfe.GetBytes(textBox6.Text).Length));
+        }
+
+
+
+
+
+
+
+
+
+// ********************************** highlights from the comments area ***********************************
+
+
+
+
+
+
+See, the difference between hashing and encrypting is that hashing can't be reversed. It's practically impossible to retrieve 
+the original plaintext from the hash. Encrypted data, on the other hand, can be reversed using the key. So, if you need to, like
+securely store a database AND want to be able to read the original database again you need encryption like TripleDES or AES. 
+Hashing is mainly used to check if someone tampered the data in between client and server.
+
+
+
+
+
+
+
+Another use for hashing is to store passwords safely. It works like this: you register at a certain site with an username and 
+password etc. It stores all this info in a database but hashes the password. So, some weird 16 byte string will be stored in the
+database. When you try to log in to your account you enter your username and password. You send these credentials to the server,
+the server hashes the password and compares the password to the hashed password. I hope this clarified it.
+
+
+
+
+
+
+I dont understand the part of UTF-8 !   "  to convert the key  in what " ... ? 
+
+Convert key to byte array. textbox.Text returns unicode string while the computehash method needs byte array ComputeHash(Byte[])
+
+
+
+
+
+
+anyway you can show how to use AES encryption? MD5 is insecure. There are forums just on different MD5 keys/hashes that hackers 
+use.
+
+
+
+
+
+
+there is something wrong in your code it can encrypt even without give the key
+
+I wondered about that also, and I looked up padding and it said at this site:
+https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.paddingmode?view=netcore-3.1
+
+"The PKCS #7 padding string consists of a sequence of bytes, each of which is equal to the total number of padding bytes added."  
+
+As far as I can tell those FF hex bytes represent what the user entered and the 07 bytes are the padding
+Example from the same site:.
+PKCS7 padding:	FF FF FF FF FF FF FF FF FF 07 07 07 07 07 07 07
+
+So it looks to me that if the key entry is blank the padding will be the key hash entered: 
+07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07
+Please correct me if I'm mistaken.
