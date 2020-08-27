@@ -1,1 +1,120 @@
-﻿
+﻿/*
+For this lesson we will need everything from the prior lesson (tutorial 116) and then in addition add a button4, 
+3 labels (7-9), and 3 textBoxes (8-10).  The numbers for the items in your form may be different.  We will also
+need to create a global byte array, to hold the encypted data, from our prior lesson, that is displayed in textBox7.
+Then, in the button3 code area, we will use that byte array to display it in textBox7, instead of the way we did it 
+in the last lesson.
+*/
+
+            // NOTICE THIS IS ALL NOW COMMENTED OUT AND WE ARE USING THE Bytencrypted ARRAY TO STORE AND DISPLAY THE ENCRYPTED DATA
+			// L116 TransformFinalBlock, encrypts selected region, parameters:  (UTF8Encoding instance getBytes from textBox6
+            // set begining offset to 0, Get all bytes to the end of the length of textbox6)
+            // use instance of UTF8Encoding 'Iutfe' to encode TransformFinalBlock
+            // Bit convert to string all of the above, display in textbox7
+            //textBox7.Text = BitConverter.ToString(Iict.TransformFinalBlock(Iutfe.GetBytes(textBox6.Text), 0, Iutfe.GetBytes(textBox6.Text).Length));
+
+
+			// FOR THIS LESSON...
+            // L117 hold byte value of enctypted data
+            Bytencrypted = Iict.TransformFinalBlock(Iutfe.GetBytes(textBox6.Text), 0, Iutfe.GetBytes(textBox6.Text).Length);
+
+            // L117 alternative way of displaying encrypted data in textBox7 using byte array Bytencrypted
+            textBox7.Text = BitConverter.ToString(Bytencrypted);
+
+
+Next, in the button4 coding area we will copy the setup we used to encrypt, the data, from button3, into it.  We will
+have to change the key textBox to reflect the textBox8, that we are going to use to decrypt the encrypted data.
+
+
+		private void button4_Click(object sender, EventArgs e)
+        {
+            // L115 instance of MD5CryptoServiceProvider class
+            MD5CryptoServiceProvider Imd5csp = new MD5CryptoServiceProvider();
+
+            // L115 instance of UTF encoding class to create string byte array
+            UTF8Encoding Iutfe = new UTF8Encoding();
+
+            // L116 instance of TripleDES encoding class
+            TripleDESCryptoServiceProvider Itdescsp = new TripleDESCryptoServiceProvider();
+
+            // L117 create TripleDES key from text entered in textbox8, and converted to MD5 16 byte hash
+            Itdescsp.Key = Imd5csp.ComputeHash(Iutfe.GetBytes(textBox8.Text));
+
+            // L116 these both have to be set for the encyption to work
+            // the cipher mode ECB is vulnurable to attacks since like blocks are alike, not recommended
+            Itdescsp.Mode = CipherMode.ECB;
+
+            // L116 padding for empty spaces pkcs7  sequential bytes
+            Itdescsp.Padding = PaddingMode.PKCS7;
+
+
+/*
+Next we will create our instance of our decryptor interface, using our TripleDESCryptoServiceProvider instance and,
+CreateDecryptor().
+*/
+
+
+			// L117 instance of ICryptoTransform decryptor interface, 
+            // using our instance of our TripleDESCryptoServiceProvider
+            ICryptoTransform Iict = Itdescsp.CreateDecryptor();
+
+
+/*
+Last we will do our decrypting using the same method we used at the beginning of this lesson, to use the byte array
+key variable we created, to decrypt using our entered key.  Use the saved encrypted byte 'Bytencrypted':  decrypt it
+using our ICryptoTransform instance to transform the final block of the byte Bytencrypted and store in byte[] Bdecrypted. 
+Then using our instance of UTF encoding we will get the string from Bdecrypted and store that in a string variable named
+Sdecrypted.  Then we will display it in textBox10.
+*/
+
+
+			// L117 TransformFinalBlock, decrypts selected region, parameters:  (UTF8Encoding instance getBytes from textBox9
+            // set begining offset to 0, Get all bytes to the end of the length of textbox9)
+            // use instance of UTF8Encoding 'Iutfe' to encode TransformFinalBlock
+            // store it in the byte array Bytencrypted
+            byte[] Bdecrypted = Iict.TransformFinalBlock((Bytencrypted), 0,(Bytencrypted).Length);
+
+
+            // NOT in lesson see what bitconvert does to our byte array
+            MessageBox.Show(BitConverter.ToString(Bdecrypted), "Bdecrypt BitConverter.ToString");
+
+            // NOT IN LESSON UTF encode our decrypted byte array and save to string
+            string Sdecrypted = Iutfe.GetString(Bdecrypted);
+
+            // L117 alternative way of displaying encrypted data in textBox7 using byte array Bytencrypted
+            textBox10.Text = Sdecrypted.ToString();
+        }
+
+
+
+
+
+
+************************* highlights from the comments area ***************************
+
+
+
+
+
+
+and whats the smart way to display a message saying the wrong key was entered to decrypt as opposed to crashing the program?
+I know i could simply do:
+ if(TxtKey1.Text.ComparedTo(TxtKey2.Text) != 0) ...
+but is there a more technical way to do this?
+
+You can put a try and catch around the decryption part and if it catches, throw an exception saying something like 
+"Invalid key name."
+
+
+
+
+
+
+
+how do i decrypt the bytes from a text?
+
+txtDecrypted.Text = utf8.GetString(trans.TransformFinalBlock(txtEncrypted.Text, 0, txtEncrypted.Text.Length));
+ 
+NO Answer to this question as of yet!
+
+
