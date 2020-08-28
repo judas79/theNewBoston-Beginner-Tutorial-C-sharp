@@ -1,0 +1,58 @@
+﻿/*
+For this lesson drag a Panel into our form, so we can learn about the drag and drop class.  The first thing we will do is change the properties,
+BorderStyle to FixedSingle, so we can see the borders of the drag and drop area.  This is not neccessary but we are making the outline
+visible, so we can see where it is, for the lesson.  Next we will set the AllowDrop properties to true, so we can drop data in our
+Panel.  Next we will go into our Events property, and double click DragOver, to create an event arguement, in out form.  We will make 
+the cursor change and appear that of the shape of the drag cursor(a square with a plus sign in it, over another square), when a user
+hovers over the Panel area.  We will also allow the user to drop any kind of data on our Panel area.  Run the debugger.
+*/
+
+		private void panel1_DragOver(object sender, DragEventArgs e)
+        {
+            // L118 enable user to drop any kind of data on Panel using the 'e' event effect
+            e.Effect = DragDropEffects.All;
+        }
+    }
+
+
+/* 
+You can see if you drag a file into the panel, the mouse cursor will change as described above.
+Next we will double click the Events DragDrop properties, to create another arguement, so that we can open a file, by dragging
+it into our Panel.  Notice, the first one we did was DragOver, not to be confused with this one, DragDrop.  We will use this to get
+the path information of the file we dragged into our panel so we can open it.  So once again we will use the events 'e' data method,
+to retrieve the data using get.  In the getData field we will get the formats, which means dataFormats class of many predifined formats,
+and pass in the drag and 'drop'ped in file.
+This will return an object so we will want to see it as a string array, to see all its contents.  So we will save it as a string array,
+so we can go through all the paths of all the files, that are droped into theis panel.  This saves all the paths of all the file dropped
+into it.
+*/
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            // L118 use 'e' event, GetData method to get the data of the path of the dropped in file
+            // to see string contents, we convert it to a string array (SAfile)
+            string[] SAfile = e.Data.GetData(DataFormats.FileDrop) as string[];
+        }
+
+
+/*
+Next we will create a foteach statement to iterate through all the paths in our SAfile string array.  Then we will display these paths
+using a messagebox.
+*/
+
+			// title, path counter
+			int i = 1;
+            // L118 iterate through string array SAfile, to get file paths and display in messagebox
+            foreach(string s in SAfile)
+            {
+                MessageBox.Show("File Path ="+ s, "Path "+ i.ToString());
+                i++;
+            }
+        }
+
+
+
+
+
+
+************************* NO highlights from the comments area ***************************
