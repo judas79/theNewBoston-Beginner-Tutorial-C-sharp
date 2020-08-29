@@ -1,0 +1,50 @@
+﻿/*
+For this lesson , we will need a Panel1 in form1, to learn about Drawin Shapes.  Select Panel1 an go over into
+the Event Properties, and double click 'Click' to create a new  even arguement in our form1 coding area.  The 
+first thing we will do, in the coding area, is to create a brush.  We will make a new solid brush, and in its 
+property field we will choose the color, that our brush will be painting.  Then we will need a shape, to fill
+in with our solid brush color, so we will need to use graphics, to create the shape.  We will create the shape
+on the panel1 surface, they we are going to fill.  For the properties of FillRectangle, we will need the new 
+solid paint brush variable name we created earlier, then the x,y starting locations, then lastly in pixels, 
+the size of the rectangles x,y axis.  Now run debugger and click in the invisible panel area to cause the click
+event, to see the graphic.
+*/
+
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+            // L119 create new solid brush, it paints is green
+            SolidBrush SB = new SolidBrush(Color.Green);
+
+            // 119 allow us create graphics on panel1
+            Graphics G = panel1.CreateGraphics();
+
+            //119 create the fill shape we will paint,
+            // first properties option is brushtype, where on x,y axis, then size x,y in pixels
+            G.FillRectangle(SB, 20, 20, 150,50)
+
+			// 119 create fill shap elipse
+			
+        }
+
+
+/*
+Next we will create a file elipse.  The eleipse uses the same properties as a rectangle, so use the same 
+format as we did with the rectangle, above.  To make a circle, match the x and y size parameters, in its
+properties.
+*/
+
+
+            // 119 create fill shape elipse
+            // first properties option is brushtype, where on x,y axis, then size x,y in pixels
+            G.FillEllipse(SB, 75, 65, 50, 150);
+
+            // 119 create fill shape elipse (circle)
+            // first properties option is brushtype, where on x,y axis, then size x,y in pixels
+            G.FillEllipse(SB, 75, 200, 50, 50);
+        }
+
+
+
+
+/****************************No highlights in the comments area *****************************/

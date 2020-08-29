@@ -33,20 +33,17 @@
             // 
             // panel1
             // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(312, 289);
+            this.panel1.Size = new System.Drawing.Size(398, 426);
             this.panel1.TabIndex = 0;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
-            this.panel1.DragOver += new System.Windows.Forms.DragEventHandler(this.panel1_DragOver);
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 313);
+            this.ClientSize = new System.Drawing.Size(422, 450);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";

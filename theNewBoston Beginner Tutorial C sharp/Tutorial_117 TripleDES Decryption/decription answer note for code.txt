@@ -1,0 +1,58 @@
+/*
+After many hours of trying different things out, Eurika. The textBox numbers and variable names will be different, from the ones in the tutorial.
+The encrypted data can now be copied, from the encryptors output, then entered into a textBox and be decrypted.
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MD5CryptoServiceProvider Imd5csp = new MD5CryptoServiceProvider();
+
+                UTF8Encoding Iutfe = new UTF8Encoding();
+
+                TripleDESCryptoServiceProvider Itdescsp = new TripleDESCryptoServiceProvider();
+
+                Itdescsp.Key = Imd5csp.ComputeHash(Iutfe.GetBytes(textBox8.Text));
+
+                Itdescsp.Mode = CipherMode.ECB;
+
+                Itdescsp.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform Iict = Itdescsp.CreateDecryptor();
+
+                // get encrypted hexadecimal text from textbox
+                string Bytencrypted3 = (textBox9.Text);
+
+                // store in our variable
+                var hex = @Bytencrypted3;
+
+                // replace hyphens with no spaces, so hexadecimal values run together aka 7f3aec89
+                hex = hex.Replace("-", String.Empty);
+
+		// Use a loop to go through each hex pair, converting it to a byte using Convert.ToByte specifying base16. Website:
+                // https://stackoverflow.com/questions/20805294/getting-data-from-text-box-and-converting-to-byte-array-in-specified-format
+                int hexLength = hex.Length;
+                byte[] Bytencrypted1 = new byte[hexLength / 2];
+                for (int i = 0; i < hexLength; i += 2)
+                {
+                    Bytencrypted1[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+
+                }
+
+                byte[] Bdecrypted = Iict.TransformFinalBlock((Bytencrypted1), 0, (Bytencrypted1).Length);
+
+                string Sdecrypted = Iutfe.GetString(Bdecrypted);
+
+                textBox10.Text = Sdecrypted;
+            }
+            catch
+            {
+                MessageBox.Show("Wrong key, or the wrong encrypted data");
+            }
+        }
+/*
+If you get this working properly in your code enter this:
+
+Key: tonyi guru
+
+encrypted data:  FC-23-7E-BF-F6-3B-16-FC-F3-D2-78-F2-DC-8F-E5-69-3A-13-9C-1F-74-D8-95-28-CD-78-CD-DE-16-43-C0-AF-04-5C-92-39-25-46-6B-E2-38-27-B4-8B-6B-6A-97-56-98-4B-07-CE-E2-E4-D1-A0-01-9F-74-EB-A9-C2-08-CE-8E-D7-E2-FE-90-A6-52-6C-0B-C0-26-7B-7D-74-FA-7E-78-23-9C-A0-96-25-60-20-9E-D0-AB-02-86-28-32-5C-02-D0-96-C7-73-60-E5-17

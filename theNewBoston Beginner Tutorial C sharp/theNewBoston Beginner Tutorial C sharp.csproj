@@ -363,10 +363,13 @@
     <Content Include="Tutorial_115 MD5 and SHA1\L115 form1CS.txt" />
     <Content Include="Tutorial_116 TripleDES Encryption\L116 notes and highlights from commetns area.txt" />
     <Content Include="Tutorial_116 TripleDES Encryption\L116 form1CS.txt" />
+    <Content Include="Tutorial_117 TripleDES Decryption\decription answer note for code.txt" />
     <Content Include="Tutorial_117 TripleDES Decryption\L117 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_117 TripleDES Decryption\L117 form1CS.txt" />
     <Content Include="Tutorial_118 Drag and Drop\L118 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_118 Drag and Drop\L118 form1CS.txt" />
+    <Content Include="Tutorial_119 Drawing Shapes\L119 notes and highlights from comment area.txt" />
+    <Content Include="Tutorial_119 Drawing Shapes\L119 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
