@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿/*
+For this tutorial, we will need everything from our previous tutorial, so we can continue learning how to
+draw more shapes.
+*/
 
-namespace theNewBoston_Beginner_Tutorial_C_sharp
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
 
-        private void panel1_Click(object sender, EventArgs e)
+		private void panel1_Click(object sender, EventArgs e)
         {
             // L119 create new solid brush, it paints is red
             SolidBrush SB = new SolidBrush(Color.Green);
@@ -26,8 +13,8 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             Graphics G = panel1.CreateGraphics();
 
             //119 create the fill shape we will paint,
-            // first parameters option is brushtype, where on x,y axis, then size x,y in pixels
-            G.FillRectangle(SB, 35, 20, 150, 50);
+            // first properties option is brushtype, where on x,y axis, then size x,y in pixels
+            G.FillRectangle(SB, 50, 20, 150, 50);
 
             // 119 create fill shape elipse
             // first properties option is brushtype, where on x,y axis, then size x,y in pixels
@@ -37,7 +24,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // first properties option is brushtype, where on x,y axis, then size x,y in pixels
             G.FillEllipse(SB, 75, 200, 50, 50);
 
-            // 120 make a fill pie shape with a chunk missing, parameters:
+
+/*
+We will continue next by using the fill pie shapes.  The first parameters are like the rectangle,
+but then we have two more parameters.  So the first is, the solid brush parameter, the second and 
+third are the x and y staring point, and the forth and fith are the x, y size of the elipse.  Then
+the sixth is where the start of the pie cut begins, then the seventh parameter is how much of the pie
+is shaded as it sweeps clockwise.
+*/
+
+
+			// 120 make a fill pie shape with a chunk missing, parameters:
             // solidBrush name, starting point x,y axis, x,y sizes,
             // start angle in degrees, sweep angle in degrees
             G.FillPie(SB, 200, 20, 50, 50, 0, 180);
@@ -45,7 +42,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             G.FillPie(SB, 200, 100, 50, 50, 180, 180);
             G.FillPie(SB, 250, 100, 50, 50, 270, 180);
 
-            // L120 create point array for polygon, in x,y pairs,
+
+
+/*
+Next we will use the fill polygon.  With this we will need at least three points, to make create a
+tiangle.  For this we will have to create a point array.  Just set more points in the array for more
+points in your polygon.
+*/
+
+
+			// L120 create point array for polygon, in x,y pairs,
             // staring x,y point, second x,y point, third x,y point
             Point[] PApoints = { new Point(350, 20), new Point(400, 20), new Point(375, 70)};
 
@@ -57,5 +63,18 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // fill polygon parameters: brush type, then point array
             G.FillPolygon(SB, PApoints2);
         }
-    }
-}
+
+
+
+
+
+/************************** highlight from the comments area *****************************/
+
+
+
+
+
+
+how do i make a shape move? e.g make a rectangle move up or down plz help
+
+You would have to use a polygon with mathematically calculated points for the shape.

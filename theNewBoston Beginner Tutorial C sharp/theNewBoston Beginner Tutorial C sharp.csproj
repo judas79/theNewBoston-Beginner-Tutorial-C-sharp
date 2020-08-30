@@ -370,6 +370,9 @@
     <Content Include="Tutorial_118 Drag and Drop\L118 form1CS.txt" />
     <Content Include="Tutorial_119 Drawing Shapes\L119 notes and highlights from comment area.txt" />
     <Content Include="Tutorial_119 Drawing Shapes\L119 form1CS.txt" />
+    <Content Include="Tutorial_120 Drawing More Shapes\L120 fill squares elipses pies and polygons.png" />
+    <Content Include="Tutorial_120 Drawing More Shapes\L120 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_120 Drawing More Shapes\L120 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
