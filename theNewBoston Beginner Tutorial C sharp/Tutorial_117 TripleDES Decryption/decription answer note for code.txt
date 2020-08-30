@@ -1,3 +1,5 @@
+// created for posing findings on youtube:
+// https://www.youtube.com/watch?v=SJu7pUsuAoo&list=PL0EE421AE8BCEBA4A&index=117
 /*
 After many hours of trying different things out, Eurika. The textBox numbers and variable names will be different, from the ones in the tutorial.
 The encrypted data can now be copied, from the encryptors output, then entered into a textBox and be decrypted.
