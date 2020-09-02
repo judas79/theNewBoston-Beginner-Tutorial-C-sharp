@@ -1,0 +1,53 @@
+﻿/*
+For this lesson we willneed a Panel1.  Select Panel1 an go over into the Event Properties, and double click 
+'Click' to create a new  event arguement in our form1 coding area.  The first thing we will do, in the coding 
+area, is to create a pen.  We will make a new pen, and in its property field, we will choose the color, that 
+our pen will be writing.  Then we will need a shape, to draw  with our pens' color, so we will need to use graphics, 
+to create the shape.  We will create the shape on the panel1 surface, with our pen, so instead of using 'fill'
+as we did with the solid brush, we will use 'draw' with our pen.  First we will use the Graphics instance, 
+'graphicsPn', then the type of object we will be drawing 'DrawRectangle'  Then, for the properties of DrawRectangle,
+we will need the new pen variable name we created earlier, then the x,y starting locations, then lastly in pixels, 
+the size of the rectangles x,y axis.  Now run debugger and click in the invisible panel area to cause the click
+event, to see the graphic.
+*/
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+
+            // L121 create new pen, it writes is red
+            Pen Ppn = new Pen(Color.Red);
+
+            // 121 allow us create graphics on panel1
+            Graphics graphicsPn = panel1.CreateGraphics();
+
+            // with Graphics instance drawrectangle
+            graphicsPn.DrawRectangle(Ppn, 30, 275, 50, 50);
+
+        }
+
+/*
+Next we make the line thicker for our pen tool we created by adding another paramater to our Pen Ppn, after the color
+parameter.
+Pen Ppn = new Pen(Color.Red,3);
+
+Next, we will draw an ellipse, and a polygon.  They are made exactly the same as the fill paint brush ones we did in
+tutorial 120:
+*/
+
+
+            // L121 with Graphics draw an eleipse, on Panel1 stating x,y , dimensions x,y
+            graphicsPn.DrawEllipse(Ppn, 100, 275, 50, 75);
+
+            // L121 create point array for polygon, in x,y pairs,
+            // staring x,y point, second x,y point, third x,y point
+            Point[] PArray2points = { new Point(150, 275), new Point(200, 300), new Point(200, 350) };
+
+            // L121 draw polygon parameters: pen type, then point array
+            graphicsPn.DrawPolygon(Ppn, PArray2points);
+        }
+
+
+
+
+
+/**************************** NO highlights from the comments area ******************************/
