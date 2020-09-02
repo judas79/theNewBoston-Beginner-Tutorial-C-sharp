@@ -1,0 +1,42 @@
+﻿/*
+For this lesson, we need the Panel, Pen tool and graphics instance we created last tutorial.  First we will draw an arc.
+Arcs are created in a similat way as the fillPie we created in the solidBrush tutorial.  It starts out like the rest
+of the shapes with the graphic instance then the draw type arc, then the pen tool name and the x,y starting quardinates.
+Next is it size: width by heigth then the starting angle the how many degrees the sweep is.
+*/
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+
+            // L122 create an arc, parameters (Pen name, starting x,y quardinates, 
+            // then the width, and heigth of arc, start angle, sweep angle
+            graphicsPn.DrawArc(Ppn, 30, 360, 50, 75, 0, 90);
+
+
+
+*/ Next, we will draw a Bezier curve, which is a spline, curve.  This is made out of points, similar to the way our polygons 
+where constructed.
+Last, we wil draw a line, that consist of our pen, a starting point and a finishing point.  We could not make an array 
+work with either of these:
+*/
+
+
+            // L122 draw Bezier, can't use byte array, must have at least 4 points incuding starting point
+            graphicsPn.DrawBezier(Ppn, new Point(150, 400), new Point(125, 420), new Point(200, 440), new Point(175, 450));
+
+            // L122 draw a line, parameters: Pen, starting point and and ending p;oint.
+            graphicsPn.DrawLine(Ppn, new Point(250, 400), new Point(275, 440));
+        }
+
+
+
+
+
+
+/************************* highlight from the comments area ***************************/
+
+
+
+
+
+Pronounced "bez ee yay"
