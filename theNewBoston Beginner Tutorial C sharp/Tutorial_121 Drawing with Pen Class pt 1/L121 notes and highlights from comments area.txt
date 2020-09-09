@@ -1,5 +1,5 @@
 ﻿/*
-For this lesson we willneed a Panel1.  Select Panel1 an go over into the Event Properties, and double click 
+For this lesson we will need a Panel1.  Select Panel1 an go over into the Event Properties, and double click 
 'Click' to create a new  event arguement in our form1 coding area.  The first thing we will do, in the coding 
 area, is to create a pen.  We will make a new pen, and in its property field, we will choose the color, that 
 our pen will be writing.  Then we will need a shape, to draw  with our pens' color, so we will need to use graphics, 
