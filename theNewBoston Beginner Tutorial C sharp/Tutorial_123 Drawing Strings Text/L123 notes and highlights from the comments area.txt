@@ -1,0 +1,67 @@
+﻿/*
+For this lesson , we will need a Panel1 in form1, to learn about Drawing Strings.  Select Panel1 an go over into
+the Event Properties, and double click 'Click' to create a new  event arguement in our form1 coding area.  The 
+first thing we will do, in the coding area, is to create a solid brush.  We will make a new solid brush, and in its 
+property field we will choose the color, that our brush will be painting.  Then we will need a way to render our string
+drawing, with our solid brush color, so we will need to use graphics on panel1, to create the text drawing.  So make 
+an instance of Graphics, on panel1.
+*/
+
+
+		private void panel1_Click(object sender, EventArgs e)  // all this is already created above
+        {
+            // L119 create new solid brush, it paints is green
+            SolidBrush SB = new SolidBrush(Color.Green);
+
+            // 119 allow us create graphics on panel1
+            Graphics G = panel1.CreateGraphics();
+
+
+/*
+Since a string line is being drawn, it cannot be selected, highlighted, copy, or pasted.  Using our graphics class, we 
+will implement our draw a string method.  For the DrawLine method parameters, first we will need a text String.  Then
+we will need to set up a font type , using the 'using System.Drawing;' so it doens't use the form1 fonts.  For our font
+type, we will need an instance of the font family, to use a family name such as "Ariel".  Now that we have our family
+font, we can use it as the type family parameter in ouf font type, as well as defining the size of the text, as the second
+parameter for the font type instance.
+Now we can pass in our font instance, into our DrawLine, as the second parameter.  Then we pass in the solid brush instance,
+and the the x, y quardinates for the starting point of our text drawing.
+*/
+
+
+            // L123 create font type family instance, parameters: family name, optional: 
+            FontFamily IfontFamily = new FontFamily("Arial");
+
+            // L123 create font instance, parameters: type family, text size, style
+            System.Drawing.Font Itrfnt = new System.Drawing.Font(IfontFamily, 12);
+
+
+            // L123 draw string using Graphic parameters:
+            // "String", font instance, solidBrush instance, beginning x, y quardinetes
+            G.DrawString("This is the end of the drawing lessons", Itrfnt,SB, new PointF(50, 450));
+}
+
+
+/* We can change the Font Family to "Courier" the size of the text to whatever we want, and FontStyle.  FontStyle are
+are things like, underlined, italic, and bold, and we can implement them in our DrawingString FontStyle, as the third 
+parameter.
+*/
+
+
+			// L123 create font instance, parameters: type family, text size, font style
+            System.Drawing.Font Itrfnt = new System.Drawing.Font(IfontFamily, 12, FontStyle.Italic);
+
+
+
+
+
+
+
+/*************************************** highlight from the comments area ****************************************/
+
+/*
+
+I can also combine the font style
+Font font = new System.Drawing.Font(ffamily, 50, FontStyle.Italic | FontStyle.Bold);
+
+*/
