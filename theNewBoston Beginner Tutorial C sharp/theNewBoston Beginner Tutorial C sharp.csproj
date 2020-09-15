@@ -379,6 +379,8 @@
     <Content Include="Tutorial_122 Drawing With Pen Class pt 2\L122 form1CS.txt" />
     <Content Include="Tutorial_123 Drawing Strings Text\L123 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_123 Drawing Strings Text\L123 form1CS.txt" />
+    <Content Include="Tutorial_124 LinearGradientBrush\L124 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_124 LinearGradientBrush\form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

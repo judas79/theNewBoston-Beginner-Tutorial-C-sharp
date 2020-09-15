@@ -1,0 +1,39 @@
+﻿/*
+For this lesson , we will need a Panel1 in form1, to learn about Drawing Strings.  Select Panel1 an go over into
+the Event Properties, and double click 'Click' to create a new  event arguement in our form1 coding area. Then we 
+will need a way to render our LinearGradientBrush, so we will need to use graphics on panel1, to create and render 
+the LinearGradientBrush.  We will also need the "using System.Drawing.Drawing2D;" to use the classes and methods in
+there.  Create an instance LinearGradientBrush, and then enter the following aruements: (starting point x/y, end
+point x/y, starting color, ending color).  After that we will create the shape, a fillrectangle, to render the 
+gradiant in.  The FillRectangle is initiated with the graphic we made and the uses the arguements: the instance of
+LinearGradientBrush 'Ilgb' then the starting point of the gradient rectangle, then the coordinates of the end of 
+that filled rectangle.
+*/
+
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+            // L124 create instance of with arguements: starting point x/y, end point x/y, starting color, ending color
+            LinearGradientBrush Ilgb = new LinearGradientBrush(new Point(20, 20), new Point(20, 70), Color.Red, Color.Yellow);
+
+            // L124 create graphics on panel1
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L124 render graphic of the gradiant within a gill rectangle arguments: 
+            // instance ofLinearGradientBrush, starting point of rectangle, ending point of the rectangel
+            Ig.FillRectangle(Ilgb, 20, 20, 50, 50);
+
+
+/*
+We can also make a circle using FillSphere, with the same arguements we used for the FillRectangle
+*/
+
+			// L124 make a circle using FillSphere arguements:
+            // instance ofLinearGradientBrush, starting point of fill elipse, ending point of the Elipse
+            Ig.FillEllipse(Ilgb, 170, 60, 170, 60);
+        }
+
+
+
+
+/************************ NO highlights in the comments area *********************/
