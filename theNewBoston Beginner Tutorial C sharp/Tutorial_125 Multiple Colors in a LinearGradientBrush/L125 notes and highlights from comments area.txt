@@ -1,0 +1,72 @@
+﻿/*
+For this lesson , we will need a Panel1 in form1, to learn about Multiple Colors in a LinearGradientBrush.  Select 
+Panel1 an go over into the Event Properties, and double click 'Click' to create a new  event arguement in our form1 
+coding area. Then we will need a way to render our Multiple Colors in a LinearGradientBrush, so we will need to use 
+graphics on panel1, to create and render the colored LinearGradientBrush.  We will also need the 
+"using System.Drawing.Drawing2D;" 
+to use the classes and methods in there.  Create an instance LinearGradientBrush above the graphics arguement, and 
+then enter the following aruements: 
+(starting point x/y, end point x/y, starting color, ending color).
+*/
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+            // L124 create instance of with arguements: starting point x/y, end point x/y, starting color, ending color
+            LinearGradientBrush Ilgb = new LinearGradientBrush(new Point(20, 20), new Point(20, 70), Color.Red, Color.Yellow);
+
+            // L124 create graphics on panel1
+            Graphics Ig = panel1.CreateGraphics();
+
+
+/*
+Next we will create a new instance for the colorBlend class, to store all the colors we will be using for our gradients.  Then, 
+we will set the colors, in a color array.  Notice that they are in the order that they will be rendered in.  Next we will
+set the positions, that are the center of each color of the gradient, in a float array.  The positions are converted to 
+floate using 'F'.  The gradients' size is scaled from 0 to 1, and divided accordingly, dependant on how many colors are to
+be used.  Next we will attach the colorBlend to the gradientBrush, using InterpolationColors.  And finally, we will use
+a FillRectangle to paint our gradient.
+*/
+
+
+            // L125 create instance colorblend class, to store all colors and positions for gradiants
+            ColorBlend Icb = new ColorBlend();
+
+            // L125 set color array properties as many colrs as you would like
+            Icb.Colors = new Color[] { Color.Black, Color.Blue, Color.White };
+
+            // L125 set positions in float array, from 0 up to 1, for each color
+            Icb.Positions = new float[] { 0F, .5F, 1F };
+
+            // L125 attach colorblend to the gradientbrush
+            Ilgb.InterpolationColors = Icb;
+
+            // L124 render graphic of the gradiant within a fill rectangle arguments: 
+            // instance ofLinearGradientBrush, starting point of rectangle, ending point of the rectangle
+            Ig.FillRectangle(Ilgb, 20, 170, 50, 50);
+
+
+/*
+Next, we will do the same thing, but for four colors.  We add another color to our color array, and the positions,
+have to be augmented for four positions, equally spaced.
+*/
+
+
+            // L125 for Four color gradient
+            // L125 set color array properties as many colors as you would like
+            Icb.Colors = new Color[] { Color.Black, Color.Blue, Color.SkyBlue, Color.White };
+
+            // L125 set positions in float array, from 0 up to 1, for each color
+            Icb.Positions = new float[] { 0F, .33F, .66F, 1F };
+
+            // L125 attach colorblend to the gradientbrush
+            Ilgb.InterpolationColors = Icb;
+
+            // L124 render graphic of the gradiant within a fill rectangle arguments: 
+            // instance ofLinearGradientBrush, starting point of rectangle, ending point of the rectangle
+            Ig.FillElipse(Ilgb, 100, 170, 50, 50);
+        }
+
+
+
+
+/********************************* NO highlights from the comments area *********************************/
