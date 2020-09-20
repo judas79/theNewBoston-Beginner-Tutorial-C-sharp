@@ -1,0 +1,55 @@
+﻿/*
+For this lesson , we will need a Panel1 in form1, to learn about the PathGradientBrush.  Select Panel1 an go over 
+into the Event Properties, and double click 'Click' to create a new  event arguement in our form1 coding area. Then
+we will need a way to render our PathGradientBrush, so we will need to use graphics on panel1, to create and render 
+the PathGradientBrush.  We will also need the 
+"using System.Drawing.Drawing2D;" 
+to use the classes and methods in there.  Create an instance PathGradientBrush above the graphics arguement, and for 
+the arguements, we are going to need to create a graphicpath instance also.  Create the graphicpath above the Path-
+GradientBrush.  For our graphic path, the colors will go from the center out, and be circular.  So we will have to 
+create the path for the graphicpath to follow.  To make this we will use our instance of graphicpath 'Igp' and add a
+elipse, then fill in the arguements: x/.y starting, and x/y ending coordinates.
+Next, for our paintgradiantbrush we will have to make the center color property, for our circular paintgradiantbrush.
+Then we will also have to use an array to make the outer surrounding color, for the paintgradiantbrush.
+Then last, we have to display the circle on the graphics, and enter the following aruements: 
+(brush type, starting point x/y, end point x/y).
+*/
+
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+            // L126 instance of graphicPath
+            GraphicsPath Igp = new GraphicsPath();
+
+            // L126 add a circular path for graphicpath to follow
+            Igp.AddEllipse(20, 20, 50, 50);
+
+            // L126 instance of pathGradientBrush
+            PathGradientBrush Ipgb = new PathGradientBrush(Igp);
+
+            // L126 create center color for our PathGradientBrush instance arguement, center color
+            Ipgb.CenterColor = Color.Blue;
+
+            // L126 use array to define the surrounding colors
+            Ipgb.SurroundColors = new Color[] { Color.Yellow };
+
+            // L126 creategraphics form panel1 to write, draw or paint on
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L126 draw the circle, arguements: brush type, starting x/y coordinates, and ending quardinates
+            Ig.FillEllipse(Ipgb, 20, 20, 50, 50);
+
+			GraphicsPath Igp2 = new GraphicsPath();
+            Igp2.AddEllipse(100, 20, 50, 50);
+            PathGradientBrush Ipgb2 = new PathGradientBrush(Igp2);
+            Ipgb2.CenterColor = Color.White;
+            Ipgb2.SurroundColors = new Color[] { Color.Black };
+            Ig.FillEllipse(Ipgb2, 100, 20, 50, 50);
+        }
+
+
+
+
+
+
+/****************************** NO highlights from the comments area *****************************/
