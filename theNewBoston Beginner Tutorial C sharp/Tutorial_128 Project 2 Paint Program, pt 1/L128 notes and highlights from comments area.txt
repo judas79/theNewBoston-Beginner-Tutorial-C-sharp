@@ -1,0 +1,77 @@
+﻿/*
+For this lesson we will need a panel, a toolStrip with a label and a textBox in it, to make a drawing app.  First, we will
+click on panel and go over to the events properties and choose, 'MouseDown'.  A mouse down event, is when the user holds 
+the mouse down, which would be a true bool event and when releases the mouse, turns it into a false bool event.  When the
+mouse is down (true), is when the program will paint.  So we will create a bool 'canPaint', outside of the panel1_MouseDown 
+statement, and set it to false.  Then we will set the canPaint, to true, within the panel1_MouseDown statement.
+Next we will create an event handler for 'MouseUp', by clicking on our panel then going to the Events handler, in its 
+properties, and double clicking "MouseUp".  In the MouseUp statement, we will add, to  set the canPaint bool var., to 
+false.  
+Next we will set the MouseMove arguement, by first picking it from the panel, Events properties, and double clicking it.  
+We will create a conditional statement, to draw if the mouse is down (canPaint is true), and if the mouse is being moved.
+We will first create out grahics instance outside of all the statements, so we can use it universally, within form1.  Since
+its a graphic of panel1, we will have to create our graphics instance in our form1 constructor.  After tha we can create 
+our brush in our  conditional if statement.
+Next we will draw our graphic with little circles, that will add up to a line, when be moved across the graphic panel1.
+Create FillElipse, with our instance of graphics 'Ig'.  In the arguements add;  The instance for the paintBrush we will
+be using (Isb).  Next arguements are; to get the cursor coordinates as x/y numbers we use the 'e' from the Events being
+passed in from our MouseEventArgs.  We use capitol X and Y, to get them from e.  Lastly we need the width and heigth,
+from our entry textbox, in our  toolstrip.  After we get the text, as a string, we have to usce Convert, to make the 
+string into a usefull integer, to use for the pen size.
+*/
+
+
+		public Form1()
+        {
+            InitializeComponent();
+
+            // L127 instance of graphics to use for all brushes, pens and gradient brushes
+            // created in our form1 constructor for panel1
+            Ig = panel1.CreateGraphics();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // L127 variable to paint, or not to, set to not paint
+        bool canPaint = false;
+
+        // L127 instance of graphic to use for all brushes, pens and gradient brushes
+        // created in our form1 constructor for panel1, it can't be created here
+        Graphics Ig;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // L127 can paint, mouse is in the held down position
+            canPaint = true;
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            // L127 can't paint, mouse is in upward position
+            canPaint = false;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // L127 mouse is moving and canPaint true(mouse is being pressed), paint something
+            if (canPaint)
+            {
+                // L127 instance for solidbrush to paint with, black line
+                SolidBrush Isb = new SolidBrush(Color.Black);
+
+                // 127 small fillElispe cricles to make a line, from graphics
+                // arguements are: SolidBrush instance, get mouses (x,y) cursor positions
+                // pass in 'e' (events) for x and y from MouseEventsArgs, get width/heigth
+                // from our toolStrip textBox Text, convert string entered into an int
+                Ig.FillEllipse(Isb, e.X, e.Y, Convert.ToInt32(toolStripTextBox1.Text), Convert.ToInt32(toolStripTextBox1.Text));
+            }
+        }
+
+
+
+
+
+
+/************************* NO highlights from the comments area *************************/
