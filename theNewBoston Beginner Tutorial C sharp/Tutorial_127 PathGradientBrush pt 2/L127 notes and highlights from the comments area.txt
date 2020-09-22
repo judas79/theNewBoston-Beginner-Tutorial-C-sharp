@@ -1,0 +1,126 @@
+﻿/*
+For this tutorial we will need everything from the last turorial and continue to use the PathGradientBrush, to make other
+shapes like, squares, rectangles and triangles.  
+*** From tutorial 126 ***
+"...we will need a Panel1 in form1, to learn about the PathGradientBrush.  Select Panel1 an go over 
+into the Event Properties, and double click 'Click' to create a new  event arguement in our form1 coding area. Then
+we will need a way to render our PathGradientBrush, so we will need to use graphics on panel1, to create and render 
+the PathGradientBrush.  We will also need the 
+"using System.Drawing.Drawing2D;" 
+to use the classes and methods in there.  Create an instance PathGradientBrush above the graphics arguement, and for 
+the arguements, we are going to need to create a graphicpath instance also.  Create the graphicpath above the Path-
+GradientBrush.  For our graphic path, the colors will go from the center out, and be circular.  So we will have to 
+create the path for the graphicpath to follow.  To make this we will use our instance of graphicpath 'Igp' and add a
+elipse, then fill in the arguements: x/.y starting, and x/y ending coordinates.
+Next, for our paintgradiantbrush we will have to make the center color property, for our circular paintgradiantbrush.
+Then we will also have to use an array to make the outer surrounding color, for the paintgradiantbrush.
+Then last, we have to display the circle on the graphics, and enter the following aruements: 
+(brush type, starting point x/y, end point x/y)."
+*/
+
+		private void panel1_Click(object sender, EventArgs e)
+        {
+            // L126 instance of graphicPath
+            GraphicsPath Igp = new GraphicsPath();
+
+            // L126 add a circular path for graphicpath to follow
+            Igp.AddEllipse(20, 20, 50, 50);
+
+            // L126 instance of pathGradientBrush
+            PathGradientBrush Ipgb = new PathGradientBrush(Igp);
+
+            // L126 create center color for our PathGradientBrush instance arguement, center color
+            Ipgb.CenterColor = Color.Blue;
+
+            // L126 use array to define the surrounding colors
+            Ipgb.SurroundColors = new Color[] { Color.Yellow };
+
+            // L126 creategraphics form panel1 to write, draw or paint on
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L126 draw the circle, arguements: brush type, starting x/y coordinates, and ending quardinates
+            Ig.FillEllipse(Ipgb, 20, 20, 50, 50)
+
+
+/*
+The first thing we will create, in this lesson, will be a rectangle.  When working with the PathGradientBrush, we will
+have to specify the arguements for the rectangle separately.  First we will make our graphicpath, instance like we 
+created last lesson, to add a recatangle.  Then we will create the rectangle and its starting point x/y and width/heigth.
+Then we will add our rectangle to our graphic path.  Then, from lesson 126 we will create our PathGradientBrush, then
+specify our center color.  Then we will specify our surroundColors and finally use our graphic to render and fill our
+gradient, at its rectangle name 'Ir', which specifies its starting x/y point and its Width/heigth.  You cand change the
+width or heigth, or our rectangle 'Ir' to unlike numbers to make a rectangle
+*/
+
+
+
+            // L127 new grapicspath for this lesson
+            GraphicsPath Igp3 = new GraphicsPath();
+
+            // L127 create a rectangle and its arguemts x/y starting, 
+			// width/heigth, note (w/h 50/50) is a square
+            Rectangle Ir = new Rectangle(20, 120, 50, 50);
+
+            // L127 add rectangle and then pass in the rectangle above
+            Igp3.AddRectangle(Ir);
+
+            // L126 All explained in tutorial 126
+            PathGradientBrush Ipgb3 = new PathGradientBrush(Igp3);
+            Ipgb3.CenterColor = Color.Green;
+            Ipgb3.SurroundColors = new Color[] { Color.Blue };
+
+            // L127 use our graphics to Fill our rectangle
+            Ig.FillRectangle(Ipgb3, Ir);
+
+
+
+/*
+Next we will create another graphicsPath, then add a polygon, after creating a points array, for our polygon.  Then we
+will make another PathGradientBrush, define our center color, and the surrounding colors.  Finally we will use our 
+graphics, to fill our polygon and put are arguements; added polygon brush and its point array.
+*/
+
+
+            // L127 new grapicspath for this lesson
+            GraphicsPath Igp4 = new GraphicsPath();
+
+            // L127 create polygon point array
+            Point[] points = { new Point(100, 120), new Point(120, 170), new Point(150, 170) };
+
+            // L127 add the polygon to our graphic path
+            Igp4.AddPolygon(points);
+
+            // L126 All explained in tutorial 126
+            PathGradientBrush Ipgb4 = new PathGradientBrush(Igp4);
+            Ipgb4.CenterColor = Color.Purple;
+            Ipgb4.SurroundColors = new Color[] { Color.Red };
+
+            // L127 use our graphics to Fill our rectangle
+            Ig.FillPolygon(Ipgb4, points);
+
+
+/* 
+We can also make a 4 sided polygon by adding a point to our point array
+*/
+
+            // L127 new grapicspath for this lesson
+            GraphicsPath Igp5 = new GraphicsPath();
+
+            // L127 create polygon point array triangle
+            Point[] points2 = { new Point (170, 120), new Point(200, 190), new Point(220, 160), new Point(270, 170) };
+
+            // L127 add the polygon to our graphic path
+            Igp5.AddPolygon(points2);
+
+            PathGradientBrush Ipgb5 = new PathGradientBrush(Igp5);
+            Ipgb5.CenterColor = Color.Orange;
+            Ipgb5.SurroundColors = new Color[] { Color.Yellow };
+
+            // L127 use our graphics to Fill our rectangle
+            Ig.FillPolygon(Ipgb5, points2);
+        }
+
+
+
+/*********************************** NO highlights from the comments area ***************************************/
+

@@ -385,6 +385,8 @@
     <Content Include="Tutorial_125 Multiple Colors in a LinearGradientBrush\L125 forn1CS.txt" />
     <Content Include="Tutorial_126 PathGradientBrush pt 1\L126 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_126 PathGradientBrush pt 1\L126 form1CS.txt" />
+    <Content Include="Tutorial_127 PathGradientBrush pt 2\L127 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_127 PathGradientBrush pt 2\L127 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
