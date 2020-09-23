@@ -1,0 +1,104 @@
+﻿/*
+We will continue adding to our paint app., using all the code from the previous tutorials, from this Paint series.  First
+we will add a color choosing method for our pen.  On our form1.cs[Design], we will go over to the toolStrip, and choose to
+add a button, and change the text to 'Pen Color', and the 'Display Style' to text.  Then double click the button, and go
+into the buttons coding area, and make an instance of colordialog.  Then check if a color has been selected, using a 
+conditional statement.  We can now go over to the instance of Pen 'Ip' and add the arguement to use the 
+toolStripButton1.ForeColor, for the pens writing color.
+*/
+
+
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // L127 mouse is moving and canPaint true(mouse is being pressed), paint something
+            if (canPaint)
+            {
+                // L128 create a pen instance, color is black
+                //Pen Ip = new Pen(Color.Black, float.Parse(toolStripTextBox1.Text));
+                // L130 choose pen color from dialog to use here, added to block of code
+                Pen Ip = new Pen(toolStripButton1.ForeColor, float.Parse(toolStripTextBox1.Text));
+
+                // L128 using grahics instance, connect the former mouse position, with the current mouse position 
+                // arguements are: the pen instance, use new point to position previous X,Y and current X/Y
+                // we added ?? to x/y to check if they are null, or else use previous position of e.X, e.Y
+                Ig.DrawLine(Ip, new Point(iPrevX ?? e.X, iPrevY ?? e.Y), new Point(e.X, e.Y));
+
+                // L128 set previous X/Y positions to current X/Y positions
+                iPrevX = e.X;
+                iPrevY = e.Y;
+             }
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            // L130 create instance of a colrDialog
+            ColorDialog IcolorDialog = new ColorDialog();
+
+            // L130 check if dialog color has been selected
+            if (IcolorDialog.ShowDialog() == DialogResult.OK)
+            {
+                // L130 make the selected dialog color, the color of the button itself
+                toolStripButton1.ForeColor = IcolorDialog.Color;
+            }
+
+
+
+/*
+Next, we will create a way to clear the canvas, if we want to start over in our painting, instead of restarting our 
+app., to get a clear canvas.  Go to the toolstrip and add another button, and change the text to 'Clear Canvas', then
+go to the DisplayStyle property and change it from image to text.  Then double click that button, to go to the coding
+area.  There we will use the instance of our graphics 'Ig' to clear the panel1 drawing upon its canvas, and use 
+whatever the backgrounds color was, as the new cleared background color.
+*/
+
+
+		private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            // L130 clear panel1's drawing, when clear button is pressed
+            Ig.Clear(panel1.BackColor);
+        }
+
+
+
+/*
+Lat, we will allow the user to choose the canvas color.  Go to the toolstrip and choose a button, and as before, change
+the text to 'Canvas Color' and the DisplayStyle to text.  Then double click it to go to the coding area.  There we will
+copy the code from our toolStripButton1_Click_1, which is used for choosing the pen dialog color, and we will paste it 
+in our, toolStripButton3_Click, for the Canvas Color choosing; for the canvas foreColor.  Then to also change the back-
+ground color, for panel1, we will use our dialog color instance to set the color to the one the user has chosen.
+*/
+
+
+
+		private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            // L130 create instance of a colrDialog
+            ColorDialog IcolorDialog = new ColorDialog();
+
+            // L130 check if dialog color has been selected
+            if (IcolorDialog.ShowDialog() == DialogResult.OK)
+            {
+                // L130 make the selected dialog color, the color of the button itself
+                toolStripButton3.ForeColor = IcolorDialog.Color;
+                panel1.BackColor = IcolorDialog.Color;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/******************** highlight from the comments area *******************/
+
+
+
+
+
+
+You can also use:
+this.panel1.Invalidate();
+to clear everything out
