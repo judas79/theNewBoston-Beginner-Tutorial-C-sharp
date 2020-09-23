@@ -1,0 +1,172 @@
+﻿/*
+Since our last lessons' SolidBrush would draw a line using a bunch of small circles, and would therefore seperate into
+individual dots, when moving quickly, we will use a pen, instead.  So, for this lesson we need everything from the 
+previous lesson, to continue making our drawing app.
+First in our conditional statement, in panel1_MouseMove, we will delete or comment out solidBrush and the fillElipse 
+blocks.  We will instead, create an instance for a Pen, and designate black for its color.  Then as its next arguement,
+we will use the input of the 'pen size' in our toolstrip textBox text, and convert it, by using float.Parse, which will
+convert text string into a float for the pen tip size.  Next we will be connecting the previous position the mouse was 
+at, with the current position, that its at.  For this, first we will have to make two variables to hold the x,y previous
+positions.  Then we will use our grahics instance to DrawLine, to connect the two points, and make a line.
+*/
+
+
+		public Form1()
+        {
+            InitializeComponent();
+
+            // L127 instance of graphics to use for all brushes, pens and gradient brushes
+            // created in our form1 constructor for panel1
+            Ig = panel1.CreateGraphics();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // L127 variable to paint, or not to, set to not paint
+        bool canPaint = false;
+
+        // L127 instance of graphic to use for all brushes, pens and gradient brushes
+        // created in our form1 constructor for panel1, it can't be created here
+        Graphics Ig;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // L127 can paint, mouse is in the held down position
+            canPaint = true;
+        }
+/************************** First part of tutorial 127 *****************************
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            // L127 can't paint, mouse is in upward position
+            canPaint = false;
+        }
+
+        // variables hold the previous values of x and y
+        int iPrevX = 0;
+        int iPrevY = 0;
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // L127 mouse is moving and canPaint true(mouse is being pressed), paint something
+            if (canPaint)
+            {
+                // L128 create a pen instance, color is black
+                Pen Ip = new Pen(Color.Black, float.Parse(toolStripTextBox1.Text));
+
+                // L128 using grahics instance, connect the former mouse position, with the current mouse position 
+                // arguements are: the pen instance, use new point to position previous X,Y and current X/Y
+                Ig.DrawLine(Ip, new Point(iPrevX, iPrevY), new Point(e.X, e.Y));
+
+                // L128 set previous X/Y positions to current X/Y positions
+                iPrevX = e.X;
+                iPrevY = e.Y;
+
+                // L127 instance for solidbrush to paint with, black line
+                //SolidBrush Isb = new SolidBrush(Color.Black);
+
+                // 127 small fillElispe cricles to make a line, from graphics
+                // arguements are: SolidBrush instance, get mouses (x,y) cursor positions
+                // pass in 'e' (events) for x and y from MouseEventsArgs, get width/heigth
+                // from our toolStrip textBox Text, convert string entered into an int
+                //Ig.FillEllipse(Isb, e.X, e.Y, Convert.ToInt32(toolStripTextBox1.Text), Convert.ToInt32(toolStripTextBox1.Text));
+            }
+        }
+************************* end of first part of tutorial 127 ********************/
+
+
+/*
+After running in debug, you may have noticed that the line always begins at x/y = 0/0 and if you try to draw a new
+line it continues, from where you left off, from before.  We will repair this by first adding our previous x/y positions
+in our panel1_MouseUp, to stop the continuation problem, on  a second line being drawn.  For this we will first have to
+change our iPrevX and iPrevY values to null.  We do this when we declare our variables by putting a question mark after
+our variale type 'int? iPrevX = null;' and the same for the Y var.  Now that we changed our initial declaration of our
+variables, we need to also change the iPrevX and iPrevY values to null, in panel1_MouseUp.  
+For the iPrevX and iPrevY values in our panel1_MouseMove statement, we will have to see if the iPrevX and iPrevY positions
+are null, and if not, to use our mouses present x/y coordinates.  This will allow us to start drawing a line, where the
+mouse is at, instead of starting at 0/0 or where the previous line left off at.
+*/
+
+
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            // L127 can't paint, mouse is in upward position
+            canPaint = false;
+
+            // reset the previous positions of x/y to null
+            iPrevX = null;
+            iPrevY = null;
+        }
+
+        // L127 variables hold the previous values of x and y, which are null
+        int? iPrevX = null;
+        int? iPrevY = null;
+        // L127 commented out: 0,0 was always the starting positions, not good for drawing
+        //int iPrevX = 0;
+        //int iPrevY = 0;
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // L127 mouse is moving and canPaint true(mouse is being pressed), paint something
+            if (canPaint)
+            {
+                // L128 create a pen instance, color is black
+                Pen Ip = new Pen(Color.Black, float.Parse(toolStripTextBox1.Text));
+
+                // L128 using grahics instance, connect the former mouse position, with the current mouse position 
+                // arguements are: the pen instance, use new point to position previous X,Y and current X/Y
+                // we added ?? to x/y to check if they are null, or else use previous position of e.X, e.Y
+                Ig.DrawLine(Ip, new Point(iPrevX ?? e.X, iPrevY ?? e.Y), new Point(e.X, e.Y));
+
+                // L128 set previous X/Y positions to current X/Y positions
+                iPrevX = e.X;
+                iPrevY = e.Y;
+
+				
+                // L127 instance for solidbrush to paint with, black line
+                //SolidBrush Isb = new SolidBrush(Color.Black);
+
+                // 127 small fillElispe cricles to make a line, from graphics
+                // arguements are: SolidBrush instance, get mouses (x,y) cursor positions
+                // pass in 'e' (events) for x and y from MouseEventsArgs, get width/heigth
+                // from our toolStrip textBox Text, convert string entered into an int
+                //Ig.FillEllipse(Isb, e.X, e.Y, Convert.ToInt32(toolStripTextBox1.Text), Convert.ToInt32(toolStripTextBox1.Text));
+            }
+        }
+    }
+}
+
+
+
+
+
+/**************************** Highlights from the comments area *****************************/
+
+
+
+
+
+
+
+isn't it better to set prevX = e.X and prevY = e.Y on MouseDown event?
+
+
+
+
+
+
+Or the best solution is to just move 'prevX = e.X;' and 'prevY = e.Y;' and place it after the 'if' closing bracket.
+
+
+
+
+
+A much simpler way to do this is in the MouseDown event add
+
+if(!canPaint){
+prevX = e.X;
+prevy = e.Y;
+canPaint = true;
+}
