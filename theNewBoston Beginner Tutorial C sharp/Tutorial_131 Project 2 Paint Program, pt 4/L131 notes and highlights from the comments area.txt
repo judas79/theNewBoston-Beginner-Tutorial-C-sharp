@@ -1,0 +1,383 @@
+﻿/*
+We will continue, with our Paint project, where we left off.  So we will need all the things from the prior paint tutorials.
+First we will create a split button in our toolStrip, to choose a shape to draw and call it Draw Shape.  We will also need
+to change our DisplayStyle to Text.  In the split buttons dropdown menue, we will add our types of shapes to choose from;  
+square, rectangle or circle.  Double click the 'square' option to go into the coding area.  First we will create a bool 
+outside of the statements, for draw a square.  Then, inside the squareToolStripMenuItem_Click statement, we will set it to
+true, for when it is selected.  Then in panel1_MouseDown we will write a conditional statement, to draw the square, when the
+mouse down event occurs and the square is chosen.
+*/
+
+
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // L127 variable to paint, or not to, set to not paint
+        bool canPaint = false;
+
+        // L127 instance of graphic to use for all brushes, pens and gradient brushes
+        // created in our form1 constructor for panel1, it can't be created here
+        Graphics Ig;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // L127 can paint, mouse is in the held down position
+            canPaint = true;
+
+            // L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            if(bDrawSquare)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillrectangle as a square
+                // draw square where the mouse x/y is, size static 50
+                //Ig.FillRectangle(Isldbrsh, e.X, e.Y, 50, 50);
+                // allow user to enter width and heigth using toolStripTextBox2.Text and convert it to int
+                Ig.FillRectangle(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bDrawSquare bools to false after creating the square
+                // so that another square can't be imediatly drawn, after the initial one
+                bDrawSquare = false;
+                canPaint = false;
+            }
+
+            // L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bDrwRctngl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillrectangle as a square
+                // draw rectangle where the mouse x/y is, size static 100, 50
+                //Ig.FillRectangle(Isldbrsh, e.X, e.Y, 100, 50);
+                // allow user to enter width and heigth using toolStripTextBox2.Text and convert it to int, width is 2x height
+                Ig.FillRectangle(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text) * 2, Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bDrawSquare bools to false after creating the square
+                // so that another square can't be imediatly drawn, after the initial one
+                bDrawSquare = false;
+                bDrwRctngl = false;
+                canPaint = false;
+            }
+
+			// L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bCrcl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillElipse as circle
+                // draw circle where the mouse x/y is, size 
+                Ig.FillEllipse(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bCrcl bools to false after creating the circle
+                // so that another circle can't be imediatly drawn, after the initial one
+                bCrcl = false;
+                canPaint = false;
+            }
+			// L131 if mouse is down and circle is selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bCrcl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillElipse as circle
+                // draw circle where the mouse x/y is, size 
+                Ig.FillEllipse(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bCrcl bools to false after creating the circle
+                // so that another circle can't be imediatly drawn, after the initial one
+                bCrcl = false;
+                canPaint = false;
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            // L127 can't paint, mouse is in upward position
+            canPaint = false;
+
+            // reset the previous positions of x/y to null
+            iPrevX = null;
+            iPrevY = null;
+        }
+
+        // L127 variables hold the previous values of x and y, which are null
+        int? iPrevX = null;
+        int? iPrevY = null;
+        // L127 commented out: 0,0 was always the starting positions, not good for drawing
+        //int iPrevX = 0;
+        //int iPrevY = 0;
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            // L127 mouse is moving and canPaint true(mouse is being pressed), paint something
+            if (canPaint)
+            {
+                // L128 create a pen instance, color is black
+                //Pen Ip = new Pen(Color.Black, float.Parse(toolStripTextBox1.Text));
+                // L130 choose pen color from dialog to use here, added to block of code
+                Pen Ip = new Pen(toolStripButton1.ForeColor, float.Parse(toolStripTextBox1.Text));
+
+                // L128 using grahics instance, connect the former mouse position, with the current mouse position 
+                // arguements are: the pen instance, use new point to position previous X,Y and current X/Y
+                // we added ?? to x/y to check if they are null, or else use previous position of e.X, e.Y
+                Ig.DrawLine(Ip, new Point(iPrevX ?? e.X, iPrevY ?? e.Y), new Point(e.X, e.Y));
+
+                // L128 set previous X/Y positions to current X/Y positions
+                iPrevX = e.X;
+                iPrevY = e.Y;
+
+                // L127 instance for solidbrush to paint with, black line
+                //SolidBrush Isb = new SolidBrush(Color.Black);
+
+                // 127 small fillElispe cricles to make a line, from graphics
+                // arguements are: SolidBrush instance, get mouses (x,y) cursor positions
+                // pass in 'e' (events) for x and y from MouseEventsArgs, get width/heigth
+                // from our toolStrip textBox Text, convert string entered into an int
+                //Ig.FillEllipse(Isb, e.X, e.Y, Convert.ToInt32(toolStripTextBox1.Text), Convert.ToInt32(toolStripTextBox1.Text));
+            }
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            // L130 create instance of a colrDialog
+            ColorDialog IcolorDialog = new ColorDialog();
+
+            // L130 check if dialog color has been selected
+            if (IcolorDialog.ShowDialog() == DialogResult.OK)
+            {
+                // L130 make the selected dialog color, the color of the button itself
+                toolStripButton1.ForeColor = IcolorDialog.Color;
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            // L130 clear panel1's drawing, when clear button is pressed
+            Ig.Clear(panel1.BackColor);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            // L130 create instance of a colrDialog
+            ColorDialog IcolorDialog = new ColorDialog();
+
+            // L130 check if dialog color has been selected
+            if (IcolorDialog.ShowDialog() == DialogResult.OK)
+            {
+                // L130 make the selected dialog color, the color of the button itself
+                toolStripButton3.ForeColor = IcolorDialog.Color;
+                panel1.BackColor = IcolorDialog.Color;
+            }
+        }
+
+        // L131 bool to draw a square T or not F
+        bool bDrawSquare = false;
+
+        private void squareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bDrawSquare = true;
+
+			// make heigth invisible, squares have equal sides
+            toolStripTextBox3.Visible = false;
+        }
+
+
+/*
+Next we will do the same thing for a rectangle.  Create a bool outside of the statements set to false.  Then inside 
+the rectangleToolStripMenuItem_Click, set it to true, because it is being used.  Then in the panel1_MouseDown statement
+we can copy the code for the 'bDrawSquare', including the setting of the two bools to false, and just change the width
+from 50 to 100, to create a rectangle.  This we will paste into an else if conditional statement for bDrwRctngl.  We
+also will set the Draw rectangle to false, as to draw rectangles one at a time.  bDrwRctngl = false;
+*/
+
+
+/*
+			else if (bDrwRctngl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillrectangle as a square
+                // draw rectangle where the mouse x/y is, size static 100, 50
+                Ig.FillRectangle(Isldbrsh, e.X, e.Y, 100, 50);
+
+                // set canPaint and bDrawSquare bools to false after creating the square
+                // so that another square can't be imediatly drawn, after the initial one
+                bDrawSquare = false;
+                bDrwRctngl = false;
+                canPaint = false;
+            }
+*/
+
+
+        // create bool for rectangle, set to false
+        bool bDrwRctngl = false;
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bDrwRctngl = true;
+
+			// make heigth textBox visible to enter height for rectangle
+            toolStripTextBox3.Visible = true;
+        }
+
+
+
+/*
+Next, instead of have static sizes for our square and rectangle tools, we will allow the user to enter the dimmension.
+From the toolstrip by addin a label, with text 'Shapes Size' and a textBox with Text set to 25, as a default size.  We
+also set the textBox size to 25x25.  Next we will go back into our panel1_MouseDown statement and change our squares
+width, height from 50, 50 to toolStripTextBox2.Text, Converted to an int32, for both the width and height.  We will do
+the same for our rectangle, in the panel1_MouseDown, else if statement, except we will multiply the width x 2 since we
+are only entering in 1 number to define the size.
+
+
+
+
+            // L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            if(bDrawSquare)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillrectangle as a square
+                // draw square where the mouse x/y is, size static 50
+                //Ig.FillRectangle(Isldbrsh, e.X, e.Y, 50, 50);
+                // allow user to enter width and heigth using toolStripTextBox2.Text and convert it to int
+                Ig.FillRectangle(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bDrawSquare bools to false after creating the square
+                // so that another square can't be imediatly drawn, after the initial one
+                bDrawSquare = false;
+                canPaint = false;
+            }
+
+            // L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bDrwRctngl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillrectangle as a square
+                // draw rectangle where the mouse x/y is, size static 100, 50
+                //Ig.FillRectangle(Isldbrsh, e.X, e.Y, 100, 50);
+                // allow user to enter width and heigth using toolStripTextBox2.Text and convert it to int, width is 2x height
+                Ig.FillRectangle(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text) * 2, Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bDrawSquare bools to false after creating the square
+                // so that another square can't be imediatly drawn, after the initial one
+                bDrawSquare = false;
+                bDrwRctngl = false;
+                canPaint = false;
+            }
+*/
+
+
+
+/* 
+We will add a separate label and textBox for the heigth.  Then using the same code structure, create a circle as well.
+First we will set our heigth texbox to not visible, when using the square shape, since a square has equal sides.  If we
+are using the rectangle shape we make the heigth texBox visible so the user can enter different heights and widths.
+
+
+
+
+		private void squareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bDrawSquare = true;
+
+			// make heigth invisible, squares have equal sides
+            toolStripTextBox3.Visible = false;
+        }
+
+        // create bool for rectangle, set to false
+        bool bDrwRctngl = false;
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bDrwRctngl = true;
+
+			// make heigth textBox visible to enter height for rectangle
+            toolStripTextBox3.Visible = true;
+        }
+*/
+/*
+We will set up our circle so it doesn't show the textBox heigth, as an option, since the circles sides are equadistant
+from the center.  We will save the heigth textbox for making elipses.
+
+
+			// L131 if mouse is down and square selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bCrcl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillElipse as circle
+                // draw circle where the mouse x/y is, size 
+                Ig.FillEllipse(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bCrcl bools to false after creating the circle
+                // so that another circle can't be imediatly drawn, after the initial one
+                bCrcl = false;
+                canPaint = false;
+            }
+*/
+
+		// L131 bool for circle
+        bool bCrcl = false;
+
+        private void circleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bCrcl = true;
+
+            // make heigth invisible, cirles are equadistant from the center
+            toolStripTextBox3.Visible = false;
+        }
+ 
+
+/*
+Since we are 90% of the way there we will create an elispe, and use the heigth textbox for it.
+
+
+			// L131 if mouse is down and circle is selected, draw square
+            // use a solid brush and same color we chose, to draw forground with
+            else if (bCrcl)
+            {
+                SolidBrush Isldbrsh = new SolidBrush(toolStripButton1.ForeColor);
+
+                // L131 use graphics to render fillElipse as circle
+                // draw circle where the mouse x/y is, size 
+                Ig.FillEllipse(Isldbrsh, e.X, e.Y, Convert.ToInt32(toolStripTextBox2.Text), Convert.ToInt32(toolStripTextBox2.Text));
+
+                // set canPaint and bCrcl bools to false after creating the circle
+                // so that another circle can't be imediatly drawn, after the initial one
+                bCrcl = false;
+                canPaint = false;
+            }
+*/
+
+
+
+        bool bDrwElps = false;
+        private void elipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bDrwElps = true;
+        }
+    }
+}
+
+
+
+
+
+
+/************************ highlights from the comments area *************************/
+
+
+
+
+
+Instead of having the can paint Boolean  = true before the if statements for the shapes, you can just add an else 
+statement at the end of the if statements. That way you don't have to set it to false in every if statement.

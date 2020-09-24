@@ -393,6 +393,8 @@
     <Content Include="Tutorial_129 Project 2 Paint Program, pt 2\form1CS.txt" />
     <Content Include="Tutorial_130 Project 2 Paint Program, pt 3\L130 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_130 Project 2 Paint Program, pt 3\L130 form1CS.txt" />
+    <Content Include="Tutorial_131 Project 2 Paint Program, pt 4\L131 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_131 Project 2 Paint Program, pt 4\L131 form1CS.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
