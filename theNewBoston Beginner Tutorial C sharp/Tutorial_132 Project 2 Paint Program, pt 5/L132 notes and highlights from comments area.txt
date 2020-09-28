@@ -1,0 +1,41 @@
+﻿/*
+For this lesson we will need all the code from the preceeding tutorials in the Paint app series.  In this lesson we will
+write some code to allow the user to drag and drop images into our pannel.  First we will click on our panel and go into
+our Properties and change 'AllowDrop' to 'true'.  Then we will go into our Event properties and double click 'DrafOver',
+and we can go to its coding area and set the dragover effect to all using our EventsDragEventArgs 'e' to pass in the value.
+Next we will double click the DragDrop properties so we can set it to get the images file address.  We will store the files
+address in a string array.  We will then iterate throught the image path 'sImgPth'.  Then we will get the object path
+of the image from the File, and use our graphics instance 'Ig' to Draw our Image, at the Points of where our mouses 
+current coordinates x,y are dragging the image is at.
+*/
+
+
+        private void panel1_DragOver(object sender, DragEventArgs e)
+        {
+            // L 132 pass in all images through DragEventArgs 'e' using dragdroeffect
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            // L132 gets file using get data method object path passed in from DragEventArgs, 
+            // puts them paths in string array
+            string[] sImgPth = (string[]) e.Data.GetData(DataFormats.FileDrop);
+
+            // L132 iterate through the sImgPth path array, for the paths
+            foreach (string sPth in sImgPth)
+            {
+                // L132 draw the image in our panel using graphics, and Image.fromfile method
+                // requires a starting point, to place the image
+                Ig.DrawImage(Image.FromFile(sPth), new Point(e.X,e.Y));
+            }
+
+        }
+
+
+
+
+
+
+
+/************************** No highlights from the comments area *************************/
