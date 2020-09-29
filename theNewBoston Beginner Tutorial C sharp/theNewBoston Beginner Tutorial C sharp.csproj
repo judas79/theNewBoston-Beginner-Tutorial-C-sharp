@@ -89,6 +89,12 @@
     <Compile Include="myNamespace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tutorial_133 Making Controls pt 1\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tutorial_133 Making Controls pt 1\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
       <SubType>Form</SubType>
     </Content>
@@ -397,6 +403,8 @@
     <Content Include="Tutorial_131 Project 2 Paint Program, pt 4\L131 form1CS.txt" />
     <Content Include="Tutorial_132 Project 2 Paint Program, pt 5\L132 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_132 Project 2 Paint Program, pt 5\L132 form1CS.txt" />
+    <Content Include="Tutorial_133 Making Controls pt 1\L133 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_133 Making Controls pt 1\L133 UserControl1 MyButton1.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +420,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tutorial_133 Making Controls pt 1\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

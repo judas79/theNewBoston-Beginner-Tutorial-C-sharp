@@ -1,0 +1,82 @@
+﻿/*
+In this lesson we will learn how to make our own controls.  Controls are usually things that exist, premade in our toolBox.
+We will be making our own custom button, using Control.  From the the Project column in our VS main menu, choose Add Windows
+Form and in the dialog that opens up select, user control.  Rename it at the bottom of the dialog to MyButton, or rename it
+later in the properties box after its created.  Resize it to about the same size as a premade button is.  We will be painting
+it, so it will resize proportionally when expanded and shrunk and set other properties.  This created button will be then
+added to the toolBox.  When a user drags in the custom button, it will be the size you created it at.  
+Next right click on your button and click 'view code', to see the code that makes up your button.  Notice the button inherits
+from the UserControl class which has lots of usefull methods such as properties, drawing the control and the sizing of it 
+etc.  We are going to overide the method to draw the button so we can use our own colors....
+Below our {Initialize component} type: Override Paint   then hit enter, and the program will generate in the rest of the 
+overide code for you.  This overrides the  use of the drawing method from the UserControl class, and allows us to use our 
+own drawing method.  Notice that it is 'Protected'; meaning its only visible through inheriting it.  Next we will create a
+ne solidBrush, by replacing the generated code 'base.OnPaint(e);', with our Solidbrush instance code.  We will us the color
+'control' which is blue grey, like most controls you see are, and we will be using FromKnownColor to get it.
+*/
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt_1
+{
+    public partial class MyButton1 : UserControl
+    {
+        public MyButton1()
+        {
+            InitializeComponent();
+        }
+
+        // L133 type 'overide OnPaint'  then click 'Enter' button to grnerate the rest of the Overide code
+        // overrides the  use of the drawing method from the UserControl class, use our own drawing
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are
+            //base.OnPaint(e);
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+
+
+/*
+Next we will create our instance for graphics within our class, which is MyButton.  
+Then we will Fill our rectangular button with our SolidBrush instance.  We will start at the top left corner of our button,
+and paint it the width of the button and the heigth of the button, using 'this'.
+*/
+
+			// L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height );
+
+
+        }
+    }
+}
+
+
+/*
+Next we will go to the 'Build' tab on our main menu, and click 'Build Solution', to build MyButton.  After its built click
+on our form, so that it is selected and search through our ToolBox for our MyButton, to drag onto our form.  You will only 
+see th outline of our button, because the form and MyButton are the same color, so change the backColor of the form to some-
+thing darker, to see it.
+*/
+
+
+
+
+
+
+
+
+
+/********************* No highlights from the comments area ********************/
