@@ -79,4 +79,4 @@ thing darker, to see it.
 
 
 
-/********************* No highlights from the comments area ********************/
+/********************* No highlights from the comments area *********************/
