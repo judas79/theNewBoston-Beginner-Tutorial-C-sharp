@@ -33,10 +33,12 @@
             // 
             // myButton11
             // 
-            this.myButton11.Location = new System.Drawing.Point(49, 33);
+            this.myButton11.BackColor = System.Drawing.SystemColors.Control;
+            this.myButton11.ButtonText = "Button";
+            this.myButton11.Location = new System.Drawing.Point(12, 12);
             this.myButton11.Name = "myButton11";
             this.myButton11.Size = new System.Drawing.Size(92, 32);
-            this.myButton11.TabIndex = 0;
+            this.myButton11.TabIndex = 1;
             // 
             // Form1
             // 

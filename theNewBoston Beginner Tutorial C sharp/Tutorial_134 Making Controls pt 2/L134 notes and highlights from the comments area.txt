@@ -1,0 +1,91 @@
+﻿/*
+In this lesson we will continue making our UserControl button.  We will need everything from our prior lesson and continue 
+from where we left off.
+*/
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt_1
+{
+    public partial class MyButton1 : UserControl
+    {
+        public MyButton1()
+        {
+            InitializeComponent();
+        }
+
+        // L133 type 'overide OnPaint'  then click 'Enter' button to grnerate the rest of the Overide code
+        // overrides the  use of the drawing method from the UserControl class, use our own drawing
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are
+            //base.OnPaint(e);
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height );
+        }
+
+		
+/*
+First we will drag and drop a label from our ToolBox, onto our UserControl1.cs[Design]*.  This will be used to name our button.
+The orientation of the label will change, as the button is resized, so we will have to tell the C# compiler, to center it.  
+We will go over to the OnPaint method, in our code area and create the code for the label1 Location in our button, by making
+new points, for it width and heigth.  First we will divide the total width and height of the button by 2, to get the buttons
+center.  Since the label starts at the 0,0 point on the top label box, the text will start at the center but then write towards 
+the left, making it appear off center, on the button.  So we will subtract half of the labels width, and the height, to get it
+centered.
+To see the new orientation of our label click on the form1 design then under Build, click build solution.
+*/
+
+
+            // L134 center our labels location in the button, x width and y heigth
+            label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
+
+
+/*
+Next we will set up a poperty for our label, so that we can change the text.  Click on our button design, UserControl1.cs, in
+this example, and we will add code, outside of the OnPaint method but within our MyButton1 class. This property will work as 
+any of the premade other properties, that we've seen thus far.  We will make this property public so the user can change the 
+text.  It will be a string, since text is a string.  Then we will get the label1 Text and return it, and set the label1 text
+to what the user types in, in its properties name, 'ButtonText'.  
+To see our new property click form1 design once and Build in the main menu, then build solution.
+*/
+
+
+		// L 134 create label1 property, to enable changing of label1 text.
+        public string ButtonText
+        {
+            get { return label1.Text; }
+            set { label1.Text = value; }
+        }
+	}
+}
+
+
+
+
+
+
+/************************ highlight from the comments area **********************/
+
+
+
+
+For those that had the same error as me, with the label1 that always matched the color of the form and when you tried to 
+change its color and make it the same as our control MyButton and it didnt work, just put the line:
+            label1.BackColor = MyButton.DefaultBackColor;
+in the OnPaint method
