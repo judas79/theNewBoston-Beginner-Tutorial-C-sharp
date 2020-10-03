@@ -51,9 +51,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
         {
             get { return label1.Text; }
             set { label1.Text = value; }
-        }
-            
-        
-        
+        }   
     }
 }

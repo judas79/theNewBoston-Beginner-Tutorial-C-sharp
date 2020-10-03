@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+We will continue where we left off, in our last lesson, using all the code and setup prior to this lesson, to continue creating,
+our UserControl Button.  If you look at a regular microsoft button, it seems to have a glossyness to it.  If you enlarege the
+the MS button you will then notice that the lower half of the button is of a different shade than the upper portion, causing
+the glossy illusion.  We will do this same effect with our button.
+/*
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -33,6 +42,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             // and fill its width and heigth, using 'this' (MyButton)
             Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height);
 
+
+
+*/
+So first, lets click on our button and go into our MyButton1 class.  In our OnPaint method, we will make another rectangle,
+from half way down, of the button, and fill the rectangle with a shade, darker than the upper part of out button.  Since
+this isn't noticable, when we rund debug, we will change the instance of solid brush to ControlDark, to see the illusion 
+of glossyness.  Since this was too dark, we will use the effect caused;  because when we layer a color upon the original
+ISB, it creates a darker blend of the two colors.  So if we change the color setting to ControlLight, and then put it over
+the original color, 'Control', it will make a darker blend.
+*/
+
+
+
+
             // L135 change the existing color setting of our SolidBrush Instance, to darker color (too dark)
             //Isb.Color = Color.FromKnownColor(KnownColor.ControlDark);
 
@@ -42,18 +65,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             // L135 shade bottom half of button,
             Ig.FillRectangle(Isb, 0, this.Height / 2, this.Width, this.Height / 2);
 
-            // L134 center our labels location in the button, x width and y heigth
-            label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
-        }
 
-        // L 134 create label1 property, to enable changing of label1 text.
-        public string ButtonText
-        {
-            get { return label1.Text; }
-            set { label1.Text = value; }
-        }
-            
-        
-        
-    }
-}
+
+/*
+We can use different colors in our instance for our solid brush and when we change the color settings, if you want to.
+*/
+
+
+
+
+

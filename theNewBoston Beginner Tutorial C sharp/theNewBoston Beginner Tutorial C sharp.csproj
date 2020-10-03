@@ -407,6 +407,8 @@
     <Content Include="Tutorial_133 Making Controls pt 1\L133 UserControl1 MyButton1.txt" />
     <Content Include="Tutorial_134 Making Controls pt 2\L134 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_134 Making Controls pt 2\L134 UserControl1 MyButton1 .txt" />
+    <Content Include="Tutorial_135 Making Controls pt 3\L135 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_135 Making Controls pt 3\L135 UserControl MyButton1.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

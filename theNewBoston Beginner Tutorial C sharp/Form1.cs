@@ -16,5 +16,10 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             InitializeComponent();
         }
+
+        private void myButton12_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
