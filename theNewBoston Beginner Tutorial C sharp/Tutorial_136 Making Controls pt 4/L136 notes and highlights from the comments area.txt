@@ -1,0 +1,203 @@
+﻿/*
+Continuing with this series on UserControls and our button, 'MyButton1', we will need all the items from our prevoious
+tutorials, for this lesson.  We will first delete our label from our UserControl Button, because instead, we will write
+on our form, using the draw string method.  Go to your UserContorl1.cs[Design] for your button and delete the label.
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt_1
+{
+    public partial class MyButton1 : UserControl
+    {
+        public MyButton1()
+        {
+            InitializeComponent();
+        }
+
+        // L133 type 'overide OnPaint'  then click 'Enter' button to grnerate the rest of the Overide code
+        // overrides the  use of the drawing method from the UserControl class, use our own drawing
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are
+            //base.OnPaint(e);
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height);
+
+            // L135 change the existing color setting of our SolidBrush Instance, to darker color (too dark)
+            //Isb.Color = Color.FromKnownColor(KnownColor.ControlDark);
+
+            // L135 the color is layered upon the original color of Isb, making it a darker shade
+            Isb.Color = Color.FromKnownColor(KnownColor.ControlLight);
+
+            // L135 shade bottom half of button,
+            Ig.FillRectangle(Isb, 0, this.Height / 2, this.Width, this.Height / 2);
+
+            // L134 center our labels location in the button, x width and y heigth
+            label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
+        }
+
+        // L 134 create label1 property, to enable changing of label1 text.
+        public string ButtonText
+        {
+            get { return label1.Text; }
+            set { label1.Text = value; }
+        }
+
+
+
+
+
+The first thing we will do, is add a string, fro the text, and name it text, with a value of "" (empty), inside of the 
+MyButton1 class, but outside of the methods.
+
+		// L136 string to hold text (instead of using a label)
+        string sText = "";
+
+Then we will replace our way to return our text value using a string instead of label1:
+
+	    // L 136 draw string text, to enable changing of string sText. (instead of using label)1
+        public string ButtonText
+        {
+            get { return sText; }
+            set { sText = value; }
+        }
+
+
+Next, instead of plotting positions for our label1 we will create Points made of Float numbers 'F'.  There is no property
+for the Width of the text so we will use its Length, to center the text.
+
+
+			// L136 create A float Points to align our text coordinates in our form
+            PointF fPoint = new Point((this.Width / 2 - sText.Length) , (this.Height / 2) - sText.Length);
+
+
+Then we will need use Graphic to draw the string.
+
+
+
+            // L136 the draw string method using graphic to draw the string, aguements: 
+            // string name, font property name, float Point name
+            Ig.DrawString(sText, fFont, Isb, fPoint);
+
+
+We will need to create a font for our second arguement in our DrawString method.
+
+
+
+
+            // L136 create font properties, 'FontFamily' is Font prototype for our first arguement, text size
+            Font fFont = new System.Drawing.Font(fFamily, 8);
+
+
+For our font we will need to set a property for its type of font: "Arial"
+
+
+            // L136 create FontFamily property for Font ff arguement
+            FontFamily fFamily = new FontFamily("Arial");
+
+
+Then lastly we will set the color for our font to black
+
+
+            // L136 change our solidbrush color value to black
+            Isb.Color = Color.Black;
+        
+
+A lot of this code is written after seeing the arguements that are required, so it isn't in the order the coder would 
+neccessarily write it in.  The following is th code, in the correct sequence, for the finished product:
+*/
+
+
+
+
+        // L136 string to hold text (instead of using a label)
+        string sText = "";
+
+        // L133 type 'overide OnPaint'  then click 'Enter' button to grnerate the rest of the Overide code
+        // overrides the  use of the drawing method from the UserControl class, use our own drawing
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are
+            //base.OnPaint(e);
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height);
+
+            // L135 change the existing color setting of our SolidBrush Instance, to darker color (too dark)
+            //Isb.Color = Color.FromKnownColor(KnownColor.ControlDark);
+
+            // L135 the color is layered upon the original color of Isb, making it a darker shade
+            Isb.Color = Color.FromKnownColor(KnownColor.ControlLight);
+
+            // L135 shade bottom half of button,
+            Ig.FillRectangle(Isb, 0, this.Height / 2, this.Width, this.Height / 2);
+
+            // L134 center our labels location in the button, x width and y heigth
+            //label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
+
+            // L136 create A float Points to align our text coordinates in our form
+            PointF fPoint = new Point((this.Width / 2 - (sText.Length * sText.Length / 2)) , (this.Height / 2) - sText.Length);
+
+            // L136 create FontFamily property for Font ff arguement
+            FontFamily fFamily = new FontFamily("Arial");
+
+            // L136 create font properties, 'FontFamily' is Font prototype for our first arguement, text size
+            Font fFont = new System.Drawing.Font(fFamily, 8);
+
+            // L136 change our solidbrush color value to black
+            Isb.Color = Color.Black;
+
+            // L136 the draw string method using graphic to draw the string, aguements: 
+            // string name, font property name, float Point name
+            Ig.DrawString(sText, fFont, Isb, fPoint);
+        }
+        /*
+        // L 134 create label1 property, to enable changing of label1 text.
+        public string ButtonText
+        {
+            get { return label1.Text; }
+            set { label1.Text = value; }
+        }
+        */
+        // L 136 draw string text, to enable changing of string sText. (instead of using label)1
+        public string ButtonText
+        {
+            get { return sText; }
+            set { sText = value; }
+        }
+    }
+
+
+
+
+
+/************************ highlight from the comments area *************************/
+
+
+
+
+
+
+Why not just set the label background color to transparent?
