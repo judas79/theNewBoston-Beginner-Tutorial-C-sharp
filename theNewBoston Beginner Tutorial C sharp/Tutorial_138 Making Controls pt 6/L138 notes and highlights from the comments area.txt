@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Continuing with this series on UserControls and our button, 'MyButton1', we will need all the items from our prevoious
+tutorials, for this lesson. In this lesson, we will highlight MyButton, when it is selected, with a button click.
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -17,27 +23,13 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             InitializeComponent();
         }
 
-        // L138 Color variable for ColorButton property
-        Color cMyButtonColor;
-
         // L136 string to hold text (instead of using a label)
         string sText = "";
 
         // L136 use DrawButton statement to pass in our color 'Control'
         protected override void OnPaint(PaintEventArgs e)
         {
-            // L138 if one or more of users chosen color RGB, is to high,
-            // and conflicts with our, lightening method of adding a number, and goes out of it max range
-            try
-            {
-                //DrawButton(Color.FromKnownColor(KnownColor.Control));
-                // L138 user chosen color for MyButton, instead of setting a default color (Control)
-                DrawButton(cMyButtonColor);
-            }
-            catch
-            {
-                MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
-            }
+            DrawButton(Color.FromKnownColor(KnownColor.Control));
         }
 
 
@@ -63,38 +55,8 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             // use Color.FromArgb arguements: Alpha 255, red chanel of Control (color) dimmed down, same with green channel, blues channels set to 245
             Color myColor = Color.FromArgb(255, Color.FromKnownColor(KnownColor.Control).R - 30, Color.FromKnownColor(KnownColor.Control).G - 10, 245);
 
-            // L138 if one or more of users chosen color RGB, is to high,
-            // and conflicts with our, lightening method of adding a number, and goes out of it max range
-            try
-            {
-                //DrawButton(Color.FromKnownColor(KnownColor.Control));
-                // L138 user chosen color for MyButton, instead of setting a default color (Control)
-                DrawButton(cMyButtonColor);
-            }
-            catch
-            {
-                MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
-            }
-        }
-
-        // L138 Color property for MyButton, user chooses color of MyButton
-        public Color ButtonColor
-        {
-            get { return cMyButtonColor; }
-            set
-            {
-                cMyButtonColor = value;
-                try
-                {
-                    DrawButton(cMyButtonColor);
-                }
-            
-            catch
-            {
-                cMyButtonColor = Color.FromKnownColor(KnownColor.Control);
-                MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
-            }
-            } 
+            // L137 pass blue highlighted augmentation of the Control color into DrawButton
+            DrawButton(myColor);
         }
 
         // L137 copy/paste contents of 'protected override void OnPaint(PaintEventArgs e)'
@@ -150,17 +112,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
         // using our DrawButton method to pass the color in
         private void MyButton1_MouseLeave(object sender, EventArgs e)
         {
-            try
-            {
-                //DrawButton(Color.FromKnownColor(KnownColor.Control));
-                // L138 user chooses MyButton color, instead of setting a default color (Control)
-                DrawButton(cMyButtonColor);
-            }
-            catch
-            {
-                MessageBox.Show("error");
-            }
-            
+            DrawButton(Color.FromKnownColor(KnownColor.Control));
         }
 
         // L137 get rid of the delay when hovering the mouse over the button, for the highlighted color to appear
@@ -173,8 +125,23 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             // L137 pass blue highlighted augmentation of the Control color into DrawButton
             DrawButton(myColor);
         }
+    }
+}
 
-        private void MyButton1_MouseDown(object sender, MouseEventArgs e)
+*/
+
+
+
+
+/*
+To change MyButtons color, when clicked, we will click our UserControl[Design], for MyButton and go into its Event Properties.
+There, we will double click MouseDown, to get to its coding area, and add a method using DrawButton to make a color that is
+orange-ish yellow, for when the button is selected, in the same way we did, for the MouseOver last lesson.  Double click
+MouseDown to create an Event handler for it. Go to its coding area and create the orange color, for the selected MyButton,
+then draw it with the DrawButton() method.
+
+
+		private void MyButton1_MouseDown(object sender, MouseEventArgs e)
         {
             // L138 make color to pass orange highlighted augmentation of the Control color into DrawButton, 
             // use Color.FromArgb arguements: Alpha 255, red chanel of Control (color) dimmed down, same with green channel, blues channels set to 200
@@ -183,5 +150,123 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             // L138 pass orange highlighted augmentation of the Control color into DrawButton
             DrawButton(myColor);
         }
-    }
-}
+*/
+
+
+
+/*
+Next we will create a property Color, for the user to choose a color for MyButton.  Outside of the other methods in MyButton1
+class, we will make this property public and call it MyButtonColor and use the get and set method, to obtain our color.  We
+will need a Color variable to store the value in.
+
+
+		// L138 Color variable for ColorButton property
+        Color cMyButtonColor;
+
+
+
+        // L138 Color property for MyButton, user chooses color of MyButton
+        public Color ButtonColor
+        {
+            get { return cMyButtonColor; }
+            set { cMyButtonColor = value; }
+        }
+*/
+
+
+
+/*
+Now, instead of using our default, 'Control' Color, we can subtitute those areas to use the users chsen color.  So we will
+change the following:
+
+
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            //DrawButton(Color.FromKnownColor(KnownColor.Control));
+            // L138 user chosen color for MyButton, instead of setting a default color (Control)
+            DrawButton(cMyButtonColor);
+
+
+
+		private void MyButton1_MouseLeave(object sender, EventArgs e)
+        {
+            //DrawButton(Color.FromKnownColor(KnownColor.Control));
+            // L138 user chooses MyButton color, instead of setting a default color (Control)
+            DrawButton(cMyButtonColor);
+        }
+*/
+
+
+
+/*
+If you run the Debugger now, without setting the color, it will use the default color 'white', which will cause an error
+because of our use of adding to a RGB value. 
+
+'System.ArgumentException: 'Value of '-13' is not valid for 'red'. 'red' should be greater than or equal to 0 and less than 
+or equal to 255.'
+
+White, and other colors that have one of its RGB values at its upper most value, 255, will start going into the negative numbers, 
+to represent the color change, when a number is added to it.  So we will make a try statement, so the user will correct the choice 
+of the color, to a acceptable value;  a color that will not cause an error.
+
+
+This works but was NOT in the lesson:
+
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L138 if one or more of users chosen color RGB, is to high,
+            // and conflicts with our, lightening method of adding a number, and goes out of it max range
+            try
+            {
+                //DrawButton(Color.FromKnownColor(KnownColor.Control));
+                // L138 user chosen color for MyButton, instead of setting a default color (Control)
+                DrawButton(cMyButtonColor);
+            }
+            catch
+            {
+                MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
+            }
+        }
+
+
+
+The correct way to accomplish this;  the way it was done in the lesson DID NOT WORK:
+
+
+
+public Color ButtonColor
+        {
+            get { return cMyButtonColor; }
+
+            // L138 user chosen color for MyButton, instead of setting a default color (Control)
+            set
+            {
+                cMyButtonColor = value;
+
+                // L138 if one or more of users chosen color RGB, is to high,
+                // and conflicts with our, lightening method of adding a number, and goes out of it max range
+                try
+                {
+                    DrawButton(cMyButtonColor);
+                }
+                catch
+                {
+                    cMyButtonColor = Color.FromKnownColor(KnownColor.Control);
+                    MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
+                }
+            }
+            // L138 set value to cMyButtonColor
+            //set { cMyButtonColor = value; }
+        }
+
+
+*/
+
+
+
+
+
+
+/************************************* NO highlights from the comments area *******************************/
