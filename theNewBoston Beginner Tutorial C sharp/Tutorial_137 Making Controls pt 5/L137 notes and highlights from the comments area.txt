@@ -1,0 +1,250 @@
+﻿/*
+Continuing with this series on UserControls and our button, 'MyButton1', we will need all the items from our prevoious
+tutorials, for this lesson.  In this lesson, we will make our button change to a different color, when a mouse hovers
+over it.
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt_1
+{
+    public partial class MyButton1 : UserControl
+    {
+        public MyButton1()
+        {
+            InitializeComponent();
+        }
+
+        // L136 string to hold text (instead of using a label)
+        string sText = "";
+
+        // L133 type 'overide OnPaint'  then click 'Enter' button to grnerate the rest of the Overide code
+        // overrides the  use of the drawing method from the UserControl class, use our own drawing
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are base.OnPaint(e);, KnownColor.Transparent works also
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height);
+
+            // L135 change the existing color setting of our SolidBrush Instance, to darker color (too dark)
+            //Isb.Color = Color.FromKnownColor(KnownColor.ControlDark);
+
+            // L135 the color is layered upon the original color of Isb, making it a darker shade
+            Isb.Color = Color.FromKnownColor(KnownColor.ControlLight);
+
+            // L135 shade bottom half of button,
+            Ig.FillRectangle(Isb, 0, this.Height / 2, this.Width, this.Height / 2);
+
+            // L134 center our labels location in the button, x width and y heigth
+            //label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
+
+            // L136 create A float Points to align our text coordinates in our form
+            PointF fPoint = new Point((this.Width / 2 - (sText.Length * sText.Length / 2)) , (this.Height / 2) - sText.Length);
+
+            // L136 create FontFamily property for Font ff arguement
+            FontFamily fFamily = new FontFamily("Arial");
+
+            // L136 create font properties, 'FontFamily' is Font prototype for our first arguement, text size
+            Font fFont = new System.Drawing.Font(fFamily, 8);
+
+            // L136 change our solidbrush color value to black
+            Isb.Color = Color.Black;
+
+            // L136 the draw string method using graphic to draw the string, aguements: 
+            // string name, font property name, float Point name
+            Ig.DrawString(sText, fFont, Isb, fPoint);
+        }
+        /*
+        // L 134 create label1 property, to enable changing of label1 text.
+        public string ButtonText
+        {
+            get { return label1.Text; }
+            set { label1.Text = value; }
+        }
+        */
+        // L 136 draw string text, to enable changing of string sText. (instead of using label)1
+        public string ButtonText
+        {
+            get { return sText; }
+            set { sText = value; }
+        }
+    }
+}
+*/
+
+
+
+
+/* 
+First we will click on our, MyButton, to select it, and go into our properties.  In our Event properties, we will double click 
+on MouseHover, to add some code for it into our MyButton1 class.  Instead of copy pasting all the code from:
+protected override void OnPaint(PaintEventArgs e)
+into our:
+private void MyButton1_MouseHover(object sender, EventArgs e)
+We will create a statement, that does this, and be able to call it, in multiple areas.  We will name out statement:
+void DrawColor(Color, c)
+
+
+
+        // copy/ contents of 'protected override void OnPaint(PaintEventArgs e)' pasted/ here
+        // takes care of drawing on MyButton, passes in color c
+        void DrawButton(Color c)
+        {
+            // L133 generated code, to be replaced by the creation of instance of solidBrush, fromknowncolor, 
+            // Control is the grey blue color controls generally are base.OnPaint(e);, KnownColor.Transparent works also
+            SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L133 create instance for graphics in this meaning this class MyButton
+            Graphics Ig = this.CreateGraphics();
+
+            // L133 use graphics instance to paint our rectangle button from top left
+            // and fill its width and heigth, using 'this' (MyButton)
+            Ig.FillRectangle(Isb, 0, 0, this.Width, this.Height);
+
+            // L135 change the existing color setting of our SolidBrush Instance, to darker color (too dark)
+            //Isb.Color = Color.FromKnownColor(KnownColor.ControlDark);
+
+            // L135 the color is layered upon the original color of Isb, making it a darker shade
+            Isb.Color = Color.FromKnownColor(KnownColor.ControlLight);
+
+            // L135 shade bottom half of button,
+            Ig.FillRectangle(Isb, 0, this.Height / 2, this.Width, this.Height / 2);
+
+            // L134 center our labels location in the button, x width and y heigth
+            //label1.Location = new Point((this.Width / 2) - label1.Width / 2, (this.Height / 2) - label1.Height / 2);
+
+            // L136 create A float Points to align our text coordinates in our form
+            PointF fPoint = new Point((this.Width / 2 - (sText.Length * sText.Length / 2)), (this.Height / 2) - sText.Length);
+
+            // L136 create FontFamily property for Font ff arguement
+            FontFamily fFamily = new FontFamily("Arial");
+
+            // L136 create font properties, 'FontFamily' is Font prototype for our first arguement, text size
+            Font fFont = new System.Drawing.Font(fFamily, 8);
+
+            // L136 change our solidbrush color value to black
+            Isb.Color = Color.Black;
+
+            // L136 the draw string method using graphic to draw the string, aguements: 
+            // string name, font property name, float Point name
+            Ig.DrawString(sText, fFont, Isb, fPoint);
+        }
+/*
+
+
+
+
+/*
+We will now have to update our methods, in our ColorButton statement to use what color is being passed through, by Color c.
+First we will change our instance of SolidBrush from using 'Color.FromKnownColor(KnownColor.Control)' to the passed in value
+of 'c'
+
+
+            //SolidBrush Isb = new SolidBrush(Color.FromKnownColor(KnownColor.Control));
+
+            // L137 use passed in color 'c'
+            SolidBrush Isb = new SolidBrush(c);
+*/
+
+
+
+/*
+Next we will change the color hue, for the bottom half of MyButton1, by changing the ARGB of the 'c' color being passed in.
+First, we figure out, the difference, in our ARGB map between our color 'Control' and our bottom color 'DarkControls' red
+color chanel; which is 13, in thier difference.  Then we will subtract 13 from our 'Control' (colors'), RGB channels, to get
+a darker shade.  The Alfa channel remaians at its max amount, which is 255.  The RGB are passed in using color c, and the
+chanels subtracted.
+
+
+			// L135 the color is layered upon the original color of Isb, making it a darker shade
+            //Isb.Color = Color.FromKnownColor(KnownColor.ControlLight);
+            // L137 darken passed in color by subtracting from its ARGB, arguements: 
+            // Alpha 255, passed in color.R (Red) - 13, color.G(reen)-13, color.B(lue)-13
+            Isb.Color = Color.FromArgb(255, c.R - 13, c.G - 13, c.B - 13);
+
+
+*/
+
+
+/* 
+Next we will pass in our color, 'Control', from our protected override void OnPaint(PaintEventArgs e) to our DrawButton
+statement, and run the debugger, to make sure this works.
+
+
+		// L136 use DrawButton statement to pass in our color 'Control'
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            DrawButton(Color.FromKnownColor(KnownColor.Control));
+        }
+*/
+
+
+/*
+Now, we will get to the changing of MyButtons change of color, when huvering the mouse over it.  We will use the DrawButton
+method to pass in the Control, color, and changr the RGB, as we did previously, to change it to a blueish tint.  Click
+debug to check your work.
+
+
+        // L137 change color when mouse hovers over button
+        private void MyButton1_MouseHover(object sender, EventArgs e)
+        {
+            // L137 make color to pass blue highlighted augmentation of the Control color into DrawButton, 
+            // use Color.FromArgb arguements: Alpha 255, red chanel of Control (color) dimmed down, same with green channel, blues channels set to 245
+            Color myColor = Color.FromArgb(255, Color.FromKnownColor(KnownColor.Control).R - 30, Color.FromKnownColor(KnownColor.Control).G - 10, 245);
+
+            // L137 pass blue highlighted augmentation of the Control color into DrawButton
+            DrawButton(myColor);
+        }
+*/
+
+
+/*
+As you may have noticed, the button stays highlighted.  Next we will click UserControl1[Design] to go into the Event 
+properties again. In the Events properties, double click, MouseLeave, to create the code, to change the color back to
+'Control', when the mouse is no longer hovering over MyButton.
+
+
+		// L137 return MyButton color back to the color "Control".
+        // using our DrawButton method to pass the color in
+        private void MyButton1_MouseLeave(object sender, EventArgs e)
+        {
+            DrawButton(Color.FromKnownColor(KnownColor.Control));
+        }
+
+*/
+
+
+
+/* 
+There is a slight delay when the mouse is hovering over the button, befor it changes.  We will go once more into the
+UserControl1[Design] Event properties and double click the MouseEnter to generate our code and once again enter our
+highlighted blue-ish color, so that there is no delay.
+
+
+        // L137 get rid of the delay when hovering the mouse over the button, for the highlighted color to appear
+        private void MyButton1_MouseEnter(object sender, EventArgs e)
+        {
+            // L137 make color to pass blue highlighted augmentation of the Control color into DrawButton, 
+            // use Color.FromArgb arguements: Alpha 255, red chanel of Control (color) dimmed down, same with green channel, blues channels set to 245
+            Color myColor = Color.FromArgb(255, Color.FromKnownColor(KnownColor.Control).R - 30, Color.FromKnownColor(KnownColor.Control).G - 10, 245);
+
+            // L137 pass blue highlighted augmentation of the Control color into DrawButton
+            DrawButton(myColor);
+        }
+*/

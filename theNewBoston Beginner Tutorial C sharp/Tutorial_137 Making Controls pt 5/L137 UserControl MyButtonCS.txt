@@ -121,3 +121,25 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
         }
     }
 }
+
+
+
+
+
+
+/***************************** Highlights from the comments area **************************/
+
+
+
+
+
+
+
+I believe this is what he changes it to in the next tutorial BTW:
+If the color is blinking try using the MouseEnter eventhandler instead of the hover one, it works quicker. same code 
+otherwise. 
+
+
+
+
+ctrl r+m creates a method with the selected text
