@@ -74,12 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,9 +409,8 @@
     <Content Include="Tutorial_137 Making Controls pt 5\L137 UserControl MyButtonCS.txt" />
     <Content Include="Tutorial_138 Making Controls pt 6\L138 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_138 Making Controls pt 6\L138 UserControl MyButtonCS.txt" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 UserControl OveridesCS .txt" />
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -443,9 +436,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="theNewBoston Beginner Tutorial C sharp_TemporaryKey.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />

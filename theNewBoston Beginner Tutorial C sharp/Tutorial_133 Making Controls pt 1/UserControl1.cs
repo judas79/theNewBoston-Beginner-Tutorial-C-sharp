@@ -26,6 +26,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
         // L136 use DrawButton statement to pass in our color 'Control'
         protected override void OnPaint(PaintEventArgs e)
         {
+     
             // L138 if one or more of users chosen color RGB, is to high,
             // and conflicts with our, lightening method of adding a number, and goes out of it max range
             try
@@ -36,8 +37,15 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             }
             catch
             {
+
                 MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
+                // NOT in lesson, the try statement did not work out so we reverted to this: 
+                // to continue learning in tutorial 139(Next)
+                DrawButton(Color.FromKnownColor(KnownColor.Control));
             }
+            
+
+            
         }
 
 
@@ -74,6 +82,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_133_Making_Controls_pt
             catch
             {
                 MessageBox.Show("Choose a color value, who's RGB value is in a lower range than RGB = 255,255,255");
+                // NOT in lesson, the try statement did not work out so we reverted to this: 
+                // to continue learning in tutorial 139(Next)
+                //DrawButton(Color.FromKnownColor(KnownColor.Control));
             }
         }
 
