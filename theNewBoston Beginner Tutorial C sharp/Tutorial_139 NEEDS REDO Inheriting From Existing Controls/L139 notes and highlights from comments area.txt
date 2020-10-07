@@ -1,0 +1,44 @@
+﻿/*
+For this tutorial, we will first create another UserContol, we named it UserControl2.  To create it we went into our 'Project'
+tab, in the main menu, and clicked on 'Add User Control...', then named it at the bottom of the dialogbox.  Then we right 
+clicked on the UserControl.cs[Design] and chose, <> view code, to go into the coding area.
+In our last group of UserContol MyButton tutorials, our button only inherited from the UserControl class.  In this lesson we
+will inherit from the button class, instead, as to change or overwrite certain properties, within the button class.  In the
+new UserControl2, we just created, go to the ToolBox and drag in one of 'MyButton'.  So now we can change:
+
+public partial class UserControl2 : UserControl
+ to:   
+public partial class UserControl2 : Button
+
+and inherit from the Button class, in MyButton.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_139_Inheriting_From_Existing_Controls
+{
+    //public partial class UserControl2 : UserControl
+    // L139 inherit from the Button class, instead of from UserControl class
+    public partial class UserControl2 : Button
+    {
+        public UserControl2()
+        {
+            InitializeComponent();
+        }
+
+
+/*
+So now we can overide proerties of the Button Class of MyButton.  For instance we can change the Text, of our button
+*/
+
+    }
+}
