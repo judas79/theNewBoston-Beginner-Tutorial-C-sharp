@@ -74,6 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlashScreen.Designer.cs">
+      <DependentUpon>FlashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +423,14 @@
     <Content Include="Tutorial_138 Making Controls pt 6\L138 UserControl MyButtonCS.txt" />
     <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 UserControl OveridesCS .txt" />
+    <Content Include="Tutorial_140 Splash Screen\L140 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_140 Splash Screen\L140 form1CS ProgramCS and splashscreenCS.txt" />
+    <EmbeddedResource Include="FlashScreen.resx">
+      <DependentUpon>FlashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>

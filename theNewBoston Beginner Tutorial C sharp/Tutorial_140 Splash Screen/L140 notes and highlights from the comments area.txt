@@ -1,0 +1,171 @@
+﻿/*
+This lesson will show how to make a splash screen, that will load and display before the form does.  The splashscreem is used
+to show a image of some sort, or to inform the user of something, like, the application is loading, please wait.  Spahscreens 
+are a type of form, that have a timer, to close them after displaying for a set time period, before the form loads.
+
+First create a form, if you already have not, and then create a second form, which we will name FlashScreen.cs.  Then in our
+SplasScreen properties we will go over to 'Form Border Style' and set it to 'none', so that there is no defined border on our 
+SplashScreen.  On this splashscreen we will only be using a picturebox, so it will look best for a picture without prominent
+borders.  Next drag a 'PictureBox' into your SpalshScreen from your toolbox.  Then click on the little sideways, black triangle
+at the left top side of you PictureBox and browse to an image you want to use, as your splash screen.  Generally, the image
+would consist of elements to tell the user something about  what is going on at this time, while the app is loading.  Now we 
+can right click on our SplashScreen Design, and choose to <>viewcode, just to take a look.  
+
+So what we want, is to show this code for two seconds, the load our main form1.cs.  So go back to the SplashScreen design and
+highlight the SplashScreen and go into the Event properties and double click 'Shown', and the code area will popup in the 
+our editor. Outside of the methods, in our spashscreen  code area, we will first create a variable for a timer, named tm.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_140_Splash_Screen
+{
+    public partial class FlashScreen : Form
+    {
+        public FlashScreen()
+        {
+            InitializeComponent();
+        }
+
+        // L140 set up timer variable
+        Timer tm;
+
+
+
+/*
+Next, inside of the FlashScreen_Shown mehthod we will finish making our tm variable into a instance of time.  Then we will
+set the time interval for, our instance, to two seconds, but in milliseconds;t which VS timer uses for time.  Then we will start
+our timer.  After all that, we will create a timer Event, for it to show.  Last, we will hide the splashscreen, so the user only
+sees the form1.
+*/
+
+
+
+        // L140 generated when creating the Event 'Shown' (above)
+        private void Tm_Tick(object sender, EventArgs e)
+        {
+            // L140 we will replace this generated code
+            //throw new NotImplementedException();
+
+            // L140 This will stop the spashscreen after the interval is up
+            // this will stop the splashscreen from showing
+            tm.Stop();
+
+            // L140 create a instance of form1
+            Form1 If1 = new Form1();
+
+            // L140 show form1
+            If1.Show();
+
+            // L140 hide this splashscreen
+            this.Hide();
+        }
+    }
+}
+
+
+
+/*
+Even though we have completed our code for our spashscreen, we still can't debug, until we make it so that it will popup before
+the form1 does.  So, from our Solution Explorer, we will double click our 'Program.cs' class, to make a few changes.  Instead 
+of running Form1 first we will set it to run our splashscreen 'FlashScreen' first.
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()   // original code
+
+        // L97 added a string array to the main to pass to the file being opened
+        //static void Main(string[] files)  
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // L97 for each file opened, create a form1, and pass in s to form1
+            //foreach(string s in files)
+            //Application.Run(new Form1(s));
+            //Application.Run(new Form1());
+
+            // L140 run FlashScreen first
+            Application.Run(new FlashScreen());
+        }
+    }
+}
+
+
+*/
+
+
+/*
+Last, we will make all other forms, than Form1 to exit.  The FlashScreen, as of not was closed but not terminated.  For that 
+we will highight our Form1 [Design] and go into its Event Properties and double click 'FormClosed'.  In the code area for our
+Form1_FormClosed, we will type 'Application.Exit();  which will close them all. 
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_140_Splash_Screen
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L140 exit FlashScreen and any other forms, other than Form1
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+    }
+}
+*/
+
+
+
+
+
+/***************************** higlights from the comments area ********************************/
+
+
+
+
+
+
+
+
+Very nice series of tutorials, I learned alot! Is it possible to add a custom (graphical) progress bar?
+
+
+there's an easy way of doing that. Every form has a property "StartPosition", just set it to "CenterScreen".

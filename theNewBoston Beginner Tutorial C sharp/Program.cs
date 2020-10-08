@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace theNewBoston_Beginner_Tutorial_C_sharp
@@ -19,12 +19,14 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            // L140 run FlashScreen instead of form1
+            Application.Run(new FlashScreen());
             // L97 for each file opened, create a form1, and pass in s to form1
             //foreach(string s in files)
-                //Application.Run(new Form1(s));
+            //Application.Run(new Form1(s));
+            //Application.Run(new Form1());
 
-            Application.Run(new Form1());
+
         }
     }
 }
