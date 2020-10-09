@@ -424,8 +424,8 @@
     <Content Include="Tutorial_137 Making Controls pt 5\L137 UserControl MyButtonCS.txt" />
     <Content Include="Tutorial_138 Making Controls pt 6\L138 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_138 Making Controls pt 6\L138 UserControl MyButtonCS.txt" />
-    <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 notes and highlights from comments area.txt" />
-    <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 UserControl OveridesCS .txt" />
+    <Content Include="Tutorial_139 NEEDS REVIEW Inheriting From Existing Controls\L139 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_139 NEEDS REVIEW Inheriting From Existing Controls\L139 UserControl OveridesCS .txt" />
     <Content Include="Tutorial_140 Splash Screen\L140 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_140 Splash Screen\L140 form1CS ProgramCS and splashscreenCS.txt" />
     <Content Include="Tutorial_141 Making a DLL\L141 error when running pre dll.png" />
