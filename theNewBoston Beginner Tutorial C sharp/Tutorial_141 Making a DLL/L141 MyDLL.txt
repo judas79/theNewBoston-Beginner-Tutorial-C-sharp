@@ -1,0 +1,33 @@
+﻿/*
+L141 This was made in a separate project, not within these tutorials.  Making a .dll will not work, if made in a pre-existing
+project.  The project must be created for the *.DLL, not the other way around, as far as I know...
+*/
+
+using System;
+
+namespace MyDLL
+{
+    // L141 create all the following namespaces below eachother, like this Clients namespace
+    namespace Clients
+    {
+        // L141 changed from Class1 to Client
+        //public class Class1
+        public class Client
+        {
+            // L141 property string Name
+            public string sName
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+            // L141 property integer Age
+            public int iAge
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+        }
+    }
+}

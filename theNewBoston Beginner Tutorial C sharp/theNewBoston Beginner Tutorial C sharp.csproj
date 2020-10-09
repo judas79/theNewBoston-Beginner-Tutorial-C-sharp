@@ -61,6 +61,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyDLL">
+      <HintPath>..\..\MyDLL\MyDLL\bin\Debug\netstandard2.0\MyDLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -425,6 +428,11 @@
     <Content Include="Tutorial_139 NEEDS REDO Inheriting From Existing Controls\L139 UserControl OveridesCS .txt" />
     <Content Include="Tutorial_140 Splash Screen\L140 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_140 Splash Screen\L140 form1CS ProgramCS and splashscreenCS.txt" />
+    <Content Include="Tutorial_141 Making a DLL\L141 error when running pre dll.png" />
+    <Content Include="Tutorial_141 Making a DLL\L141 MyDLL dot Clients.png" />
+    <Content Include="Tutorial_141 Making a DLL\L141 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_141 Making a DLL\L141 MyDLL.txt" />
+    <Content Include="Tutorial_141 Making a DLL\L141 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

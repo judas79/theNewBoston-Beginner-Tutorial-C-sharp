@@ -1,0 +1,134 @@
+﻿/* 
+Be sure to do this tutorial as a new project.  It will not work in an existing project!
+*/
+/*
+In this tutorial we will start from scratch, and create a DLL file.  DLL stands for, dynamic link library, and this one will consist 
+of one or more namespaces.  A Dynamic Link library (DLL) is a library that contains functions and codes, that are in nmespaces, that 
+can be used by more than one program at a time. Once we have created a DLL file, we can use it in many applications.  Another advantage
+of a DLL, is users will not be able to see your code or edit it and is easier to transport, instead of giving people multiple class 
+files.
+
+To create the DLL, click File, New, project, then choose 'class Library' then in the dialog box, give it a name that reflects what it
+has in it;  namespaces, code, icons....  
+
+
+using System;
+
+namespace MyDLL
+{
+    public class Class1
+    {
+    }
+}
+
+
+*/
+
+
+
+/*
+We will next add our namespaces, under the main namespace that was generated in the DLL's creation.  This one we will name Clients.  
+Any other namespaces added to the list, will be below that first one, to keep things organised.  Under the Clients namespace we will
+add a class "Client" instead of Class1, that was generated when creating the class library file.  
+
+
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp.Tutorial_141_Making_a_DLL
+{
+    // L141 create all the following namespaces below eachother, like this Clients namespace
+    namespace Clients
+    { 
+        // L141 changed from Class1 to Client
+        //public class Class1
+        public class Client
+        {
+        }
+    }
+}
+
+*/
+
+
+/*
+In our Client class, we will add some properties.  One string for the Client 'name', and one int for the Client 'Age'.  After we have 
+all that finished, go up to 'File', 'Save as..' to save it to a name, specified by yourself, and not a computer generated name.
+After that, click debug onece, the go up to the Build tab and click 'Build solution'.  Then head over to the Debug tab, and click on
+'Start Debugging'.  You will probaly get an error, but that is expected, (see picture).
+
+Next, so we can see our DLL that we just created, we will open another project, from the past, and open it in a new VS window; so that 
+we have both projects open.  In the solution dialog, look for 'References', and righ click on it.  Then from the pop-out dialog,
+left click 'Add Reference'.  Another dialog box will pop-up; click the 'Browse' option, then click the browse button, at the bottom,
+and go to the folder where you created the MyDLL project.  From that folder, click the rest of the path....
+\MyDLL\bin\Debug\netstandard2.0\
+It will be in the \Debug\ folder, or in my case the \netstandard2.0\, depending on the version of VS you are using.  Mine is VS
+2017 comunity version.
+
+When you see your dll, click it once and the click the add button to add the dll then the ok button to complet the addition to the 
+project, that you opened.  When I added mine, it also added a bunch of different System.* references, as well as MyDLL to my solution
+explorer;  just a heads up...
+
+Now, to use our dll in a solution form, or other item, we can add the dll, as we did the system dll's at the top of our pages.
+....
+using System.Threading.Tasks;
+using MyDLL;
+
+To see the sub namespaces in 'using MyDLL;', we can put a period at the end of MyDLL. and then Clients should show up (see Picture).
+*/
+
+/*
+Next, in that second project we opened, we will add a form, with a button.  If you haven't already, add the MyDll.Clients at the 
+top.  Then in the code area for the button, we will make an instance for Cients and call it Ic.  Then we will enable the form to 
+add values  for our Name and Age properties.  Then we will check, to confirm that it works using a messagebox.
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MyDLL.Clients;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L140 exit FlashScreen and any other forms, other than Form1
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L141 add instance of Clients (MyDLL.Clients;
+            Client Ic = new Client();
+
+            // L141 add name and age values for the Clients properties
+            Ic.sName = "Roddy";
+            Ic.iAge = 59;
+
+            //  not in lesson, view results.
+            MessageBox.Show("Name is: \t" + Ic.sName + "\nAge is: \t" + Ic.iAge );
+        }
+    }
+}
+
+
+*/
+
+
+
+
+
+
+
+/*********************** NO highlights from the comments area ************************/
