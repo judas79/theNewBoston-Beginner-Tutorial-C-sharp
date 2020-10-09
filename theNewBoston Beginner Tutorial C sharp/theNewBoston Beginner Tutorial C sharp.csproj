@@ -433,6 +433,12 @@
     <Content Include="Tutorial_141 Making a DLL\L141 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_141 Making a DLL\L141 MyDLL.txt" />
     <Content Include="Tutorial_141 Making a DLL\L141 form1CS.txt" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 form1 cannot use Client   internal class Client.png" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 form1 cannot use property sName   because set to internal sName.png" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 MyDLL we can access property sName in MyClass.png" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 MyDLL.txt" />
+    <Content Include="Tutorial_142 Internal Access Modifier\L142 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

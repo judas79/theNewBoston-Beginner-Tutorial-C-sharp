@@ -1,0 +1,51 @@
+﻿using System;
+
+namespace MyDLL
+{
+    // L141 create all the following namespaces below eachother, like this Clients namespace
+    namespace Clients
+    {
+        // L141 changed from Class1 to Client, then L142 to internal, 
+        // L142 then back to public in the 2nd half of lesson
+        //public class Class1
+        //public class Client
+        //internal class Client
+        public class Client
+        {
+            // L141 property string Name, L142 change to internal
+            //public string sName
+            internal string sName
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+            internal int iCount;
+            // L141 property integer Age
+            public int iAge
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+            // L142 property integer Email
+            public int sEmail
+            {
+                // L142 method to get the name
+                get;
+                set;
+            }
+        }
+    }
+    // L142 create class outside of the Client class, 
+    // to demonstrate use of being outside of the internal class Client
+    class MyClass
+    {
+        // L142 method to use Clients namespace to access the internal Client class for MyClass
+        void MyMethod()
+        {
+            Clients.Client clnt = new Clients.Client();
+            clnt.iCount = 3;
+        }
+    }
+}

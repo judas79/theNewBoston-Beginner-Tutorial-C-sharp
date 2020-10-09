@@ -1,0 +1,96 @@
+﻿/*
+For this lesson we will be using all the code from the prior lesson, to learn about the Internal Access Modifier.  Here is a list 
+all the access modifiers in C#:
+
+public: The type or member can be accessed by any other code in the same assembly or another assembly that references it.
+
+private: The type or member can be accessed only by code in the same class or struct.
+
+protected: The type or member can be accessed only by code in the same class, or in a class that is derived from that class.
+
+internal: The type or member can be accessed by any code in the same assembly, but not from another assembly.
+
+protected internal: The type or member can be accessed by any code in the assembly in which it's declared, or from within a 
+derived class in another assembly.
+
+private protected: The type or member can be accessed only within its declaring assembly, by code in the same class or in a type 
+that is derived from that class.
+
+The internal access modifier can only be accessed from within the project in which it resides.  The first thing we will do, is add
+another method to our MyDLL file, in the other project, we created last tutorial.  We will add another property, named email, as 
+we did for Name and Age.
+
+
+using System;
+
+namespace MyDLL
+{
+    // L141 create all the following namespaces below eachother, like this Clients namespace
+    namespace Clients
+    {
+        // L141 changed from Class1 to Client
+        //public class Class1
+        public class Client
+        {
+            // L141 property string Name
+            public string sName
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+            // L141 property integer Age
+            public int iAge
+            {
+                // L141 method to get the name
+                get;
+                set;
+            }
+            // L142 property integer Email
+            public int sEmail
+            {
+                // L142 method to get the name
+                get;
+                set;
+            }
+        }
+    }
+}
+
+*/
+
+
+/*
+In the stand alone Project of our DLL that we made....
+The first thing we will try changing is the Client class.  We will change it from Public, to Internal.  Even though our Client 
+class is not internal, we can still access this, if we create another class, using its namespace.  So outside of the Client class
+we will create another class named MyClass, to demonstrate this.  In MyClass we will make a method to inform the compiler, that
+MyClass is not in the Client namespace to use the Clients namespace, by creating a instance.  To initiate this click save then
+debug, to save the changes.  Again, ignore the error, that pops up.
+
+Now if you go to the other project file with the form1 and type 'Client' you will notice that it is no longer an option to use.
+
+*/
+
+
+/*
+We can also apply the internal Access Modefier to members of fields as well, like properties, Events, methods, or an indexer.
+We will first change our Client class back to public, the change our public sName property to internal.  Click save and debug
+to implement changes...again, ignore popup error during debugging.
+Now we can only access our sName property internally, in our MyClass class in our MyDLL file.  We cannot access sName in form1.
+*/
+
+/*
+We can also set variables to internal, and they will only be accessable in the project they are in.  We will set a integer count
+to internal in our MyDLL projct file.  Remember to always save and debug, to initiate changes.
+As before it will work in our MyDLL but not in form1.
+A final note:  when the VS editor pops up the field you are looking for, internal fields will have a small enveope icon on the
+left side of the name of that field or in VS 2017 a small heart icon.
+*/
+
+
+
+
+
+
+/*************************** NO highlights from the comments area **************************/
