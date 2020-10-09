@@ -1,4 +1,9 @@
 ﻿/*
+Be-Aware
+For some unknow reason, this tutorial would never show the form1 screen, only the splash screen and the splash screen would not
+hide after the 2 seconds, that we set the timer to, where up.  We then made the project again, as its own separate project, and 
+everything worked as intended.
+/*
 This lesson will show how to make a splash screen, that will load and display before the form does.  The splashscreem is used
 to show a image of some sort, or to inform the user of something, like, the application is loading, please wait.  Spahscreens 
 are a type of form, that have a timer, to close them after displaying for a set time period, before the form loads.
