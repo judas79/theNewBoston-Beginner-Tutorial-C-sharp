@@ -1,0 +1,73 @@
+﻿/*
+In this lesson we will need a form1 code area, to practice ways of commenting and uncommenting code, or just making a comment. 
+We will also go over, the way to give descriptions of your methods, or properties you have made, that will pop up in the editor
+when you are in that project.
+
+Comments are good to have, to remind yourself, what the code is or does, and for others, that may use it in the future.  I use
+it to explain the methods of doing certain things, or code syntax, as a reference, to go back to, if that code is needed in a
+project and as a reference for others that may be learning C#.
+
+Compilers, ignore the code that is commented out, so the comment is made for others and not the running of code.  The first example,
+of making a comment, and the most common is the double forward slash //.  It comments out whatever is written after it, in a line.
+
+// This line is commented out
+
+string MyString;  // 'string MyString;' is not commented out but the rest of this line is
+
+For more than a couple lines of comments its best to us a forward slash asterisk /*  After the 
+
+/* after this, until the end of the commented out area will be commented out
+* we can use an asterisk in between the begining of the comment area and the end for new lines
+* then at the end of the comment we finish with a asterisk forward slash 
+*/
+
+After you type the /* to start your comment, most code editors will generate the asterisk for you, when you press enter
+* and start a new line
+*/
+
+If you already have code written, and want to comment it out, so it will not run you can simply add a /* at the start and a */ at
+the end of your code.
+/*
+private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+*/
+
+There is also a comment un-comment icon button in the VS Main Menu you can use to comment or uncomment with.  Highlight the area you 
+want to turn into a comment, by selecting it, the click the icon.  Click the other icon next to it to revert back.  See included image.
+
+
+Sometimes, when we create a property, variable, method or other item, in VS, we will want to have a description, when it pops up in
+the editor, like the built in items have.  This is accomplish by 3 forward slashes ///.  For instance, in our editor if we type in
+int to create an integer, a popup tells you its a 32 bit number...  We can do that for almost anything we make in the VS app.  So
+we will type 3 ///, just before an int variable 'testDescription', in our form1, and this should generate some code for us.
+
+/// <summary>
+/// Write your description here of what 'testDescription' does
+/// </summary>
+int testDescription;
+
+You may have to write this out /// <    and choose summary from the list, but it will generate the rest.  See picture to see
+what pops up when testDescription is typed into the code area.  This can be done for internal variables as well.
+
+If we do this for a method, and have a parameter, a parameter area will also be generated to add a description of the parameters
+after you add the first parenthesis:
+See picture of testParameter to see the popup in the VS editor.
+
+        /// <summary>
+        /// change a persons name
+        /// </summary>
+        /// <param name="s is the string name"></param>
+        void testParameter(string s)
+        {
+
+        }
+*/
+
+
+
+
+
+
+/************************** NO highlights from the comments area *****************************/

@@ -23,18 +23,33 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         {
             Application.Exit();
         }
+        /// <summary>
+        /// testDescription is an int variable we are using to see this description
+        /// </summary>
+        int testDescription;
 
+        /// <summary>
+        /// change a persons name
+        /// </summary>
+        /// <param name="s is my string for name"></param>
+        void testParameter(string s)
+        {
+            testDescription = 12;
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            
             // L141 add instance of Clients (MyDLL.Clients;
             Client Ic = new Client();
 
             // L141 add name and age values for the Clients properties
-            Ic.sName = "Roddy";
+            //Ic.sName = "Roddy";
             Ic.iAge = 59;
 
             //  not in lesson, view results.
-            MessageBox.Show("Name is: \t" + Ic.sName + "\nAge is: \t" + Ic.iAge );
+            //MessageBox.Show("Name is: \t" + Ic.sName + "\nAge is: \t" + Ic.iAge );
+           
         }
     }
 }

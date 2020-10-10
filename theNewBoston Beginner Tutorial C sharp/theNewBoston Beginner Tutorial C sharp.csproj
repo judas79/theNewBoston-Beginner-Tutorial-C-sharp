@@ -439,6 +439,10 @@
     <Content Include="Tutorial_142 Internal Access Modifier\L142 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_142 Internal Access Modifier\L142 MyDLL.txt" />
     <Content Include="Tutorial_142 Internal Access Modifier\L142 form1CS.txt" />
+    <Content Include="Tutorial_143 Comments and Descriptions\L143 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_143 Comments and Descriptions\L143 red arrows show comment  un-comment for selected code.png" />
+    <Content Include="Tutorial_143 Comments and Descriptions\L143 testDescription popup describes it.png" />
+    <Content Include="Tutorial_143 Comments and Descriptions\L143 testParameter adds descrition area and generates a parameter or parameters.png" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
