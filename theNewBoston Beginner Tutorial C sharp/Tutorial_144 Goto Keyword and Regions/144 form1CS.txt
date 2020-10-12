@@ -64,6 +64,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         int i = 0;
         string s = "";
         bool b = true;
+		// hide a large comment
         #endregion
     }
 }
