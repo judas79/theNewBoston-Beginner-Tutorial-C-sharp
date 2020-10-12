@@ -443,6 +443,10 @@
     <Content Include="Tutorial_143 Comments and Descriptions\L143 red arrows show comment  un-comment for selected code.png" />
     <Content Include="Tutorial_143 Comments and Descriptions\L143 testDescription popup describes it.png" />
     <Content Include="Tutorial_143 Comments and Descriptions\L143 testParameter adds descrition area and generates a parameter or parameters.png" />
+    <Content Include="Tutorial_144 Goto Keyword and Regions\L144 MyRegion hidden variables.png" />
+    <Content Include="Tutorial_144 Goto Keyword and Regions\L144 MyRegion NOT hidden variables.png" />
+    <Content Include="Tutorial_144 Goto Keyword and Regions\L144 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_144 Goto Keyword and Regions\144 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

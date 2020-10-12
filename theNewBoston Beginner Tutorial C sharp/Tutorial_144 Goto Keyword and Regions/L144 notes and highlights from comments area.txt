@@ -1,0 +1,133 @@
+﻿/*
+In this tutorial we will need to set up form1, with a button.  In the buttons code area, we will set up a switch statement
+with a single case, in it and a string variable, with a name in it.  We will use this to learn about the goto keyword, and Regions.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L144 set up switch example
+            /// <summary>
+            /// "sAdam is a name"
+            /// </summary>
+            string sAdam = "blah";
+            switch (sAdam)
+            {
+                case "sAdam":
+                    MessageBox.Show("Hello");
+                    break;
+                default:
+                    MessageBox.Show("default");
+                    break;
+            } 
+        }
+    }
+}
+
+/*
+In a switch statement, we don't always have to use break;, we can also use a Goto, instead.  A Goto, will allow you to jump to a
+labeled line of code, such as 'case' in the switch statement.  The way we used goto below, the messagebox will popup and say 'default',
+then the goto will popup 'Hello' in the next messagebox.
+
+{
+                case "sAdam":
+                    MessageBox.Show("Hello");
+                    break;
+                default:
+                    MessageBox.Show("default");
+                    // L144 instead of break, we use goto, to jump to case "sAdam":
+                    //break;
+                    goto case "sAdam";
+            } 
+*/
+
+
+
+/*
+We don't always have to jump to something in a case.  We can jump to a label of something directly to ourselves, using  mycode.
+
+
+
+			// L144 jump to ourself label with goto
+            goto MyCode;
+        MyCode:
+            {
+                MessageBox.Show("what?");
+            }
+*/
+
+
+/*
+If you use goto in a for statement, you will only get one messagebox message.  When the goto jumps to 'Mycode2', below, it jumps 
+out of the for statement and doesn't return to it.  If you don't create a 'MyCode2' and goto 'MyCode', instead, the message will 
+repeat forever, because 'MyCode' is before the for statement.
+
+
+            // L144 goto statement in a for statement, jumps out of the for loop,
+            // to 'MyCode2 below, so we only get 1 messagebox message.
+            for( ; ; )
+            {
+                // NOT in lesson, we get infinite messageboxes, 1 at a time if we jump to 'MyCode', above.
+                // We would also have to ommit the MyCode2 block
+                //goto MyCode;
+                goto MyCode2;
+            }
+
+        // L144 if the for statement jumps to MyCode2 it only prints out 1 time
+        MyCode2:
+            {
+                MessageBox.Show("what?");
+            }
+*/
+
+
+/*
+Next we will learn about Regions.  Regions are areas where you hide code.  It creates one of the boxes'[-]' collapsable regions in the
+VS editor, you see on the left hand side of your code window, that collapses a block.  You can click on the - + to toggle the code
+to been viewed.  Its can be used to see a whole bunch of variables, you may have made, or methods you know all work and don't want
+to see, all the time.  You use region by typing #region then a name, and at the end of the region content that you want to hide 
+type: #endregion.  This is good for cleaning up the way your code looks.
+
+
+        // L144 create a #region named MyRegion, to hide my code, variables, the #endregion
+        #region MyRegion
+        int i = 0;
+        string s = "";
+        bool b = true;
+        #endregion
+*/
+
+
+
+
+
+
+
+
+/************************* highlight from the comments area *****************************/
+
+
+
+
+
+u should've specified that regions can hold active code too...
+and goto doesnt need brackets...
