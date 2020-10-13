@@ -447,6 +447,8 @@
     <Content Include="Tutorial_144 Goto Keyword and Regions\L144 MyRegion NOT hidden variables.png" />
     <Content Include="Tutorial_144 Goto Keyword and Regions\L144 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_144 Goto Keyword and Regions\144 form1CS.txt" />
+    <Content Include="Tutorial_145 Capturing Screen\L145 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_145 Capturing Screen\L145 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,0 +1,181 @@
+﻿/*
+For this lesson we will need a form, button and pictureBox, to learn how to capture screen, and take multiple screen shots, to
+produce simulated video.  Click the button to go into the coding area.  First we will setup a bitmap which is a type of image.
+We will use the bitmap to store the screen capture.  First create an instance of a bitmap, which consist of the Screen class, then
+PrimarySceen, which is the main screen that has the taskbar at the bottom, then the WorkingArea, which is all of the area of that 
+screen area, and the width property.  Then we will make the same for the heigth property.
+/*
+
+
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L145 instance of bitmap with width and length overloads, using Screen class,
+            // Primary Screen (screen that has taskbar), WorkingArea(the whole screen) width, heigth properties
+            Bitmap btmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+
+
+
+/*
+Next we will set up our graphics, to diplay our screen capture, by creating an instance of graphics to store the image of our 
+screen capture in our bitmap, we created.
+*/
+
+
+			// L145 instance of graphics, from the screen capture image, store it in bitmap
+            Graphics grphcs = Graphics.FromImage(btmp);
+
+
+/*
+Now, to do the screen capture we will use a method within the capture class.  We will use graphics to use the method CopyFromScreen
+to get the starting point of the screen we want to copy.  This would be the top left corner 0,0.  The we will want to start pasting
+the copy starting at its left top corner; so both are set to empty, We want to capture the working screens entire width and heigth,
+which is its Size.
+*/
+
+
+
+			// capture screen using graphics, using capture method CopyFromScreen, start from Point.Empty from upper top left of screen
+            // Start scaned copy from top left Point.empty, size of screen to capture the width and heigth size
+            grphcs.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
+
+
+
+/*
+Now we can simply copy the image of our main (taskbar) screen stored in our bitmap, to the pictureBox.image for display.  Then
+debug....
+*/
+
+
+			// L145 display screen shot stored in bitmap by setting it equal to the pictureBox1.Image
+            pictureBox1.Image = btmp;
+            }
+
+
+
+/*
+We noticed that the size of our form1 and picturbox1 determine the size of the area of the main screen contents captured.  Make
+a large form1[Design], with a large pciturebox1 in it.  When you debug, resize the compiled form1 to small, then push button1 to 
+get a big screen capture.
+
+Next we will add another button2, to repeatedly capture the screen, to create the illusion of a video.  We will do this using the
+threading dll, and create a method, to hold the code we just finished making, to screen capture.  First we will create a new method
+and call it blah, outside of the button code areas. We will copy all the code that is in button1 and paste it into the method nameed
+'blah'.
+
+
+
+
+		void blah()
+        {
+            // L145 instance of bitmap with width and length overloads, using Screen class,
+            // Primary Screen (screen that has taskbar), WorkingArea(the whole screen) width, heigth properties
+            Bitmap btmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+
+            // L145 instance of graphics, from the screen capture image, store it in bitmap
+            Graphics grphcs = Graphics.FromImage(btmp);
+
+            // L145 capture screen using graphics, using capture method CopyFromScreen, start from Point.Empty from upper top left of screen
+            // Start scaned copy from top left Point.empty, size of screen to capture the width and heigth size
+            grphcs.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
+
+            // L145 display screen shot stored in bitmap by setting it equal to the pictureBox1.Image
+            pictureBox1.Image = btmp;
+		}
+*/
+
+
+
+/*
+Next we will drag in another button into our form1, named button2, and double click it.  First we will add the Treading dll to the
+top of our form1.
+
+using System.Threading;
+
+In our button2 coding area, we will make an instance of threading, and pass in the method, 'blah'.  Then we will start our thread.
+*/
+
+
+		private void button2_Click(object sender, EventArgs e)
+        {
+            // L145 instance of threading pass in method 'blah'
+            Thread thread1 = new Thread(blah);
+
+			// L145 start our thread
+            thread1.Start();
+        }
+
+
+
+/*
+Finally, to make our code, in method blah, repeat forever, we will make a for statement, consisting of only semi-colons, and the 
+squigly lines around our code.
+*/
+
+		void blah()
+        {
+            for(; ; )
+            {
+                // L145 instance of bitmap with width and length overloads, using Screen class,
+                // Primary Screen (screen that has taskbar), WorkingArea(the whole screen) width, heigth properties
+                Bitmap btmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+
+                // L145 instance of graphics, from the screen capture image, store it in bitmap
+                Graphics grphcs = Graphics.FromImage(btmp);
+
+                // L145 capture screen using graphics, using capture method CopyFromScreen, start from Point.Empty from upper top left of screen
+                // Start scaned copy from top left Point.empty, size of screen to capture the width and heigth size
+                grphcs.CopyFromScreen(Point.Empty, Point.Empty, Screen.PrimaryScreen.WorkingArea.Size);
+
+                // L145 display screen shot stored in bitmap by setting it equal to the pictureBox1.Image
+                pictureBox1.Image = btmp;
+            }            
+        }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/****************************** highlights from the comments area *******************************/
+
+
+
+
+
+poor teacher, this doesnt work for multiple screens, the middles screen (which is primary) ccoordinates are not zero, also, non primary screens can have taskbars too
+
+
+
+
+
+omg so i can basically do this.Hide in constructor, do screen capture in infinite for loop and then send those picture to a server via UDP connection and then i can watch 
+live-stream what is happening on somebody screen without him knowing xDDD
+
+
+
+
+how to capture a part of the screen, how set the cordinates for it ?
+
+probably, use timer, set the event on tick, and then set there the method name
