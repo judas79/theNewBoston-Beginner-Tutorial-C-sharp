@@ -1,0 +1,125 @@
+﻿/*
+In this tutorial all we will need is form1, to learn how to make keyboard shortcuts.  In the form1 properties select 'KeyPreview' and
+select 'true'.  Next we will go to the form1 Events, and double click 'KeyDown' and that will take us to the keydown coding area in our
+form1.  We will be using keydown to chick if the Ctrl button has been pressed using the keyEventsArg  e being passed in.  We will use
+the built in property, Control, to see if Ctrl has bee pressed.  We will use 'and' && to see if keyCode 'A' has been pressed also.
+Debug to verify that it works.  It works with lowercase a and Ctrl Shift a.
+*/
+
+
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // L146 use Control property to see if Ctrl has been pressed
+            if (e.Control && e.KeyCode.ToString() == "A")
+                MessageBox.Show("Ctrl and A has been pressed");
+	    }
+
+
+
+/*
+Next we will drag a textBox into our form to see how certain keyword are detected.  There is no KeyPreview, to set to true in the
+TextBox, so we will go to its Events and double click 'KeyDown' and go into it generated code area in form1. We will do exactly the
+code as we did above but for the letter F instead of A.  Use debug to verify.  If you press other letters along with Crtrl F, it 
+will still activate our messagebox.
+*/
+
+
+		private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // L146 use Control property to see if Ctrl has been pressed
+            if (e.Control && e.KeyCode.ToString() == "F")
+                MessageBox.Show("Ctrl and F has been pressed");
+        
+
+
+
+/*
+This will also work for other things like alt and Shift, mixed with other characters or with eachother or alone.  Debug to verify.
+Since Shift is a stand alone option in the code below, the order of alt and shift matter, as to which is detected.
+*/
+
+
+
+			// L146 use Control property to see if Alt has been pressed with letter f
+            if (e.Alt && e.KeyCode.ToString() == "F")
+                MessageBox.Show("Alt and F has been pressed");
+
+            // L146 use Alt property to see if Alt has been pressed and Shift property also
+            if (e.Alt && e.Shift)
+                MessageBox.Show("Alt Shift have been pressed");
+
+            // L146 use Shift property to see if Shift has been pressed
+            if (e.Shift)
+                MessageBox.Show("Shift has been pressed");
+
+        }
+    }
+}
+
+
+
+
+
+
+
+/***************************** highlights from the comments area *************************/
+
+
+
+
+
+Why didn't you just override  boolean ProcessCmdKey function?  Don't get me wrong?  I like your method also, but I'm wondering the
+pro's and cons?  I do know one good thing is with your methods, you have a sender and event, which if u want to just call a click 
+event tied to another button, its easier than having to call a new EventArgs, but in both cases that can lead to sketchy situations
+given the sender will be the key and if that even is looking for the button instead, unforeseen outcomes can occur...anyway, like 
+the post, but if you have time, please answer. Thanks!
+
+
+
+
+
+
+Could you explain for me why I have to press Ctrl + Shift + V instead of Ctrl + V ???
+my code:
+private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            textBox1.Clear();
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                textBox1.Text = "You pressed Ctrl + V";
+            }
+        }
+Thanks in advance!
+
+
+You need to delete "e.Control &&" and just use "e.KeyCode == Keys.V"
+
+
+Question: You are using Ctrl + V. Are you overriding the Paste command usually done in Ctrl + V. If so, how are you doing this?
+
+
+
+
+
+
+
+This worked somewhat but only once. Same code, different program and use and it doesnt work right.
+
+edit: been forgetting to enable keyprieview. works now, thanks!
