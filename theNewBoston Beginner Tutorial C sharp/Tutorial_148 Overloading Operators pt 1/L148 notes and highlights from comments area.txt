@@ -1,0 +1,134 @@
+﻿/*
+In this lesson we will need a button1 and a class named Item, with a public int variable property, get and set, within form1, to 
+learn about Overloading Operators. We will be adding to objects together, to make one item object.  So we will create two item 
+objects the add them together to make a third item object.  
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L148 class, with public int var. property, to get and set
+        class Item
+        {
+            public int iPrice
+            {
+                get;
+                set;
+            }
+
+
+/*
+The first step in creating our public operators, in a a method, within our class 'Items', that are both public and static, which all 
+operators are.  Then we will type, what the two items, we add together, are going to return, which is 'Item.  Next we will type
+'operator' because we will be overloading the operator.  The operator itself is the '+' sign, so that goes next.  Then we will use
+a sort of method in parenthesis, to add the item on the left side of the + operator, to the item on the right side of the + operator.
+Next, between the curly brackets, we will define what item  i3 is.  The first item 'i3' will be the new item, created from adding i1
+and i2 price together.  Then we will return to the get; set; through our property, Price.
+*/
+
+
+
+			// L148 the way to overload the operator '+', and return a new Item, (using method between parenthesis)
+            public static Item operator + (Item i1, Item i2)
+            {
+                // L148 define what item 3  is, create item 3 Price by adding i1 + i2, return item  i3 to get; set; Price
+                Item i3 = new Item();
+                i3.iPrice = i1.iPrice + i2.iPrice;
+                return i3;
+            }
+		}
+	
+
+
+
+/*
+Next we will create instances and set up the values of our item1 and item2 Prices, in our button1 coding area.  Then we will create
+an instance of item3, which is the sum of instances item1 and item2 Prices value.  The item3 object is created using the method.  
+public static Item operator + (Item i1, Item i2) we made earlier.  Finally we will show item3 price in a messagebox window.
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L148 Create instances for item1 and item2, and assign a value to each
+            Item item1 = new Item();
+            Item item2 = new Item();
+            item1.iPrice = 4;
+            item2.iPrice = 5;
+
+            // L148 add item1 and item2 prices, in our 'public static Item operator + (Item i1, Item i2)', to create item3 instance
+            Item item3 = item1 + item2;
+
+            // L148 display item3 Price value in messagebox, converted from int.
+            MessageBox.Show(item3.iPrice.ToString());
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+/***************************** highlights from the comments area ***********************************/
+
+
+
+
+
+
+
+
+I don't think you fully understood what its doing... 
+
+It basically binds the '+' operator when used with items to its own method.
+
+Whenever the '+' sign is used with 2 'item' instances it will jump down and do what's in the 'public static Item operator' method 
+and pass the two 'Item' values to it. This method can then do whatever it wants to these 2 values, in this case it add's them 
+together and returns it..
+
+If a class is being used to add multiple times, this can save a lot of time.
+
+Oh, and it will also allow you to customize what the operator does to the values instead of doing what it usually does 
+(adding them together..)
+
+
+
+
+
+
+
+
+I'll try to explain it how i understand this. 
+This simplifies using any operators in combination with classes,
+This adds a function to an operator to a class instead of accessing the class manually. 
+So using these functions: 
+Console.writeLine(item3.price + item1.price + item2.price);
+will become:
+Console.writeLine(item3 + item1 + item2);
+Which might be usefull in some applications but i dont see why you'd need to use this.
+
+
+
+
+

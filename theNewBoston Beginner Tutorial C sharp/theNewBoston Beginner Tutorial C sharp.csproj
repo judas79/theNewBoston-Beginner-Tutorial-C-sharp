@@ -451,6 +451,8 @@
     <Content Include="Tutorial_145 Capturing Screen\L145 form1CS.txt" />
     <Content Include="Tutorial_146 Making Keyboard Shortcuts\L146 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_146 Making Keyboard Shortcuts\L146 form1CS.txt" />
+    <Content Include="Tutorial_148 Overloading Operators pt 1\L148 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_148 Overloading Operators pt 1\L148 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
