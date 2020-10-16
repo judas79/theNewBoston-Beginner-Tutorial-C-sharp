@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+In this lesson we will need a button1 and a the class named Item, with a public int variable property, get and set, within form1,
+from the last tutorial,to learn more about Overloading Operators. We will be comparing two objects together, to see if the objects
+are greater or less than, and also if they are greater or equal or less than or equal.  So we will create two item objects then 
+compare them to get a bool, of true, if the same or false if not.  
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,6 +60,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 return (i1.iPrice != i2.iPrice) ? true : false;
             }
 
+
+
+/*
+Since we are comparing two items;  using 2 operators, with an < or >, we must overload both, since only overloading one will
+give us an error. We will do the < less than operator first, then the > greater than operator.  As before, we will make our method
+'public static' as all operators are.  Next we add the type of value we are expecting to get, from the comparison, which is
+true or false, a bool.  Next we tell the compiler that we are using an operator for overloading, then the type of operator < or >,
+and last we map out the Items which are being compare, in respect to the < or >, which is item 1i on the right side and i2 on the 
+left side of the operator (< or>).
+The conditional operator ?: , also known as the ternary conditional operator, evaluates a Boolean expression and returns the 
+result.... Last, we will use the ternary operator to determine if it is true or false.
+Then we will doo the exact same thing, but for the greater than operator.
+*/
+
             // L150 operator to compare if 2 items are  <, all operators are public static
             // Type of return will be 'bool', tell compiler operator meaning overloading, with < operator, 
             // parameters (using method between parenthesis) item left of < item on right of the less than comparitor
@@ -68,6 +91,44 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L150 return bool, use ternary operator to determine truth
                 return (i1.iPrice > i2.iPrice) ? true : false;
             }
+
+
+
+/*
+We already have our instances for our items, item1 and item2, and thier values, from the last lesson:
+
+			// L149 instance for each item
+            Item item1 = new Item();
+            Item item2 = new Item();
+
+            // L149 each items price is 5
+            item1.iPrice = 4;
+            item2.iPrice = 5;
+*/
+
+
+
+
+/*
+We only have to create an if, if else statement, to get the bool result, for the comparison of the < or > operators, of the 
+item iPrice  of the two items, in the button1 code area.
+
+
+			// L150 use if statement to see if items are less than or greater than
+            if (item1.iPrice < item2.iPrice) MessageBox.Show("Item1 is less than (<) item2");
+            else if (item1.iPrice > item2.iPrice) MessageBox.Show("Item1 is greater than (>) item2");
+*/
+
+
+
+/*
+Finally, we will do the same thing to create a pair of overriding operators for the less than or equal and the greater than or
+equal operators ( <= and >= ).  Then, last we will create the if statement in the button2 area to do the comparison, and display
+it with messagebox.
+*/
+
+
+
             // L150 operator to compare if 2 items are  <=, all operators are public static
             // Type of return will be 'bool', tell compiler operator meaning overloading, with <= operator, 
             // parameters (using method between parenthesis) item left of <= item on right of the less than comparitor
@@ -85,10 +146,10 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L150 return bool, use ternary operator to determine truth
                 return (i1.iPrice >= i2.iPrice) ? true : false;
             }
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+		private void button1_Click(object sender, EventArgs e)
         {
             // L149 instance for each item
             Item item1 = new Item();

@@ -112,3 +112,10 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+
+
+
+/************************* NO highlights from the comments area *************************/

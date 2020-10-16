@@ -455,6 +455,8 @@
     <Content Include="Tutorial_148 Overloading Operators pt 1\L148 form1CS.txt" />
     <Content Include="Tutorial_149 Overloading Operators pt 2\L149 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_149 Overloading Operators pt 2\L149 form1CS.txt" />
+    <Content Include="Tutorial_150 Overloading Operators pt 3\L150 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_150 Overloading Operators pt 3\L150 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
