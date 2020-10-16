@@ -1,0 +1,114 @@
+﻿/*
+In this lesson we will need a button1 and a the class named Item, with a public int variable property, get and set, within form1,
+from the last tutorial,to learn more about Overloading Operators. We will be comparing to objects together, to see id the objects
+are equal or not.  So we will create two item objects then compare them to get a bool, of true if the same or false if not.  
+*/
+
+
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L148 class, with public int var. property, to get and set
+        class Item
+        {
+            public int iPrice
+            {
+                get;
+                set;
+            }
+            // L148 the way to overload the operator '+', and return a new Item, (using method between parenthesis)
+            public static Item operator + (Item i1, Item i2)
+            {
+                // L148 define what item 3  is, create item 3 Price by adding i1 + i2, return i3 to get; set; Price
+                Item i3 = new Item();
+                i3.iPrice = i1.iPrice + i2.iPrice;
+                return i3;
+            }
+
+
+
+
+/*
+Since we are comparing two items;  using 2 operators, with an == or !=, we must overload both, since only overloading one will
+give us an error. We will do the == equals operator first, then the != not equal operator.  As before, we will make our method
+'public static' as all operators are.  Next we add the type of value we are expecting to get, from the comparison, which is
+true or false, a bool.  Next we tell the comiler that we are using an operator for overloading, then the type of operator ==,
+and last we map out the Items which are being compare, in respect to the ==, which is item 1i on the right side and i2 on the 
+left side of the ==.
+The conditional operator ?: , also known as the ternary conditional operator, evaluates a Boolean expression and returns the 
+result.... Last, we will use the ternary operator to determine if it is true or false.
+*/
+
+
+
+			// L149 operator to compare if 2 items are equal, all operators are public static
+            // Type of return will be 'bool', tell compiler operator meaning overloading, with equal == operator, 
+            // (using method between parenthesis) item left of == item on right ogf the equals comparitor
+            public static bool operator ==(Item i1, Item i2)
+            {
+                // L149 return bool, use ternary operator to determine truth
+                return (i1.iPrice == i2.iPrice) ? true : false;
+            }
+		
+
+
+
+/* 
+Next, we will have to overload the matching operator for equals, which is not equal !=, or we will get an error telling
+us to do so, by the compiler, if we run debug.  We will overload the != operator in the same way we did the == operator.
+*/
+
+
+			// L149 operator to compare if 2 items are not equal, all operators are public static
+            // Type of return will be 'bool', tell compiler operator meaning overloading, with not equal != operator, 
+            // parameters (using method between parenthesis) item left of != item on right ogf the equals comparitor
+            public static bool operator !=(Item i1, Item i2)
+            {
+                // L149 return bool, use ternary operator to determine truth
+                return (i1.iPrice != i2.iPrice) ? true : false;
+            }
+        }
+
+
+
+/*
+Now, go over to your coding area, for button1.  There we will give the two items values to compare.  We will first make an
+instance for each item.  Next give item1 and item2 an equal value, for example 5.
+*/
+
+
+
+
+
+
+/******************************** highights from the comments area ****************************/
+
+
+
+
+
+you could just leave the return statement as "return i1.Price == i2.Price;" because that would evaluate to the value you want 
+anyways.  
+
+
+
+
+
+Up to this point everything was fine and dandy, but in this chapter you are NOT overloading anything cause the operator is doing 
+the same thing it was supposed to. I could be wrong, but Im pretty sure everything would work exactly the same without the 
+overloading methods.
