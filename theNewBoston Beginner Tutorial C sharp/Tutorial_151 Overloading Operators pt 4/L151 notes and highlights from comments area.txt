@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+In this lesson we will need a button1 and a the class named Item, with a public int variable property, get and set, within form1,
+from the last tutorial,to learn more about Overloading Operators. We will be seeing if an operator increments oer not, to see if the 
+object is greater than it was.  So we will create one item object then use increment it as an item.  We will then subtract one to
+see if it incremented or not.
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -85,6 +94,22 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L150 return bool, use ternary operator to determine truth
                 return (i1.iPrice >= i2.iPrice) ? true : false;
             }
+
+
+
+
+/*
+Since we are seeing if '++' increments and not comparing two items, using 2 operators, we do not need to overload its matching 
+operator, '--'.   We will do the ++ increment operator first, then the -- decrament operator.  As before, we will make our method
+'public static' as all operators are.  Next we add the type of value we are expecting to get, from the comparison, which is
+an integer, so we will use 'Item'.  Next we tell the compiler that we are using an 'operator' for overloading, then the type of 
+operator '++', and last we map out the Items which are being compared, in respect to the ++, which is 'item'.
+The conditional operator ?: , also known as the ternary conditional operator, evaluates a Boolean expression and returns the 
+result.... Last, we will use return to determine if the integer has increades.
+Then we will doo the exact same thing, but for the -- decrament  operator.
+*/
+
+
             // L151 operator to compare if item has been incremented ++, all operators are public static
             // Type of return will be an int 'Item', tell compiler operator meaning overloading, with ++ operator, 
             // parameters (using method between parenthesis) item ++ int analyzed to see if incremented
@@ -95,17 +120,44 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 i.iPrice = item.iPrice + 1;
                 return i;
             }
-            // L151 operator to compare if item has been deccremented --, all operators are public static
+
+
+
+/*
+Next we will head over to the button1 code area and create an instance for i and give it an int value.  Then we will
+incrament it  by one using the ++ operator and messagebox the amount incremented.
+
+
+			// L151 instance for item, the give it a value
+            Item i = new Item();
+            i.iPrice = 2;
+
+            // L151  see if the item incramented, by looking at its Price value
+            i++;
+            MessageBox.Show("i has incrementted to " + i.iPrice.ToString());  
+*/
+
+
+ /*
+ Last, we will do the same for the two fields, for the -- operator and the rest of the code from our form1, including 
+ button1:
+ */
+
+
+
+			// L151 operator to compare if item has been deccremented --, all operators are public static
             // Type of return will be an int 'Item', tell compiler operator meaning overloading, with -- operator, 
             // parameters (using method between parenthesis) item -- int analyzed to see if deccremented
             public static Item operator --(Item item)
             {
-                // L151 create instance of Item class to put integer value of item '--2' instead of the usual --1
+                // L151 create instance of Item class to put integer value of item ++ in
                 Item i = new Item();
-                i.iPrice = item.iPrice - 2;
+                i.iPrice = item.iPrice - 1;
                 return i;
             }
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -145,11 +197,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L151  see if the item incramented, by looking at its Price value
             iDec--;
             MessageBox.Show("i has been deccrementted to " + iDec.iPrice.ToString());
-
-            // NOT IN LESSON, test to see if -- still is by -2 instead of -1; it does not, back to normal
-            int test = 5;
-            test--;
-            MessageBox.Show(test.ToString());
         }
     }
 }
+
+
+
+
+
+
+
+
+
+/****************************** NO highights from the comments area ******************************/
