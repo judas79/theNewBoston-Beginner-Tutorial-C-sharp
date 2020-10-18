@@ -1,0 +1,136 @@
+﻿/*
+All we need for this lesson is a button1, with an age integer, in form1 and a age method, with a void return, that also passes
+a age int, to learn about Ref and Out Keywords.  Up until now, in our operator tutorials, we haven't been dealing with methods
+that change the variables that we pass thru.  If we pass intPassed to Age using the Modify method, it does not change the value 
+of Age, but it does make a duplicate variable of agePass, and gives it the value, being passed thru.  So if we said: Modify(6);,
+it would make an new variable named agePass with a value of 6.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+/*
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L153 int
+            int Age = 3;
+
+			// L153 does not change Age (above)
+			//Modify(Age);
+			Modify(6);
+        }
+        // L153 method to return age, and do not change the pass age int
+        void Modify(int agePass)
+        {
+            agePass += 5;
+        }
+*/
+
+
+/*
+Next we will use are method 'Modify' to change the value of var int Age.  We do this by adding 'ref' to the arguemnts in our
+Modify method.  We also add ref (reference) to our Modify(Age);.  Since agePassed is += 5, Age will now equal 8.  When we are
+referencing a variable, alway set it equal to a value, or you will get an error.
+int Age = 3;  NOT  int Age;
+Also when passing thru a reference using a method, always use a variable not a numeric intiger, to do so.
+Modify(ref Age);  NOT  Modify(ref 2);
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L153 int
+            int Age = 3;
+
+            // L153 does not change Age (above), makes duplicate of agePassed
+            // to use ref to change value of Age we add ref into the arguements
+            //Modify(Age);
+            Modify(ref Age);
+            //Modify(6);
+            // L153 either: Modify(Age); or Modify(6); Age will still = 3
+            MessageBox.Show("Age = " + Age.ToString());
+        }
+
+        // L153 method to return age, and pass age int
+        // add ref to our arguements to change value of Age
+        //void Modify(int agePassed)
+        void Modify(ref int agePassed)
+        {
+            agePassed += 5;
+        }
+*/
+
+
+/*
+There is another keyword similar to ref, called 'out'.  We will use this to change a variable of a string, to a character 
+value.  We will create a string called name, equal to nothing.  Then in our method, Modify, we will add 'out string name' as
+to be able to change our var name value.  Within our method we will set out string Name value to "Adam".  Then to pass it in 
+and change the string name value, we add 'out name'.
+*/
+
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L153 int
+            int Age = 3;
+
+            // L153 string name, null value is ok
+            string name;
+
+            // L153 does not change Age (above), makes duplicate of agePassed
+            // to use ref to change value of Age we add ref into the arguements
+            // to change value of name we add out to our Modify arguements
+            //Modify(Age);
+            Modify(ref Age, out name);
+            //Modify(6);
+            // L153 either: Modify(Age); or Modify(6); Age will still = 3
+
+            // L153 show our values for Age and name in messagebox
+            MessageBox.Show("Age = " + Age.ToString() + "  :: " + "name = " + name);
+        }
+
+        // L153 method to return age, and pass age int
+        // add ref to our arguements to change value of Age
+        //void Modify(int agePassed)
+        void Modify(ref int agePassed, out string Name)
+        {
+            agePassed += 5;
+            Name = "Adam";
+        }
+    }
+}
+
+
+
+
+
+
+/******************************* highlight from the comments area *************************/
+
+
+
+
+
+is there ever a time it would make sense to do this rather than int Age = Modify(3) and string Name = Modify("John")? 
+Obviously, this would require overloading the Modify method, but seems to be the common approach. Is it just a preference 
+thing?
+
+
+
+
+

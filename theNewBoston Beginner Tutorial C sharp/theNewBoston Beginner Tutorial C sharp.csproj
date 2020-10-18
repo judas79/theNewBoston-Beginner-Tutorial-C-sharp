@@ -461,6 +461,8 @@
     <Content Include="Tutorial_151 Overloading Operators pt 4\L151 form1CS.txt" />
     <Content Include="Tutorial_152 Making Conversion Operators\L152 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_152 Making Conversion Operators\L152 form1CS.txt" />
+    <Content Include="Tutorial_153 Ref and Out Keywords\L153 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_153 Ref and Out Keywords\L153 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
