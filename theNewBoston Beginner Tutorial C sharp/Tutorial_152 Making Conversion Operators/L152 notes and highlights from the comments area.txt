@@ -1,0 +1,116 @@
+﻿/*
+In this lesson we will need a button1 and a the class named Item, with a public int. variable property, get and set, within form1,
+from the last tutorial,to learn more about  Making Conversion Operators.  There are two types of conversion operators, explicid,
+an implicit.  Explicit conversion operators are those that do require an explicit cast.  Explicit conversion operators users, 
+have to tell the interpreter, and implicid will do that automatically.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L148 class, with public int var. property, to get and set
+        class Item
+        {
+            public int iPrice
+            {
+                get;
+                set;
+            }
+
+
+/*
+We will first work with an example of the explicit conversion operator, so that it will tell the compiler that the user wants
+something converted.  We will pass an integer '3', into Item, when button1 is pressed.  So, go to the button1 code area and
+create this example.  Neither of these will work yet, because we haven't set up the conversion operators for either of them.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L152 example of explicid conversion operator, pass int 3 into Item
+            Item i = (Item)3;
+
+            // L152 example of implicid conversion operator, iItm = 3 automatically converted
+            Item iItm = 3;
+*/
+
+
+/*
+Next, in our Item class, we will create our explicit conversion operator.  Like all operators it starts with making it 
+'public static', then we will select if our conversion operator will be explicit or implicid.  Next, as before we tell the
+compiler we are overloading a operator to make a conversion operator.  Then finally, what we want to, cast as, (convert it to).
+What you convert it to is determined by the class you use.  We will be converting to an integer. 
+Since we are using the Item class, we will need to make an instance of Item, to return the value.
+*/
+
+
+            // L152 create explicit conversion operator, cast as intiger
+            public static explicit operator Item(int itemPrice)
+            {
+                // L152 instance of Item, to return Item value that is passed through itemPrice
+                Item i = new Item();
+                i.iPrice = itemPrice;
+                return i;
+            }
+
+
+
+/*
+We create the implicid conversion in the same way, except we use the implicid property instead of the exlicid, when we set it
+up.  So we will copy paste and change to implicid.  The only problem, is that we can only use one or the other type of conversion
+operator, to do the same conversion, so we must choose, which.  We will therefore comment out the implicit conversion operator,
+and the int to be converted using the implicit method, in the button1 code area.
+
+			// button1 code area
+			// L152 example of implicid conversion operator, iItm = 3 automatically converted
+            //Item iItm = 3;
+*/
+
+
+			//// L152 create implicit conversion operator, cast as intiger
+            //public static implicit operator Item(int itemPrice)
+            //{
+            //    // L152 instance of Item, to return Item value that is passed through itemPrice
+            //    Item i = new Item();
+            //    i.iPrice = itemPrice;
+            //    return i;
+            //}
+
+
+/*
+Next, in the button1 code area, we will use a messagebox to show the string value of the 'Item', i iPrice.  Then run debug.
+*/ 
+
+            // L152 show converted to Item, i iPrice int. as a string
+            MessageBox.Show(i.iPrice.ToString());
+
+
+
+
+/*
+Finally, we can uncomment the implicit code, and comment out the explicit code, and run that with debug, to check that it all
+works.
+*/
+
+
+
+
+
+
+/**************************** NO highlights from the comments area ***************************/
