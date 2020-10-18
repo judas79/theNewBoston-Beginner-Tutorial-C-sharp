@@ -77,7 +77,7 @@ Modify(ref Age);  NOT  Modify(ref 2);
 
 
 /*
-There is another keyword similar to ref, called 'out'.  We will use this to change a variable of a string, to a character 
+There is another keyword similar to ref, called 'out' (output).  We will use this to change a variable of a string, to a character 
 value.  We will create a string called name, equal to nothing.  Then in our method, Modify, we will add 'out string name' as
 to be able to change our var name value.  Within our method we will set out string Name value to "Adam".  Then to pass it in 
 and change the string name value, we add 'out name'.
