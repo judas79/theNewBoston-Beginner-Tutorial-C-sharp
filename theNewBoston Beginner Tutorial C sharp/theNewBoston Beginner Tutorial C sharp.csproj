@@ -463,6 +463,9 @@
     <Content Include="Tutorial_152 Making Conversion Operators\L152 form1CS.txt" />
     <Content Include="Tutorial_153 Ref and Out Keywords\L153 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_153 Ref and Out Keywords\L153 form1CS.txt" />
+    <Content Include="Tutorial_154 Project 3 Hang Man Game, Making the UI\L154 form1 completed layout.png" />
+    <Content Include="Tutorial_154 Project 3 Hang Man Game, Making the UI\L154 GroupBox layout.png" />
+    <Content Include="Tutorial_154 Project 3 Hang Man Game, Making the UI\L154 notes and highlights from comments area.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

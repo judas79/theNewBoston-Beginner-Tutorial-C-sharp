@@ -1,0 +1,30 @@
+﻿/*
+In this multipart project tutorial, we will need many components and they will need explanations, of their placements, within
+form1.  At the end of the project, we should have a working hang man game.  The first 3 items, we will place, in our form1, are
+groupBoxes.  We will put one on the right side, and we will delete the text for the groupBox name.  Then we will put another
+groupBox, from the top left and span to the edge of the first groupbos we created, also deleting the name text.  Then we will
+place the third groupBox under the 2nd groupbox, also deleting its name.  The far right groupbox will contain the actual hang-
+man, the second groupBox, will be where the underline letters of the word and how many characters long the word is, will be displayed 
+and the third groupBox where the buttons to submit a letter, or the entire word, will be.  See included image.
+
+In the first groupBox, where the hangman is displayed, we will drag a 'panel' into it filling the entire groupBox.  We will
+use the panel to display our hangman.  You can do this by clicking the panels black triangle and chooseing 'Dock in parent
+container.  
+Jumping over to the 3rd groupBox, we will add a button, on the far left side, and name its Text 'Submit Letter'.  That's what it 
+will be used for, by the user.  To the right, of the button drag in a textBox and resize it small.  In the properties, for the
+textBox, set the maxLength to 1, as to hold only 1 letter.  Then next to that textBox add another button and name its Text Submit
+Word.  Next to that button, drag in another textBox and leave the maxSize alone, for this one.
+
+Now we will move to the 2nd groupBox area and add a label, on the right buttom of the group, to display the fact that a value
+of the amount characters, that are in the word, being guessed about.  We will name that label Text, Word Length.
+
+Last we will rename our form1 Text, to HangMan - <your name>... whatever yur name is.  We will also set the form1 properties to 
+false for, MaximumBox and, FormBorderStyle to FixedSingle.
+*/
+
+
+
+
+
+
+/*************************** NO highlights from the comments area *******************************/
