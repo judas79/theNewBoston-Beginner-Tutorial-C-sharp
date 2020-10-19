@@ -18,7 +18,7 @@ namespace myNamespace
         // L32 create empty var string name
         string name = "";
 
-        // L32 create public string property
+        // L32 create public string property55
         public string Name
         {
             get { return name; }

@@ -1,0 +1,134 @@
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface for the Hangman game.  In this lesson we will
+need everything from the previous lesson, to make the hangman scaffolding structure for the gallow, for the hangman game.
+First we will right click on our form1 and choose to <> view code in are coding area.
+
+Here we will create the means to view our gallow structure, using an instance of graphics in our Panel, in groupBox1.  We 
+use a brown pen to draw lines that are 5 pixels wide.  Lookin at our size of the panel, we will notice that it furthist
+point for the x 203, y 300, so we will build our structure from the bottom up, starting at the ground, which is 300.
+
+So first lets create a method named drawHangPost in the , to draw our gallows post in form1.  We will then CreateGraphics
+in our panel1 and set the name of this instance to 'gr'.  Since we are drawing lines only, we will create a brown pen that
+draws a line 10 pixels wide.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        
+        // L155 method to display hangman post in panel1
+        void hangManPost()
+        {
+            //L155 instance of CreateGraphics in panel1
+            Graphics gr = panel1.CreateGraphics();
+
+            //L155 create pen draws 10 pixels and is brown
+            Pen pn = new Pen(Color.Brown, 10f);
+
+
+/*
+We will start our line at the bottom of the panel 300 and about 20 in from the x axis, which is 203.  So we will use graphics
+to draw a line, at the bottom as the base, using our pen at starting Point 157, 300 to the bottom most point of x,y.  Then in
+the center of that, we will draw our vertical post.  Notice we overlay the base and post, as not to form gaps.  Remember the 
+line width is 10 so you will need to be at least 5 pixels in to oviod gaps.  Next we will draw the horizontal top for our
+gallow, then finally the vertical hanging overlay.
+*/
+
+
+			// L155 draw starting points for line using graphics, pen and new Points
+            // horizontal base
+            gr.DrawLine(pn, new Point(157, 300), new Point(203, 300));
+            // vertical line going up
+            gr.DrawLine(pn, new Point (180, 300), new Point(180, 5));
+            // horizontal line going left
+            gr.DrawLine(pn, new Point(185, 5), new Point(60, 5));
+            // vertical line going down
+            gr.DrawLine(pn, new Point(65, 5), new Point(65, 50));
+        }
+
+
+
+/*
+To display the gallows pole, we will need to pass our hangManPost method using our Shown properties Event, for form1.  Click
+once on form1, go into the Events property and choose Shown, by double clickking it.  Then in its coding area call our 
+hangMansPost method.
+*/
+
+
+		private void Form1_Shown(object sender, EventArgs e)
+        {
+            // L155 pass in hangManPost method to display in form1 using event Shown
+            hangManPost();
+        }
+    }
+}
+
+
+
+
+
+
+/******************************** highlights from the comments area*********************************/
+
+
+
+
+Graphics g = panel1.CreateGraphics();
+            Pen p = new Pen(Color.Brown, 10);
+            g-DrawLine(p, new Point(130, 220), new Point(150, 5));
+            g-DrawLine(p, new Point(135, 5), new Point(150, 5));
+            g-DrawLine(p, new Point(60, 0), new Point(150, 5));
+
+What's wrong? Im getting a Error that says "Only assignment, call, increment, decrment, and new object expressions can be 
+used as a statement." 
+
+
+
+for people that may come here in the future.  It seems to be that you used a hyphen instead of a period.
+ g-DrawLine(p, new Point(60, 0), new Point(150, 5));     
+// should be:
+ g.DrawLine(p, new Point(60, 0), new Point(150, 5));
+
+
+
+
+
+
+ you shold give names to your controls....if you will make something big by time even you forget which one is panel 1 etc.
+ but good tut
+
+
+
+
+
+The code doesnt work unless I offset the point by 1 pixel e.g. g.DrawLine(p, new Point(130, 218), new Point(131, 5));
+
+But Ive got a working code, remove the DrawHangPost() method and Form1_Shown event and use (with ur coordinates):
+
+private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = panel1.CreateGraphics();
+            Pen p = new Pen(Color.Black, 5);
+            g.DrawLine(p, new Point(130, 220), new Point(130, 5));
+            g.DrawLine(p, new Point(133, 5), new Point(60, 5));
+            g.DrawLine(p, new Point(60, 3), new Point(60, 40));
+        }
+
+Then link this to the your form by going Properties of your form, then Events then Paint and select the new method Form1_Paint
+
