@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, and hangmans pole for the Hangman game.  We 
+will need all that code to continue our project to draw our head, eyes and mouth.  The first thing we will do, is create an
+enumeration to hold a list of all the facial parts, including the head, body and Legs.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,32 +23,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             InitializeComponent();
         }
 
-            // L155 method to display hangman post in panel1
-            void hangManPost()
-        {
-            //L155 instance of CreateGraphics in panel1
-            Graphics gr = panel1.CreateGraphics();
-
-            //L155 create pen draws 10 pixels and is brown
-            Pen pn = new Pen(Color.Brown, 10f);
-
-            // L155 draw starting points for line using graphics, pen and new Points
-            // horizontal base
-            gr.DrawLine(pn, new Point(157, 300), new Point(203, 300));
-            // vertical line going up
-            gr.DrawLine(pn, new Point (180, 300), new Point(180, 5));
-            // horizontal line going left
-            gr.DrawLine(pn, new Point(185, 5), new Point(60, 5));
-            // vertical line going down
-            gr.DrawLine(pn, new Point(65, 5), new Point(65, 50));
-
-            // L156 temporary for testing body part placement
-            drawBodyPart(BodyParts.Head);
-            drawBodyPart(BodyParts.Left_Eye);
-            drawBodyPart(BodyParts.Right_Eye);
-            drawBodyPart(BodyParts.Mouth);
-        }
-
         // L156 create enumeration to hold list of entire body and its parts
         enum BodyParts
         {
@@ -56,6 +36,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             Left_Leg,
             Right_Leg
         }
+
+
+/*
+Next we will create a method to draw a blue body and all of its parts, with a pen.  We will pass in our enumeration BodyParts, which we will 
+name bdprts.  We will use if and if else statements to pass in the bdprts and compare it to see if its in the BodyParts list, as in 
+BodyParts.Head, for instance.  Then we will write a couple more if else statements, to do the eyes.  We will have to create a SolidBrush and 
+Fill an ellipse, to make the two eyes and mess around with the x y coordinates to get the eyes positioned correctly.  Then we will have to 
+draw an arc, using our pen to make the mouth.  You will have to mess with the x y coordinates, but the size should be around 20x20, and start
+the arch of the mouth at 45 degrees and wrap that to 90 degrees.
+*/
+
 
         // L156 method to display all the parts of the hangman in panel1, pass in BodyParts name bdprts
         void drawBodyPart(BodyParts bdprts)
@@ -94,3 +85,37 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+/*
+To see the changes, when you run the debugger, add the following, temporarily, to your HangManPost() method;  at the bottom.
+
+
+			// L156 temporary for testing body part placement
+            drawBodyPart(BodyParts.Head);
+            drawBodyPart(BodyParts.Left_Eye);
+            drawBodyPart(BodyParts.Right_Eye);
+            drawBodyPart(BodyParts.Mouth);
+*/
+
+
+
+
+
+
+
+
+/***************************** highlight from the comments area ****************************/
+
+
+
+
+
+u could have just used switch statement
+
+
+
+
+
+a "switch" is easier and also faster for the computer i heard
