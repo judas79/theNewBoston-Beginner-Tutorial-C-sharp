@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole and head, for the Hangman game.  We 
+will need all that code to continue our project to draw our arms and body.  We will continue adding to our drawBodyPart(BodyParts bdprts)
+method.  We will also a temporary calls in our hangManPost() method to see our changes, when we debug, of the body parts we have added,
+to adjust them, as we go.
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,9 +49,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             drawBodyPart(BodyParts.Left_Eye);
             drawBodyPart(BodyParts.Right_Eye);
             drawBodyPart(BodyParts.Mouth);
-            drawBodyPart(BodyParts.Body);
-            drawBodyPart(BodyParts.Left_Arm);
-            drawBodyPart(BodyParts.Right_Arm);
         }
 
         // L156 create enumeration to hold list of entire body and its parts
@@ -86,11 +91,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L156 draw mouth using pen and using an arch starting at 45 degrees and draw 90 degrees
             else if (bdprts == BodyParts.Mouth)
-            {
                 pn.Color = (Color.Black);
                 gr.DrawArc(pn, 54, 63, 20, 20, 45, 90);
-            }
-                
+
+
+
+/*
+We will start by adding the body, using our pen, to the bottom center of our head.  If we start at the same x axis place we left off of, in 
+the pole stem and add 40 pixels, to the end of the hangmans pole stem, on the y axis, we should be at the correct coordinates.  We will make
+the body 80 y pixels long.  Then we start at the same x coordinate but go down 15 on the y axis to start our left arms, and angle up by
+going down 40 or so pixels on the x axis and up 10 on the y axis.  We will do the inverse, for the right arm, so start where we did before,
+so add 40 or so to the x axis and both y axis should be the same value.
+*/
+
+
             // L157 vertical line going down for body
             else if (bdprts == BodyParts.Body)
             {
@@ -114,3 +128,37 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+/*
+We will add the drawBodyPart(BodyParts bdprts) method components to our hangManPost() method so we can check that all the parts go together 
+correctly.
+
+
+
+			drawBodyPart(BodyParts.Body);
+            drawBodyPart(BodyParts.Left_Arm);
+            drawBodyPart(BodyParts.Right_Arm);
+*/
+
+
+
+
+
+
+/************************************ highlights from the comments area ********************************/
+
+
+
+
+
+
+
+im just wondering why adam manually create a graphics if he can draw body parts from ms paint and use resources to change the body parts 
+programmatically
+
+
+
+@inurdreamsfuzzy It's good programming practice too draw the graphics in game, since you will need to include the graphics in the output 
+folder, and anyone can change it
