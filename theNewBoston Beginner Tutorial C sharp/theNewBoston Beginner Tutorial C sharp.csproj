@@ -472,6 +472,8 @@
     <Content Include="Tutorial_156 Project 3 Hang Man, Drawing Face\L156 form1CS.txt" />
     <Content Include="Tutorial_157 Project 3 Hang Man, Drawing Bosy and Arms\L157 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_157 Project 3 Hang Man, Drawing Bosy and Arms\L157 form1CS.txt" />
+    <Content Include="Tutorial_158 Project 3 Hang Man, Drawing Legs\L158 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_158 Project 3 Hang Man, Drawing Legs\L158 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

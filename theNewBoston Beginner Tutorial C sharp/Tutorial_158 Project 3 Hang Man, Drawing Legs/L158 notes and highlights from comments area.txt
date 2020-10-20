@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole, head, arms and bodyfor the Hangman game.  We 
+will need all that code to continue our project to draw our legs.  We will continue adding to our drawBodyPart(BodyParts bdprts)method.  
+We will also add temporary calls in our hangManPost() method to see our changes, when we debug, of the body parts we have added, to adjust 
+them, as we go.
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,8 +52,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             drawBodyPart(BodyParts.Body);
             drawBodyPart(BodyParts.Left_Arm);
             drawBodyPart(BodyParts.Right_Arm);
-            drawBodyPart(BodyParts.Left_Leg);
-            drawBodyPart(BodyParts.Right_Leg);
         }
 
         // L156 create enumeration to hold list of entire body and its parts
@@ -108,6 +114,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             else if (bdprts == BodyParts.Right_Arm)
                 gr.DrawLine(pn, new Point(65, 100), new Point(102, 90));
 
+
+
+/*
+So we will finish up this section by adding the legs to our hang man.  We will look at where our body x and y coordinates ended, and start
+there.  Then we will go back 30 on the x axis and down 40 on the y axis to draw our left leg, with our pen.  We will do the same for the 
+right leg but add 30 pixels to the x axis.  The y axis remains the same.
+*/
+
+
+
             // L158 angled line going down for left leg
             else if (bdprts == BodyParts.Left_Leg)
                 gr.DrawLine(pn, new Point(65, 180), new Point(35, 220));
@@ -124,3 +140,22 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+/*
+We will add the drawBodyPart(BodyParts bdprts) method components to our hangManPost() method so we can check that all the parts go together 
+correctly.
+
+			drawBodyPart(BodyParts.Left_Leg);
+            drawBodyPart(BodyParts.Right_Leg);       
+
+*/
+
+
+
+
+
+
+
+/*************************** NO highlights from the comments area ************************/
