@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole, and the Hangmans entire body for the  game.  We 
+will need all that code to continue our project to get a random word from an online list.  We need to find a wordlist that loads fast with at
+least 1000 words, online.  NOT part of the project:  we will download the list to keep it locally and try using it that way, in case the user
+doesn't have an internet connection or the site is down.  To use the list online, we will need to use the wevClient class, so we will use the:
+using System.Net;
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,8 +58,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             drawBodyPart(BodyParts.Left_Leg);
             drawBodyPart(BodyParts.Right_Leg);
 
-            // L159 temporary for testing:  see random word chosen from the online word list
-            MessageBox.Show(GetRandomWord());
         }
 
         // L156 create enumeration to hold list of entire body and its parts
@@ -122,6 +129,19 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 gr.DrawLine(pn, new Point(65, 180), new Point(95, 220));
         }
 
+
+
+/*
+We will create a method that returns a random word from a downloaded text document, from the web, which will be downloaded when the app is
+being used.  So, you will need an internet connection, when using this app to get the words.  We will put the entire list into a string.  To
+use this as a list, we will use split, to split of the words, to put the list, into a string array.  Then we will create an instance of 'random'
+to choose a random word from our Words array index.  Then we will return the chosen random word, using rndm next word in the aWords array []. 
+We will start looking at 0 and go to the end of the aWords list.  We subtract 1, because the aWords index amount of words are 1 - the end of 
+the length of the list and are return index amount starts at 0 and would end 1 word before it.
+*/
+
+
+
         // L159 method to get random word from web text word list
         string GetRandomWord()
         {
@@ -129,13 +149,45 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             WebClient wc = new WebClient();
 
             // L159 string to but contents of online websites word list
-            // another list if needed:  https://raw.githubusercontent.com/Tom25/Hangman/master/wordlist.txt
             string sWordList = wc.DownloadString("https://www.mit.edu/~ecprice/wordlist.10000");
 
             // L159 array to put the WordList into as we split the word up using split point parameters
-            string[] aWords = sWordList.Split('\n');
+            string[] aWords = sWordList.Split(' ', '\t', '\n', 'r');
 
-            // NOT in tutorial, only use words with 5 characters or more
+            // L159 instance of random
+            Random rndm = new Random();
+
+            // L159 return random word from aWords array, 
+            // from 0 to 1 minus the length of all words in array
+            return aWords[rndm.Next(0, aWords.Length - 1)];
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            // L155 pass in hangManPost method to display in form1 using event Shown
+            hangManPost();
+        }
+    }
+}
+
+
+/*
+We will use Get, to display the random word, as a test to make sure this works, in our void hangManPost().  We use the  hangManPost() because
+it displays everytime the app is run.  We will using messageBox to see the word returned from our GetRandomWord() method.
+
+
+			// L159 temporary for testing:  see random word chosen from the online word list
+            MessageBox.Show(GetRandomWord());
+*/
+
+
+
+/*
+This is NOT in the tutorial.  It filters out words, that we split from the online list, and only uses words that have five characters or more,
+to make the game challenging on every round.
+
+
+			// NOT in tutorial, only use words with 5 characters or more
             StringBuilder builder = new StringBuilder();
             foreach (string str in aWords)
             {
@@ -145,26 +197,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 }          
             }
             string[] aWords2 = builder.ToString().Split('\n');
+*/
 
-            // L159 instance of random
-            Random rndm = new Random();
 
-            // L159 return random word from aWords array, 
-            // from 0 to 1 minus the length of all words in array
-            //return aWords[rndm.Next(0, aWords.Length - 1)];
-            return aWords2[rndm.Next(0, aWords2.Length - 1)];
-        }
 
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            // L155 pass in hangManPost method to display in form1 using event Shown
-            hangManPost();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // L159 temporary for testing:  see random word chosen from the online word list
-            MessageBox.Show(GetRandomWord());
-        }
-    }
-}
+
+
+/****************************** highlight from the comments area *******************************/
+
+
+
+
+
+
+I URGENTLY NEED HELP. BESIDES GETTING THE RANDOM WORDS FROM WEBSITE. IS THERE ANY OTHER WAY YOU CAN CREATE THE WORDS? BECAUSE THE WEBSITE SEEM TO HAVE PROBLEM. PLEASE HELP.
+
+Try this - https://raw.githubusercontent.com/Tom25/Hangman/master/wordlist.txt
