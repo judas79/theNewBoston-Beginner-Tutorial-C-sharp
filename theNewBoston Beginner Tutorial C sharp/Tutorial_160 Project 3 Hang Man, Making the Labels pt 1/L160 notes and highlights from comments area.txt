@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, and retrieved a random word
+from a list, for the  game.  We will need all that code to continue our project to work on displaying our random word in our 2nd groupBox. 
+We need to store the random word in a string, and seperate that word into a character array, so we can display each letter of the word in
+groupBox2, evenly spaced and underlined.  First we will create a string, near the top of our form, to hold the value, of our random word.
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,9 +29,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         // L160 store random word
         string sWord = "";
-
-        // L160 label list array, values of for statement stored there
-        List<Label> labels = new List<Label>();
 
         // L155 method to display hangman post in panel1
         void hangManPost()
@@ -161,7 +166,22 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             return aWords2[rndm.Next(0, aWords2.Length - 1)];
         }
 
-        // L160 method create labels from characters of random word
+
+
+/*
+We will now make a method to create a label, for each of the letter characters, derived from the random word.  We will not be returning 
+anything so we will call it void MakeLabels.  We will use Get RandomWord, to get our random word from our RandomWord method, that will
+return us, the word we are going to obtain our characters to make our letter labels from.  Next we will convert the sWord string to a 
+character array, so the letter elements that make up the word are separate characters, in the array.
+We will need to separate each character, that makes up the word, evenly spaced from each other.  We will make an integer that divides the
+space taken up by all the characters, from the space alloted by the display, of each of the letter labels.   The space between letters will
+be equal and fit neatly, in the groupbox2 area.  We will look at the size property of the x axis, for the groupBox2, as to get the horizontal
+area availabe to be divided up by the characters length, of the random word.  We will round this number down to its nearest 5's.  We will
+subtract 1 from our character length, because the last character in a char array is a '/n', for new line, and we don't want to include that.
+*/
+
+
+		// L160 method create labels from characters of random word
         void MakeLabels()
         {
             // L160 get our random word from our RandomWord method put it in string sWord
@@ -173,7 +193,23 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L160 create space beteen characters of random word
             int iBetween = 300 / cChar.Length - 1;
 
-            // L160 iterate through our cChar array, to fill our labels list
+
+
+/*
+Next, near the top of our screen, where our sWord string is, we will create a label list array, to hold the values of our individual chars.,
+after using a for statement, to put them in there.
+
+		// L160 label list array, values of for statement stored there
+        List<Label> labels = new List<Label>();
+*/
+
+
+/*
+Last we will add our for statement to put the characters into our list.  
+*/
+
+
+// L160 iterate through our cChar array, to fill our labels list
             for(int i = 0; i < cChar.Length - 1; i++)
             {
                 labels.Add(new Label());
@@ -194,3 +230,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+
+
+/***************************** NO highlights in the comments area ******************************/

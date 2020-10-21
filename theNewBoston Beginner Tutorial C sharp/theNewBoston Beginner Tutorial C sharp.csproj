@@ -476,6 +476,8 @@
     <Content Include="Tutorial_158 Project 3 Hang Man, Drawing Legs\L158 form1CS.txt" />
     <Content Include="Tutorial_159 Project 3 Hang Man, Getting Random Word\L159 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_159 Project 3 Hang Man, Getting Random Word\L159 form1CS.txt" />
+    <Content Include="Tutorial_160 Project 3 Hang Man, Making the Labels pt 1\L160 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_160 Project 3 Hang Man, Making the Labels pt 1\L160 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
