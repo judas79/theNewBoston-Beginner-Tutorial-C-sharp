@@ -226,29 +226,19 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L159 temporary for testing:  see random word chosen from the online word list
             MessageBox.Show(sWord);
         }
-        char cLetter;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                // L162 store submitted letter to char, notice ()[0] represents only one character in the char array
-                cLetter = textBox1.Text.ToCharArray()[0];
+            // L162 store submitted letter to char, notice ()[0] represents only one character in the char array
+            char cLetter = textBox1.Text.ToCharArray()[0];
 
-                // L162 verify that only a letter has been submited, if ! not a letter, error message, or return to submit a letter;
-                if (!char.IsLetter(cLetter))
-                {
-                    MessageBox.Show("Only letters make up a word, dumbass!\n ... and no, we do not use hyphens.\nYou should probably go to school, before playing this game"
-                        , "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            catch (Exception)
+            // L162 verify that only a letter has been submited, if ! not a letter, error message, or return to submit a letter;
+            if (!char.IsLetter(cLetter))
             {
-                MessageBox.Show("Put a letter in there first, you ignorant bastard \nThere are no empty spaces in a word;  dumb-ass", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Only letters make up a word, dumbass!\n ... and no, we do not use hyphens.\nYou should probably go to school, before playing this game" 
+                    , "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            
-            
 
             // L162 verify that submited letter matches a letter in our random word
             if (sWord.Contains(cLetter))

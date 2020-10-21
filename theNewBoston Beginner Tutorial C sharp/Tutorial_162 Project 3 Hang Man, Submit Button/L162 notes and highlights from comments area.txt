@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, retrieved a random word
+from a list, and displayed the underscores that represent the random words elements, for the  game.  We will need all that code to continue 
+our project to work on the Submit Letter, button1, for when a user enters a letter, while trying to find the random word.
+Double click the Submit Letter button1, to go to its code space.  
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -226,11 +234,87 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L159 temporary for testing:  see random word chosen from the online word list
             MessageBox.Show(sWord);
         }
-        char cLetter;
+
+
+
+/*
+The first thing we will do is to is retrieve the letter, that the user has submitted, in textBox1 and store it as a char cLetter.  When we
+create this array, there will only be one letter [0] stored in the array.  We convert the entry, which is a string in textBox1, to a char
+array().
+*/
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            try
+            // L162 store submitted letter to char, notice ()[0] represents only one character in the char array
+            char cLetter = textBox1.Text.ToCharArray()[0];
+
+
+
+
+/*
+Next, we will use a conditional if statement to make sure the user has submited a letter, and not an int, or symbol.  If a non letter is 
+submitted the user will receive a popup error message.  Or if it is a letter, the program will return; to the next condition.
+*/
+
+
+			// L162 verify that only a letter has been submited, if ! not a letter, error message, or return to submit a letter;
+            if (!char.IsLetter(cLetter))
+            {
+                MessageBox.Show("Only letters make up a word, dumbass!\n ... and no, we do not use hyphens.\nYou should probably go to school, before playing this game" 
+                    , "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+
+
+/*
+We will now use another condition statement to see if the letter submited mathches any letters in our random word.  If it does contain a
+letter within the sWord which is a string that holds the (random word), we will store there elements in an array, cLetters after converting
+them ToCharArray().
+*/
+
+
+			// L162 verify that sumitted letter matches a letter in our random word
+            if (sWord.Contains(cLetter))
+            {
+                // L162 put sWord letters in char array, to itterate trhough them
+                char[] cLetters = sWord.ToCharArray();
+
+
+
+/*
+Next we will iterate through our cLetters and find the letters that match the letter inputed by the user.  We will do this with a for statement
+then check each element of the cLetters array against the cLetter elements input, for the matches.  If there is a match, the empty space that
+signified the matching letter, will be replaced by the user submitted letter value, for all matching places within the random word.  This is
+achieved by using the int i, used for the for loop count, to write it to the place that matched, within the char array.  Then debug.
+*/
+
+
+
+				// L162 iterate through cLetters for elements that match user input
+                for (int i = 0; i < cLetters.Length; i++)
+                {
+                    if (cLetters[i] == cLetter)
+                    {
+                        // If the letters match, use i used for the count, 
+                        //for the location of that matching letter in our labels[i],
+                        // and replace the empty space _ value, with the submited value
+                        labels[i].Text = cLetter.ToString();
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*
+NOT in lesson:  we added a try statement in our button1 Submit Letter, code area to handle exceptions, if the textBox1 is left empty, and
+submitted as a letter.  We also had to declare char cLetter out side of our button1 code area, to avoid error.
+*/
+
+
+try
             {
                 // L162 store submitted letter to char, notice ()[0] represents only one character in the char array
                 cLetter = textBox1.Text.ToCharArray()[0];
@@ -247,27 +331,35 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {
                 MessageBox.Show("Put a letter in there first, you ignorant bastard \nThere are no empty spaces in a word;  dumb-ass", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
 
-            // L162 verify that submited letter matches a letter in our random word
-            if (sWord.Contains(cLetter))
-            {
-                // L162 put sWord letters in char array, to itterate trhough them
-                char[] cLetters = sWord.ToCharArray();
 
-                // L162 iterate through cLetters for elements that match user input
-                for (int i = 0; i < cLetters.Length; i++)
-                {
-                    if (cLetters[i] == cLetter)
-                    {
-                        // If the letters match, use i used for the count, 
-                        //for the location of that matching letter in our labels[i],
-                        // and replace the empty space _ value, with the submited value
-                        labels[i].Text = cLetter.ToString();
-                    }
-                }
-            }
-        }
-    }
-}
+
+
+
+
+/**************************** highlights from the comments area ***************************/
+
+
+
+
+
+
+
+you forgot to mention if  the user does not enter any character, an error should be displayed.
+
+
+
+
+
+
+my if (word.contain(letter)) has an error n states it can't convert string to char. what shd i do?
+
+
+it will be contains not contain
+
+
+
+
+
+
+
