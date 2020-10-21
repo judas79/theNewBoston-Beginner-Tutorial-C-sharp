@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+In the previous tutorial, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, and retrieved a random word
+from a list, for the  game.  We will need all that code to continue our project to work on displaying our random word in our 2nd groupBox. 
+We will set up the layout so the blank lines, that represent the amount of letters in our random word, are equaly spaced in GroupBox2.  Then
+we will get the length of the word, to get the amount of labels and also display the amount of characterss, as a number, on our Label1.
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,9 +65,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             drawBodyPart(BodyParts.Right_Leg);
 
             // L159 temporary for testing:  see random word chosen from the online word list
-            //MessageBox.Show(GetRandomWord());
-            GetRandomWord();
-            
+            MessageBox.Show(GetRandomWord());
         }
 
         // L156 create enumeration to hold list of entire body and its parts
@@ -176,11 +183,38 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             int iBetween = 300 / cChar.Length - 1;
 
             // L160 iterate through our cChar array, to fill our labels list
-            for(int i = 0; i < cChar.Length; i++)
+            for(int i = 0; i < cChar.Length - 1; i++)
             {
                 labels.Add(new Label());
+            }
 
-                // L161 set location of our labels
+
+
+/*
+First, we will set the location for our labels for each letter [i].  When using location, you always have a new starting Point.  So the labels[i],
+1st character, i = 0, which is the first letter in our labels list; its location is equal to a new Point.  Let us assume out random word is 5
+characters long, for an example of calculating the labels placement... Then the new points starting position is plotted at, i times the value 
+we assigned to iBetteen (0 * 300 / 5 - 1) = 0, then we add 10 to that 0 + 10 = 10, for our x axis coordinate.  We want to start 10 pixels in,
+to keep our labels from starting right at the left edge of our groupBox2 area.  The y axis coordinate is always 80, to keep our labels in a
+straight horrizontal line.  Our next label character [i] would be equal to 1 (1 * 300 / 5 -1) which equals 59, would be our second labels char
+position, and so on.
+*/
+
+
+				// L161 set location of our labels
+                labels[i].Location = new Point((i * iBetween) + 10, 80);
+
+
+
+
+/*
+Next we will set the text of these labels.  They will start out as a _ (space), for every letter (label), which is Text.  After that we will
+set the Parent control of all this, to groupBox2.  Then we will bring the GroupBox2 controls to the front, so no other controls, will be in 
+front of it.  Then we will create the labels[] controls and we will be able to see them in our groupBox2.  Debug, to check for errors.
+*/
+
+
+				// L161 set location of our labels
                 labels[i].Location = new Point((i * iBetween) + 10, 80);
 
                 // L161 set letters in labels Text as underscores
@@ -195,9 +229,28 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L161 create labels[i] control and so it can be displayed
                 labels[i].CreateControl();
             }
+
+
+
+/*
+We will Finish up our void MakeLabels() method by adding some code to display the nuumerical amount of character, in our cChars, by using
+its length property to count the letters.  This comes after setting all the labels[] properties and outside of for statement.
+*/
+
+
+			
             // L161 see numerical value of the random words character amount
             label1.Text = ("Word Length: " + cChar.Length.ToString());
         }
+
+
+
+
+/*
+SHOULD have been in the lesson:  We will add our method MakeLabels(); to our Form1_Shown method so we can see all the content we just finished
+making.
+*/
+
 
         private void Form1_Shown(object sender, EventArgs e)
         {
@@ -206,19 +259,18 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L161 pass in MakeLabel method  to display in form1 using event Shown
             MakeLabels();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
-        }
+/*
+NOT in lesson:  Create another button, button3, to use to grab another random word.  If the user doesn't like the amount of characters
+that is in the generated random word, another random word can be generated.  If the game entails a point system, the player would lose a 
+point, for exchanging the word for a new one.
+*/
 
-        private void button3_Click(object sender, EventArgs e)
+
+
+private void button3_Click(object sender, EventArgs e)
         {
             // NOT in lesson: generate new word for user
             hangManPost();
@@ -228,3 +280,47 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+/*
+Also, had to change the for statement in the void MakeLabels() method, to fix the count of empty spaces.  We where short one space, for every
+random word.
+
+			// L160 iterate through our cChar array, to fill our labels list
+            for(int i = 0; i < cChar.Length - 1; i++)
+
+changed to:
+
+			// L160 iterate through our cChar array, to fill our labels list
+            for(int i = 0; i < cChar.Length; i++)
+            {
+*/
+
+
+
+
+
+/*************************** highlights from the comments area *******************************/
+
+
+
+
+
+
+The reason the labels don't show up is cause Adam forgot to say that he added "MakeLabels();" in "Form1_Shown", he often does that forgive 
+him
+
+
+And if it still doesnt work make sure that the group box containing the labels is named groupBox2, if its not and its named for example group
+Box3 make sure to change "labels[i].Parent = groupBox2;" in "MakeLabels".
+
+
+
+
+
+
+Instead of  '10'  in  labels location just replace  it by '(between/2)' it looks good.
+
+
+
+
