@@ -1,4 +1,28 @@
-﻿using System;
+﻿/*
+In the previous tutorials, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, retrieved a random word
+from a list, displayed the underscores that represent the random words elements, and enabled the Submit Letter for the  game.  We will need 
+all that code to continue our project to work on a small detail that was omitted from the first tutorial in this series.  We will no add a
+new label to our form, to hold the letters, that have been tried, but where not in the random word.  So drag in another label and put it in
+GroupBox2, on the left bottom of the group.  Nmae it, Missed:.  We also need to modify our code in the Submit Letter, button1, code area.  We 
+will change this line:
+
+				// L162 store submitted letter to char, notice ()[0] represents only one character in the char array
+                cLetter = textBox1.Text.ToCharArray()[0];
+
+to this code:
+
+				// L162 store submitted letter to char, notice ()[0] represents only one character in the char array
+                cLetter = textBox1.Text.ToLower().ToCharArray()[0];
+
+This will fix the code so that if the user users a capitol letter, as an input, ToLower(), will convert it to lower case and it will work,
+in either lower or higher case.
+*/
+
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,9 +49,6 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         // L160 label list array, values of for statement stored there
         List<Label> labels = new List<Label>();
 
-        // L163 to hold the accumilitive value of missed letter tries
-        int iAmount;
-
         // L155 method to display hangman post in panel1
         void hangManPost()
         {
@@ -47,16 +68,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // vertical line going down
             gr.DrawLine(pn, new Point(65, 5), new Point(65, 50));
 
-            //// L156 temporary for testing body part placement
-            //drawBodyPart(BodyParts.Head);
-            //drawBodyPart(BodyParts.Left_Eye);
-            //drawBodyPart(BodyParts.Right_Eye);
-            //drawBodyPart(BodyParts.Mouth);
-            //drawBodyPart(BodyParts.Body);
-            //drawBodyPart(BodyParts.Left_Arm);
-            //drawBodyPart(BodyParts.Right_Arm);
-            //drawBodyPart(BodyParts.Left_Leg);
-            //drawBodyPart(BodyParts.Right_Leg);
+            // L156 temporary for testing body part placement
+            drawBodyPart(BodyParts.Head);
+            drawBodyPart(BodyParts.Left_Eye);
+            drawBodyPart(BodyParts.Right_Eye);
+            drawBodyPart(BodyParts.Mouth);
+            drawBodyPart(BodyParts.Body);
+            drawBodyPart(BodyParts.Left_Arm);
+            drawBodyPart(BodyParts.Right_Arm);
+            drawBodyPart(BodyParts.Left_Leg);
+            drawBodyPart(BodyParts.Right_Leg);
 
             // L159 temporary for testing:  see random word chosen from the online word list
             //MessageBox.Show(GetRandomWord());
@@ -252,8 +273,8 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             {
                 MessageBox.Show("Put a letter in there first, you ignorant bastard \nThere are no empty spaces in a word;  dumb-ass", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
+            
+            
 
             // L162 verify that submited letter matches a letter in our random word
             if (sWord.Contains(cLetter))
@@ -266,14 +287,23 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 {
                     if (cLetters[i] == cLetter)
                     {
-                        // L162 If the letters match, use i used for the count, 
-                        // for the location of that matching letter in our labels[i],
+                        // If the letters match, use i used for the count, 
+                        //for the location of that matching letter in our labels[i],
                         // and replace the empty space _ value, with the submited value
                         labels[i].Text = cLetter.ToString();
                     }
                 }
-            }
-            else
+			}
+
+
+/*
+In our Submit Letter button1 area, we have set it up to enter the letter if it is in the random word.  We will need to write an else statement
+for when the letters don't match.  In the else statement, will inform the user, with a messageBox, that the letter submited, is not in the 
+word and also add that letter to the Missed label2.
+*/
+
+
+			else
             {
                 // L163 if the input cletters are not in the cLetter let the user know
                 MessageBox.Show("'" + cLetter.ToString() + "' is not in the word", "Sorry");
@@ -281,13 +311,30 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L163 add Missed letter to label2, with a space and comma between missed elements
                 label2.Text += " " + cLetter.ToString() + ",";
 
+
+
+
+/*
+Next we will add the body parts, one at a time, for every missed letter submited.  We will first add an int amount;  to the top area, of our 
+code, where we added other variables, previously.
+
+		// L163 to hold the accumilitive value of missed letter tries
+        int iAmount;
+*/
+
+
+/*
+Next, we will use the iAmount value to draw a body part, starting at 0, which is the head, and work our way down to the right leg which is 9.
+We will then increment iAmount by 1 for every wrong letter submitted and when the IAmount reaches 9, the round will be over.
+*/
+
                 // L163 draw BodyParts starting at 0 to 9 using iAmount to choose the part
                 drawBodyPart((BodyParts)iAmount);
 
-                // L163 increment iAmount by 1 for missed letter guesses
+				// L163 increment iAmount by 1 for missed letter guesses
                 iAmount++;
 
-                // L163 When user reaches 9 missed letters, he loses.
+				// L163 When user reaches 9 missed letters, he loses.
                 if (iAmount == 9)
                 {
                     MessageBox.Show("Sorry, you are dead to us all \n Play Again!, Loser!!!!!");
@@ -296,3 +343,46 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+/*
+NOT in lesson:  Don't forget to comment out all the body parts we temporarily executed in our hangManPost() method.  Then debug.
+
+			//// L156 temporary for testing body part placement
+            //drawBodyPart(BodyParts.Head);
+            //drawBodyPart(BodyParts.Left_Eye);
+            //drawBodyPart(BodyParts.Right_Eye);
+            //drawBodyPart(BodyParts.Mouth);
+            //drawBodyPart(BodyParts.Body);
+            //drawBodyPart(BodyParts.Left_Arm);
+            //drawBodyPart(BodyParts.Right_Arm);
+            //drawBodyPart(BodyParts.Left_Leg);
+            //drawBodyPart(BodyParts.Right_Leg);
+*/
+
+
+
+
+
+
+/************************ highlight from the comments area **************************/
+
+
+
+
+
+
+Took me a while to figure out that he took away this line
+
+DrawBodyPart(BodyParts.Right_leg);
+
+in order to do the funktion with the body :D
+just a little help to others. Great videos. Thanks alot
+
+
+
+
+
+not only "DrawBodyPart(BodyParts.Right_leg);", the whole "DrawBodyPart(BodyParts.*);" in "DrawHangPost()"
+btw "if (amount == 8)" is not equal to 8 but to 9 "if (amount == 9)" in the "Button1_Click"
