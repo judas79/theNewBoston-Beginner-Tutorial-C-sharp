@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+In the previous tutorials, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, retrieved a random word
+from a list, displayed the underscores that represent the random words elements, enabled the Submit Letter, made a Missed section to store 
+missed letters, drew the body parts of the hangman, when guessed letters where wrong and told the user he was a loser, when the game was lost,,
+for the  game.  We will need all that code to continue our project to work on a showing message when the user wins, and reseting the game, to
+play another round of hangman.  First we will add the missed random word (sWord) to the message, when the player loses.
+
+MessageBox.Show("The word was: " + sWord + "\nSorry, you are dead to us all \nPlay Again!", "Loser!!!!!");
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -273,37 +285,36 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                     }
                 }
 
-                // L164 check to see if thier are any spaces '_' in labels Label
+
+
+/*
+To see when a player has won the game, we will itterate through the Label labels and check if any of the letter spaces are still present.  If
+the labels are all letters, then the word has been figured out, and the player wins.  First, we will iterate through labels, to see if there are
+any spcaces '_', in the Label.  If there aren't any spaces te user wins.
+*/
+
+
+
+				// L164 check to see if thier are any spaces '_' in labels Label
                 foreach (Label l in labels)
-                    if (l.Text == "_")return;
-                // L164 if there are no spaces: winner
-                MessageBox.Show("Congraturlations: You WIN!", "Congrats!");
-                ResetGame();
-                
-            }
-            else
-            {
-                // L163 if the input cletters are not in the cLetter let the user know
-                MessageBox.Show("'" + cLetter.ToString() + "' is not in the word", "Sorry");
-
-                // L163 add Missed letter to label2, with a space and comma between missed elements
-                label2.Text += " " + cLetter.ToString() + ",";
-
-                // L163 draw BodyParts starting at 0 to 9 using iAmount to choose the part
-                drawBodyPart((BodyParts)iAmount);
-
-                // L163 increment iAmount by 1 for missed letter guesses
-                iAmount++;
-
-                // L163 When user reaches 9 missed letters, he loses.
-                if (iAmount == 9)
                 {
-                    //MessageBox.Show("The word was: " + sWord + "\nSorry, you are dead to us all \nPlay Again!", "Loser!!!!!");
-                    MessageBox.Show("The word was: " + sWord + "\nSorry, you lost \nPlay Again!", "Bad news");
-                    ResetGame();
+                    if (l.Text == "_")
+                        return;
+                    // L164 if there are no spaces: winner
+                    MessageBox.Show("Congraturlations: You WIN!");
                 }
-            }
-        }
+
+
+
+
+/*
+Next we will create a reset method for when the round of game play, ends and the player can start with a new word.  First we will create an 
+instance of Graphics, so we can use it to clear the background color of panel1.  Then we will use are GetRandomWord(); method to get a new random
+word, to use in our new game.  Then we will make the Label spaces based on the amount of character in our new word, us the MakeLabels(); method.
+Then we will re-draw our hanMans post using the  hangManPost();.  Then we will clear the two labels that are used for the count of how man letters
+are in the word, and the letters that have been played, while trying to guess the word.
+*/
+
 
         // L164 create game reset, player wins or losses
         void ResetGame()
@@ -325,5 +336,54 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             label1.Text = "";
             label2.Text = "Missed: ";
         }
-    }
-}
+
+
+
+/*
+We will put our new ResetGame() method, right after our two, win or lose, messages:
+
+
+					MessageBox.Show("The word was: " + sWord + "\nSorry, you lost \nPlay Again!", "Bad news");
+                    ResetGame();
+
+
+
+
+
+					MessageBox.Show("Congraturlations: You WIN!", "Congrats!");
+                    ResetGame();
+*/
+
+
+
+
+
+
+
+
+
+/********************************* highlights from the comments area ******************************/
+
+
+
+
+
+
+
+remember to put this         amount = 0;
+
+
+
+
+
+
+hello sorry to ask, where do i put amount =0; for resetting the game. 
+
+sorry you probably figured this out but so others know. put amount = 0 in the reset method. however, i found it easier to create a button 
+to reset the game so it doesnt reset straight away. then put the reset method he made into that :)
+
+
+
+
+You should also reset the amount of the missed letters in the ResetGame method, or else the hangman will be drawn awkwardly, if you restart 
+the game after you have won.

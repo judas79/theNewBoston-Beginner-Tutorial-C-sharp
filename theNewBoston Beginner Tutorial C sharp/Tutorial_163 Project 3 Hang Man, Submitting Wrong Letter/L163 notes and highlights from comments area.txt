@@ -1,7 +1,7 @@
 ﻿/*
 In the previous tutorials, we used the VS editor to design our user interface, hangmans pole, Hangmans entire body, retrieved a random word
 from a list, displayed the underscores that represent the random words elements, and enabled the Submit Letter for the  game.  We will need 
-all that code to continue our project to work on a small detail that was omitted from the first tutorial in this series.  We will no add a
+all that code to continue our project to work on a small detail that was omitted from the first tutorial in this series.  We will now add a
 new label to our form, to hold the letters, that have been tried, but where not in the random word.  So drag in another label and put it in
 GroupBox2, on the left bottom of the group.  Nmae it, Missed:.  We also need to modify our code in the Submit Letter, button1, code area.  We 
 will change this line:
