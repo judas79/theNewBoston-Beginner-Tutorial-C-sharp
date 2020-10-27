@@ -1,0 +1,155 @@
+﻿/*
+In this tutorial, we will need a button1 and a form1, to learn about Optional Parameters.  Once you have your button1, go to thecode area.
+*/
+
+
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+
+/*
+One way of doing an optional parameter, is to overload a method.  Outside our button1 code area, create a method that has two arguements, for
+strings, and name the method showMessage.  This method will be used to pass along a string message, and string title, for a messageBox.  Now to
+overload the method, copy the method and paste it above where it is at.  Next remove the, commas string title and the title from the 
+messsageBox.Show, from the method you just copy pasted.  Next we can create options of weather we show information for a message or title, or
+for both, in amessageBox in our button1, by using our method, showMessage, to include what you want to display.
+*/
+
+        // L166 use method to show message, oe=r title, or both
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showMessage("message!", "title!");
+            showMessage("message!");
+            showMessage("", "title!");
+        }
+
+        // L166 overload methods' copied from method below,
+        void showMessage(string message)
+        {
+            // L166 mesageBox to pass in sting message, and string title
+            MessageBox.Show(message);
+        }
+
+        // L166 overload methods' arguements as optional parameter, for a messageBox
+        void showMessage(string message, string title)
+        {
+            // L166 mesageBox to pass in sting message, and string title
+            MessageBox.Show(message, title);
+        }
+
+
+/*
+We can also create optional parameters in a method.  Lets create another method and name it optionalMessage(), to set an optional parameter,
+in our method.  To do this we will set one of our two parameters to something, in this example:  string title2 = "Defaul Value".  Setting 
+title2 to any value, allows the title2 place in the arguements, to be optional, since it is equal to something, which in this example is, 
+Default Value.  If we do not appoint another value to title2, then its default value will be printed in the messageBox, when optionalMessage()
+is called.  So, in button1 lets call optionalMessage() and pass in a value for the message2, but not for the title2.
+
+
+		/******  This method goes in the code area in form1  ******/
+		// L166 overload methods' arguements  optional parameter, for a messageBox
+        void optionalMessage(string message2, string title2="Default Value")
+        {
+            // L166 mesageBox to pass in sting message, and string title
+            MessageBox.Show(message2, title2);
+        }
+*/
+/*
+			/******  This method goes in the code area in button1  ******/
+			// L166 use method optionalMessage() to pass in message2, but not title2
+            // the default value, from the optionalMessage(), will be diplayed for title2
+            optionalMessage("message2!");
+
+            // L162 provide a value to pass for title2 overides Default Value
+            optionalMessage("message2!", "title2!");
+			
+*/
+
+
+
+/*
+Default parameters must come after all the other parameters, in a method.  If they are not, the compiler will not know which parameter belongs
+to which parameter called.  So, this example will NOT work:
+
+
+		void optionalMessage(string message2="Default Value", string title2)
+        {
+            MessageBox.Show(message2, title2);
+        }
+
+
+		/************ In the button2 code area *************/
+
+		optionalMessage("message2!");
+
+
+The compiler would not know if the passed in "message2!" would go in the message2 parameter, or in the title2 parameter.
+
+*/
+
+
+/*
+You can pass as many optional parameters as you want, after the regualr parameters.  We will add another parameter, an int amount, into our
+method, as an example.  We will use a for statement to itterate through numbers, to get a value for amount, which will control the amount of
+times, the messageBox pops-up.
+
+
+        /******  This replaces our method  in the code area in form1  ******/
+
+		// L166 overload methods' arguements  optional parameter, for a messageBox, we added the int amount later
+        void optionalMessage(string message2, string title2="Default Value", int amount=1)
+        {
+            // L166 This will make the amount of message boxes, by what is the default value '0'
+            // or what we pass in for amount, in our button1 call
+            for (int i = 0; i < amount; i++)
+            // L166 mesageBox to pass in sting message, and string title
+            MessageBox.Show(message2, title2);
+
+
+			/************ In the button2 code area *************/
+
+			// L166 pass in the regualar parameter then the overloaded optional parameters for title2, and amount
+            optionalMessage("message2!", "this should open four times", 4);
+
+            // L166 only pass in regular parameter, message2, and the title1 parameter
+            optionalMessage("message2!", "This should open up once");
+*/
+
+
+
+
+
+
+/********************** highlight from comments area **************************/
+
+
+
+
+
+Really?  No comments!  I found this most useful.   thanks
+
+void optionalMessage(string message2="The rest of you", string title2="Default", int amount=1)
+        {
+            for (int i = 0; i < amount; i++)
+            MessageBox.Show(message2, title2);
+        }
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            optionalMessage("Thanks!", "Adam", 1000);
+        }

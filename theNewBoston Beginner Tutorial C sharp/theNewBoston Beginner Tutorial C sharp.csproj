@@ -60,6 +60,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MyDLL">
       <HintPath>..\..\MyDLL\MyDLL\bin\Debug\netstandard2.0\MyDLL.dll</HintPath>
@@ -486,6 +489,16 @@
     <Content Include="Tutorial_163 Project 3 Hang Man, Submitting Wrong Letter\L163 form1CS.txt" />
     <Content Include="Tutorial_164 Project 3 Hang Man, Resetting Game\L164 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_164 Project 3 Hang Man, Resetting Game\L164 form1CS.txt" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\cotton.jpg" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\house.jpg" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\housea.png" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\L165 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\L165 from1CS.txt" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\plantation3.jpg" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\plantation3a.png" />
+    <Content Include="Tutorial_165 Project 3 Hang Man, Submit Word Button\L165 form1B_CS.txt" />
+    <Content Include="Tutorial_166 Optional Parameters\L166 notes and highlights from the comments area.txt" />
+    <Content Include="Tutorial_166 Optional Parameters\L166 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
