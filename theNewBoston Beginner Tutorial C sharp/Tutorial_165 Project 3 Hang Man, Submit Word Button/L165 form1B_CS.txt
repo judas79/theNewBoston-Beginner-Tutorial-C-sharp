@@ -1,0 +1,459 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// L159 to download text page from the web
+using System.Net;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L160 store random word
+        string sWord = "";
+
+        // L160 label list array, values of for statement stored there
+        List<Label> labels = new List<Label>();
+
+        // L163 to hold the accumilitive value of missed letter tries
+        int iAmount;
+
+        // L155 method to display hangman post in panel1
+        void hangManPost()
+        {
+            //L155 instance of CreateGraphics in panel1
+            Graphics gr = panel1.CreateGraphics();
+
+            //L155 create pen draws 10 pixels and is brown
+            Pen pn = new Pen(Color.Brown, 10f);
+
+            // L155 draw starting points for line using graphics, pen and new Points
+            // horizontal base
+            gr.DrawLine(pn, new Point(157, 300), new Point(203, 300));
+            // vertical line going up
+            gr.DrawLine(pn, new Point (180, 300), new Point(180, 5));
+            // horizontal line going left
+            gr.DrawLine(pn, new Point(185, 5), new Point(60, 5));
+            // vertical line going down
+            gr.DrawLine(pn, new Point(65, 5), new Point(65, 50));
+
+            //// L156 temporary for testing body part placement
+            //drawBodyPart(BodyParts.Head);
+            //drawBodyPart(BodyParts.Left_Eye);
+            //drawBodyPart(BodyParts.Right_Eye);
+            //drawBodyPart(BodyParts.Mouth);
+            //drawBodyPart(BodyParts.Body);
+            //drawBodyPart(BodyParts.Left_Arm);
+            //drawBodyPart(BodyParts.Right_Arm);
+            //drawBodyPart(BodyParts.Left_Leg);
+            //drawBodyPart(BodyParts.Right_Leg);
+
+            // L159 temporary for testing:  see random word chosen from the online word list
+            //MessageBox.Show(GetRandomWord());
+            GetRandomWord();
+            
+        }
+
+        // L156 create enumeration to hold list of entire body and its parts
+        enum BodyParts
+        {
+            Head,
+            Left_Eye,
+            Right_Eye,
+            Mouth,
+            Left_Arm,
+            Right_Arm,
+            Body,
+            Left_Leg,
+            Right_Leg
+        }
+
+        // L156 method to display all the parts of the hangman in panel1, pass in BodyParts name bdprts
+        void drawBodyPart(BodyParts bdprts)
+        {
+            
+            // L156 instance of CreateGraphics in panel1
+            Graphics gr = panel1.CreateGraphics();
+
+            // L156 create pen to draw and is blue, size is 2 pixels
+            Pen pn = new Pen(Color.Black, 4);
+
+            // L156 create black solidBrush to make the eyes
+            SolidBrush sb = new SolidBrush(Color.Black);
+
+            // L156 compare if enum bdprts is the head, start at end of hangman pole, elipse size 40x40
+            if (bdprts == BodyParts.Head)
+                //gr.DrawEllipse(pn, 45, 50, 40, 40);
+
+                // CORNDOG DRAW GRAPHICS circle
+                gr.FillEllipse(sb, 45, 50, 40, 40);
+
+            // L156 draw left eye using fillElipse with solidBrush
+            else if (bdprts == BodyParts.Left_Eye)
+            {
+                // CORNDOG COLOR GRAPHICS
+                sb.Color = (Color.White);
+                gr.FillEllipse(sb, 55, 65, 5, 5);
+            }
+
+               
+
+            // L156 draw right eye using fillElipse with solidBrush
+            else if (bdprts == BodyParts.Right_Eye)
+            {
+                // CORNDOG COLOR GRAPHICS
+                sb.Color = (Color.White);
+                gr.FillEllipse(sb, 67, 65, 5, 5);
+            }
+                
+
+            // L156 draw mouth using pen and using an arch starting at 45 degrees and draw 90 degrees
+            else if (bdprts == BodyParts.Mouth)
+            {
+                pn.Color = (Color.RosyBrown);
+                gr.DrawArc(pn, 54, 63, 20, 20, 45, 90);
+            }
+                
+            // L157 vertical line going down for body
+            else if (bdprts == BodyParts.Body)
+            {
+                //pn.Color = (Color.Blue);
+                gr.DrawLine(pn, new Point(65, 90), new Point(65, 180));
+            }
+
+            // L157 line going at an angle left arm
+            else if (bdprts == BodyParts.Left_Arm)
+                gr.DrawLine(pn, new Point(65, 100), new Point(20, 90));
+
+            // L157 line going at an angle right arm
+            else if (bdprts == BodyParts.Right_Arm)
+                gr.DrawLine(pn, new Point(65, 100), new Point(102, 90));
+
+            // L158 angled line going down for left leg
+            else if (bdprts == BodyParts.Left_Leg)
+                gr.DrawLine(pn, new Point(65, 180), new Point(35, 220));
+
+            // L158 angled line going down for left leg
+            else if (bdprts == BodyParts.Right_Leg)
+                gr.DrawLine(pn, new Point(65, 180), new Point(95, 220));
+
+            
+
+        }
+
+        // L159 method to get random word from web text word list
+        string GetRandomWord()
+        {
+            // L159 instance of WebClient
+            WebClient wc = new WebClient();
+
+            // L159 string to but contents of online websites word list
+            // another list if needed:  
+            string sWordList = wc.DownloadString("https://www.mit.edu/~ecprice/wordlist.10000");
+
+            // L159 array to put the WordList into as we split the word up using split point parameters
+            string[] aWords = sWordList.Split('\n');
+
+            // NOT in tutorial, only use words with 5 characters or more
+            StringBuilder builder = new StringBuilder();
+            foreach (string str in aWords)
+            {
+                if (str.Length > 4)
+                {
+                    builder.Append(str + "\n");
+                }          
+            }
+            string[] aWords2 = builder.ToString().Split('\n');
+
+            // L159 instance of random
+            Random rndm = new Random();
+
+            // L159 return random word from aWords array, 
+            // from 0 to 1 minus the length of all words in array
+            //return aWords[rndm.Next(0, aWords.Length - 1)];
+            return aWords2[rndm.Next(0, aWords2.Length - 1)];
+        }
+
+        // L160 method create labels from characters of random word
+        void MakeLabels()
+        {
+            // L160 get our random word from our RandomWord method put it in string sWord
+            sWord = GetRandomWord();
+
+            // TEMPORARY COMMENT THIS OUT
+            //MessageBox.Show(sWord);
+
+            // L160 convert string to char array, for character separation
+            char[] cChar = sWord.ToCharArray();
+
+            // L160 create space beteen characters of random word
+            int iBetween = 300 / cChar.Length - 1;
+
+            // L160 iterate through our cChar array, to fill our labels list
+            for(int i = 0; i < cChar.Length; i++)
+            {
+                labels.Add(new Label());
+
+                // L161 set location of our labels
+                labels[i].Location = new Point((i * iBetween) + 10, 80);
+
+                // L161 set letters in labels Text as underscores
+                labels[i].Text = "_";
+
+                // L161 set labels parent control to Groupbox2
+                labels[i].Parent = groupBox2;
+
+                // L161 bring control to the front of all controls
+                labels[i].BringToFront();
+
+                // L161 create labels[i] control and so it can be displayed
+                labels[i].CreateControl();
+
+                // CORNDOG CHANGE LABELS FONT COLOR
+                labels[i].ForeColor = Color.White;
+                //labels[i].BackColor = Color.WhiteSmoke;
+                labels[i].Font = new Font("Arial", 14);
+                
+            }
+            // L161 see numerical value of the random words character amount
+            label1.Text = ("Word Length: " + cChar.Length.ToString());
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            // L155 pass in hangManPost method to display in form1 using event Shown
+            hangManPost();
+
+            // L161 pass in MakeLabel method  to display in form1 using event Shown
+            MakeLabels();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // NOT in lesson: generate new word for user
+
+            // clear the old game
+            //ResetGame();
+            hangManPost();
+                        
+            MakeLabels();
+            
+            // L159 temporary for testing:  see random word chosen from the online word list
+            MessageBox.Show(sWord);
+
+            button3.Enabled = false;
+        }
+
+        // L162 moved here after adding try statement to code, to fix error
+        char cLetter;
+        // L165 moved here to clar enty when resetting game, 
+        //was passing last letter entry into new game, if an empty entry was submitted
+        char[] cLetters;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // L162 store submitted letter to char, notice ()[0] represents only one character in the char array
+                cLetter = textBox1.Text.ToLower().ToCharArray()[0];
+
+                // L162 verify that only a letter has been submited, if ! not a letter, error message, or return to submit a letter;
+                if (!char.IsLetter(cLetter))
+                {
+                    MessageBox.Show("Only letters make up a word, dumbass Boof!\n ... and no, we do not use hyphens.\nYou should probably go to school, before playing this game"
+                        , "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Please only enter one letter, no numbers or symbols, please"
+                        //, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // clear textBox1 and set it as active to enter a letter, 
+                    // without clicking on it, to choose it
+                    textBox1.Text = "";
+                    ActiveControl = textBox1;
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Put a letter in there first, you ignorant bastard \nThere are no empty spaces in a word;  dumb-ass Jigaboo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Your entry was empty,\nPlease enter a letter", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // clear textBox1 and set it as active to enter a letter, 
+                // without clicking on it, to choose it
+                textBox1.Text = "";
+                ActiveControl = textBox1;
+                return;
+            }
+
+
+            // L162 verify that submited letter matches a letter in our random word
+            if (sWord.Contains(cLetter))
+            {
+                // L162 put sWord letters in char array, to itterate trhough them
+                cLetters = sWord.ToCharArray();
+
+                // L162 iterate through cLetters for elements that match user input
+                for (int i = 0; i < cLetters.Length; i++)
+                {
+                    if (cLetters[i] == cLetter)
+                    {
+                        // L162 If the letters match, use i used for the count, 
+                        // for the location of that matching letter in our labels[i],
+                        // and replace the empty space _ value, with the submited value
+                        labels[i].Text = cLetter.ToString();
+                    }
+
+                    //clear the letter in textBox1 entry when submitted
+                    textBox1.Text = "";
+                    ActiveControl = textBox1;
+                }
+
+                // L164 check to see if thier are any spaces '_' in labels Label
+                foreach (Label l in labels)
+                    if (l.Text == "_")  return;
+
+
+
+                // L164 if there are no spaces: winner
+                //MessageBox.Show("Congraturlations: You WIN!", "Congrats!");
+                MessageBox.Show("Congraturlations: You conquered a racists, childs game!", "Congrats Einstein!");
+
+                
+                button3.Enabled = true;
+          
+                panel1.ForeColor = Color.Transparent;
+                panel1.BackColor = Color.Transparent;
+                ResetGame();
+
+            }
+            else
+            {
+                // L163 if the input cletters are not in the cLetter let the user know
+                MessageBox.Show("'" + cLetter.ToString() + "' is not in the word", "Sorry");
+
+                // L163 add Missed letter to label2, with a space and comma between missed elements
+                label2.Text += " " + cLetter.ToString() + ",";
+
+                // L163 draw BodyParts starting at 0 to 9 using iAmount to choose the part
+                drawBodyPart((BodyParts)iAmount);
+
+                // L163 increment iAmount by 1 for missed letter guesses
+                iAmount++;
+
+                // textbox1 selected, Resume entering letters in textbox1
+                ActiveControl = textBox1;
+
+                // L163 When user reaches 9 missed letters, he loses.
+                if (iAmount == 9)
+                {
+                    MessageBox.Show("The word was: " + sWord + "\nSorry, you are dead to us all \nPlay Again!", "LOSER!!!!!");
+                    //MessageBox.Show("The word was: " + sWord + "\nSorry, you lost \nPlay Again!", "Sorry");
+
+                    panel1.ForeColor = Color.Transparent;
+                    panel1.BackColor = Color.Transparent;
+                    button3.Enabled = true;
+                    ResetGame();
+                }
+            }
+
+            // clear the letter in textBox1 entry when submitted
+            textBox1.Text = "";
+
+        }
+
+        // L164 create game reset, player wins or losses
+        void ResetGame()
+        {
+            // Clear Missing: label2, and clear Word length label1
+            label1.Text = "";
+            label2.Text = "Missed: ";
+
+            // clear the letter in textBox1 entry when submitted
+            textBox1.Text = "";
+            iAmount = 0;
+            cLetter = '\0';
+            //labels[0].Text = null;
+
+            // clear panel1 back Color using graphics
+            Graphics gr = panel1.CreateGraphics();
+            gr.Clear(panel1.BackColor);
+            panel1.BackColor = Color.Transparent;
+            panel1.ForeColor = Color.Transparent;
+
+            // L164 use method to get a new random word
+            GetRandomWord();
+
+            // L164 use method to draw hangMan post again
+            hangManPost();
+
+            // L164 use method to make our labels for the new word
+            MakeLabels();
+            
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L165 compare user input to random word
+            if (textBox2.Text.ToLower() == sWord)
+            {
+                // L165 inform the user of the success
+                MessageBox.Show("Congratulations: you deduced the word:\nNow go pick your teeth with a chickens foot", "Success! Winner! " + sWord + "!");
+
+                // clear text Box and set text box 2 to the active input
+                textBox2.Text = "";
+                ActiveControl = textBox2;
+                button3.Enabled = true;
+                panel1.ForeColor = Color.Transparent;
+                panel1.BackColor = Color.Transparent;
+                ResetGame();
+            }
+            else
+            {
+                // L165 inform user guess was wrong with messageBox
+                MessageBox.Show("Sorry: " + textBox2.Text.ToString() + " is not the word!", "Sorry");
+
+                // clear text Box and set text box 2 to the active input
+                textBox2.Text = "";
+                ActiveControl = textBox2;
+
+                // L165 add BodyParts using drawBodyPart to pass in amount of BodyParts, which defines which part is added
+                drawBodyPart((BodyParts)iAmount);
+
+                // L165 increment iAmount by 1, for next body part in list
+                iAmount++;
+
+                // L165 check to see if user has lost the game
+                // L163 When user reaches 9 missed letters, he loses.
+                if (iAmount == 9)
+                {
+                    MessageBox.Show("The word was: " + sWord + "\nSorry, you are dead to us all \nPlay Again!", "LOSER!!!!!");
+                    //MessageBox.Show("The word was: " + sWord + "\nSorry, you lost \nPlay Again!", "Sorry");
+
+                    // clear text Box and set text box 2 to the active input
+                    textBox2.Text = "";
+                    ActiveControl = textBox2;
+                    panel1.BackColor = Color.Transparent;
+                    panel1.ForeColor = Color.Transparent;
+                    ResetGame();
+                }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+    }
+}
