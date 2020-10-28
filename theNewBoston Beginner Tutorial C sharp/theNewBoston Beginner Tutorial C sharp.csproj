@@ -501,6 +501,8 @@
     <Content Include="Tutorial_166 Optional Parameters\L166 form1CS.txt" />
     <Content Include="Tutorial_167 IEnumerable and Yield Return\L167 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_167 IEnumerable and Yield Return\L167 form1CS.txt" />
+    <Content Include="Tutorial_168 Make a Class for a Foreach Loop\L168 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_168 Make a Class for a Foreach Loop\L168 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,0 +1,161 @@
+﻿/*
+In this tutotrial, we will need a button1 in form1, to learn about Makeing a Class for a Foreach Loop.  In form1, we will also need a Collection
+class that has a method that is a list of string elements, that passes something through the constructer, that is of the same type as your list,
+and adds that, to your list.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L168 class MyCollection, with a list, method made up of the string list, 
+        // pass a string through the constructor, add it to the list
+        class MyCollection
+        {
+            // L168 list of strings
+            List<string> Names = new List<string>(); 
+
+            // L168 pass name through MyCollection constructor
+            public MyCollection(string name)
+            {
+                // L168 add passed in name
+                Names.Add(name);
+            }
+        }
+
+
+/*
+First, in button1 we will use MyCollection, and try passing a string name into MyCollection using a foreach loop.  This will not work on its
+own.  The compiler doesn't know what to loop through so 'mc' will have a (red squigly line under it) error.  
+*/
+
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+            // L168 pass a name into MyCollection through the constructor (name)
+            MyCollection mc = new MyCollection("Adam");
+            foreach (string s in mc)
+                
+        }
+
+/*
+We will need to inherit from the namespace using the System.Collection to access the IEnumerable interface.  So add using System.Collections;
+to out namespaces and dlls at the top of your form1CS.  Next we will modify our MyCollection class, to be able to inherit the IEnumerable, and
+IEnumerator interfaces.  We will implement these to access methods within them later, using public methods.  These methods will allow us to
+use the foreach steatement successfuly.
+
+class MyCollection : IEnumerable, IEnumerator;
+
+
+Next we will create a variable within our MyCollection class to hold the integer for our index for MyCollection
+*/
+
+
+			// L168 int for keeping track of our index position in MyCollection
+            int position = -1;
+
+
+
+/*
+Next we will create a public bool method, within our class, that will tell the compiler when it has reached the end of MyCollection, named, 
+MoveNext.
+
+
+            // L168 public bool that tells compiler when MyCollection has reached end
+            // returns names if there are less positions than elements in Names
+            public bool MoveNext()
+            {
+				position++;
+                return (position < Names.Count);
+            }
+*/
+
+
+
+/*
+The next method to satisfy all the prerequisits of making our foreac statement work, is to reset out position back to -1,  when finished.
+
+
+            // L168 public method to reset position back to -1
+            public void Reset()
+            {
+                position = -1;
+            }
+
+
+
+*/
+
+
+/*
+The next public method, requirement gets a Current property from Name and returns it
+
+
+
+            public object Current
+            {
+                // gets a property and returns it
+                get
+                {
+                    return Names[position];
+                }
+            }
+*/
+
+
+/*
+The final required method we need to use is the Ienumerator.  This will inherit the IEnumerator from its namespace, which is listed above,
+by getting it and having this (form1) inherit from it.
+
+
+            // L168 public method to pass the IEnumerator class into this form1
+            public IEnumerator GetEnumerator()
+            {
+                return (IEnumerator)this;
+            }
+
+
+All these methods will allow the foreach statement to loop through the Lists Names collection.  Notice Names is in almost all the method,
+defining where the collection is to the compiler.
+*/
+
+/*
+Finally we will finish our foreach statement in button1, by haveing it display each of the contents in the list it is iterating through.
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L168 pass a name into MyCollection through the constructor (name)
+            MyCollection mc = new MyCollection("Adam");
+
+			// L168 iterate through the MyCollection list after meeting all the requirments forfilled by methods
+            foreach (string s in mc)
+            {
+                MessageBox.Show(s);
+            }
+        }
+*/
+
+
+
+
+
+
+
+/****************************** NO highlights from the comments area ******************************/
