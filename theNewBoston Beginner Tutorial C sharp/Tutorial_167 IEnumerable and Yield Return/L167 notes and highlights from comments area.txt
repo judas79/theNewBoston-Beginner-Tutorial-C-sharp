@@ -1,0 +1,118 @@
+﻿/*
+In this tutorial, we will need a button1 and a form1, to learn about IEnumerable and Yield Return.  Once you have your button1, go to the 
+code area.  The first thing we will do is add the dll that has the IEnumerable interface in it.  It is: using System.Collections;  We will
+add it to our list of namespace and or DLL's.  Then we will add a button1 and click on it to go into the code space.
+*/
+
+
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// L167 contains the EInumerable interface in it
+using System.Collections;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+/*
+First we will create a method that returns a EInumerable.  An EInumerable basically, is a collection of objects.  We will name our method
+getNumbers; it will return a collection of numbers in between a minimum and maximum, that is user defined.  Then we will have a for statement
+to yield a return of the minimum value, as it iterates to the maximum value.  The 'yield return' will only return one of those numbers as 
+needed.  
+*/
+
+
+        // L167 IEnumerable method that yield returns a minimum number as needed
+        IEnumerable GetNumbers(int min, int max)
+        {
+            // L167 iterate when a min is needed until reaching the max number
+            for(; min <+ max; min++)
+            {
+                // L167 yields a return only when needed, not all at once
+                yield return min;
+            }
+        }
+
+
+/*
+Next we will call our method from button1.  Even if we call our method with GetNumbers(0, 10);, it still will not return anything, as it is.
+We will create a for statement to iterate through our GetNumbers() method, putting in the values we want to use for the min and max vars. 
+Then display that amount as messageboxes, one at a time.  As we close a messagebox, the program will the get another value to greate the next
+messageBox, until it reaches the max, instead of iterating through all of it at once.
+
+
+
+		private void button1_Click(object sender, EventArgs e)
+        {
+            // L167 call our GetNumbers method, add values for the min and max int vars.
+            // as it is here the program will stop and do nothing, when button1 pressed
+            GetNumbers(0, 10);
+            // L167 with a foreach statement it will iterate to the max and show a messagebox for each
+            foreach(int i in GetNumbers(0, 10)) 
+			{
+			MessageBox.Show(i.ToString());
+			}
+        }
+*/
+
+
+/*
+If we want to stop the count while iterating through the min to the max, we can use an if statement to break out of the foreach statement,
+at a given value.  We will then put a 'break point' at our foreach statement in button1 and use [Fn]+[F11] to step through our program after
+debugging and pressing the button.  This is all usefull if you have a large program and it only peridically needs a number, instead of having
+all the numbers in the method generated at once.
+*/
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L167 call our GetNumbers method, add values for the min and max int vars.
+            // as it is here the program will stop and do nothing, when button1 pressed
+            GetNumbers(0, 10);
+            // L167 with a foreach statement it will iterate to the max and show a messagebox for each
+            foreach (int i in GetNumbers(0, 10))
+            {
+                // L167 break out of the foreach statement when value equals 3
+                if (i == 5) break;
+                MessageBox.Show(i.ToString());
+            }
+        }
+
+
+
+
+
+
+/************************** highlights from the comments area ****************************/
+
+
+
+
+
+hey guys little tip here.  Press Ctrl+K then S and begin typing for, if, while or whatever statement you like and press enter and VS will 
+generate a template. :)
+
+
+
+
+
+Thanks, why does it break if you remove the "yield" keyword though?
+
+
+because Yield is used to freeze the enumeration process until the next element is requested.
+
+
+
+
+
+Should be very useful for conditional walking large collections, looking forward to trying it - thx!
