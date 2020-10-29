@@ -1,0 +1,45 @@
+﻿In this project, we will be making an Address Book.  In this first of seven parts, we will set up the user interface.  We will need many
+components:
+
+1 create a form1 and name Text: Address Book.
+2 Drag in a groupBox put it on the left hand side of form1 and name Text: People
+3 Drag in a listView, and put into the groupBox and dock it, if you want
+4 Drag in another groupBox, put it on the right side of form1, name Text: Information
+
+This is where the next items will all go into, that hold the information about the people heading in the first groupBox.  Most of these,
+items, will consist of a label, followed by a textBox.
+
+5 Drag in a label, name Text: Full Name
+6 Drag in a textBox and set it to the right of the Full Name label, and stretch the box to the end of the 'Information" groupBox
+
+Next we will copy both the label and textBox, and paste two copies below it.
+
+7 Name this next label Text: Email Address
+8 Name this next label Text: Street Address
+9 Name this next label Text: Phone #...........This is optional NOT in the lesson
+
+10 Drag in a label and name Text: Birthday
+11 Drag in a DateTimPicker and resize it to the size of your textBoxes
+12 Drag in a label and name Text Additional Notes.  This will be on its own line.  Then below it, will be a textBox that takes up the almost
+the entire bottom of the information groupBox.  Leaving room for 3 side by side buttons
+
+13 Drag in a textBox and fill the bottom area leaving enough room for three buttons, in the information groupBox.  Check multiLine to adjust
+   the textBox.
+
+Select the entire groupBox and move it around until it looks centered, if you need to.
+
+14 Drag in a button and add it to the bottom left of our ifnormation groupbox.  This will be for saving, so name Text Save Changes.
+15 Copy Paste our Save Changes button, and call the name Text the first: Add Contact.
+16 Past another button a name Text: Remove
+
+17 Next we will drag a contextMenustrip into our listView in the People groupBox, so we can add and remove contacts.  We will add 'Remove'
+   to our contextMenuStrip in the dropdown.
+
+Last, we will go into our form1 properties and change are FormBorderStyle to FixedSingle.  We will also set our MaximizeBox to False, so
+the user can not change the dimmensions of our app.
+
+
+
+
+
+/*************************** NO highlights from the comments area **************************/

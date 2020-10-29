@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-// L168 to use EInumerical
-using System.Collections;
 
 namespace theNewBoston_Beginner_Tutorial_C_sharp
 {
@@ -19,64 +17,14 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             InitializeComponent();
         }
 
-        // L168 class MyCollection, with a list, method made up of the string list, 
-        // pass a string through the constructor, add it to the list
-        class MyCollection : IEnumerable, IEnumerator
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
-            // L168 list of strings
-            List<string> Names = new List<string>();
 
-            // L168 int for keeping track of our index position in MyCollection
-            int position = -1;
-
-            // L168 pass name through MyCollection constructor
-            public MyCollection(string name)
-            {
-                // L168 add passed in name
-                Names.Add(name);
-            }
-
-            // L168 public bool that tells compiler when MyCollection has reached end
-            // returns names if there are less positions than elements in Names
-            public bool MoveNext()
-            {
-                position++;
-                return (position < Names.Count);
-            }
-
-            // L168 public method to reset position back to -1
-            public void Reset()
-            {
-                position = -1;
-            }
-
-            // L168 public return an object at its current position
-            public object Current
-            {
-                // gets a property and returns it
-                get
-                {
-                    return Names[position];
-                }
-            }
-
-            // L168 public method to pass the IEnumerator class into this form1
-            public IEnumerator GetEnumerator()
-            {
-                return (IEnumerator)this;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L168 pass a name into MyCollection through the constructor (name)
-            MyCollection mc = new MyCollection("Adam");
 
-            // L168 iterate through the MyCollection list after meeting all the requirments forfilled by methods
-            foreach (string s in mc)
-            {
-                MessageBox.Show(s);
-            }
         }
     }
 }
