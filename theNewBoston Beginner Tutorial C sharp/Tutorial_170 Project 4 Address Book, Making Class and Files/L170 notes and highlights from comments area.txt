@@ -1,0 +1,177 @@
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project.  In this lesson we will a Person class,
+and put a bunch of properties in it, then we will create a folder and also create a xml file within that folder.  Right click form1 and go to 
+the coding area.
+*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+*/
+First we will create our public class named Persons.  Then we will fill this with a bunch of properties, that use get and set to gather data.
+*/
+
+
+		// L170 class Person, with public string get and set properties
+        class Person
+            {
+            public string Name
+            {
+                get;
+                set;
+            }
+            public string Email
+            {
+                get;
+                set;
+            }
+            public string StreetAddress
+            {
+                get;
+                set;
+            }
+            public string Phone
+            {
+                get;
+                set;
+            }
+            // L170 date time picker type birthday
+            public DateTimePicker Birthday
+            {
+                get;
+                set;
+            }
+            public string AdditionalNotes
+            {
+                get;
+                set;
+            }
+
+
+
+/*
+Next we will create folders to store our properties in.  Click on form1 and go into its Event properties and double click Load.  This is for an
+action when form1 is loading.  In the Form1_Load code area we will create a folder, if one has not yet been created, in the app data storage on
+our computer.  First we will create a string 'path' to our app data storage, so we don't have to continually type in the path.  Then we will
+create our path using the keyword 'Directory'.  For this we will need to add the 'IO' namespace at the top of form1.
+
+// to use Directory for creation of folder
+using System.IO;
+
+After we type in Directory and create it we need to then put in the 'path' followed by the name we choose to give the directory.
+We only want to create the directory, if it doesn't already exist, so we will put an if statement before the creation of the dictionary, to check
+first.
+Lastly, we will create our xml file inside of the AddressBook - Roddy, we just created.  First we will use another if statement to see if the 
+settings.xml already exists, and if not create it using 'create'.
+*/
+
+
+
+      // L170 create a folder if one hasn't already been created, create a xml file in that folder     
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L170 string to hold folder path for app data
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // L170 check to see if AddressBook - Rody already exists in this file path
+            if (!Directory.Exists(path + "\\AddressBook - Roddy"))
+            {
+                // L170 create directory (folder) in our app data, path then directory name we choose to give it
+                Directory.CreateDirectory(path + "\\AddressBook - Roddy");
+            }
+            // L170 create a xml file in the directory, above, if one hasn't already been created
+            if (!File.Exists(path + "\\AddressBook - Roddy\\Settings"))
+            {
+                File.Create(path + "\\AddressBook - Roddy\\settings.xml");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
+
+
+
+/****************************** highlights from the comments area ****************************/
+
+
+
+
+
+
+
+In public Form1 below InitializeComponent() I had to add:
+
+"Load += new EventHandler(Form1_Load);" (NO QUOTES)
+
+for this to work.  Also, yes, add using System.IO:
+
+
+
+
+
+Wasn't creating folder for me in AppData. I changed SpecialFolder.ApplicationData to SpecialFolder.MyDocuments and it works fine. Makes 
+the file in My Documents.
+
+
+
+
+
+
+
+in your "usings " up in your code don't forget to put "using System.IO" or the Directory classes won't work
+
+
+Thank you for pointing that out. I was wondering why my Directory and File wasn't working when I debugged.
+
+
+
+
+
+
+Hello, for people that are strugling with directory creation. Something have changed since release of this video therefore PATHING that is shown in this video is not working anymore within Visual Studio.
+
+One of the ways to fix this - write down FULL path to your folder.
+For example in my case:
+if (!Directory.Exists(path = "C:\\Users\\Adu\\Documents\\Visual Studio 2012\\Projects\\Address Book - Adam"))
+
+Just replace my shown path to what ever path you prefer in your PC. For settings file part just add "\\settings.xml" to the end of your path.
+
+Hope it helps! Good luck!
+
+
+
+
+
+
+Make sure you have your 'View' set to 'Show hidden files, folders, and drives' in your windows 'Options' or you will not see your App folder, to get to your 
+Roaming/AddressBook folder.
