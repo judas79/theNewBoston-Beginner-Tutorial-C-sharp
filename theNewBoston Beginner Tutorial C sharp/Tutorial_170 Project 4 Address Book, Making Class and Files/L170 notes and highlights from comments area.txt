@@ -173,5 +173,5 @@ Hope it helps! Good luck!
 
 
 
-Make sure you have your 'View' set to 'Show hidden files, folders, and drives' in your windows 'Options' or you will not see your App folder, to get to your 
-Roaming/AddressBook folder.
+Make sure you have your 'View' set to 'Show hidden files, folders, and drives' in your windows 'Options' or you will not see your App folder, 
+to get to your Roaming/AddressBook folder.
