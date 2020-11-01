@@ -1,7 +1,7 @@
 ﻿/*
-We will continue with the Address Book project.  In the last lesson we created the UI for our project.  In this lesson we will a Person class,
-and put a bunch of properties in it, then we will create a folder and also create a xml file within that folder.  Right click form1 and go to 
-the coding area.
+We will continue with the Address Book project.  In the last lesson we created the UI for our project.  In this lesson we will create a Person 
+class, and put a bunch of properties in it, then we will create a folder and also create a xml file within that folder.  Right click form1 and 
+go to the coding area.
 */
 
 
