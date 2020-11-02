@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
+a bunch of properties about its members.  In this lesson we will be Adding Data to Classes, in our Address Book.  Double click on the 'add contacts'
+button to go to the code area.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +25,9 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             InitializeComponent();
         }
 
-        
         private void groupBox2_Enter(object sender, EventArgs e)
         {
-           
+
         }
 
         // L170 class Person, with public string get and set properties
@@ -79,14 +84,27 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 File.Create(path + "\\AddressBook - Roddy\\settings.xml");
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
+    
 
-        }
+/*
+First we will go to the top area of our form1, and add a list to hold the information about the people in the Person class, in our address book.
+*/
 
         // L171 list hold data about people in class Person
         List<Person> people = new List<Person>();
-        private void button2_Click(object sender, EventArgs e)
+
+
+
+/*
+Next, we will create an instance of the Person class, and name it Ip, inside of our button2_click which is our Add_Contact button.  Next we will
+need to set all those properties we made in our Person Class.  We will set the property name equal to the contents of the coressponding textbox
+next to it in our form1cs[Design].
+We use our dateTimePicker1 to get the value for Birthday.
+Then add thos people properties to our Person classes 'List' using the Person instance Ip.
+We will also want to add the contacts Item Name, to our listView1 items.
+*/
+
+		private void button2_Click(object sender, EventArgs e)
         {
             // L171 instance name of Person class
             Person Ip = new Person();
@@ -104,6 +122,18 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L171 add entered items Name to our listView1.
             listView1.Items.Add(Ip.Name);
+        
+
+/*
+Last, we will want to clear all the textboxes and ewset the dateTimePicker, back to its default, which is now, in the button2, add contacts
+button code area.
+*/
+
+
+
+
+// L171 add entered items Name to our listView1.
+            listView1.Items.Add(Ip.Name);
 
             // L171 clear all the textBoxes
             textBox1.Text = "";
@@ -117,3 +147,24 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+
+
+/******************************* highlights from the comments area ***********************************/
+
+
+
+
+
+
+Hi! I'd be very grateful if somebody would like to explain how to make First name and Last name to be displayed in textBox combined, I made 
+separated textBox for First name and Last name.
+I have tried this, but it didn't work: listView1.Items.Add(p.FirstName,p.LastName);
+
+
+
+
+ its doing that to everybody, just go to Form Editor, click arrow above listView1, change "View:" to "List".
+And for no OutOfRangeExceptions :" if (listView1.SelectedItems.Count == 0) return; " above your " textBox1.Text = people[listView1.SelectedItems­[0].Index].Name; " line.

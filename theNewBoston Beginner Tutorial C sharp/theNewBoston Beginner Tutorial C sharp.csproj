@@ -507,6 +507,8 @@
     <Content Include="Tutorial_169 Project 4 Address Book, Making UI\L169 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_170 Project 4 Address Book, Making Class and Files\L170 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_170 Project 4 Address Book, Making Class and Files\L170 form1CS.txt" />
+    <Content Include="Tutorial_171 Project 4 Address Book, Adding Data to Classes\L171 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_171 Project 4 Address Book, Adding Data to Classes\L171 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
