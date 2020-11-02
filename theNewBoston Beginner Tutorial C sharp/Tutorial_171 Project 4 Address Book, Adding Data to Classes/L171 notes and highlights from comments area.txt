@@ -1,7 +1,8 @@
 ﻿/*
 We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
-a bunch of properties about its members.  In this lesson we will be Adding Data to Classes, in our Address Book.  Double click on the 'add contacts'
-button to go to the code area.
+a bunch of properties about its members.  In this lesson we will be Adding Data to Classes, in our Address Book.  But first, NOT in the lesson,
+go to your form1CS [Design] and click the black triangle in your listView1.  Then click the Edit tab and choose 'List'.  This will make your 
+look like the tutorials.  Double click on the 'add contacts' button to go to the code area.
 */
 
 using System;

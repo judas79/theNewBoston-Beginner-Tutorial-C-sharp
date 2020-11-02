@@ -104,6 +104,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L171 add entered items Name to our listView1.
             listView1.Items.Add(Ip.Name);
+            
 
             // L171 clear all the textBoxes
             textBox1.Text = "";
@@ -114,6 +115,11 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
             // L171 reset dateTimePicker to now
             dateTimePicker1.Value = DateTime.Now;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
