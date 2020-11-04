@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
+a bunch of properties about its members, then added the property name to the ListView, and the all the properties to the people List, using 
+button2 (Add Contact).  In this lesson we will be adding the functionality of updating a person when the name is selected in the ListView, and
+enambling the button3 (Remove) selected names, and thier properties from the listView1 and the people List<Person>.
+The first thing we will do is select ListView1 by click once on it and go into its Event properties and double click SelectedIndexChanged and
+go into its coding area in form1.
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,7 +84,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 Directory.CreateDirectory(path + "\\AddressBook - Roddy");
             }
             // L170 create a xml file in the directory, above, if one hasn't already been created
-            if (!File.Exists(path + "\\AddressBook - Roddy\\Settings.xml"))
+            if (!File.Exists(path + "\\AddressBook - Roddy\\Settings"))
             {
                 File.Create(path + "\\AddressBook - Roddy\\settings.xml");
             }
@@ -94,17 +104,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             // L171 set property to corresponding textboxs' value, that is next to it in our address book
             Ip.Name = textBox1.Text;
             Ip.Email = textBox2.Text;
-            Ip.StreetAddress = textBox3.Text;
-            Ip.Phone = textBox5.Text;
+            Ip.StreetAddress = textBox3.Text.ToString();
+            Ip.Phone = textBox3.Text.ToString();
             Ip.Birthday = dateTimePicker1;
-            Ip.AdditionalNotes = textBox4.Text;
+            Ip.AdditionalNotes = textBox4.Text.ToString();
 
             // L171 add people to our class People list
             people.Add(Ip);
 
             // L171 add entered items Name to our listView1.
             listView1.Items.Add(Ip.Name);
-            
             
 
             // L171 clear all the textBoxes
@@ -118,7 +127,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             dateTimePicker1.Value = DateTime.Now;
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+
+/*
+We want all the textBoxes and dateTimePicker to update, when clicking on an existing name, in the listBox1, so we can see the all information
+that was entered, when the Name was added.  To do this, in listView1_SelectedIndexChanged, we will get the indormation stored in our people
+List<Person> and display it in the corresponding textBoxes.  We also added an if statement, as sugested by someone in the comments area in 
+youtube, that stop an exception, when clicking between members of the listView1.
+*/
+
+
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // L172 display property information stored in people List<Person>
             // in textbox coressponding to that properties name using listview1 selected items index
@@ -136,28 +154,51 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         }
 
+
+/*
+Next we will double click the remove button to go into its code area.  Above the button2 Remove button, we will first create the method to remove
+the desired contact.  The first line will remove the contact from the listView2, and use the listview index number to remove the contact information
+from the people list.  We will put a try and catch around the items in the method, in case there is nothing selected and Remove is pressed giving a -1
+witch would cause an error.
+*/
+
+
         // L172 remove method to delete from the people List, and the ListVie1
         void Remove()
         {
             try
-            { 
+				{ 
                 // L172 remove items from 'people' List, using listView to pick the item index
                 people.RemoveAt(listView1.SelectedItems[0].Index);
 
-                // L172 Remove selected items from ListView1
+				// L172 Remove selected items from ListView1
                 listView1.Items.Remove(listView1.SelectedItems[0]);
-            }
+                }
 
-            // L172 catch is empty, so the user will never know
+                // L172 catch is empty, so the user will never know
             catch { }
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+
+/*
+Next we will go into our button3 (Remove) button code area and call the Remove() method, when the button is pressed.
+*/
+
+
+       private void button3_Click(object sender, EventArgs e)
         {
             // L172 call the remove method
             Remove();
         }
+
+
+
+
+/*
+Last, we will click the contextmenustrip1, and double click the Remove entry in the context menu, that we had created previously.  Then go into its
+code area, and call the remove method.  Debug.
+*/
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -166,3 +207,73 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+
+
+
+
+
+/******************************* highlights from the comments area ****************************/
+
+
+
+
+
+
+
+Thanks a lot. I friend of mine helped me, and figured that out to. Yo need to put people.remove before listview1.remove, and then it worked.
+
+
+
+
+
+You can also use textbox1.Clear(); to clear the boxes as well. A little less typing.
+
+
+
+
+
+
+To Fix the Context menu strip problem: click on ListView1, go to the properties on the right side of visual studio, go to "Behavior" and change the 
+"ContextMenuStrip" option from (none) to "ContextMenuStrip1"
+
+
+
+
+
+
+Yes how do you fix the exception out of bounds error???
+
+You can fix it by adding an if statement that checks to see if there is actually something selected. if (listView1.SelectedItems.Count >= 1) {
+//code in here
+
+
+
+
+
+In Properties change View to "List". It defaults to "Large Icon", which makes entries appear side by side.
+
+FOR ANYONE WHO'S GETTING NAMES SIDE BY SIDE INSTEAD OF IN A ROW: Go to Form Editor, click arrow above listView1, change "View:" to "List". 
+Also IF YOU ARE GETTING AN OUT OF RANGE EXCEPTION: Add this line of code: " if (listView1.SelectedItems.Count == 0) return; " above your " 
+textBox1.Text = people[listView1.SelectedItems­[0].Index].Name; " line.
+this works perfectly ........... i did make this only found it a couple of comments down 
+
+
+
+
+
+The issue here is an ordering problem. Simply switch the order that the lines come up and the xml document will save without the removed contacts.
+The problem was that listView1.Items.Remove(listView1.SelectedItems[0]);   removes the item selection from the list.
+So when you call People.RemoveAt(listView1.SelectedItems[0].Index);  It did not know what you were selecting because the selection had beeen removed, 
+hence not deleting from the People list. 
+People.Rem...
+ListView1.Item...
+
+
+
+
+
+
+If you change "listView1.SelectedItems[0].Index" to "listView1.SelectedIndex" it works perfectly.
