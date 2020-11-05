@@ -1,0 +1,167 @@
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
+a bunch of properties about its members, then added thefunctionality property name to the ListView, and the all the properties to the people List, using 
+button2 (Add Contact).  We also added the method of updating a person when the name is selected in the ListView, and enambling the button3 (Remove) 
+which removes selected names, and thier properties from the listView1 and the people List<Person>.  In this lesson we will add the functionality
+to edit the contact properties, and save the changes.  We will also begin to set up the creation of an xml document to save the all the data when
+the app is closed.  Double click the Save Changes button1, and go to the coding area.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// to use Directory for creation of folder
+using System.IO;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        // L170 class Person, with public string get and set properties
+        class Person
+            {
+            public string Name
+            {
+                get;
+                set;
+            }
+            public string Email
+            {
+                get;
+                set;
+            }
+            public string StreetAddress
+            {
+                get;
+                set;
+            }
+            public string Phone
+            {
+                get;
+                set;
+            }
+            // L170 date time picker type birthday
+            public DateTimePicker Birthday
+            {
+                get;
+                set;
+            }
+            public string AdditionalNotes
+            {
+                get;
+                set;
+            }
+        }
+
+        // L170 create a folder if one hasn't already been created, create a xml file in that folder     
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L170 string to hold folder path for app data
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // L170 check to see if AddressBook - Rody already exists in this file path
+            if (!Directory.Exists(path + "\\AddressBook - Roddy"))
+            {
+                // L170 create directory (folder) in our app data, path then directory name we choose to give it
+                Directory.CreateDirectory(path + "\\AddressBook - Roddy");
+            }
+            // L170 create a xml file in the directory, above, if one hasn't already been created
+            if (!File.Exists(path + "\\AddressBook - Roddy\\Settings.xml"))
+            {
+                File.Create(path + "\\AddressBook - Roddy\\settings.xml");
+            }
+        }
+
+
+
+/*
+Now we will re-create what we did earlier, so that when the user has entered data, it can be edited in part, and saved.  We will want the Name to 
+change in TextView, if it is updated and save, so we will, have it save, also.  Then we will debug, add some data, then change some of that data,
+and check that it has been edited and saved correctly.
+*/
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L173 recreate all the entries to save to the xml file
+            people[listView1.SelectedItems[0].Index].Name = textBox1.Text;
+            people[listView1.SelectedItems[0].Index].Email = textBox2.Text;
+            people[listView1.SelectedItems[0].Index].StreetAddress = textBox3.Text;
+            people[listView1.SelectedItems[0].Index].Phone = textBox5.Text;
+            people[listView1.SelectedItems[0].Index].AdditionalNotes = textBox1.Text;
+
+			// This will not compile so we ommited 'Value' to get through the tutorial
+			//people[listView1.SelectedItems[0].Index].Birthday = dateTimePicker1.Value;
+            people[listView1.SelectedItems[0].Index].Birthday = dateTimePicker1;
+
+			// L173 update Name in listView if it is changed and saved
+            listView1.SelectedItems[0].Text = textBox1.Text;
+
+        }
+
+
+
+/*
+Next, we will begin to write the xml file, that we had created previously in a prior tutorial.  We will access the file, and write edits to it
+when we close the application.  To be able to write to the xml file we will have to add the namespace to our dlls and namespace area, above.  
+
+using System.Xml;
+
+So first we will go to the form1 Events properties and double click 'formClosing'.  In the code area we will create the xml document.  In its
+code area, we will first create and instance of XmlDocument named xmlDoc.  Then we will copy the string path, that we made previously, and paste
+it here to save the file.  Then we will load the path to our settings.xml file.
+*/
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // L173 create and write data to xml file, when closing the app
+            XmlDocument xmlDoc = new XmlDocument();
+
+            // L170 string to hold folder path for app data (copied from above)
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // L173 then load the xml doc from default path
+            xmlDoc.Load(path + "\\AddressBook - Roddy\\settings.xml");
+        }
+    }
+}
+
+
+
+
+
+
+/********************************* highlights from the comments area **********************************/
+
+
+
+
+
+You didnt said about try and catch in listView1_SelectedIndexChanged. It magically appears now ;] and then it works properly ;]
+
+
+
+
+
+
+Did anybody get an exception error if you clicked the 'Save Changes' without anything selected, or no contacts entered?   I put a try and catch,
+in there, also, and it worked for me....
