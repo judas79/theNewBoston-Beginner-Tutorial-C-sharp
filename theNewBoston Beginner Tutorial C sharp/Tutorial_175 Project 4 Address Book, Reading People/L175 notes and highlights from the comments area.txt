@@ -1,0 +1,206 @@
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
+a bunch of properties about its members, then added thefunctionality property name to the ListView, and the all the properties to the people List, using 
+button2 (Add Contact).  We also added the method of updating a person when the name is selected in the ListView, and enambling the button3 (Remove) 
+which removes selected names, and thier properties from the listView1 and the people List<Person>.  In this lesson we will add the functionality
+to edit the contact properties, and save the changes. Then we set up the creation of an xml document to save the all the data when the app is closed
+and also create the prerequisits we need to create our xml file, including the root element required to create the xml file.  In this final 
+tutorial, making an Address Book, we will add the funtionality of loading the settings.xml when the app starts.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// to use Directory for creation of folder
+using System.IO;
+// to enable writing to our xml doc
+using System.Xml;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        // L170 class Person, with public string get and set properties
+        class Person
+            {
+            public string Name
+            {
+                get;
+                set;
+            }
+            public string Email
+            {
+                get;
+                set;
+            }
+            public string StreetAddress
+            {
+                get;
+                set;
+            }
+            public string Phone
+            {
+                get;
+                set;
+            }
+            // L170 date time picker type birthday
+            public DateTimePicker Birthday
+            {
+                get;
+                set;
+            }
+            public string AdditionalNotes
+            {
+                get;
+                set;
+            }
+        }
+
+        // L170 create a folder if one hasn't already been created, create a xml file in that folder     
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L170 string to hold folder path for app data
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // L170 check to see if AddressBook - Rody already exists in this file path
+            if (!Directory.Exists(path + "\\AddressBook - Roddy"))
+            {
+                // L170 create directory (folder) in our app data, path then directory name we choose to give it
+                Directory.CreateDirectory(path + "\\AddressBook - Roddy");
+            }
+            // L170 create a xml file in the directory, above, if one hasn't already been created
+            if (!File.Exists(path + "\\AddressBook - Roddy\\settings.xml"))
+            {
+                // L170 create a temp. place holder for the creation of our xml file
+                //File.Create(path + "\\AddressBook - Roddy\\settings.xml");
+
+                // L174 create an xml file with a root element using xml writer new instance, path to file, and encoding type
+                XmlTextWriter xM = new XmlTextWriter(path + "\\AddressBook - Roddy\\settings.xml", Encoding.UTF8);
+
+                // L174 create start root element using WrirestartElement
+                xM.WriteStartElement("People");
+
+                // L174 close the xml writer
+                xM.Close();
+            }
+
+
+
+
+/*
+The first thing we will do, when the address book loads, is create a new xml document.  So, go to our Form1Load and we will create it by making
+a new instance of XmlDocument.  Then we will load our xml.Doc, using are path to settings.xml.  To fill our document, with the contents of our
+setting.xml, we will iterate through our top xml node, People and get all the Person nodes, from it.  next, we will want to load our ListView with
+all the Names of those Person nodes we iterated through.  So first we will creat a new instance of Person, for this purpose.  Then we will want to 
+select the name node, from the Person node, and extract the inner contents, which is the actual name.  Will do this for all the properties in our
+Person node.  The date time will have to be converted from a bunch of file time numbers back to dateTime usinga long int64, to reload it.
+*/
+
+
+
+             // L175 create a new xml document
+            XmlDocument xmlDoc = new XmlDocument();
+
+            // L175 load the xml document
+            xmlDoc.Load(path + "\\AddressBook - Roddy\\settings.xml");
+
+            // L175 iterate through the Person node, to get all the People nodes
+            foreach (XmlNode xmlNode in xmlDoc.SelectNodes("People/Person"))
+            {
+                // L175 create new instance of Person
+                Person Ip = new Person();
+
+                // L175 get all the properties nodes inner contents fron Person node
+                Ip.Name = xmlNode.SelectSingleNode("Name").InnerText;
+                Ip.Email = xmlNode.SelectSingleNode("Email").InnerText;
+                Ip.StreetAddress = xmlNode.SelectSingleNode("Address").InnerText;
+                Ip.Phone = xmlNode.SelectSingleNode("Phone").InnerText;
+                // NOT working since stored info is in DatTem format and not correct date, 
+                // Value is not a working choice when using DateTimePicker, unknown reason
+                //Ip.Birthday = DateTime.FromFileTime(Convert.ToInt64(xmlNode.SelectSingleNode("Birthday").InnerText));
+                Ip.Birthday.Value = DateTime.Now;
+                Ip.AdditionalNotes = xmlNode.SelectSingleNode("Notes").InnerText;
+
+
+
+
+/*
+Next, we will continue where we left off and add all these properties in the Person list to the People List.
+*/
+
+
+                // L175 add all the properties of the Person list to the people list
+                people.Add(Ip);
+
+                // L175 add the Names to the ListView items
+                listView1.Items.Add(Ip.Name);
+            }
+        }
+
+
+
+
+
+
+
+/*************************** notes from the comments area ****************************/
+
+
+
+
+
+
+all runs ok saves fine but when i reopen it it doesnt read the xml file as there are no people in the application. anyone help ? 
+@ImHollywoodDroid  @WindScar48 @jrich44360 
+
+again, i sorted it out by putting the loading code into a button click event. works fine :)
+
+ you solved the problem? Can you please explain exactly what did you do ?
+ 
+
+ honestly i cant remember what i did, but im guessing from my comment i put the loading code into a button click event  ? ? ?
+
+
+I guess u figured out what happened but if you don't here is what u should do. 
+When you write the xml file, at the datetime picker u need to use this:
+Birthday.InnerText = p.birthday.ToString();
+the output will be this: <Birthday>5/18/2014 10:19:44 AM</Birthday>
+and when u read the file:
+p.birthday = DateTime.Parse(item.SelectSingleNode("Birthday").InnerText);
+
+
+
+
+
+if i remove a contact it dosnt remove it in the XML so it loads it up again. To get it right, just invert the remove method like below
+        void Remove()
+        {
+            try
+            {
+                people.RemoveAt(listView1.SelectedItems[0].Index);
+
+                listView1.Items.Remove(listView1.SelectedItems[0]);
+              
+            }
+
+5
+
+ Thanks! :)
