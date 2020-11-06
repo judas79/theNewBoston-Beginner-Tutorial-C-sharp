@@ -513,6 +513,8 @@
     <Content Include="Tutorial_172 Project 4 Address Book, Updating Information and Removing People\L172 form1CS.txt" />
     <Content Include="Tutorial_173 Project 4 Address Book, Save Changes Button\L173 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_173 Project 4 Address Book, Save Changes Button\L173 form1CS.txt" />
+    <Content Include="Tutorial_174 Project 4 Address Book, Writing to XML File\L174 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_174 Project 4 Address Book, Writing to XML File\L174 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -547,7 +549,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tutorial 03 Showing Message boxes\Images\" />
-    <Folder Include="Tutorial_174 Project 4 Address Book, Writing to XML File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tutorial 01 setup Visual Studio\Images\click button the click form and drag to size.png" />

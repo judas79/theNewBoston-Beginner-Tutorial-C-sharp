@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+We will continue with the Address Book project.  In the last lesson we created the UI for our project, a class named people and filled it with
+a bunch of properties about its members, then added thefunctionality property name to the ListView, and the all the properties to the people List, using 
+button2 (Add Contact).  We also added the method of updating a person when the name is selected in the ListView, and enambling the button3 (Remove) 
+which removes selected names, and thier properties from the listView1 and the people List<Person>.  In this lesson we will add the functionality
+to edit the contact properties, and save the changes. Then we set up the creation of an xml document to save the all the data when the app is closed.
+In this lesson we will do a prerequisit when we create our xml file; it will need a root element in order to create it. 
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,6 +74,16 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             }
         }
 
+
+
+/*
+First we will go over to our form1_Load method, and edited the creation of our xml file to add the root element.  We will need to use the xml writer
+to do this.  So, we will create an instance of the xmltextwriter, then specify the path to our settings.xml we are creating, and also have to 
+specify the encoding format for it text.
+*/
+
+
+
         // L170 create a folder if one hasn't already been created, create a xml file in that folder     
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -84,7 +105,15 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 // L174 create an xml file with a root element using xml writer new instance, path to file, and encoding type
                 XmlTextWriter xM = new XmlTextWriter(path + "\\AddressBook - Roddy\\settings.xml", Encoding.UTF8);
 
-                // L174 create start root element using WrirestartElement
+
+
+/*
+Next we will continue by creating out root element in the file.  We will call it People, like our class name.  Then we will write the end element
+which we will leave empty.   Then we we will close the newly created xml document.
+*/
+
+
+				// L174 create start root element using WrirestartElement
                 xM.WriteStartElement("People");
 
                 // L174 close the xml writer
@@ -93,117 +122,20 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // L173 recreate all the entries to save to the xml file
-                people[listView1.SelectedItems[0].Index].Name = textBox1.Text;
-                people[listView1.SelectedItems[0].Index].Email = textBox2.Text;
-                people[listView1.SelectedItems[0].Index].StreetAddress = textBox3.Text;
-                people[listView1.SelectedItems[0].Index].Phone = textBox5.Text;
-                people[listView1.SelectedItems[0].Index].AdditionalNotes = textBox4.Text;
-
-                // This will not compile so we ommited 'Value' to get through the tutorial
-                //people[listView1.SelectedItems[0].Index].Birthday = dateTimePicker1.Value;
-                people[listView1.SelectedItems[0].Index].Birthday = dateTimePicker1;
-
-                // L173 update Name in listView if it is changed and saved
-                listView1.SelectedItems[0].Text = textBox1.Text;
-            }
-            catch { }
-
-        }
-
-        // L171 list hold data about people in class Person
-        List<Person> people = new List<Person>();
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // L171 instance name of Person class
-            Person Ip = new Person();
-
-            // L171 set property to corresponding textboxs' value, that is next to it in our address book
-            Ip.Name = textBox1.Text;
-            Ip.Email = textBox2.Text;
-            Ip.StreetAddress = textBox3.Text;
-            Ip.Phone = textBox5.Text;
-
-            // will not compile with 'Value' so its omitted to continue tut
-            //Ip.Birthday = dateTimePicker1.Value;
-            Ip.Birthday = dateTimePicker1;
-            Ip.AdditionalNotes = textBox4.Text;
-
-            // L171 add people to our class People list
-            people.Add(Ip);
-
-            // L171 add entered items Name to our listView1.
-            listView1.Items.Add(Ip.Name);           
-
-            // L171 clear all the textBoxes
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-
-            // L171 reset dateTimePicker to now
-            dateTimePicker1.Value = DateTime.Now;
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // NOT in lesson, someone in the comments area noticed this try staytement was added to the code
-            // but was now mentioned in the tutorial
-            try
-            {
-                // L172 display property information stored in people List<Person>
-                // in textbox coressponding to that properties name using listview1 selected items index
-                // the [0] chooses one at a time for the selected items name
-                // NOT in lesson: From comments area:  stops the exception out of bounds error, when switching between contacts in listview1
-                if (listView1.SelectedItems.Count == 0) return;
-                textBox1.Text = people[listView1.SelectedItems[0].Index].Name;
-                textBox2.Text = people[listView1.SelectedItems[0].Index].Email;
-                textBox3.Text = people[listView1.SelectedItems[0].Index].StreetAddress;
-                textBox4.Text = people[listView1.SelectedItems[0].Index].Phone;
-                textBox5.Text = people[listView1.SelectedItems[0].Index].AdditionalNotes;
-
-                // L172 the same for dateTimePicker Value
-                dateTimePicker1 = people[listView1.SelectedItems[0].Index].Birthday;
-            }
-            catch { }
-
-        }
-
-        // L172 remove method to delete from the people List, and the ListView1
-        void Remove()
-        {
-            try
-            { 
-                // L172 remove items from 'people' List, using listView to pick the item index
-                people.RemoveAt(listView1.SelectedItems[0].Index);
-
-                // L172 Remove selected items from ListView1
-                listView1.Items.Remove(listView1.SelectedItems[0]);
-            }
-
-            // L172 catch is empty, so the user will never know
-            catch { }
-        }
 
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            // L172 call the remove method
-            Remove();
-        }
 
-        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // L172 call the remove method
-            Remove();
-        }
+/*
+Next we will loop thruogh all the people in our people index file and add them to the xml document, when we close our app.  Go to the 
+Form1_FormClosing code area.  First we will remove all the people from the xml node.  Then we will remove all the children within the people
+node, so we can then add the updated data to the xml doc.  Then we will loop through all the people left in our list and add them to the xml
+doc.
+*/
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+
+
+
+ private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             // L173 create and write data to xml file, when closing the app
             XmlDocument xmlDoc = new XmlDocument();
@@ -215,7 +147,7 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
             xmlDoc.Load(path + "\\AddressBook - Roddy\\settings.xml");
 
             // L174 remove all the people from the xml node
-            XmlNode xNode = xmlDoc.SelectSingleNode("People");
+            XmlNode xNode = xmlDoc.SelectSingleNode("people");
 
             // L174 remove the children nodes in the people node
             xNode.RemoveAll();
@@ -233,6 +165,17 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
                 XmlNode xPhone = xmlDoc.CreateElement("Phone");
                 XmlNode xBirthday = xmlDoc.CreateElement("Birthday");
                 XmlNode xNotes = xmlDoc.CreateElement("Notes");
+                
+
+
+
+
+/*
+Next we will add all the propertise information to our xml doc.  Then we will need to add those properties to the person node.  Then we will
+add the person node to the People node.  Finally we will save the xml file.
+*/
+
+
 
                 // L174 add all the properties to our xml doc
                 xName.InnerText = p.Name;
@@ -261,3 +204,71 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/*************************** highlights from the comments area ****************************/
+
+
+
+
+
+
+If the program is not closing make sure in the create element there is no spaces
+
+Incorrect:
+XmlNode xAddress = xDoc.CreateElement("Street Address");
+
+Correct:
+XmlNode xAddress = xDoc.CreateElement("Address");
+
+
+
+
+
+
+you need to remove setting.xml before run the program. the original setting.xml is empty and the root element is only written when xml file doesn't exist. 
+
+
+
+
+
+
+
+The problem with this is that if your program (or your computer) crashes while you're in the middle of adding contacts and stuff, you've lost 
+all your data. I put the Save method in a separate Methods class and called it whenever the user adds, saves or deletes an entry, which I think 
+is a better (if slightly slower) way of doing things.
+
+
+
+
+
+
+
+
+Delete the exciting folder and run the project again.
+
+
+
+
+
+
+
+This might help future visitors to the tutorial.  Be aware that there are two different 'people'...  There is the list:
+List<Person> people = new List<Person>();
+and there is the start root element, that is capitalized;
+ xM.WriteStartElement("People");
+They are not the same, don't screw up the grammer as I did.
+That said, I can't seem to be able to use Value with my DateTimePicker.  It will not compile if I try to use:
+p.Birthday = dateTimePicker1.Value;
+Using VS 2017.
+Anybody know why the 'Value' is not valid?
+I used p.Birthday = dateTimePicker1 to make it through the tut. but it gives me the default date, no matter what I pick
