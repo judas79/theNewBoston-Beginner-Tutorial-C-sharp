@@ -1,0 +1,159 @@
+﻿/*
+All you need is a form1 for this tutorial, on how to be notified when a file is changed.  In other words, if a file is deleted, name changed,
+written to, moved, or anything like that.  We will need the namespace system IO at the top of our form1, since the file system launcher class
+is in there.
+using  system.IO;
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+/*
+The first thing we will do is go into the form1 Events property and double click 'Load', and go to its code area.  We will look for file
+changes, by being written to and saved, to notify us, when our form loads.  First we will create a new instance of our file system class,
+which is in user system.IO;.  Then we will outline the path to the folder where the FileSystemWatcher is to look at. The path to the folder 
+where the file is located.  Then we will set up the NotifyFilter to let us know when that file is written to.  We will next filter out what
+type of file it is, in this example a text file.  We can only use 1 option to choose what kind of file it looks for. We can also specify the
+exact name of a file or use a wild card to get all of one type, or a get all types, with "*.*";.  Next we will set up an event handler, for
+the file being changed, that will pass, that the file has been changed, to a method.  The method can be generated after typing in:
+IFSW.Changed +=
+then hit the TAB button twice, to generate the method.  On this 2017 Visual Studio, it only generates part of the line and omits:
+new FileSystemEventHandler();
+so be aware.  
+
+Then we will go over to the generated method:
+private void IFSW_Changed(object sender, FileSystemEventArgs e)
+and comment out or delete the generated exception code, and in its place use messagebox to give the user a message that the file has changed.
+
+To make this work we will go back into our Form1 code area and EnableRaisingEvents for our FileSystemWatcher instance, which is set to false,
+by default.  Without that it will be unable to send us the messagebox message.
+
+Go run debug to check your code.
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L176 create new instance of the file system watcher class
+            FileSystemWatcher IFSW = new FileSystemWatcher();
+
+            // L176  FileSystemWatcher path to directory of file being watched on Desktop
+            IFSW.Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // L176 setup the notify filter for when last written to and saved
+            IFSW.NotifyFilter = NotifyFilters.LastWrite;
+
+            // L176 set the filter for 1 type of files or, 1 name of particular file, or for all files, that can be used
+            IFSW.Filter = "*.txt";
+
+            // L176 create Event handler for file being changed, 
+            // hit TAB twice after typing += to generate method
+            IFSW.Changed += new FileSystemEventHandler(IFSW_Changed);
+
+            // L176 set Event handler to true, so that the Event of file changing can be raised
+            IFSW.EnableRaisingEvents = true;
+        }
+        // L176 method generated when creating the Event Handler for file being changed
+        private void IFSW_Changed(object sender, FileSystemEventArgs e)
+        {
+            // generated exception, when method was generated
+            //throw new NotImplementedException();
+            // L176 notify the user using messagebox when file has been written to and saved
+            MessageBox.Show("The text file has been written to");
+        }
+
+*/
+
+
+
+
+/*
+Next we will go back into our form1 and add another notifier.  We will go down to this line and add a notifier, if the text file has been
+renamed.  We will use an or '|' to modify the line, for the rename property.
+IFSW.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+Next we will create an Event handler for rename, as we did before for the written to and saved handler.  We will also generate the method for
+it as we did before by hitting TAB twice after entering in:
+IFSW.Renamed += 
+then adding the rest of the code in that wasn't generated:
+new  RenamedEventHandler(); and move our method that was generated 
+IFSW_Renamed
+in the parenthesis.
+Last we will comment out the generated exception, in our newly generarted method IFSW_Renamed and add a messagebox in its place notifing the
+user that the name of our notify text document has changed.
+run debugger....
+
+*/
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // L176 create new instance of the file system watcher class
+            FileSystemWatcher IFSW = new FileSystemWatcher();
+
+            // L176  FileSystemWatcher path to directory of file being watched on Desktop
+            IFSW.Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // L176 setup the notify filter for when last written to and saved
+            // also add in an or and make a notifier, if the file name changes
+            IFSW.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+
+            // L176 set the filter for 1 type of files or, 1 name of particular file, or for all files, that can be used
+            IFSW.Filter = "*.txt";
+
+            // L176 create Event handler for file being changed written to, 
+            // hit TAB twice after typing += to generate method
+            IFSW.Changed += new FileSystemEventHandler(IFSW_Changed);
+
+            // L176 create Event handler for file being changed, name changed, Rename
+            IFSW.Renamed += new  RenamedEventHandler(IFSW_Renamed);
+
+            // L176 set Event handler to true, so that the Event of file changing can be raised
+            IFSW.EnableRaisingEvents = true;
+        }
+
+        // L176 method generated when creating the Event Handler for file name being changed
+        private void IFSW_Renamed(object sender, RenamedEventArgs e)
+        {
+            // generated exception, when method was generated
+            //throw new NotImplementedException();
+            // L176 notify the user using messagebox when file has been written to and saved
+            MessageBox.Show("The text file name has been changed");
+        }
+
+        // L176 method generated when creating the Event Handler for file written to being changed
+        private void IFSW_Changed(object sender, FileSystemEventArgs e)
+        {
+            // generated exception, when method was generated
+            //throw new NotImplementedException();
+            // L176 notify the user using messagebox when file has been written to and saved
+            MessageBox.Show("The text file has been written to and saved");
+        }
+    }
+}
+ 
+
+
+
+
+
+/********************** NO highlights from the comments area **********************/
