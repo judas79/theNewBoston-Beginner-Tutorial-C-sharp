@@ -1,0 +1,152 @@
+﻿/*
+For this tutorial you will need form1, a button1 (but we will make 2 buttons for clarity) and to download a DLL file from the internet, and 
+install it as a reference, to learn how to zip files and folders.  The first thing we need to do is go to the DotNetZip archieve and download 
+the Archieve, about 100MB's, here:
+https://archive.codeplex.com/?p=dotnetzip
+Then, 
+Extract the archive download.
+Navigate to \releases\9 folder
+Locate the file called 5cea1d3e-6620-4516-b3db-ea1791d01f90 
+In Windows Explorer, right-click the above file and select Copy (or press CTRL+C)
+Press CTRL+V to paste as a new file, and name it tools.zip or some other appropriate name
+Use 7zip to extract tools.zip you just created, and you'll find not only the DLL you seek but also various compiled EXE's including the sample
+WinForm.
+Copy paste the Ionic.Zip.dll to a folder easily accessable from your VS editor.  I created a folder named downloaded DLL's, and put it in my
+Repo folder, and pasted it in there.
+In you solution folder in the VS editor, right click on References, and choose Add Reference.  then use the Browse button to navigate to
+your Ionic.Zip.dll, and choose it.
+After it is added to your references, go to your form1 and add it in the namespace/ DLL area at the top.
+using Ionic.Zip;
+
+Next we will add some code to your button1 code area.  First we will set up a open file dialog instance.  Then a folder browser dialog 
+instance and an if statement to verify if a file has been opened.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Ionic.Zip;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L177 open file dialog instance
+            OpenFileDialog OFD = new OpenFileDialog();
+
+            // L177 folder browser dialog instance
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+
+            // L177 if statement to check if file was opened
+            if (OFD.ShowDialog() == System.Windows.Forms.DialogResult.OK);
+			{
+			
+			
+
+
+/*
+Next, continuing where we left off, in the button1 code area, within our if statement, we will create an instance of our imported dll's zip
+file.  In the arguements, we will outline the static path, where our zip file will be saved to, and its complete name, including the zip 
+extention.  Then we will add the file that we opened with, our open file dialog, to the main root area, inside of the zip file, that we are 
+creating.  Then we will create and do the actual saving of our zip file.  Then debug.
+*/
+
+
+				// L177 create a zipFile instance, and a path to desktop file for it 
+                ZipFile ZF = new ZipFile("C:\\Users\\judas\\Desktop\\MyZipFile.zip");
+
+                // L177 add the openFildDialog file, to the root area of our zip file
+                ZF.AddFile(OFD.FileName, "");
+
+                // L177 create and save the zip file
+                ZF.Save();
+
+
+
+/*
+Next we will comment out the adding of no folder but, with a file, within the zip file, and instead create a directory within the zip file
+with the file that we opened with open file dialog, in it.  First we will have to add the name we will be assigning to the directory.  Next, we
+will put the directory name and our open file inside of our newly created directory, within the zip file....  then create and save it, using 
+the code we made previously.
+run debug.
+
+		
+		        // L177 add a directory inside the zip file to put the open file dialog file in
+                ZF.AddDirectoryByName("Data Logger");
+
+                // L177 add the openFildDialog file, to the root area of our zip file, commented out to add folder, instead
+                //ZF.AddFile(OFD.FileName, "");
+                // L177 put the directory within our zip file and put the open file dialog file in that directory
+                ZF.AddFile(OFD.FileName, "Data Logger");
+*/
+
+
+
+
+/*
+Next, in the button2 code area, we will create the way to add all the files, within a directory, to the root of our zip file.  We can copy 
+pate all the code in button1 to button2 and edit as follows.  In our if statement, instead of showing  our OpenFileDialog, we will show our 
+FolderDialogBrowser instead.  We will then save the folder and contents of that folder to the root of our zip file.  We could alternatively
+name and put it in a directory, as we did previously.  We can no add other folders and files to our zip file, the same way we added the first
+file to the zip, but will get an error, if you try to add the same files, that already exists in the zip file.
+*/
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L177 folder browser dialog instance
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+
+            // L177 if statement to check if a directory was opened
+            if (FBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // L177 create a zipFile instance, and a path to desktop file for it 
+                ZipFile ZF = new ZipFile("C:\\Users\\judas\\Desktop\\MyZipFile.zip");
+
+                // L177 add a directory name inside the zip file to put the open file dialog file in
+                // not being user in this example
+                //ZF.AddDirectoryByName("Data Logger");
+
+                // L177 put the contents of the directory, inside of our zip file 
+                ZF.AddDirectory(FBD.SelectedPath, "");
+
+                // L177 create and save the zip file
+                ZF.Save();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/**************************** highlight from the comments area *****************************/
+
+
+
+
+
+
+Though this was very educational, I would've been more interested in unzipping rather then zipping.
+
+As for the comment about the use of this process? Say you have a database you'd like your application to upload files to(live files from a 
+client computer). You would first need to package them before moving them to any sort of database. This process would go inside of your 
+application~
+
+I'm a beginner, but would think between the emailer, the notifier and this lesson, one could make some sort of logging device.

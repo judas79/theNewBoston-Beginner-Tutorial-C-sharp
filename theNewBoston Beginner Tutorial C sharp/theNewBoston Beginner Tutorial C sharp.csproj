@@ -64,6 +64,9 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\Downloaded DLL files\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="MyDLL">
       <HintPath>..\..\MyDLL\MyDLL\bin\Debug\netstandard2.0\MyDLL.dll</HintPath>
     </Reference>
@@ -519,6 +522,8 @@
     <Content Include="Tutorial_175 Project 4 Address Book, Reading People\L175 form1CS.txt" />
     <Content Include="Tutorial_176 Notified When Files Change\L176 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_176 Notified When Files Change\L176 form1CS.txt" />
+    <Content Include="Tutorial_177 Zipping Files and Folders\L177 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_177 Zipping Files and Folders\L177 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
