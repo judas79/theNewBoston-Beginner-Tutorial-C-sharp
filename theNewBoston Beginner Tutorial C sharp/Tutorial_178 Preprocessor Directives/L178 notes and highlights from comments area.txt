@@ -1,0 +1,141 @@
+﻿/*
+For this lesson we will need a form1 and a button1, to learn about some preprocessor directives.  We have already learned about preproccessor
+directives, in past tutorials, without realizing, or making note of it.  The #region and #endregion, used to section off code, is a type 
+of preproccessing directive.  So lets double click our button2, to go to its code area.  For a refresher will will type a couple of sample
+variables, of your choosing, and suround them with #region and #endregion.
+
+The first new preprocessor directive, that we will learn about, is #define and #undefine.  They are used to define a symbol, or undefine
+a symbol, while using #define or #undefine.  These preprocesses, must come before evry other code, including, your namespaces, using
+statements, and dlls, at the top of the code area, in your form.  The defined symbols are primarily used, for if statements.  We will 
+create a #define statement, at the top, of our code named Adam.  We can use this:  If Adam is defined, then some action, because it is
+true, that Adam has been defined.  Be aware that some VS enviroments will have #define and #undef, grayed out;  my version VS 2017, 
+still functioned properly....
+*/
+
+
+#define Adam
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            #region Region 1 variables
+            int iNumber = 1;
+            string sNoun = "car";
+            #endregion
+		}
+
+
+
+/*
+If we use, #undefine Adam, below our #define Adam, it will nullify it.  So, if we use an if statement to check if the Adam symbol is
+defined, the bool answer would be false.
+
+
+#define Adam
+#undef Adam
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+*/
+
+
+/*
+We will comment out our #undef Adam, to show an example of how the if statement is written, in our button1 code area.  To do this, we will
+have to create a pre-proccessor if statement, consisting of a has mark before the if'#if'.   If Adam is defined have messageBox send a 
+message.  You will notice that the messageBox code, is not grayed out when it is true that the Adam symbol is defined.  I we remove the
+uncomment // before #undeg Adam, the messagebox line of code will be grayed out.  We will also add a commented out reminder of what the
+#if statement was about, when we end it:  # endif//Adam    ...debug to check yur work
+
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L179 using #region and #endregion to hide code
+            #region Region 1 variables
+            int iNumber = 1;
+            string sNoun = "car";
+            #endregion
+
+            // L179 use if statement with #define symbol
+            // L179 if the if statement is true, send message
+			// L179 endif, end the #if statement
+#if Adam
+            MessageBox.Show("Adam is a defined symbol");
+# endif// Adam
+        }
+    }
+}
+
+*/
+
+
+
+/*
+We can also use #elif, and a #else statement, but, in this example when the program gets to the #if Adam, the program will stop, if Adam
+is found to be a true symbol.  When we use all three #if, #elif, and #else, we only need the #endif to end all three.  Add 
+
+#define Bob 
+
+at the top of the coding area, and an #elif Bob as well as a messageBox to our button1 for Bob, to try this out; then re-comment
+
+#undef Adam 
+
+to try this out.
+Then create a #undef Bob and leave the #undef Adam, uncommented as well, and create a #else with a message box, to let the user no
+that there are no defined symbols.
+*/
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L179 using #region and #endregion to hide code
+            #region Region 1 variables
+            int iNumber = 1;
+            string sNoun = "car";
+            #endregion
+
+            // L179 use if statement with #define symbol
+            // L179 if the if statement is true, send message
+            // L179 endif, end the #if statement
+#if Adam
+            MessageBox.Show("Adam is a defined symbol");
+
+            // NOT in lesson, another #if statement, add #define Jack at top, requires another #endif
+            // this makes all defines not function, do not use two #if statements
+//#if Jack
+            //MessageBox.Show("Jack is a defined symbol");
+
+            // L179 #elseif statement with message not executed if true; stops because Adam is true
+#elif Bob
+            MessageBox.Show("Bob is a defined symbol");
+
+#else
+            MessageBox.Show("Bob is a defined symbol");
+#endif
+//#endif
+        }
+    }
+}
+
+
+/*
+Next, we will create another button and use our Adam code to throw an error instead of a messagebox.
+*/
