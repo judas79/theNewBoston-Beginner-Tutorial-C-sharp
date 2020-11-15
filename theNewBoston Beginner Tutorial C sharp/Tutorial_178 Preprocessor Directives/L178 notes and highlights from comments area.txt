@@ -137,5 +137,35 @@ that there are no defined symbols.
 
 
 /*
-Next, we will create another button and use our Adam code to throw an error instead of a messagebox.
+Next, we will create another button2 and use Mark for the #define code to throw an error instead of a messagebox.  This would not 
+compile when we debugged, without commenting out 
+//#error Mark is defined 
 */
+
+  private void button2_Click(object sender, EventArgs e)
+        {
+            // L179 throw an error or warning #if Adam is found to be a symbol
+#if Mark
+//#error Mark is defined  // this will not work at all! or compile until commented out
+#endif //Mark
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+/********************************* highlights from the comments area ***********************************/
+
+
+
+
+Mine would not compile, when I debugged it, after adding the error or warning code.Even created another button2 to test this.
+Is the error, that it will not compile?
+#if Adam1
+#error Adam
