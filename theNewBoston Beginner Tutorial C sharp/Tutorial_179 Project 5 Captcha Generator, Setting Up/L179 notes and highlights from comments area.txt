@@ -1,1 +1,39 @@
-﻿
+﻿/*
+For this tutorial we will need:
+2 buttons
+2 labels
+1 textBox
+1 panel
+for this tutorial project on crrating a Captcha Generator.  Set the names of all our tools, like the picture, included in our folder.
+Set the form so that the form borders style is fixed and its also not resisable.
+Then add the following code to set up our instance of Graphics, and use a random color to paint our SolidBrush and Pen tools.  Set return
+to null, for now to avoid errors.
+*/
+
+
+
+private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        // L179 create emage array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L179 instance of Graphics
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            Random Iran = new Random();
+
+            // L179 create a solid brush, alfa channel hex ff; not see thru, 
+            // red channel random shade from 0 to 255, same story with green and blue channels
+            SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L17p create a pen tool, this will generate different random colors than the solidBrush
+            Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+			t
+            // L179 return null for now to avoid errors
+            return null;
+        }
+    }
+}

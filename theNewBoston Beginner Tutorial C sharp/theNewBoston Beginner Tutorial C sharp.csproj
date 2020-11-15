@@ -526,6 +526,9 @@
     <Content Include="Tutorial_177 Zipping Files and Folders\L177 form1CS.txt" />
     <Content Include="Tutorial_178 Preprocessor Directives\L178 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_178 Preprocessor Directives\L178 form1CS.txt" />
+    <Content Include="Tutorial_179 Project 5 Captcha Generator, Setting Up\L179 CapchaGenerator.png" />
+    <Content Include="Tutorial_179 Project 5 Captcha Generator, Setting Up\L179 form1CS.txt" />
+    <Content Include="Tutorial_179 Project 5 Captcha Generator, Setting Up\L179 notes and highlights from comments area.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

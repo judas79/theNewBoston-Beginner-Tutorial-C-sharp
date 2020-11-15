@@ -1,1 +1,44 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CaptchaGenerator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        // L179 create emage array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L179 instance of Graphics
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            Random Iran = new Random();
+
+            // L179 create a solid brush, alfa channel hex ff; not see thru, 
+            // red channel random shade from 0 to 255, same story with green and blue channels
+            SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L17p create a pen tool, this will generate different random colors than the solidBrush
+            Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L179 return null for now to avoid errors
+            return null;
+        }
+    }
+}
