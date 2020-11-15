@@ -1,4 +1,12 @@
-﻿using System;
+﻿#define Adam
+#undef Adam
+#define Bob
+#undef Bob
+#define Mark
+//#define Jack
+//#undef Jack
+// L179 write #define and #undef, before everything, above
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +15,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Ionic.Zip;
 
 namespace theNewBoston_Beginner_Tutorial_C_sharp
 {
@@ -20,52 +27,41 @@ namespace theNewBoston_Beginner_Tutorial_C_sharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // L177 open file dialog instance
-            OpenFileDialog OFD = new OpenFileDialog();
+            // L179 using #region and #endregion to hide code
+            #region Region 1 variables
+            int iNumber = 1;
+            string sNoun = "car";
+            #endregion
 
-            // L177 folder browser dialog instance
-            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            // L179 use if statement with #define symbol
+            // L179 if the if statement is true, send message
+            // L179 endif, end the #if statement
+#if Adam
+            MessageBox.Show("Adam is a defined symbol");
 
-            // L177 if statement to check if file was opened
-            if (OFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                // L177 create a zipFile instance, and a path to desktop file for it 
-                ZipFile ZF = new ZipFile("C:\\Users\\judas\\Desktop\\MyZipFile.zip");
+            // NOT in lesson, another #if statement, add #define Jack at top, requires another #endif
+            // this makes all defines not function, do not use two #if statements
+//#if Jack
+            //MessageBox.Show("Jack is a defined symbol");
 
-                // L177 add a directory name inside the zip file to put the open file dialog file in
-                ZF.AddDirectoryByName("Data Logger");
+            // L179 #elseif statement with message not executed if true; stops because Adam is true
+#elif Bob
+            MessageBox.Show("Bob is a defined symbol");
 
-                // L177 add the openFildDialog file, to the root area of our zip file
-                //ZF.AddFile(OFD.FileName, "");
-                // L177 put the directory within our zip file and put the open file dialog file in that directory
-                ZF.AddFile(OFD.FileName, "Data Logger");
+            // L179 #elif to show how to throw an error instead of a messageBox
 
-                // L177 create and save the zip file
-                ZF.Save();
-            }
+#else
+            MessageBox.Show("there are no defined symbol");
+#endif
+//#endif
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // L177 folder browser dialog instance
-            FolderBrowserDialog FBD = new FolderBrowserDialog();
-
-            // L177 if statement to check if a directory was opened
-            if (FBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                // L177 create a zipFile instance, and a path to desktop file for it 
-                ZipFile ZF = new ZipFile("C:\\Users\\judas\\Desktop\\MyZipFile.zip");
-
-                // L177 add a directory name inside the zip file to put the open file dialog file in
-                // not being user in this example
-                //ZF.AddDirectoryByName("Data Logger");
-
-                // L177 put the contents of the directory, inside of our zip file 
-                ZF.AddDirectory(FBD.SelectedPath, "");
-
-                // L177 create and save the zip file
-                ZF.Save();
-            }
+            // L179 throw an error or warning #if Adam is found to be a symbol
+#if Mark
+//#error Mark is defined  // this will not work at all! or compile until commented out
+#endif //Mark
         }
     }
 }
