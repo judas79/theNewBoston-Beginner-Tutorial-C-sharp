@@ -1,0 +1,115 @@
+﻿/*
+Last lesson we setup our Form1[design] and added code to form1 to create our Graphics, drawing tools, and set the colors to a random 
+color.  In this lesson we will draw the reandom text letters and numbers, used in the captcha.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CaptchaGenerator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        // L179 create image array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L179 instance of Graphics
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            Random Iran = new Random();
+
+            // L179 create a solid brush, alfa channel hex ff; not see thru, 
+            // red channel random shade from 0 to 255, same story with green and blue channels
+            SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L17p create a pen tool, this will generate different random colors than the solidBrush
+            Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+
+
+/*
+The first thing we need to create is an array to hold the alphabet and the numbers 0-9, to draw the string with them, randomly.  Then
+we will create the string, of random elements, that we are going to draw, and set it to empty.  Next we will create a for statement to
+iterate through our char array and randomly select six characters, to put into our string, we just created.  Then we will create a random
+index number, that will represent the letter or number, in our char array.  The random number will be based on the elements in chars,
+which are from 0 to 35.
+*/
+
+
+            // L180 character array holding letters and numbers
+            char[] chars = "qwertyuiopasdfghjklzxcvbnm1234567890".ToCharArray();
+
+            // L180 string to hold random elements to draw
+            string randomString = "";
+
+            // L180 iterate through chars, randomly choose six elements and add them to randomString
+            for (int i = 0; i < 6; i++)
+            {
+                // L180 create random index number for chars, and add that to our string
+                randomString += chars[Iran.Next(0, 35)];
+            }
+
+
+
+/*
+Now, to draw the string, we will need to set the font type and size.  So first we will create the font family which is a dependency of
+our font.  We will set our font family to Arial.  Then we will create our font and enter our font family name and the size of our font
+for the fonts arguements.
+Now that we have our font created, we can draw our string, using our instance of Graphics, then fill in all the arguements needed to
+draw the string;  first the string that we will contain the random letter indexes, then the font we made, then the type of brush we
+created and last, the x and y coordinates to start drawing our numbers and letters at.
+*/
+
+
+            // L180 create font family set to Arial
+            FontFamily fFamily = new FontFamily("Arial");
+
+            // L180 create the font to be used for drawing, font family name and size of font
+            Font fFont = new System.Drawing.Font(fFamily, 16);
+
+			// L180 draw randomString, arguements: string being used, font, drawing tool, starting x and y coordinates to draw from
+            Ig.DrawString(randomString, fFont, Isb, 50, 50);
+
+
+
+
+/*
+We will also add a way to clear our pannel1, before we draw our string, before we draw another set of numbers and letter, so that the
+drawing don't accumilate on top of eachother, creating some that is unreadable.  We will put this clearing line of code under our 
+Graphics instance:
+
+			// L180 clear panel1 graphics before each drawing
+            Ig.Clear(panel1.BackColor);
+
+Then in our button2 coding area we will call our GenerateCapchas image array.  We will pass in 0 for now, to test that it is functioning 
+correctly:
+
+			GenerateCapchas(0);
+
+run the debbuger to check your work.
+*/
+
+
+
+
+
+
+/************************************** NO highlights from the comments area *******************************/
