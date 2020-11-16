@@ -1,0 +1,90 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CaptchaGenerator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GenerateCapchas(0);
+        }
+        // L179 create emage array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L179 instance of Graphics
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L180 clear panel1 graphics before each drawing
+            Ig.Clear(panel1.BackColor);
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            Random Iran = new Random();
+
+            // L179 create a solid brush, alfa channel hex ff; not see thru, 
+            // red channel random shade from 0 to 255, same story with green and blue channels
+            SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L179 create a pen tool, this will generate different random colors than the solidBrush
+            Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L180 character array holding letters and numbers
+            char[] chars = "qwertyuiopasdfghjklzxcvbnm1234567890".ToCharArray();
+
+            // L180 string to hold random elements to draw
+            string randomString = "";
+
+            // L180 iterate through chars, randomly choose six elements and add them to randomString
+            for (int i = 0; i < 6; i++)
+            {
+                // L180 create random index number for chars, and add that to our string, with a 2 spaces between elements
+                randomString += chars[Iran.Next(0, 35)]+ "  ";
+            }
+            // L180 create font family set to Arial
+            FontFamily fFamily = new FontFamily("Arial");
+
+            // L180 create the font to be used for drawing, font family name and size of font
+            Font fFont = new System.Drawing.Font(fFamily, 18);
+
+            // L180 draw randomString, arguements: string being used, font, drawing tool, starting x and y coordinates to draw from
+            // NOT in lesson set y coordinate to a random amount
+            Ig.DrawString(randomString, fFont, Isb, 50, Iran.Next(50, 200));
+
+            // L181 create 7 random shapes
+            for (int i = 0; i < 8; i++)
+            {
+                // L181 randomly choose shape, either a rectangle, or an elipse 
+                int j = Iran.Next(0, 2);
+
+                // L181 if j equals 0 draw a rectangle if j equals 1 draw a elipse, then for both rectangles and elipses
+                // arguements: our Pen, random x start coordinates, random y start, random horrizontal length, random vertical height
+                if (j == 0)
+                {
+                    Ig.DrawRectangle(Ip, Iran.Next(0, 160), Iran.Next(20, 200), Iran.Next(0, 160), Iran.Next(20, 130));
+                }
+                else if (j == 1)
+                {
+                    Ig.DrawEllipse(Ip, Iran.Next(0, 160), Iran.Next(20, 200), Iran.Next(0, 160), Iran.Next(20, 130));
+                }
+
+                // L181 get random colors property for our pen for drawing shapes
+                Ip.Color = Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255));
+            }
+
+                // L179 return null for now to avoid errors
+                return null;
+        }
+    }
+}
