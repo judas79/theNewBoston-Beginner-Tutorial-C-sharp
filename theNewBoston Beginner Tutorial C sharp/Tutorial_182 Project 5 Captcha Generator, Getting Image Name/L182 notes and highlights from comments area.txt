@@ -1,0 +1,147 @@
+﻿/*
+In the prior lessons, we setup our Form1[design] and added code to form1 to create our Graphics, drawing tools, set the colors to a 
+random color, drew the random text letters and numbers, used in the captcha, to our panel1, then drew random shapes in random areas 
+of our panel1, using random colors.  In this lesson, we will create a way to store these generated Captchas, with a md-5 encrypted
+name, to make the name different from the contents of the captcha image.
+*/
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CaptchaGenerator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GenerateCapchas(0);
+        }
+        // L179 create emage array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L179 instance of Graphics
+            Graphics Ig = panel1.CreateGraphics();
+
+            // L180 clear panel1 graphics before each drawing
+            Ig.Clear(panel1.BackColor);
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            Random Iran = new Random();
+
+            // L179 create a solid brush, alfa channel hex ff; not see thru, 
+            // red channel random shade from 0 to 255, same story with green and blue channels
+            SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L179 create a pen tool, this will generate different random colors than the solidBrush
+            Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+            // L180 character array holding letters and numbers
+            char[] chars = "qwertyuiopasdfghjklzxcvbnm1234567890".ToCharArray();
+
+            // L180 string to hold random elements to draw
+            string randomString = "";
+
+            // L180 iterate through chars, randomly choose six elements and add them to randomString
+            for (int i = 0; i < 6; i++)
+            {
+                // L180 create random index number for chars, and add that to our string, with a 2 spaces between elements
+                randomString += chars[Iran.Next(0, 35)]+ "  ";
+            }
+            
+
+
+/*
+The first thing we will do is enable the way to use the m-5 cryptology.  We will do this by adding a namespace for it, at th top of
+our form.
+
+using System.Security.Cryptography;
+
+In order to use the MD5 Crypto Service Provider, to make our hashes, we need to make an instance of MD5CryptoServiceProvider.  Next,
+we will set a string equal to the MD-5 hash of our randomString.  To do this, we will first have to convert randomString to a byte
+array, because byte arrays are what the md-5 uses to Compute the Hash.  After we make our array, 'buffer' we will itterate through
+our randomString to get the bytes.  We will create an int 'y', to hold the index count.
+Then we will iterate through our randomString as it is converted to elements of a char array and store them in c.  Then we will 
+convert the chars in c to bytes, as we use our index y to put them in our buffer byte array.  We will increment y by 1 to get all of
+the bytes.
+*/
+
+
+
+			// L182 create instance of md5 
+            MD5CryptoServiceProvider Imd5 = new MD5CryptoServiceProvider();
+
+			// create new byte array, to hold converted randomString
+            byte[] buffer = new byte[randomString.Length];
+
+			// L182 index count is y
+            int y = 0;
+
+            // L182 iterate through randomString converted to char
+            foreach (char c in randomString.ToCharArray())
+            {
+                // L182 store c chars as bytes in buffer using index y
+                buffer[y] = (byte)c;
+                y++;
+            }
+
+
+
+/*
+Next, we will use the md-5 to compute our hash from our buffer, then bit convert it to a string and store it in our md5String.
+When we use BitConverter, it separates all they bytes using a hyphen, so we need to get rid of those.  We will use replace to change
+hypens to nothing.
+*/
+
+
+
+			// L182 string equals MD-5  hash of buffer byte array convrted to string
+            // replace the hyphens '-' in the buffer with nothing "", using replace
+            string md5String = BitConverter.ToString(Imd5.ComputeHash(buffer)).Replace("-","");
+
+
+/*
+Now that we have our hash stored in the md5String, we will want to store all the md5Strings in a collection list.  So we will need
+the collections namespace to do this, so add it to the top, with the other namespace items.
+
+using System.Collections.Generic;
+
+At the top of our form1, after: 
+
+		'InitializeComponent();
+        }'
+
+we will add our string list, that will contain the collection of our md5String(s) in.
+
+        // L182 string list using System.Collections.Generic, to add md5String(s) to;
+        List<string> Strings = new List<string>();
+
+Last we will add our md5String(s) to our Strings collection list.
+*/
+
+
+
+			// L182 add our md5String to String collection list
+            Strings.Add(md5String);
+
+
+
+
+
+
+
+
+/******************************** NO highlights from the comments area ******************************/
