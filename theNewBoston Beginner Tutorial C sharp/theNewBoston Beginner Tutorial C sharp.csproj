@@ -539,6 +539,8 @@
     <Content Include="Tutorial_182 Project 5 Captcha Generator, Getting Image Name\L182 form1CS.txt" />
     <Content Include="Tutorial_183 Project 5 Captcha Generator, Returning Images\L183 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_183 Project 5 Captcha Generator, Returning Images\L183 form1CS.txt" />
+    <Content Include="Tutorial_185 Project 5 Captcha Generator, Using the Images\L185 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_185 Project 5 Captcha Generator, Using the Images\L185 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
