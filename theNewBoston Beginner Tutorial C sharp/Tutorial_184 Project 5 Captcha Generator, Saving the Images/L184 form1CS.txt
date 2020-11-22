@@ -1,0 +1,181 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// L182 for MD-5 hash
+using System.Security.Cryptography;
+// L182 to make a list collection
+using System.Collections.Generic;
+
+
+
+namespace CaptchaGenerator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // L182 string list using System.Collections.Generic, to add md5String(s) to;
+        List<string> Strings = new List<string>();
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L180 generate a captcha, temporary
+            //GenerateCapchas(0); 
+
+            // L183 generate captchas specified, temporary
+            //GenerateCapchas(4);
+
+            // L184 create images array, use submitted number fron textbox1 for the gnGenerateCapchas index number count
+            Image[] images = GenerateCapchas(Convert.ToInt32(textBox1.Text));
+
+            // L183 display that catchas have been created and stored
+            // L184 re-implimented to use as index for file name 
+            int j = 0;
+
+            // L184 getting one image at a time, out of the images image array
+            foreach (Image image in images)
+            {
+                // 184 saving each image in user specified folder in textbox1, plus a slash to put the files in that folder, 
+                // md-5 hash file name held in Strings at count j with extention .png
+                image.Save(label1.Text + "//" + Strings[j] + ".png");
+
+                // L184 commented out
+                //MessageBox.Show($"captcha {j} generated");
+                j++;
+            }
+        }
+
+        // L179 create image array to hold amount of captchas to return
+        Image[] GenerateCapchas(int amount)
+        {
+            // L183 image array, the same size as the amount
+            Image[] images = new Image[amount];
+
+            // L179 new random instance used to choose a random color for the solidBrush
+            // L184 random moved here to be before the for statement
+            Random Iran = new Random();
+
+            // L183 put this whole group of code into for statement, to get the amount of images we enter, as 'amount'
+            for (int z = 0; z < amount; z++)
+            {
+                // L183 create new bitmap, same dimmensions as panel1
+                Bitmap bitmap = new Bitmap(panel1.Width, panel1.Height);
+
+                // L183 instance of Graphics, from bitmap image, updated
+                Graphics Ig = Graphics.FromImage(bitmap);
+                // L179 instance of Graphics
+                //Graphics Ig = panel1.CreateGraphics();
+
+                // L180 clear panel1 graphics before each drawing
+                Ig.Clear(panel1.BackColor);               
+
+                // L179 create a solid brush, alfa channel hex ff; not see thru, 
+                // red channel random shade from 0 to 255, same story with green and blue channels
+                SolidBrush Isb = new SolidBrush(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+                // L179 create a pen tool, this will generate different random colors than the solidBrush
+                Pen Ip = new Pen(Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255)));
+
+                // L180 character array holding letters and numbers
+                char[] chars = "qwertyuiopasdfghjklzxcvbnm1234567890".ToCharArray();
+
+                // L180 string to hold random elements to draw
+                string randomString = "";
+
+                // L180 iterate through chars, randomly choose six elements and add them to randomString
+                for (int i = 0; i < 6; i++)
+                {
+                    // L180 create random index number for chars, and add that to our string, with a 2 spaces between elements
+                    randomString += chars[Iran.Next(0, 35)] + "  ";
+                }
+
+                // L182 create instance of md5 
+                MD5CryptoServiceProvider Imd5 = new MD5CryptoServiceProvider();
+
+                // L182 create new byte array, to hold converted to char randomString, array size determined by randomString length
+                byte[] buffer = new byte[randomString.Length];
+
+                // L182 index count is y
+                int y = 0;
+
+                // L182 iterate through randomString converted to char
+                foreach (char c in randomString.ToCharArray())
+                {
+                    // L182 store c chars as bytes in buffer using index y
+                    buffer[y] = (byte)c;
+                    y++;
+                }
+
+                // L182 string equals MD-5  hash of buffer byte array convrted to string
+                // replace the hyphens '-' in the buffer with nothing "", using replace
+                string md5String = BitConverter.ToString(Imd5.ComputeHash(buffer)).Replace("-", "");
+
+                // L182 add our md5String to String collection list
+                Strings.Add(md5String);
+
+                // L180 create font family set to Arial
+                FontFamily fFamily = new FontFamily("Arial");
+
+                // L180 create the font to be used for drawing, font family name and size of font
+                Font fFont = new System.Drawing.Font(fFamily, 18);
+
+                // L180 draw randomString, arguements: string being used, font, drawing tool, starting x and y coordinates to draw from
+                // NOT in lesson set y coordinate to a random amount
+                Ig.DrawString(randomString, fFont, Isb, 50, Iran.Next(50, 200));
+
+                // L181 create 7 random shapes
+                for (int i = 0; i < 8; i++)
+                {
+                    // L181 randomly choose shape, either a rectangle, or an elipse 
+                    int j = Iran.Next(0, 2);
+
+                    // L181 if j equals 0 draw a rectangle if j equals 1 draw a elipse, then for both rectangles and elipses
+                    // arguements: our Pen, random x start coordinates, random y start, random horrizontal length, random vertical height
+                    if (j == 0)
+                    {
+                        Ig.DrawRectangle(Ip, Iran.Next(0, 160), Iran.Next(20, 200), Iran.Next(0, 160), Iran.Next(20, 130));
+                    }
+                    else if (j == 1)
+                    {
+                        Ig.DrawEllipse(Ip, Iran.Next(0, 160), Iran.Next(20, 200), Iran.Next(0, 160), Iran.Next(20, 130));
+                    }
+
+                    // L181 get random colors property for our pen for drawing shapes
+                    Ip.Color = Color.FromArgb(0xFF, Iran.Next(0, 255), Iran.Next(0, 255), Iran.Next(0, 255));
+                }
+
+                // L183 display our bitmap captcha image as background on panel1
+                panel1.BackgroundImage = bitmap;
+
+                // L179 return null for now to avoid errors
+                //return null;
+
+                // L183 put the bitmaps into our images array, count equals z
+                images[z] = bitmap;
+            }
+            return images;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L184 create instance of folder browser dialog to open folder
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+
+            // L184 verify that user has chosen a folder
+            if (FBD.ShowDialog() == DialogResult.OK)
+            {
+                label1.Text = FBD.SelectedPath;
+            }
+        }
+    }
+}

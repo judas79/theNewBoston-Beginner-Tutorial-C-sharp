@@ -110,6 +110,8 @@
     <Compile Include="Tutorial_133 Making Controls pt 1\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Content Include="Tutorial_184 Project 5 Captcha Generator, Saving the Images\L184 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_184 Project 5 Captcha Generator, Saving the Images\L184 form1CS.txt" />
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
       <SubType>Form</SubType>
     </Content>
