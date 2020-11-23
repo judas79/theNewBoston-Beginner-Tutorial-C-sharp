@@ -1,0 +1,47 @@
+﻿/*
+In this project, we will be making a byte reader and a byte writer, to make up for a byte reader, writer, that will read and write Big Endian files.
+The built in reader/ writer will not read binary integers bytes, in Big Endian.  The diference between little endian and Big Endian,
+is Little Endian read bytes, from right to left (bytes 01 02 03 will be read 03 02 01) and Big endians (bytes 01 02 03 will be read 01 02 03).
+The project is to build a program, that can read and write in Big Endian, or in Little Endian, if needed.
+
+The first thing we will add, other than our form1, is a class, and we will name it ByteIO.  In VS the the system readers and writers exists in the IO
+namespace, which explains why we named it, as we did.  We will first, change the name of the class to BaseIO and make it public and abstract.  We will
+make it abstract so nobody else can initialize it, but public to utilize the reader and writer from the class.
+Inside the class we will put an enumeration to hold the byte order so we can choose to use Big or Little Endian.
+
+Next we will make a protected variable the holds the contents of the Big endian or Little endian, depending on which we are using.  We make it protected
+so we can use it in the class that it is in, this class, and its derived class.
+*/
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ByteOrderIO
+{
+    // L186 rename class
+    //class ByteIO
+    public abstract class BaseIO
+    {
+        // L186 holds the big and little endian read and write
+        public enum byteorder
+        {
+            BigEndian,
+            LittleEndian
+        }
+        // L186 protected variable to store big or little endian data, depending which one we use
+        // used in this class or its derived class
+        protected byteorder Byteorder;
+    }
+}
+
+
+
+
+
+/************************************* NO highlights from the comments area************************************/
