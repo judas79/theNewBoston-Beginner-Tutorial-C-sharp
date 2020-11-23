@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ByteOrderIO
+{
+    /// <summary>
+    /// The position to read at
+    /// </summary>
+    // L187 Reader class
+    public class Reader : BaseIO
+    {
+        /// <summary>
+        /// Create a reader, to read a file
+        /// </summary>
+        /// <param name="path">The path to the file, to read</param>
+        // L187 create constructor using 'ctor' TAB 2x
+        // pass thru the path to the file to be read, pas thru path
+        public Reader(string path)
+        {
+            // L187 set binary reader to the path of the file to be opened and read
+            br = new BinaryReader(File.OpenRead(path));
+
+            // L187 set the Byteorder to BigEndian, using Reader class BaseIO
+            this.Byteorder = byteorder.BigEndian;
+        }
+        /// <summary>
+        /// Create a reader, to read a file
+        /// </summary>
+        /// <param name="path">The path to the file, to read</param>
+        /// <param name="boBO">The order of the bytes, to read</param>
+        // L187 constructor to pass tru our Byteorder along with path
+        public Reader(string path, byteorder boBO)
+        {
+            // L187 set binary reader to the path of the file to be opened and read
+            br = new BinaryReader(File.OpenRead(path));
+
+            // L187 set are Byteorder to passed in byteorder
+            this.Byteorder = boBO;
+        }
+
+        // L187 binary reader created
+        BinaryReader br;
+
+        // L187 property to hold position of binary reader
+        public long Position
+        {
+            // L187 returns current position of binary reader
+            get { return br.BaseStream.Position; }
+
+            // L187 change Position depending on the current position value
+            set { br.BaseStream.Position = value; }
+        }
+    }
+
+    // L186 rename class
+    //class ByteIO
+    public abstract class BaseIO
+    {
+        /// <summary>
+        /// The order of the bytes, both read and written
+        /// </summary>
+        // L186 holds the big and little endian read and write
+        public enum byteorder
+        {
+            BigEndian,
+            LittleEndian
+        }
+        // L186 protected variable to store big or little endian data, depending which one we use
+        // used in this class or its derived class
+        protected byteorder Byteorder;
+    }
+}
+
+
+
+
+
+
+
+
+
