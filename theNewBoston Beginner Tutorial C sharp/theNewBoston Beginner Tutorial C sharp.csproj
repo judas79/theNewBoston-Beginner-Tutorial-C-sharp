@@ -549,6 +549,8 @@
     <Content Include="Tutorial_188 Project 6 Reading and Writing Classes, Reading Methods\L188 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_189 Project 6 Reading and Writing Classes, Changing Byte Order ect\L189 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_189 Project 6 Reading and Writing Classes, Changing Byte Order ect\L189 form1CS.txt" />
+    <Content Include="Tutorial_190 Project 6 Reading and Writing Class, Reading Strings\L190 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_190 Project 6 Reading and Writing Class, Reading Strings\L190 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
