@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using ByteOrderInOut;
+
+namespace ByteOrderIO
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L191 open a file dialog to choose a file, verify that a file has been opened
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L191 create instance of our Reader, from our namespace ByteOrderInOut;
+                Reader R = new Reader(OFD.FileName);
+
+                // Read an int 32, convert it to hexadecimal string  Adam == 41 61 64 6D hex.
+                MessageBox.Show(R.ReadInt32().ToString("X"));
+            }
+        }
+    }
+}
