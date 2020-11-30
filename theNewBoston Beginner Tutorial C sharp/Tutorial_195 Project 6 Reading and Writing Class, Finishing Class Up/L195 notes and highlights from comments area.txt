@@ -1,0 +1,622 @@
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read and a method 
+to bytes, even though bytes are read in bigendian, not to be confused with byte.  Then we wrote a method to close our reader, and another to reverse the byte order
+of whatever the user has loaded, to either big or little endian, then we read the bytes in a string determined by the user requested length.string.  We then read 
+unicode, as bytes and used the encoder to render it as big endian, or unicode, which is the same as little endian, then continued to create a read a char and chars 
+as bytes, methods.  We then added a button1 to our form1 [design], to test our finished reader.  Button1, has a open dialog file method, and a test, to read an int32
+byte.
+Next, we started our byteorder writer, in our BytesIO.cs file under our Reader class.  We creates the write class and have two constructers, simillar to the read class 
+and constructors, then we created the methods to write a byte, bytes, and all the other different integer file types, to big endian, when big endian is requested.
+Then we will wrote a method for writing a string and another to write unicode, in little or big endian.  
+In this lesson, we will write methods, for a character, for characters, and a method to close the writer.  We will also move the byte order, converter method, from 
+the reader writer to our parent class 'BaseIO', so both the reader and writer have access to it, since there is nod difference for the codeing needed, to use it in
+either of those classes.
+*/ 
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ByteOrderInOut
+{
+    /// <summary>
+    /// The position to read at
+    /// </summary>
+    // L187 Reader class
+    public class Reader : BaseIO
+    {
+        /// <summary>
+        /// Create a reader, to read a file
+        /// </summary>
+        /// <param name="path">The path to the file, to read</param>
+        // L187 create constructor using 'ctor' TAB 2x
+        // pass thru the path to the file to be read, pas thru path
+        public Reader(string path)
+        {
+            // L187 set binary reader to the path of the file to be opened and read
+            br = new BinaryReader(File.OpenRead(path));
+
+            // L187 set the Byteorder to BigEndian, using Reader class BaseIO
+            this.Byteorder = byteorder.BigEndian;
+        }
+        /// <summary>
+        /// Create a reader, to read a file
+        /// </summary>
+        /// <param name="path">The path to the file, to read</param>
+        /// <param name="boBO">The order of the bytes, to read</param>
+        // L187 constructor to pass tru our Byteorder along with path
+        public Reader(string path, byteorder boBO)
+        {
+            // L187 set binary reader to the path of the file to be opened and read
+            br = new BinaryReader(File.OpenRead(path));
+
+            // L187 set are Byteorder to passed in byteorder
+            this.Byteorder = boBO;
+        }
+
+        // L187 binary reader created
+        BinaryReader br;
+
+        // L187 property to hold position of binary reader
+        public long Position
+        {
+            // L187 returns current position of binary reader
+            get { return br.BaseStream.Position; }
+
+            // L187 change Position depending on the current position value
+            set { br.BaseStream.Position = value; }
+        }
+
+        /// <summary>
+        /// Read byte, return Position, advance one, to next byte
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, byte, advance one , then go to the following byte, and return Position
+        public byte ReadByte()
+        {
+            return br.ReadByte();
+        }
+        /// <summary>
+        /// Read signed byte, return its Position, advance one, to next byte
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, signed byte, advance one , then go to the following signed byte, and return Position
+        public sbyte ReadSByte()
+        {
+            return (sbyte)br.ReadByte();
+        }
+
+        /// <summary>
+        /// Read short (int16) byte, return its Position, advance one byte, to next short
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, short (int16) byte, advance one , then go to the following short, and return Position
+        public short ReadInt16()
+        {
+            short myShort = br.ReadInt16();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myShort);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myShort = BitConverter.ToInt16(buffer, 0);
+            }
+            return myShort;
+        }
+
+        /// <summary>
+        /// Read ushort (UInt16) byte, return its Position, advance one byte, to next ushort
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, ushort (UInt16) byte, advance one , then go to the following ushort, and return Position
+        public ushort ReadUint16()
+        {
+            ushort myUshort = br.ReadUInt16();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myUshort);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myUshort = BitConverter.ToUInt16(buffer, 0);
+            }
+            return myUshort;
+        }
+
+        /// <summary>
+        /// Read int (int32) byte, return its Position, advance one byte, to next int byte
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, int (int32) byte, advance one , then go to the following int byte, and return Position
+        public int ReadInt32()
+        {
+            int myInt = br.ReadInt32();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myInt);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myInt = BitConverter.ToInt32(buffer, 0);
+            }
+            return myInt;
+        }
+
+        /// <summary>
+        /// Read uint (UInt32) byte, return its Position, advance one byte, to next uint byte
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, uint (UInt32) byte, advance one , then go to the following uint byte, and return Position
+        public uint ReadUInt32()
+        {
+            uint myUint = br.ReadUInt32();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myUint);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myUint = BitConverter.ToUInt32(buffer, 0);
+            }
+            return myUint;
+        }
+
+        /// <summary>
+        /// Read long (int64) byte, return its Position, advance one byte, to next byte long
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, long (int64) byte, advance one , then go to the following long, and return its Position
+        public long Readint64()
+        {
+            long myLong = br.ReadInt64();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myLong);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myLong = BitConverter.ToInt64(buffer, 0);
+            }
+            return myLong;
+        }
+
+        /// <summary>
+        /// Read ulong (Uint64) byte, return its Position, advance one byte, to next byte ulong
+        /// </summary>
+        /// <returns></returns>
+        // L188 read data type, ulong (Uint64) byte, advance one , then go to the following ulong, and return its Position
+        public ulong ReadUint64()
+        {
+            ulong myUlong = br.ReadUInt64();
+
+            // L188 if we want myShort to be a Big Endian check byteorder
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // L188 convert myShort to byte array
+                byte[] buffer = BitConverter.GetBytes(myUlong);
+
+                // L188 reverse the buffer array from little to big endian
+                Array.Reverse(buffer);
+
+                // convert buffer array back into short, starting at index 0
+                myUlong = BitConverter.ToUInt64(buffer, 0);
+            }
+            return myUlong;
+        }
+
+        /// <summary>
+        /// Read user specified bytes, return bytes array Position, advance one byte, to next bytes
+        /// </summary>
+        /// <returns></returns>
+        // L189 read data type, byte[], read amount passed tru by user , then go to the following bytes, and return the Position
+        // if bytes byteorder are in littlendian tranform to bigendian
+        public byte[] ReadBytes(int amount)
+        {
+            byte[] buffer = br.ReadBytes(amount);
+            if (Byteorder == byteorder.LittleEndian)
+            {
+                Array.Reverse(buffer);
+            }
+            return buffer;
+        }
+
+        // L189 close the reader method
+        public void closeReader()
+        {
+            br.Close();
+        }
+
+        /// <summary>
+        /// User chooses the byteorder, BigEndian or LittleEndian
+        /// </summary>
+        /// <param name="bo"></param>
+        // L189 chang byte order from big to little endian or visa versa, 
+        public void changeByteOrder(byteorder bo)
+        {
+            // L189 in this class not the BaseIO class
+            this.Byteorder = bo;
+        }
+
+        /// <summary>
+        /// pass thru user defined length, return chars as a string
+        /// </summary>
+        /// <param name="iLength"></param>
+        /// <returns></returns>
+        // L190 read bytes in string by its length
+        public string ReadString(int iLength)
+        {
+            // L190 read the chars in the string
+            return new string(br.ReadChars(iLength));
+        }
+
+        /// <summary>
+        /// user requested length of bytes to read as string, then encode as big endian or little endian (unicode is in little endian)
+        /// </summary>
+        /// <param name="iLength"></param>
+        /// <returns></returns>
+        // L190 read user requested length, in bytes and return a unicode string
+        public string ReadUnicodeString(int iLength)
+        {
+            // L190 if it is a bigendian get the bytes as a string and use encoding to return it as bigendian
+            if (Byteorder == byteorder.BigEndian)
+                return Encoding.BigEndianUnicode.GetString(br.ReadBytes(iLength));
+            else
+                // L190 return it in littleEnding unicode, which is unicode, default name and structure, for little endian
+                return Encoding.Unicode.GetString(br.ReadBytes(iLength));
+        }
+
+        /// <summary>
+        /// read char at current position, advance one
+        /// </summary>
+        /// <returns></returns
+        // L191 read char byte at its current position
+        public char ReadCharacter()
+        {
+            return br.ReadChar();
+        }
+
+        /// <summary>
+        /// read chars in an array, using Amount requested by user
+        /// </summary>
+        /// <param name="iAmount"></param>
+        /// <returns></returns>
+        // L191 read chars in an array, using iAmount requested by user
+        public char[] ReadCharacterss(int iAmount)
+        {
+            return br.ReadChars(iAmount);
+        }
+    }
+
+    public class Writer : BaseIO
+    {
+        // L192 create  binary Writer bw
+        BinaryWriter bw;
+
+        /// <summary>
+        /// Create a writer that default to bigendian, to write to a file
+        /// </summary>
+        /// <param name="path">The path to the file, to write to</param>
+        // L187 create constructor using 'ctor' TAB 2x
+        // pass thru the path to the file to be written to, the pass thru path
+        public Writer(string path)
+        {
+            // L192 set binary writer to the path of the file to be opened and written
+            bw = new BinaryWriter(File.OpenWrite(path));
+
+            // L192 set byteorder default for bigendian in this constructor
+            Byteorder = byteorder.BigEndian;
+        }
+
+        /// <summary>
+        /// Create a writer constructor, to write to little endian file
+        /// </summary>
+        /// <param name="path">The path to the file, to read</param>
+        /// <param name="boBO">The order of the bytes, to read</param>
+        //  L192 create constructor to pass in the path, and the byteorder to write to the littleendian
+        public Writer(string path, byteorder boBO)
+        {
+            bw = new BinaryWriter(File.OpenWrite(path));
+
+            // L192 leave default order as littleendian
+            Byteorder = boBO;
+        }
+
+        // L192 property to hold position value of the binary writer
+        public long Position
+        {
+            // L192 return current position of binary writer
+            get { return bw.BaseStream.Position; }
+
+            // L187 change Position depending on the current position value
+            set { bw.BaseStream.Position = value; }
+        }
+
+        /// <summary>
+        /// write single byte
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write a byte to current positio, no big endian neccessary
+        public void WriteByte(byte byteToWrite)
+        {
+            bw.Write(byteToWrite);
+        }
+
+        /// <summary>
+        /// write bytes as big endian
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position,if big endian chosen
+        public void WriteBytes(byte[] bytesToWrite)
+        {
+            // L193 check to see if the bytes need to be written in bigendian
+            if(Byteorder == byteorder.BigEndian)
+            {
+                Array.Reverse(bytesToWrite);
+                bw.Write(bytesToWrite);
+            }            
+        }
+
+        /// <summary>
+        /// write bytes as big endian to short (Int16)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in short, if big endian chosen
+        public void WriteShort(Int16 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+             bw.Write(buffer);
+            }
+        }
+
+        /// <summary>
+        /// write bytes as big endian to a ushort (UInt16)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in ushort, if big endian chosen
+        public void WriteUshort(UInt16 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+            bw.Write(buffer);
+            }
+        }
+
+        /// <summary>
+        /// write bytes as big endian to an Int (Int32)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in int, if big endian chosen
+        public void WriteInt(Int32 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+                bw.Write(buffer);
+            }
+        }
+
+        /// <summary>
+        /// write bytes as big endian to a uint (UInt32)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in uint, if big endian chosen
+        public void WriteUint(UInt32 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+                bw.Write(buffer);
+            }
+        }
+        /// <summary>
+        /// write bytes as big endian to a long (Int64)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in long, if big endian chosen
+        public void WriteLong(Int64 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+                bw.Write(buffer);
+            }
+        }
+
+        /// <summary>
+        /// write bytes as big endian to a ulong (UInt64)
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L193 write bytes to current position in ulong, if big endian chosen
+        public void WriteUlong(UInt64 ToWrite)
+        {
+            // L193 create buffer array to store bytes
+            byte[] buffer = BitConverter.GetBytes(ToWrite);
+
+            // L193 check to see if the bytes need to be written in bigendian
+            if (Byteorder == byteorder.BigEndian)
+            {
+                // reverse byte order, so they are now big endian
+                Array.Reverse(buffer);
+                bw.Write(buffer);
+            }
+        }
+
+        /// <summary>
+        /// string writer, does not include the character count of the string, normally located at , 'string[0]'
+        /// </summary>
+        /// <param name="ToWrite"></param>
+        // L194 create string writer, doesn't return the amount of characters in string, normally located at string[0], of the string
+        public void WriteString(string ToWrite)
+        {
+            bw.Write(ToWrite.ToCharArray());
+        }
+
+        /// <summary>
+        /// Write string as unicode, big endian or little endian
+        /// </summary>
+        /// <param name=""></param>
+        // L194 write string to unicode (two bytes), if big or little endian
+        public void WriteUnicode(string ToWrite)
+        {
+            // L194 check to see if unicode is big or little endian, then write to buffer byte array
+            byte[] buffer = (Byteorder == byteorder.BigEndian) ? Encoding.BigEndianUnicode.GetBytes(ToWrite) : Encoding.Unicode.GetBytes(ToWrite);
+
+            // L194 write bytes to our unicode
+            bw.Write(buffer);
+        }
+
+
+
+/*
+First, we will write the methods to write a character, or another method to write characters, for our write class.  Since character(s), are always written
+in big endian (left to right) we do not need to convert anything, which will make these simple.  We will pass thru our char(s) from the user though, and leave
+a summary comment, of what each method does..
+*/
+
+
+
+        /// <summary>
+        /// Write a single character alway in big endian
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L195 create writer for a single char
+        public void WriteCharacter(char toWrite)
+        {
+            bw.Write(toWrite);
+        }
+
+        /// <summary>
+        /// Write characters alway in big endian
+        /// </summary>
+        /// <param name="toWrite"></param>
+        // L195 create writer for a multiple chars, alway big endian, no need for reverse
+        public void WriteCharacters(char[] toWrite)
+        {
+            bw.Write(toWrite);
+        }
+
+
+
+/*
+Next we will write a method to close our writer.
+*/
+
+
+        /// <summary>
+        /// Close binary writer
+        /// </summary>
+        // L195 close our bw writer
+        public void WriterClose()
+        {
+            bw.Close();
+        }
+
+
+
+/*
+Last, we will go back into our reader class, and copy paste, our byte order method, into the parent class, 'BaseIO', so both of its children classes, Read and 
+Write, will have access to the method.  This method is not, any type of interger byte, so it doesn't really belong in the byte reader or byte writer.  The code, 
+for the byte order is exactly the same, and is exclusivley used for the order of the bytes only, so can be shared by both classes and therfore belongs in the 
+BaseIO class.
+*/
+
+
+
+       // L186 rename class
+        //class ByteIO
+        public abstract class BaseIO
+    {
+        /// <summary>
+        /// The order of the bytes, both read and written
+        /// </summary>
+        // L186 holds the big and little endian read and write
+        public enum byteorder
+        {
+            BigEndian,
+            LittleEndian
+        }
+
+        /// <summary>
+        /// User chooses the byteorder, BigEndian or LittleEndian
+        /// </summary>
+        /// <param name="bo"></param>
+        // L189 change byte order from big to little endian or visa versa, L195 moved here from reader class
+        public void changeByteOrder(byteorder bo)
+        {
+            // L189 in this class not the BaseIO class
+            this.Byteorder = bo;
+        }
+
+        // L186 protected variable to store big or little endian data, depending which one we use
+        // used in this class or its derived class
+        protected byteorder Byteorder;
+    }
+}
+
+
+
+
+
+
+/************************************** NO highlights from the comments area ***********************************/
