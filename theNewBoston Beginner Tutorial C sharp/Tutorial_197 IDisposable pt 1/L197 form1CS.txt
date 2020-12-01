@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace IDisposable
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L197 binary reader instance, object
+            System.IO.BinaryReader BR = new System.IO.BinaryReader(System.IO.File.OpenRead("C:\\Users\\judas\\HP DV 6000 source\\repos\\New test folder\\Test byte reader2.txt"));
+
+            // reads two byte in hexadecimal little endian
+            MessageBox.Show(BR.ReadUInt16().ToString("X"));
+
+            // L197 use Dispose to delete it
+            BR.Dispose();
+
+            // L197 initialize MyClass constructor
+            MyClass MC = new MyClass();
+        }
+    }
+    // L197 class
+    class MyClass
+    { 
+        // L197 constructor
+        public MyClass()
+        {
+            MessageBox.Show("MyClass contructor is initialized");
+        }
+
+        // L197 destructor
+        ~MyClass()
+        {
+            MessageBox.Show("~MyClass destructor, closing", "Closing");
+        }
+       
+    }
+}

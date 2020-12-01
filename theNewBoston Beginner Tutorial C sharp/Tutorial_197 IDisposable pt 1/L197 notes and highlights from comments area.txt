@@ -1,0 +1,111 @@
+﻿/*
+In this tutorial project, we will learn about IDisposable, (pronounced = I-disposable) interface.  For this lesson, we will need a button1 in form1,
+and a class, with a constructor in it.  We will initialize MyClass, in button1 and write a messagebox, in our MyClass constructor, that the constructor has 
+been initialized.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace IDisposable
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L197 initialize MyClass constructor
+            MyClass MC = new MyClass();
+        }
+    }
+    // L197 class
+    class MyClass
+    { 
+        // L197 constructor
+        public MyClass()
+        {
+            MessageBox.Show("MyClass contructor is initialized");
+        }
+
+
+
+
+/*
+Next we will learn about destructors.  Destructor are like constructors, but are called, right before the object is destroyed.  They are destroyed when the program
+is being closed and the information in the object is being wiped from the computer.  To create a class constructor, use a tild sign '~' in front of it and empty
+parenthesis at the end of it.  The destructor is limited, and has no parameters, return, arguements, overloads, or access modifiers on it.  We will put our destructor
+in our MYClass, class and name it the same as our constructor, but with the tild '~MyClass'.  We will put a messageBox in our destructor, to observe how it function, 
+when we close this app.  debug then close to see our destructor in action.
+*/
+
+
+		// L197 destructor
+        ~MyClass()
+        {
+            MessageBox.Show("~MyClass destructor, closing", "Closing");
+        }
+	}
+}
+
+
+/*
+There is one other way to use the destructor, and it is by inheriting from the IDisposal interface, which we will learn about, in the following lesson.  We noticed,
+if you create 2 separate classes and two different constructord and destructors, that you will still only receive one messagebox notice, when the program is closed,
+and it is from the second destructor.  
+When we use dispose;  dispose will delete everything to do with an object, of your computer.  We will create a binary reader object, as an example, then use dispose
+to delete it.  Create the binary reader in the button1 code area, the use Dispose() to delete the binary reader object.
+
+
+
+private void button1_Click(object sender, EventArgs e)
+        {
+            // L197 binary reader instance, object
+            System.IO.BinaryReader BR = new System.IO.BinaryReader(System.IO.File.OpenRead("C:\\Users\\judas\\HP DV 6000 source\\repos\\New test folder\\Test byte reader2.txt"));
+
+            // reads two byte in hexadecimal little endian
+            MessageBox.Show(BR.ReadUInt16().ToString("X"));
+
+            // L197 use Dispose to delete it
+            BR.Dispose();
+
+            // L197 initialize MyClass constructor
+            MyClass MC = new MyClass();
+        }
+*/
+
+
+
+
+
+
+
+
+
+/******************************** highlights from the comments area ************************************/
+
+
+
+
+
+
+
+for destructor just type '~' then press TAB twice
+
+
+
+
+
+the squiggly thing "~" is called a tilde.
+Comes from Spanish

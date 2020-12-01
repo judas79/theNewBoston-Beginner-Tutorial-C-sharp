@@ -569,6 +569,8 @@
     <Content Include="Tutorial_196 Project 6 Reading and Writing Class, Using the Writing Class\L196 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_196 Project 6 Reading and Writing Class, Using the Writing Class\L196 form1CS.txt" />
     <Content Include="Tutorial_196 Project 6 Reading and Writing Class, Using the Writing Class\L196 ByteIOCS.txt" />
+    <Content Include="Tutorial_197 IDisposable pt 1\L197 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_197 IDisposable pt 1\L197 form1CS.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
