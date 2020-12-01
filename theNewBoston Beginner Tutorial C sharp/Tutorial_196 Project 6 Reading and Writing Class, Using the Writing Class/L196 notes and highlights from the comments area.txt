@@ -1,0 +1,250 @@
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read and a method 
+to bytes, even though bytes are read in bigendian, not to be confused with byte.  Then we wrote a method to close our reader, and another to reverse the byte order
+of whatever the user has loaded, to either big or little endian, then we read the bytes in a string determined by the user requested length.string.  We then read 
+unicode, as bytes and used the encoder to render it as big endian, or unicode, which is the same as little endian, then continued to create a read a char and chars 
+as bytes, methods.  We then added a button1 to our form1 [design], to test our finished reader.  Button1, has a open dialog file method, and a test, to read an int32
+byte.
+Next, we started our byteorder writer, in our BytesIO.cs file under our Reader class.  We creates the write class and have two constructers, simillar to the read class 
+and constructors, then we created the methods to write a byte, bytes, and all the other different integer file types, to big endian, when big endian is requested.
+Then we will wrote a method for writing a string and another to write unicode, in little or big endian, then, we added methods, for a character, and for characters, 
+and a method to close the writer.  
+We also moved the byte order, converter method, from the reader writer to our parent class 'BaseIO', so both the reader and writer have access to it, since there is 
+not difference for the codeing needed, to use it ineither of those classes.
+In this lesson, we will add a few buttons, unlike the actual tutorial, so we can try out the various methods to read, and others, to write various byte types and
+big endian or little endian formats, to a selected file.  The first thing to do, is to verify that your namespace, to all your classes and methods, is added to the 
+top of your form1.  This is mine:
+
+using ByteOrderInOut;
+*/ 
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using ByteOrderInOut;
+
+namespace ByteOrderIO
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L191 open a file dialog to choose a file to read, verify that a file has been opened
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L191 create instance of our Reader, from our namespace ByteOrderInOut;
+                Reader R = new Reader(OFD.FileName);
+
+                // Read an int 32, convert it to hexadecimal string  Adam == 41 61 64 6D hex.
+                MessageBox.Show(R.ReadInt32().ToString("X"));
+            }
+
+
+
+/*
+If you haven't already, in tutorial 191, write the code, in button1, to open a file and read the first string, in bytes, and show them using messagebox, 
+in hexadecimal.  We added a textbox1, to display the hexadecimal bytes, that where outputed, instead of a popup, for astetic sake.
+*/
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L191 open a file dialog to choose a file to read, verify that a file has been opened
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L191 create instance of our Reader, from our namespace ByteOrderInOut;
+                Reader R = new Reader(OFD.FileName);
+
+                // L191 Read an int 32, convert it to hexadecimal string: the answer for  'Adam'  ==   '41 61 64 6D' in hex.
+                //MessageBox.Show(R.ReadInt32().ToString("X"));
+				// L196 Read an int 32, convert it to hexadecimal string  Adam == 41 61 64 6D hex.
+                textBox1.Text = R.ReadInt32().ToString("X");
+            }
+        }
+
+
+
+
+
+/*
+Next we will add another button2 and a textbox2, to our form1, using form1[designer], and then go to the form1 button2 code area.  There we will create 
+the open file dialog, to write something to that file.  Then we will create a new instance of Writer and name it 'W'.  We will then write the contents of
+textBox2 in unicode to the file that we opened.  Then notify the user that the file was written to, using messagbox.  Then we cleared the contents of
+textBox2 text and closed our writer, so other thing will be accessable withing this program.
+*/ 
+
+
+
+       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L196 create instance of our Writer, from our namespace ByteOrderInOut;
+                Writer W = new Writer(OFD.FileName);
+
+                // L196 Read text in textbox2 store in string s
+                string s = textBox2.Text;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteUnicode(s);
+
+                // L196 let user know that the unicode was written to file
+                MessageBox.Show(textBox2.Text.ToString() + " appended, as unicode to file");
+
+                // L196 clear old input from textbox2
+                textBox2.Text = "";
+
+                // L196 close this so something else can be used
+                W.WriterClose();
+            }
+        }
+
+
+
+
+/*
+Next we added another button3 and a textBox3, to test that our unicode writer would work correctly using big endian or little endian.
+*/
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L196 create instance of our Writer, from our namespace ByteOrderInOut;
+                Writer W = new Writer(OFD.FileName);
+
+                // L196 Read text in textbox2 store in string s
+                string s = textBox3.Text;
+
+                // L196 define the start position to write at
+                W.Position = 0x10;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteUnicode(s);
+
+                // L196 write as little endian
+                W.changeByteOrder(BaseIO.byteorder.LittleEndian);
+
+                // L196 define the start position to write at
+                W.Position = 0x20;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteUnicode(s);
+
+                // L196 let user know that the unicode was written to file
+                MessageBox.Show("'" + textBox3.Text.ToString() + "' appended, as BigEndian & LittleEndian unicode, to file");
+
+                // L196 clear old input from textbox2
+                textBox3.Text = "";
+
+                // L196 close this so something else can be used
+                W.WriterClose();
+            }
+        }
+
+
+
+/*
+Then we added button4 and textbox4 to test write hexadecimal in bytes, and write as big endian.  Little endian would not work for me.
+*/
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L196 create instance of our Writer, from our namespace ByteOrderInOut;
+                Writer W = new Writer(OFD.FileName);
+
+                // L196 Read text in textbox2 store in string s
+                //ulong i = UInt64.Parse(textBox4.Text);       // does NOT work
+                ulong n = ulong.Parse(textBox4.Text.Replace(" ",""), System.Globalization.NumberStyles.HexNumber);
+
+                // L196 define the start position to write at
+                W.Position = 0x30;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteUlong(n);
+
+                // L196 let user know that the unicode was written to file
+                MessageBox.Show("'" + textBox4.Text.ToString() + "' appended, as BigEndian hex, to file");
+
+                // L196 clear old input from textbox2
+                textBox4.Text = "";
+
+                // L196 close this so something else can be used
+                W.WriterClose();
+            }
+        }
+
+
+
+
+/*
+Last, we added button5 and textbox5 to write bytes, in big endian or little endian.  We ran out of time, so didn't use all the interger types to write bytes.
+*/
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                // L196 create instance of our Writer, from our namespace ByteOrderInOut;
+                Writer W = new Writer(OFD.FileName);
+
+                // L196 Read text in textbox4 store in byte array s
+                byte[] s = ASCIIEncoding.ASCII.GetBytes(textBox5.Text);
+
+                // L196 define the start position to write at
+                W.Position = 0x50;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteBytes(s);
+
+                // L196 write as little endian
+                W.changeByteOrder(BaseIO.byteorder.BigEndian);
+
+                // L196 define the start position to write at
+                W.Position = 0x60;
+
+                // L196 write contents of s to file opened in file dialog
+                W.WriteBytes(s);
+
+                // L196 let user know that the unicode was written to file
+                MessageBox.Show("'" + textBox5.Text.ToString() + "' appended, as BigEndian & LittleEndian bytes, to file");
+
+                // L196 clear old input from textbox2
+                textBox5.Text = "";
+
+                // L196 close this so something else can be used
+                W.WriterClose();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/******************************************* NO highlights from the comments area *******************************************/
