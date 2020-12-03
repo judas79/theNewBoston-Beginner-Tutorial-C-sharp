@@ -1,0 +1,178 @@
+﻿/*
+In this tutorial project, we will learn about IDisposable, (pronounced = I-disposable) interface.  In the previous lessons, we had a class, with a constructor in it.  
+We then initialized MyClass, in button1 and used a messagebox in our MyClass constructor, to show that the constructor had been initialized.  Then we created a
+distructor, also name ~MyClass, but with the tilde, in front of it and used that to delete a object and popup a messagebox, when the program closed.  We also created
+a binary reader object and deleted that object, when exiting the program.
+In this lesson, we will finish looking at the IDisposable interface.  We will need another button2, and create another class, with an image inside the class, for it.
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace IDisposable
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // L197 binary reader instance, object
+            System.IO.BinaryReader BR = new System.IO.BinaryReader(System.IO.File.OpenRead("C:\\Users\\judas\\HP DV 6000 source\\repos\\New test folder\\Test byte reader2.txt"));
+
+            // reads two byte in hexadecimal little endian
+            MessageBox.Show(BR.ReadUInt16().ToString("X"));
+
+            // L197 use Dispose to delete it
+            BR.Dispose();
+
+            // L197 initialize MyClass constructor
+            MyClass MC = new MyClass();
+        }
+    }
+    // L197 class
+    class MyClass
+    { 
+        // L197 constructor
+        public MyClass()
+        {
+            MessageBox.Show("MyClass contructor is initialized");
+        }
+
+        // L197 destructor
+        ~MyClass()
+        {
+            MessageBox.Show("~MyClass destructor, closing", "Closing");
+        }
+       
+    }
+/*
+    // L198 class for button2
+    class MyClass2
+    {
+        // L198 declare image outside of constructor
+        Image i;
+        // L198 constructor
+        public MyClass2()
+        {
+            i = Image.FromFile("C:\\Users\\judas\\HP DV 6000 source\\repos\\New test folder\\3D2A233CB79D060FA605B2484FDC8B2C.png");
+        }
+    }
+*/
+
+
+
+/*
+First, we will look at another way of dispoing of something.  For this to work, we need to inherit from the IDispose interface, which we do the actual 
+disposing.  In button2, use, 'using' to create an instance from our MyClass2.  It will use its inhertance from IDisposal to Dispose of object MyClass2,
+after everything in the squiggly brackets has been executed.
+*/
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // L198 ceate instance using 'using' for MyClass2
+            using (MyClass2 MC2 = new MyClass2())
+
+            // L198 after executing everything within the squiggly brackets, Disposed of MyClass2
+            {
+                // L198 
+                MessageBox.Show("closing MyClass2 using button2");
+            }
+        }
+    }
+
+
+
+
+/*
+Next, we will have to set up the rest of the implementations of methods, which we need to create, for the Disposable namespace, to function corrrectly.  
+The IDisposable namespace, is within the:
+
+using Systen;
+
+and is usually included when you create your form.  So, make sure that is at the top of form1.  To inherit from IDisposable, we will add it after our, MYClass2
+class name, seperated by a colon.
+Next, we will provide implementation for, and  create a method for IDisposable named Dispose.  It is a protected virtual void method, that does the Disposal, but
+is not the one called, from our button2, but is neccessary.  
+*/
+
+
+
+
+    // L198 class for button2, inherit from IDisposable
+    class MyClass2 : IDisposable
+    {
+        // L198 declare image outside of constructor
+        Image i;
+        // L198 constructor
+        public MyClass2()
+        {
+            i = Image.FromFile("C:\\Users\\judas\\HP DV 6000 source\\repos\\New test folder\\3D2A233CB79D060FA605B2484FDC8B2C.png");
+        }
+
+        // L198 this method does the removal of our MyClass2 class after a bool is passes thru
+        protected virtual void Dispose(bool B)
+        {
+            // If bool is true, dispose of everything within squiggly bracket
+            if(B)
+            {
+                // L198 dispose of i,  (Note: include any other objects, if you create some, within MyClass2)
+                i.Dispose();
+            }
+
+
+
+
+/*
+This next method, also name Dispose, is the public one, that is to be called, to execute the removal of MyClass2 and all of its content.  Within the public Dispose()
+method, we will call the protected Dispose, and pass it; that Dispose is set to true, so that the protected Dispose() will dispose of i, which is our image file.
+After that we will need to call surpress finalize which is in GC, the garbage collector.  If we use the GC, it will inhibit any deconstructer code, within this 
+class from running.  So if we have a deconstructor with a messagebox notification, for example, that deconstructor will not execute.
+*/
+
+
+
+        // L198 method to be called to dispose of items in protected virtual void Remove
+        public void Dispose()
+        {
+            // L198 pass Dispose true to the protected Remove method, so it will dispose of everything
+            Dispose(true);
+
+            // L198 surpress and finalize using the garbage protector method
+            // this stops the program from executing content, in a decunstructor within this class
+            GC.SuppressFinalize(this);
+        }
+
+        // L198 deconstructor example that will not execute at closing, because GC.SuppressFinalize will not allow this to execute
+        // if GC.SuppressFinalize(this); is commented out, then the message will show when closing down the program
+        ~MyClass2()
+        {
+            MessageBox.Show("MyClass2 closing");
+        }
+    }
+}
+
+
+
+/*
+Important!, but not in the lesson.  We had to rename our namespace for form1, from IDisposable to IDisposableIObecause it was the same as the namespace
+we inherit from, which caused the program not to inherit.  You can rename your namespace in form1, on VS 2017 ++, by highlighting it, then right clicking
+on it and choosing rename.  A box will popup, after you choose rename;  after renaming the namespace, press ok in that box.
+*/
+
+
+
+/************************************** NO highlights from the comments area ****************************************/
