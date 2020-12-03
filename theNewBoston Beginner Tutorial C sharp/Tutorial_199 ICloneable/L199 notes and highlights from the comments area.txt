@@ -1,0 +1,171 @@
+﻿/*
+All we need for this lesson, is a form1 and a button1, to learn about IClonable interface.  We will use this to clone variables and even a class.
+Inside of our form we will need a class, with a string property in it.  We will also need a string, in our button. 
+*/
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace theNewBoston_Beginner_Tutorial_C_sharp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+/*
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string myName = "Adam";
+        }
+    }
+    class MyClass
+    {
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+}
+*/
+
+
+
+*/
+The clone method works by returning an exact copy of an object, where it was called from.  In button1, we will set a variable to the clone of the string MyName.
+Since the Clone(), clones things as an object, we will have to convert, it back into a string, to satisfy the variable type string, for this example.  We will test
+this out with a messagebox and running debug.
+*/
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string myName = "Adam";
+
+            // set string to cloned object myName, convert object to (string)
+            string cloned_myName = (string)myName.Clone();
+
+			MessageBox.Show("cloned_myName =" + cloned_myName);
+        }
+    }
+
+
+
+
+
+/*
+Next, we will clone our MyClass class.  The first thing we need to do is inherit from the ICloneable interfae, into our MyClass, class.  The IClone interface
+only has one method in it, called Clone.  We will add the Clone method to our class.  It will return a copy of the class, that it is in, and has no input to 
+pass in from the user.  We will set Clone to return 'this', this being 'MyClass'
+*/
+
+
+    // inherit ICloneable to use its Clone method
+    class MyClass : ICloneable
+    {
+        public string Name
+        {
+            get;
+            set;
+        }
+        // setup Clone method
+        public object Clone()
+        {
+            return this;
+        }
+    }
+}
+
+
+
+
+/*
+Now that we have the method to clone our class, we will drag in another button2, to show an example of how to use the Clone method.  First, in button2, we will
+set up an instance of our MyClass.  Then we will use that instance 'MC', along with the string name we used in MyClass, to set the value Adam to that string 
+(named 'className').  Now we can use Clone, to clone our entire MyClass class, to whatever name we choose, using MyClass, to Clone our instance of itself.  Finally
+we will debug to test that this works, showing the className we originally created in our MyClass, but using our newly made clone name CMCfirstName.
+
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // instance of MyClass, example string
+            MyClass MC = new MyClass();
+
+            // set Adam as the classname string in our MyClass class
+            MC.className = "Adam";
+
+            // clone Myclass as object, its string name and its value
+            MyClass CMCfirstName = (MyClass)MC.Clone();
+
+            // messagebox to show that MyClass is cloned as CfirstName
+            MessageBox.Show("CMCfirstName = " + CMCfirstName.className);
+        }
+
+	
+
+
+
+
+
+/**************************** highlights from the comments area ******************************/
+
+
+
+
+
+
+
+So you should create a new object of Myclass
+
+public MyClass Clone()
+{
+  MyClass a = new MyClass();
+  a.Name = this.Name;
+  return a;
+}
+
+
+
+
+
+
+
+This won't make a clone, this will result in a referenced object, so an update to one will still update the other...
+
+
+
+
+
+
+Ok, so I'm having a little trouble understanding what's going on here. The clone method returns the exact value of the referenced object, but wouldn't assigning the 
+old object to the new object do the same thing? For example, I declare a CoolObject class with CoolObject co = new CoolObject(string value); Wouldn't CoolObject 
+anotherco = co; do the same thing as CoolObject anotherco = co.Clone();? The part that is throwing me off is @Nathan Rover says that modifying a value in the cloned 
+object will also modify the value of the original object? I could use a little clarification, thanks.
+
+
+Good question. This kind of cloning is very useful with polymorphism. Suppose you have SuperCoolObject derived from CoolObject class and you are overriding the Clone 
+method. Now you are creating an editor for your objects. in editor you have heterogeneous list of objects which contains some CoolObjects and some SuperCoolObjects. 
+User selects one of the objects and wants to copy it. You can just call Clone on that object without knowing whether its CoolObject or SuperCoolObject and it will 
+create copy of correct type.
+
+
+
+
+
+
+Plain and simple: When you have reference types (ones that are derived from System.Object Class) within your class that points to an object in memory just create 
+new object of your class with new objects. If it only contains value types (ones that are derived from System.ValueType class; structs: int, double, byte etc.) just 
+return this.MemberwiseClone();
+
+
