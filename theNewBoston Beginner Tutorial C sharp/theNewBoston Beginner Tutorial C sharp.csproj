@@ -579,7 +579,10 @@
     <Content Include="Tutorial_198 IDisposable pt 2\L198 form1CS.txt" />
     <Content Include="Tutorial_199 ICloneable\L199 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_199 ICloneable\L199 form1CS.txt" />
+    <Content Include="Tutorial_200 Changing Your Project%27s Properties\L200 Application page Icon.png" />
+    <Content Include="Tutorial_200 Changing Your Project%27s Properties\L200 Assembly Version information.png" />
     <Content Include="Tutorial_200 Changing Your Project%27s Properties\L200 notes and highlights from the comments are.txt" />
+    <Content Include="Tutorial_200 Changing Your Project%27s Properties\L200 Project Publish MyProject.png" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>
