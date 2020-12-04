@@ -63,6 +63,9 @@
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>RobotRods32.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\..\Downloaded DLL files\Ionic.Zip.dll</HintPath>
@@ -110,6 +113,7 @@
     <Compile Include="Tutorial_133 Making Controls pt 1\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Content Include="RobotRods32.ico" />
     <Content Include="Tutorial_184 Project 5 Captcha Generator, Saving the Images\L184 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_184 Project 5 Captcha Generator, Saving the Images\L184 form1CS.txt" />
     <Content Include="Tutorial 04 Variable types\L4FormCS.txt">
@@ -575,6 +579,7 @@
     <Content Include="Tutorial_198 IDisposable pt 2\L198 form1CS.txt" />
     <Content Include="Tutorial_199 ICloneable\L199 notes and highlights from the comments area.txt" />
     <Content Include="Tutorial_199 ICloneable\L199 form1CS.txt" />
+    <Content Include="Tutorial_200 Changing Your Project%27s Properties\L200 notes and highlights from the comments are.txt" />
     <EmbeddedResource Include="FlashScreen.resx">
       <DependentUpon>FlashScreen.cs</DependentUpon>
     </EmbeddedResource>

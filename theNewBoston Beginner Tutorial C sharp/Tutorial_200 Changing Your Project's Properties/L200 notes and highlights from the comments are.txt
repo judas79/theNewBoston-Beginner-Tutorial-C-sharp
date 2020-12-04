@@ -1,0 +1,40 @@
+﻿/*
+In this lesson we will be looking at how to edit the properties of our project.  We will use the form1, from the prior lesson, since we will not be editing the
+form1, but need a form1, even a blank one, for the examples on how to edit the properties, for a project.  All the examples will displayed as .png images in this
+tutorials folder, as will the 'how to do them', illustrations.  The name of this project will be 'MyProject'.
+
+The first thing we need to do, is click on the 'Project' tab, at the top of Visual studio, then click on 'MyProject Properties' (it will have the name of your 
+project instead of 'MyProject'), to acces the properties for the your current project.  In the properties click on the 'Applications' tab, on the left side.  You
+will see various fields within the properties/Apillication page, we will concentrate on the ones that are most likely need to be edited, at some point.
+
+The first thing we can change, is the Icon for our executable file.  A .ico file must be used here, if you want to change the default icon, for your executable
+file that is created, when you debug or Release you project.  The Release or Debug is within you current project file in the bin folder.  It will have an .exe
+extension, or no extension at all, if your windows is set to:  not to show extensions for know file types is on.  To change the icon, click on the button, png image 
+included with this lesson;  where the arrow is, and navigate to you icon image.  Then debug or release and head over to you bin and see if your icon is set to your
+executable.  This icon will not appear on yur for, only on the executable.
+
+Next, in you properties dialog, press the 'Assembly Information' button, to see its popup dialog.  The information, in this popup dialog, is the same info. a user
+will see while hovering over your app. in windows.  We can change most of these, to whatever we want, but usually things that pertain to the app you are about to 
+publish.  
+
+Title:	     the name off your app
+Description: what your app is and does
+Company:     made up company name, or your real one, or your name
+product:     the same as your title, or line of products
+copywrite:   if you have one or leave it blank
+Trademark    if you have one or leave blank
+
+You should start the Assembly version and file version the same.  Starting to the far right of the Assembly version increase by 1 for every added thing, or
+small bug fix.  The second space for a number: increment when the far right one reaches 9 and a new fix is being applied  The third one, if the app has many 
+large changes, or if there has been many updates to your app at one time between publishing.   The far left number, if the app changes have been drastic or has 
+merged with some other app and is almost completely changed.
+Save all and Debug and then go hover over to your exe and see the changes, in the popup window.
+*/
+
+
+
+
+
+
+
+/********************************* NO highlights from the comments area *********************************/
